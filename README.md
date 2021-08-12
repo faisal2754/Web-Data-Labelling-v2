@@ -1,4 +1,3 @@
-### Please Change
+# Data Labelling Web App
 
-Gonna be a production level frontend.
 Daily scrum: 11am
