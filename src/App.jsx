@@ -1,12 +1,23 @@
 import './App.css'
-import Test from './Components/Test'
+import Nav from './Components/Nav'
+import CreateJob from './Pages/CreateJob'
+import Dashboard from './Pages/Dashboard'
+import Home from './Pages/Home'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 function App() {
   return (
-    <div className="app">
-      <h1>Bruh</h1>
-      <Test />
-    </div>
+    <Router>
+      <div className="app">
+        <Nav />
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/dashboard" exact component={Dashboard}/>
+          <Route path="/create-job" exact component={CreateJob} />
+        </Switch>
+        
+      </div>
+    </Router>
   )
 }
 
