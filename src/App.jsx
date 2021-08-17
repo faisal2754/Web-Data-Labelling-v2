@@ -1,12 +1,12 @@
-import "./App.css";
-import Nav from "./Components/Nav";
-import CreateJob from "./Pages/CreateJob";
-import Dashboard from "./Pages/Dashboard";
-import Home from "./Pages/Home";
-import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import './App.css'
+import Nav from './Components/Nav'
+import CreateJob from './Pages/CreateJob'
+import Dashboard from './Pages/Dashboard'
+import Home from './Pages/Home'
+import React from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-function App() {
+const App = () => {
   return (
     <Router>
       <div className="app">
@@ -18,7 +18,7 @@ function App() {
         </Switch>
       </div>
     </Router>
-  );
+  )
 }
 
-export default App;
+export default App
