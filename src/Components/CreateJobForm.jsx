@@ -1,46 +1,35 @@
-import React, { Component } from 'react';
+import { useState } from 'react'
 
-class CreateJobForm extends Component {
-	constructor(props) {
-		super(props);
+const CreateJob = () => {
+   const [title, setTitle] = useState('')
+   const [description, setDescription] = useState('')
 
-		this.state = {
-			title: '',
-            description:''
-		};
-	}
-
-    handletitleChange=(event)=>{
-        this.setState({
-            title:event.target.value
-        })
-    }
-
-    handleDescChange=(event)=>{
-        this.setState({
-            description:event.target.value
-        })
-    }
-
-	render() {
-		return (
-			<form>
-				<div>
-					<label>title</label>
-					<input type="text" 
-                    value={this.state.title} 
-                    onChange={this.handletitleChange} />
-				</div>
-                <div>
-                    <label>
-                        Description
-                    </label>
-                    <textarea value={this.state.description} 
-                    onChange={this.handleDescChange}></textarea>
-                </div>
-                <div></div>
-			</form>
-		);
-	}
+   return (
+      <div>
+         <form>
+            <div>
+               <label>title</label>
+               <input
+                  type="text"
+                  value={title}
+                  onChange={(e) => {
+                     setTitle(e.target.value)
+                  }}
+               />
+            </div>
+            <div>
+               <label>Description</label>
+               <textarea
+                  value={description}
+                  onChange={(e) => {
+                     setDescription(e.target.value)
+                  }}
+               ></textarea>
+            </div>
+            <div></div>
+         </form>
+      </div>
+   )
 }
-export default CreateJobForm;
+
+export default CreateJob
