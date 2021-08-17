@@ -1,9 +1,10 @@
-import './App.css'
-import Nav from './Components/Nav'
-import CreateJob from './Pages/CreateJob'
-import Dashboard from './Pages/Dashboard'
-import Home from './Pages/Home'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import "./App.css";
+import Nav from "./Components/Nav";
+import CreateJob from "./Pages/CreateJob";
+import Dashboard from "./Pages/Dashboard";
+import Home from "./Pages/Home";
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   return (
@@ -12,13 +13,12 @@ function App() {
         <Nav />
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/dashboard" exact component={Dashboard}/>
+          <Route path="/dashboard" exact component={Dashboard} />
           <Route path="/create-job" exact component={CreateJob} />
         </Switch>
-        
       </div>
     </Router>
- )
+  );
 }
 
-export default App
+export default App;
