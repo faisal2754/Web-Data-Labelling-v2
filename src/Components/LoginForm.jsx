@@ -4,24 +4,21 @@ import '../Styles/Login.css'
 const Login = () => {
    return (
       <div className="login">
-         <img
-            className="login_logo"
-            src="https://logos-download.com/wp-content/uploads/2016/03/Amazon_Logo_2000.png"
-         />
-
          <div className="login_container">
+            <img className="login_logo" src="./images/login_logo.png" />
+
             <h1>Login</h1>
             <form>
-               <h5>Email</h5>
-               <input type="text" />
+               <input type="text" id="email" placeholder="Email*" />
 
-               <h5>Password</h5>
-               <input type="password" />
+               <input type="text" id="pword" placeholder="Password*" />
 
-               <button>Login</button>
+               <button className="login_signInButton">Login</button>
             </form>
 
-            <p></p>
+            <p>No account? </p>
+
+            <button className="login_registerButton">Register</button>
          </div>
       </div>
    )
