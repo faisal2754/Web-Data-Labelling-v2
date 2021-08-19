@@ -17,13 +17,15 @@ function HeroSection() {
                className="btns"
                buttonStyle="btn--outline"
                buttonSize="btn--large"
+               to="/register"
             >
                Sign Up
             </Button>
             <Button
                className="btns"
-               buttonStyle="btn--primary"
+               buttonStyle="btn-hover"
                buttonSize="btn--large"
+               to="/"
             >
                Find Job
             </Button>

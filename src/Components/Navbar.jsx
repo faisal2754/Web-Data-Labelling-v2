@@ -48,6 +48,17 @@ function Navbar() {
                      Dashboard
                   </Link>
                </li>
+
+               <li className="nav-item">
+                  <Link
+                     to="/view-job"
+                     className="nav-links"
+                     onClick={closeMobileMenu}
+                  >
+                     How-To
+                  </Link>
+               </li>
+
                <li className="nav-item">
                   <Link
                      to="/create-job"
@@ -58,9 +69,29 @@ function Navbar() {
                   </Link>
                </li>
 
+               <li className="nav-item">
+                  <Link
+                     to="/view-job"
+                     className="nav-links"
+                     onClick={closeMobileMenu}
+                  >
+                     Find A Job
+                  </Link>
+               </li>
+
                <li>
                   <Link
-                     to="/sign-up"
+                     to="/login"
+                     className="nav-links-mobile"
+                     onClick={closeMobileMenu}
+                  >
+                     Login
+                  </Link>
+               </li>
+
+               <li>
+                  <Link
+                     to="/register"
                      className="nav-links-mobile"
                      onClick={closeMobileMenu}
                   >
@@ -68,7 +99,20 @@ function Navbar() {
                   </Link>
                </li>
             </ul>
-            {button && <Button buttonStyle="btn--outline">Sign Up</Button>}
+            {button && (
+               <Button buttonStyle="btn--outline" to="/login">
+                  Login
+               </Button>
+            )}
+            {button && (
+               <Button
+                  buttonStyle="btn--primary"
+                  buttonSize="btn--small"
+                  to="/register"
+               >
+                  Sign Up
+               </Button>
+            )}
          </div>
       </nav>
    )
