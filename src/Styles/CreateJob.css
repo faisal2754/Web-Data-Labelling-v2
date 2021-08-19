@@ -10,6 +10,13 @@
     flex-direction: row;
     align-content: flex-start;
 }
+.credit-section{
+    padding: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
 
 .imageSection{
     margin: 1rem;

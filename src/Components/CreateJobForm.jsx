@@ -1,16 +1,16 @@
 import { useState } from 'react'
 import React from 'react'
+import ImageList from '@material-ui/core/ImageList';
+import ImageListItem from '@material-ui/core/ImageListItem';
 import '../Styles/CreateJob.css'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 import CloudUploadIcon from '@material-ui/icons/CloudUpload'
-import { makeStyles } from '@material-ui/core/styles'
 
 const CreateJob = () => {
    const [title, setTitle] = useState('')
    const [description, setDescription] = useState('')
-   const [file] = useState('')
-   const [credit] = useState('')
+   
 
    return (
       <div>
@@ -38,15 +38,21 @@ const CreateJob = () => {
                   </div>
                </div>
                <div className="imageSection">
-                  <img src={file} alt="image" />
+                  <ImageList
+                     rowHeight={100}
+                     cols={3}
+                  >
+                     {/* {itemData.map((item) => (
+                        <ImageListItem key={item.img} cols={item.cols || 1}>
+                           <img src={item.img} alt={item.title} />
+                        </ImageListItem>
+                     ))} */}
+                  </ImageList>
                   <input
                      id="imageInput"
                      type="file"
                      accept="image/*"
                      multiple
-                     onchange={(e) => {
-                        URL.createObjectURL(e.target.files[0])
-                     }}
                   />
                   <label htmlFor="imageInput" className="imageUpload"></label>
                </div>
@@ -80,16 +86,16 @@ const CreateJob = () => {
                      variant="outlined"
                   />
                </div>
-               <div>
-                  <Button
-                     variant="contained"
-                     color="default"
-                     type="submit"
-                     startIcon={<CloudUploadIcon />}
-                  >
-                     Upload
-                  </Button>
-               </div>
+            </div>
+            <div className="submitSection">
+               <Button
+                  variant="contained"
+                  color="default"
+                  type="submit"
+                  startIcon={<CloudUploadIcon />}
+               >
+                  Upload
+               </Button>
             </div>
          </form>
       </div>
