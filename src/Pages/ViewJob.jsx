@@ -1,11 +1,14 @@
-import React from 'react'
-import JobCard from '../Components/JobCard'
+import React, {useState} from 'react'
 import "../Styles/ViewJob.css"
 import Button from '@material-ui/core/Button';
 import CardItem from '../Components/CardItem'
 import '../Styles/Cards.css'
 
+
+
 function ViewJob() {
+  
+
     return (
         
         <div className="viewJob">
@@ -38,34 +41,37 @@ function ViewJob() {
             
           </div>
         </div>
-        
-         
+
         <div className="viewJob__container">
-        
+                
           <div className="viewJob__row">
-          <CardItem
-                     src="./images/purple_gradient.jpg"
-                     text="Job Name"
-                     credits="1 credit"
-                     
-                  />
+          
                   <CardItem
                      src="./images/purple_gradient.jpg"
                      text="Job Name"
                      credits="1 credit"
                      
                   />
+                
                   <CardItem
                      src="./images/purple_gradient.jpg"
                      text="Job Name"
                      credits="1 credit"
                      
                   />
+
+                  <CardItem
+                    
+                     src="./images/purple_gradient.jpg"
+                     text="Job Name"
+                     credits="1 credit"
+                     
+                  />
+                  
                   <CardItem
                      src="./images/purple_gradient.jpg"
                      text="Job Name"
-                     credits=" credit"
-                     
+                     credits=" credit"   
                   />
           </div>
         </div>
