@@ -4,7 +4,7 @@ import '../Styles/Register.css'
 const Register = () => {
    return (
       <div className="register">
-         <div className="registter_container">
+         <div className="register_container">
             <h1>Register</h1>
             <form>
                <input type="text" id="username" placeholder="Username*" />
