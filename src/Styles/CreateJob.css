@@ -1,6 +1,9 @@
 .jobInfo{
-    
-    background: rgb(184, 219, 219);
+    border: solid 2px black;
+    border-radius: 30px;
+
+    padding: 2rem;
+    background: rgb(226, 226, 226);
 }
 
 .mainForm{
@@ -11,14 +14,31 @@
     align-content: flex-start;
 }
 .credit-section{
-    padding: 0.5rem;
+    background: rgb(226, 226, 226);
+    border: solid 2px black;
+    border-radius: 30px;
+
+    padding: 2rem;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: space-evenly;
 }
-
+.submitSection{
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}
 
 .imageSection{
+    border: solid 2px black;
+    border-radius: 30px;
+
+    padding: 2rem;
     margin: 1rem;
-    background: blueviolet;
+    background: rgb(226, 226, 226);
+}
+
+.labelButton{
+    border: black;
+
 }
