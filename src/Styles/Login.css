@@ -15,8 +15,8 @@
 }
 
 .login_container {
-   width: 350px;
-   height: 50vh;
+   width: 300px;
+   height: 45vh;
    display: flex;
    flex-direction: column;
    border-radius: 30px;
@@ -38,9 +38,14 @@
    height: 35px;
    margin-bottom: 20px;
    background-color: white;
-   width: 98%;
+   width: 100%;
    border-radius: 15px;
    padding-left: 5px;
+   width: 200px;
+   margin-left: auto;
+   margin-right: auto;
+   display: block;
+   border-color: violet;
 }
 
 .login_container > p {
@@ -48,7 +53,7 @@
    font-size: 15px;
    text-align: center;
    text-decoration: underline;
-   font-weight: 200;
+   font-weight: 400;
 }
 
 .login_signInButton {
@@ -71,6 +76,10 @@
    transition: 0.5s;
    display: block;
    cursor: pointer;
+   width: 200px;
+   margin-left: auto;
+   margin-right: auto;
+   font-weight: 350;
 }
 
 .login_signInButton:hover {
@@ -96,7 +105,7 @@
 .login_registerButton {
    background-size: 200% auto;
    border-radius: 15px;
-   width: 100%;
+   width: 200px;
    height: 35px;
    border: 1px solid;
    margin-top: 10px;
@@ -104,6 +113,7 @@
    transition: 0.5s;
    display: block;
    cursor: pointer;
+   font-weight: 350;
 }
 
 .login_registerButton:hover {
