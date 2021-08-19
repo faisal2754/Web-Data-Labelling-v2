@@ -48,6 +48,17 @@ function Navbar() {
                      Dashboard
                   </Link>
                </li>
+
+               <li className="nav-item">
+                  <Link
+                     to="/view-job"
+                     className="nav-links"
+                     onClick={closeMobileMenu}
+                  >
+                     How-To
+                  </Link>
+               </li>
+
                <li className="nav-item">
                   <Link
                      to="/create-job"
@@ -88,9 +99,17 @@ function Navbar() {
                   </Link>
                </li>
             </ul>
-            {button && <Button buttonStyle="btn--outline">Login</Button>}
             {button && (
-               <Button buttonStyle="btn--primary" buttonSize="btn--small">
+               <Button buttonStyle="btn--outline" to="/login">
+                  Login
+               </Button>
+            )}
+            {button && (
+               <Button
+                  buttonStyle="btn--primary"
+                  buttonSize="btn--small"
+                  to="/register"
+               >
                   Sign Up
                </Button>
             )}

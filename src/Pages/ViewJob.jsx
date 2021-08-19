@@ -2,6 +2,8 @@ import React from 'react'
 import JobCard from '../Components/JobCard'
 import "../Styles/ViewJob.css"
 import Button from '@material-ui/core/Button';
+import CardItem from '../Components/CardItem'
+import '../Styles/Cards.css'
 
 function ViewJob() {
     return (
@@ -27,12 +29,12 @@ function ViewJob() {
         <div className="viewJob__filters"> 
           <b>Filter Your Jobs By: </b>
           <div className="viewJob__filterButtons">
-            <Button variant="contained"  >Name Asc</Button>
-            <Button variant="contained">Name Desc</Button>
-            <Button variant="contained">Credits Asc</Button>
-            <Button variant="contained">Credits Desc</Button>
-            <Button variant="contained"># Images Asc</Button>
-            <Button variant="contained"># Images Desc</Button>
+            <Button variant="contained"  ><b>Name Asc</b></Button>
+            <Button variant="contained"><b>Name Desc</b></Button>
+            <Button variant="contained"><b>Credits Asc</b></Button>
+            <Button variant="contained"><b>Credits Desc</b></Button>
+            <Button variant="contained"><b># Images Asc</b></Button>
+            <Button variant="contained"><b># Images Desc</b></Button>
             
           </div>
         </div>
@@ -41,26 +43,34 @@ function ViewJob() {
         <div className="viewJob__container">
         
           <div className="viewJob__row">
-            <JobCard/>
-            <JobCard/>
-            <JobCard/>
-            <JobCard/>
+          <CardItem
+                     src="./images/purple_gradient.jpg"
+                     text="Job Name"
+                     credits="1 credit"
+                     
+                  />
+                  <CardItem
+                     src="./images/purple_gradient.jpg"
+                     text="Job Name"
+                     credits="1 credit"
+                     
+                  />
+                  <CardItem
+                     src="./images/purple_gradient.jpg"
+                     text="Job Name"
+                     credits="1 credit"
+                     
+                  />
+                  <CardItem
+                     src="./images/purple_gradient.jpg"
+                     text="Job Name"
+                     credits=" credit"
+                     
+                  />
           </div>
-  
-          <div className="viewJob__row">
-          <JobCard/>
-            <JobCard/>
-            <JobCard/>
-            <JobCard/>
-          </div>
-  
-          <div className="viewJob__row">
-          <JobCard/>
-            <JobCard/>
-            <JobCard/>
-            <JobCard/>
-              </div>
         </div>
+  
+          
       </div>
     )
 }

@@ -2,13 +2,11 @@
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-  
     margin: 10px;
     width: 100%;
     height: 350px;
     width: 250px;
-    background-color: rgb(240, 240, 240);;
+    background-color: rgb(240, 240, 240);
     z-index: 1;
     border: 2px solid;
     border-color: rgb(240, 240, 240);
@@ -31,23 +29,26 @@
   .jobCard__uploader {
     display: flex;
     color: grey;
-    
+    margin: auto;
   }
   
-  
-  
+
   .jobCard > Button {
-    background: #f0c14b;
+    background:rgb(130, 100, 200);
     border: 1px solid;
-    margin-top: 10px;
-    border-color: #a88734 #9c7e31 #846a29;
+    border-color:rgb(240, 240, 240);
     color: #111;
-    padding: 10px;
+    /* padding: 10px; */
   }
-  
+  .jobCard > AccountBalanceWalletSharpIcon{
+    padding-top: 10px;
+    margin-top: 10px;
+    vertical-align: baseline;
+  } 
   .jobCard__price {
     margin-top: 5px;
     color:grey;
+    vertical-align: baseline;
   }
   
   .jobCard__info {
