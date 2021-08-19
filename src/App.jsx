@@ -5,6 +5,7 @@ import CreateJob from './Pages/CreateJob'
 import Dashboard from './Pages/Dashboard'
 import Login from './Pages/Login'
 import Home from './Pages/Home'
+import ViewJob from'./Pages/ViewJob'
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
@@ -15,7 +16,7 @@ const App = () => {
             <Route path="/" exact component={Home} />
             <Route path="/dashboard" exact component={Dashboard} />
             <Route path="/create-job" exact component={CreateJob} />
-            <Route path="/sign-up" exact component={Login} />
+            <Route path="/view-job" exact component={ViewJob} />
          </Switch>
       </Router>
    )
