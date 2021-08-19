@@ -20,25 +20,8 @@ import Footer from '../Components/Footer'
 import UserDetails from '../Components/UserDetails'
 import UserProfile from '../Components/UserProfile'
 
-const useStyles = makeStyles({
-   profileCard: {
-      maxWidth: 345,
-      marginTop: 20,
-      marginLeft: 200
-   },
-   media: {
-      height: 140
-   },
-
-   form: {
-      maxWidth: '90%',
-      marginTop: 20,
-      height: '150%'
-   }
-})
 
 export const Dashboard = (props) => {
-   const classNameNamees = useStyles()
 
    return (
       <div>
@@ -62,26 +45,7 @@ export const Dashboard = (props) => {
                         Nick Murphy — writes, performs and records all of his own
                         music."
                      />
-                     <div className="col-xl-8 order-xl-1">
-                        <div className="card bg-secondary shadow">
-                           <div className="card-header bg-white border-0">
-                              <div className="row align-items-center">
-                                 <div className="col-8">
-                                    <h3 className="mb-0">My account</h3>
-                                 </div>
-                                 <div className="col-4 text-right">
-                                    <a
-                                       href="#!"
-                                       className="btn btn-sm btn-primary"
-                                    >
-                                       Settings
-                                    </a>
-                                 </div>
-                              </div>
-                           </div>
-                           <UserDetails />
-                        </div>
-                     </div>
+                     <UserDetails/>
                   </div>
                </div>
             </div>
