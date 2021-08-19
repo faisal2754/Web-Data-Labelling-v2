@@ -28,9 +28,9 @@ Faisal Saleem (Backend):
 - Impediments: None
 
 Ghulame Mujtaba Arbi (Frontend):
-- Tasks completed yesterday: 
-- Tasks for the day: 
-- Impediments: 
+- Tasks completed yesterday: Researched React
+- Tasks for the day: Research and start working on How-To pages
+- Impediments: Time, work on another projects outside of uni work
 
 Tristan Bester (Backend):
 - Tasks completed yesterday: Automated Testing with GitHub Actions
@@ -70,9 +70,9 @@ Faisal Saleem (Backend):
 - Impediments: None
 
 Ghulame Mujtaba Arbi (Frontend):
-- Tasks completed yesterday: 
-- Tasks for the day: 
-- Impediments: 
+- Tasks completed yesterday: Start working on How-To pages
+- Tasks for the day: Continue work on How-To pages
+- Impediments: Time, work on another projects outside of uni work
 
 Tristan Bester (Backend):
 - Tasks completed yesterday: Setup Jest to run tests.
