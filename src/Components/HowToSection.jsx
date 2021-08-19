@@ -18,7 +18,7 @@ function HowToSection() {
                className="btns"
                buttonStyle="btn-hover"
                buttonSize="btn--large"
-               to="/create-job"
+               to="/"
             >
                Post a Job
             </Button>
