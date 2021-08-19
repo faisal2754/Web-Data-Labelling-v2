@@ -2,26 +2,65 @@
     display: flex;
     justify-content: center;
     margin-left: auto;
-    margin-right: auto;
-    max-width: 1500px;
+    width: 100%;
+    flex-direction: column;
+    background-color: white;
 }
 
-.viewJob__background{
+
+
+.viewJob__banner{
     width: 100%;
+    max-height: 200px;
     z-index: -1;
-    margin-bottom: -500px;
+    display: flex;
+    margin-bottom: -80px;
+    
+
     /* mask-image: linear-gradient(to bottom, rgba(0,0,0,0.5),rgba(0,0,0,0.5)); */
+
+}
+
+.viewJob__headerWriting{
+    color: white;
+    font-size: 50px;
+    padding-bottom: 0px;
 
 }
 
 
 .viewJob__row{
-    
     display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
     z-index: 1;
-    margin-left: 200px;
-    margin-right: 200px;
+
 }
+
+.viewJob__banner{
+    z-index: -1;
+}
+
+.viewJob__filters{
+    height: 100px;
+    background-color:rgb(240, 240, 240);
+    align-items: center;
+    padding-left: auto;
+    padding-right: auto;
+
+
+
+}
+
+.viewJob__filterButtons>Button{
+   
+    margin: 10px;
+
+
+}
+
+
 
 
 

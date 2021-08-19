@@ -2,17 +2,18 @@
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
-    justify-content: flex-end;
+    align-items: center;
+  
     margin: 10px;
     width: 100%;
     height: 350px;
     width: 250px;
-    background-color: white;
+    background-color: rgb(240, 240, 240);;
     z-index: 1;
     border: 2px solid;
-    border-color: grey;
+    border-color: rgb(240, 240, 240);
   }
+
   .jobCard > img {
     max-height: 200px;
     width: 100%;
@@ -24,10 +25,13 @@
 
   .jobCard__name{
     text-align: left;
+    color: black;
   }
 
-  .jobCard__rating {
+  .jobCard__uploader {
     display: flex;
+    color: grey;
+    
   }
   
   
@@ -43,12 +47,10 @@
   
   .jobCard__price {
     margin-top: 5px;
+    color:grey;
   }
   
   .jobCard__info {
-    color: white;
-    background-color:grey;
-  
     height: 100px;
     margin-bottom: 15px;
   }
