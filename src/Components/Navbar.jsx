@@ -88,9 +88,17 @@ function Navbar() {
                   </Link>
                </li>
             </ul>
-            {button && <Button buttonStyle="btn--outline">Login</Button>}
             {button && (
-               <Button buttonStyle="btn--primary" buttonSize="btn--small">
+               <Button buttonStyle="btn--outline" to="/login">
+                  Login
+               </Button>
+            )}
+            {button && (
+               <Button
+                  buttonStyle="btn--primary"
+                  buttonSize="btn--small"
+                  to="/register"
+               >
                   Sign Up
                </Button>
             )}
