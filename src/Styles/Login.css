@@ -8,7 +8,6 @@
 
 .login_logo {
    margin-top: 25px;
-   margin-bottom: 20px;
    object-fit: contain;
    width: 115px;
    margin-right: auto;
@@ -24,6 +23,7 @@
    border: 3px solid black;
    padding: 20px;
    margin-top: 100px;
+   align-items: center;
 }
 
 .login_container > h1 {

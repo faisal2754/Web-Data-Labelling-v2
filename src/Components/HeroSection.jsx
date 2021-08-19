@@ -17,6 +17,7 @@ function HeroSection() {
                className="btns"
                buttonStyle="btn--outline"
                buttonSize="btn--large"
+               to="/register"
             >
                Sign Up
             </Button>
@@ -24,6 +25,7 @@ function HeroSection() {
                className="btns"
                buttonStyle="btn-hover"
                buttonSize="btn--large"
+               to="/"
             >
                Find Job
             </Button>

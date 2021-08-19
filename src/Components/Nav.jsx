@@ -18,7 +18,7 @@ const Nav = () => {
                <Link style={navStyle} to="/create-job">
                   <li> Create Job </li>
                </Link>
-               <Link style={navStyle} to="/sign-up">
+               <Link style={navStyle} to="/register">
                   <li> Sign Up </li>
                </Link>
             </ul>

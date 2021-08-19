@@ -70,7 +70,17 @@ function Navbar() {
 
                <li>
                   <Link
-                     to="/sign-up"
+                     to="/login"
+                     className="nav-links-mobile"
+                     onClick={closeMobileMenu}
+                  >
+                     Login
+                  </Link>
+               </li>
+
+               <li>
+                  <Link
+                     to="/register"
                      className="nav-links-mobile"
                      onClick={closeMobileMenu}
                   >
