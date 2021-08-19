@@ -48,6 +48,17 @@ function Navbar() {
                      Dashboard
                   </Link>
                </li>
+
+               <li className="nav-item">
+                  <Link
+                     to="/view-job"
+                     className="nav-links"
+                     onClick={closeMobileMenu}
+                  >
+                     How-To
+                  </Link>
+               </li>
+
                <li className="nav-item">
                   <Link
                      to="/create-job"
