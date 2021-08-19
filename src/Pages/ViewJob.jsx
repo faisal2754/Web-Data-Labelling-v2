@@ -1,46 +1,64 @@
-import { Card } from '@material-ui/core'
 import React from 'react'
 import JobCard from '../Components/JobCard'
-import Navbar from '../Components/Navbar'
 import "../Styles/ViewJob.css"
-import CardItem from '../Components/CardItem'
+import Button from '@material-ui/core/Button';
 
 function ViewJob() {
     return (
         
         <div className="viewJob">
 
-
-            
-        <div className="viewJob__container">
-         
-         
+          
+        <div className="viewJob__header">
+          
           <img
-            className="viewJob__background"
-            src="images\ViewJobsBackground.png"
+            className="viewJob__banner"
+            src="images\ViewJobsBanner.png"
             alt=""
-          /> 
-  
-          <div className="viewJob__row">
-            <JobCard/>
-            <JobCard/>
-            <JobCard/>
-            <JobCard/>
-            {/* <JobCard/> */}
-            {/* <JobCard/>
-            <JobCard/> */}
-            {/* jobCard */}
+          />  
+
+          <div className="viewJob__headerWriting">
+            <b>Find The Jobs That Interest You!</b>
           </div>
-  
-          <div className="viewJob__row">
+
+        
+        </div>
+
+        <div className="viewJob__filters"> 
+          <b>Filter Your Jobs By: </b>
+          <div className="viewJob__filterButtons">
+            <Button variant="contained"  >Name Asc</Button>
+            <Button variant="contained">Name Desc</Button>
+            <Button variant="contained">Credits Asc</Button>
+            <Button variant="contained">Credits Desc</Button>
+            <Button variant="contained"># Images Asc</Button>
+            <Button variant="contained"># Images Desc</Button>
             
-            {/*jobCard  */}
-            {/* jobCard */}
-            {/* jobCard */}
+          </div>
+        </div>
+        
+         
+        <div className="viewJob__container">
+        
+          <div className="viewJob__row">
+            <JobCard/>
+            <JobCard/>
+            <JobCard/>
+            <JobCard/>
           </div>
   
           <div className="viewJob__row">
-              {/*jobCard  */}
+          <JobCard/>
+            <JobCard/>
+            <JobCard/>
+            <JobCard/>
+          </div>
+  
+          <div className="viewJob__row">
+          <JobCard/>
+            <JobCard/>
+            <JobCard/>
+            <JobCard/>
               </div>
         </div>
       </div>
