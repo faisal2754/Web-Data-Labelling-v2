@@ -1,0 +1,17 @@
+.jobInfo{
+    
+    background: rgb(184, 219, 219);
+}
+
+.mainForm{
+    margin: 2rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-content: flex-start;
+}
+
+.imageSection{
+    margin: 1rem;
+    background: blueviolet;
+}

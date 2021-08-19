@@ -52,7 +52,7 @@
 }
 
 .login_signInButton {
-   background-color: #9c52d4;
+   background-color: #cc95ed;
    background-size: 0% 100%;
    border-radius: 15px;
    width: 100%;
@@ -65,7 +65,7 @@
 }
 
 .login_signInButton:hover {
-   background-color: #a75ce0;
+   background-color: #c076ee;
    background-image: linear-gradient(
       to right,
       rgba(255, 255, 255, 0) 0%,
