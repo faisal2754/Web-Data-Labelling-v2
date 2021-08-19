@@ -16,11 +16,10 @@ function JobCard() {
               <b> Job Name </b>  
             </div>
                     <b className="jobCard__price">
-                        <AccountBalanceWalletSharpIcon/>
-                        <strong>1000</strong>
+                        <AccountBalanceWalletSharpIcon/><strong> 1000</strong>
                     </b>
                 <div className="jobCard__uploader">
-                    <b>Uploader Email</b>
+                    <b>Uploader Details</b>
                 </div>
             </div>
             

@@ -34,6 +34,7 @@
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 10px;
     z-index: 1;
 
 }
@@ -48,16 +49,10 @@
     align-items: center;
     padding-left: auto;
     padding-right: auto;
-
-
-
 }
 
 .viewJob__filterButtons>Button{
-   
     margin: 10px;
-
-
 }
 
 
