@@ -35,11 +35,6 @@ const CreateJob = () => {
                ></textarea>
             </div>
             <div></div>
-         </form>
-      </div>
-   )
-}
-
             <div className="mainForm">
                <div className="jobInfo">
                   <div className="textField">
