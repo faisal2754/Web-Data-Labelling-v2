@@ -22,7 +22,7 @@ function HeroSection() {
             </Button>
             <Button
                className="btns"
-               buttonStyle="btn--primary"
+               buttonStyle="btn-hover"
                buttonSize="btn--large"
             >
                Find Job
