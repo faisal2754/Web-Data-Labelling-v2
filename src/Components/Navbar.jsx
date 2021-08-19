@@ -68,8 +68,6 @@ function Navbar() {
                   </Link>
                </li>
 
-               
-
                <li>
                   <Link
                      to="/sign-up"
@@ -79,9 +77,6 @@ function Navbar() {
                      Sign Up
                   </Link>
                </li>
-               
-               
-               
             </ul>
             {button && <Button buttonStyle="btn--outline">Sign Up</Button>}
          </div>
