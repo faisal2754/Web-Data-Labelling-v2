@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import React from 'react'
-import ImageList from '@material-ui/core/ImageList';
-import ImageListItem from '@material-ui/core/ImageListItem';
+import ImageList from '@material-ui/core/ImageList'
+import ImageListItem from '@material-ui/core/ImageListItem'
 import '../Styles/CreateJob.css'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
@@ -10,31 +10,10 @@ import CloudUploadIcon from '@material-ui/icons/CloudUpload'
 const CreateJob = () => {
    const [title, setTitle] = useState('')
    const [description, setDescription] = useState('')
-   
 
    return (
       <div>
          <form>
-            <div>
-               <label>title</label>
-               <input
-                  type="text"
-                  value={title}
-                  onChange={(e) => {
-                     setTitle(e.target.value)
-                  }}
-               />
-            </div>
-            <div>
-               <label>Description</label>
-               <textarea
-                  value={description}
-                  onChange={(e) => {
-                     setDescription(e.target.value)
-                  }}
-               ></textarea>
-            </div>
-            <div></div>
             <div className="mainForm">
                <div className="jobInfo">
                   <div className="textField">
@@ -58,10 +37,7 @@ const CreateJob = () => {
                   </div>
                </div>
                <div className="imageSection">
-                  <ImageList
-                     rowHeight={100}
-                     cols={3}
-                  >
+                  <ImageList rowHeight={100} cols={3}>
                      {/* {itemData.map((item) => (
                         <ImageListItem key={item.img} cols={item.cols || 1}>
                            <img src={item.img} alt={item.title} />
