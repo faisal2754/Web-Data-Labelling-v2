@@ -1,27 +1,20 @@
 import { useState } from 'react'
 import React from 'react'
-<<<<<<< HEAD
-=======
 import '../Styles/CreateJob.css'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 import CloudUploadIcon from '@material-ui/icons/CloudUpload'
 import { makeStyles } from '@material-ui/core/styles'
->>>>>>> 8bd9c372d0b96b130f7684f3ed99cc5541a18868
 
 const CreateJob = () => {
    const [title, setTitle] = useState('')
    const [description, setDescription] = useState('')
-<<<<<<< HEAD
-=======
    const [file] = useState('')
    const [credit] = useState('')
->>>>>>> 8bd9c372d0b96b130f7684f3ed99cc5541a18868
 
    return (
       <div>
          <form>
-<<<<<<< HEAD
             <div>
                <label>title</label>
                <input
@@ -47,7 +40,6 @@ const CreateJob = () => {
    )
 }
 
-=======
             <div className="mainForm">
                <div className="jobInfo">
                   <div className="textField">
@@ -129,5 +121,4 @@ const CreateJob = () => {
    )
 }
 
->>>>>>> 8bd9c372d0b96b130f7684f3ed99cc5541a18868
 export default CreateJob
