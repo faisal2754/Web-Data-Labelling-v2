@@ -6,8 +6,10 @@ import Dashboard from './Pages/Dashboard'
 import Login from './Pages/Login'
 import Register from './Pages/Register'
 import Home from './Pages/Home'
+import HowTo from './Pages/HowTo'
 import ViewJob from './Pages/ViewJob'
 import React from 'react'
+
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 const App = () => {
@@ -20,6 +22,7 @@ const App = () => {
             <Route path="/view-job" exact component={ViewJob} />
             <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={Register} />
+            <Route path="/how-to" exact component={HowTo} />
          </Switch>
       </Router>
    )
