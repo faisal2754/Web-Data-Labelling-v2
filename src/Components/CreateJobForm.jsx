@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState ,useEffect} from 'react'
 import React from 'react'
 import ImageList from '@material-ui/core/ImageList'
 import ImageListItem from '@material-ui/core/ImageListItem'
@@ -12,18 +12,33 @@ const CreateJob = () => {
    const [title, setTitle] = useState('')
    const [description, setDescription] = useState('')
    const [labels, setLabels] = useState([{}])
+   const [currentTotal, setCurrentTotal] = useState(0)
+   // const [clear, setClear] = useState(false)
 
-   // const [itemData, setitemData] = useState({
-   //    itemData: {
-   //       img: '',
-   //       altName: ''
-   //    }
+   useEffect(() => {
+      document.querySelector('#totalCredits').value = 0
+   }, [])
+
+   // useEffect(() => {
+   //    if (clear) document.querySelector('#totalCredits').value = ''
    // })
 
-   // const handleImg = (e) => {
-   //    if (e.target.files) {
-   //       itemData.map((image) => {})
-   //    }
+   const Calculate = (e) => {
+      e.preventDefault()
+      let currentCredits = document.querySelector('#credits').value
+      let currentLabellers = document.querySelector('#numLabellers').value
+      if (currentCredits == 0) return
+      let newTotal = currentCredits*currentLabellers
+      setCurrentTotal(newTotal);
+      // print(newTotal)
+   }
+
+   // const Clear = (e) => {
+   //    e.preventDefault()
+   //    console.log('sum:', currentTotal)
+   //    document.querySelector('form').reset()
+   //    setClear(true)
+   //    setCurrentTotal(0)
    // }
 
    return (
@@ -58,7 +73,7 @@ const CreateJob = () => {
 
                   <div className="labelSection">
                      <button
-                     className="labelButton"
+                        className="labelButton"
                         type="button"
                         onClick={() => {
                            setLabels((currentLabels) => [
@@ -131,32 +146,29 @@ const CreateJob = () => {
 
                <div className="credit-section">
                   <TextField
-                     id="filled-number"
+                     id="credits"
                      label="Credits"
                      type="number"
-                     InputLabelProps={{
-                        shrink: true
-                     }}
+                     // onChange={Calculate}
                      variant="outlined"
                   />
                   <TextField
-                     id="filled-number"
+                     id="numLabellers"
                      label="Number of Labellers"
                      type="number"
-                     InputLabelProps={{
-                        shrink: true
-                     }}
+                     // onChange={Calculate}
                      variant="outlined"
                   />
                   <TextField
-                     id="filled-number"
+                     id="imgPerSection"
                      label="Number of Images per section"
                      type="number"
-                     InputLabelProps={{
-                        shrink: true
-                     }}
+                     // onChange={Calculate}
                      variant="outlined"
                   />
+                  <h4 id="totalCredits">{currentTotal}</h4>
+                  <button onClick={Calculate}>Calculate</button>
+
                </div>
             </div>
             <div className="submitSection">
