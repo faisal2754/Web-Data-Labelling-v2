@@ -16,9 +16,6 @@
     display: flex;
     margin-bottom: -80px;
     
-
-    /* mask-image: linear-gradient(to bottom, rgba(0,0,0,0.5),rgba(0,0,0,0.5)); */
-
 }
 
 .viewJob__headerWriting{
@@ -54,6 +51,8 @@
 .viewJob__filterButtons>Button{
     margin: 10px;
 }
+
+
 
 
 

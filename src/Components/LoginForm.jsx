@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import '../Styles/Login.css'
 import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 const Login = () => {
    const [email, setEmail] = useState('')
@@ -15,6 +16,9 @@ const Login = () => {
       e.preventDefault()
       //some backend functionality
    }
+
+   const history = useHistory()
+
    return (
       <div className="login">
          <div className="login_container">
@@ -42,7 +46,9 @@ const Login = () => {
 
                <button
                   type="submit"
-                  onClick={signIn}
+                  onClick={() => {
+                     history.push('/')
+                  }}
                   className="login_signInButton"
                >
                   Login
@@ -51,7 +57,12 @@ const Login = () => {
 
             <p>No account? </p>
 
-            <button onClick={register} className="login_registerButton">
+            <button
+               onClick={() => {
+                  history.push('/register')
+               }}
+               className="login_registerButton"
+            >
                Register
             </button>
          </div>
