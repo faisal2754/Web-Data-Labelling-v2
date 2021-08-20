@@ -76,6 +76,7 @@ const CreateJob = () => {
                         className="labelButton"
                         type="button"
                         onClick={() => {
+                           if(labels.length>4) return
                            setLabels((currentLabels) => [
                               ...currentLabels,
                               {
