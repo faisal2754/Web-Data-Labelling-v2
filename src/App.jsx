@@ -1,5 +1,4 @@
 import './App.css'
-import Nav from './Components/Nav'
 import Navbar from './Components/Navbar'
 import CreateJob from './Pages/CreateJob'
 import Dashboard from './Pages/Dashboard'

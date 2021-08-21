@@ -5,11 +5,12 @@ import HowToSection from '../Components/HowToSection'
 import Footer from '../Components/Footer'
 import Navbar from '../Components/Navbar'
 import PostJobCards from '../Components/PostJobCards'
+import NavbarOther from '../Components/NavbarOther'
 
 function HowTo() {
    return (
       <div>
-         <Navbar />
+         <NavbarOther />
          <HowToSection />
          <PostJobCards />
          <Footer />

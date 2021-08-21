@@ -6,9 +6,14 @@
    justify-content: center;
    align-items: center;
    font-size: 1.2rem;
+   /* position: sticky; */
    top: 0;
-   /* z-index: 999; */
+   z-index: 999;
    font-family: 'Montserrat', sans-serif;
+}
+
+.navbar.active {
+   background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
 }
 
 .navbar-container {
@@ -35,18 +40,18 @@
 }
 
 .nav-menu {
-   display: grid;
+   display: inline-flex;
    grid-template-columns: repeat(4, auto);
    grid-gap: 10px;
    list-style: none;
    text-align: center;
    width: 60vw;
-   justify-content: end;
+   justify-content: flex-end;
    margin-right: 2rem;
 }
 
 .nav-item {
-   height: 80px;
+   height: 50px;
 }
 
 .nav-links {
