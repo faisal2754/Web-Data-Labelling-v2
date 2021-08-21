@@ -217,19 +217,25 @@ const CreateJob = () => {
                               Remove all images
                            </button>
                            <h2>Total Images : {imageList.length}</h2>
-                           {imageList.map((image, index) => (
+                           {imageList.slice(0, 5).map((image, index) => (
                               <div key={index} className="image-item">
                                  <img src={image.data_url} alt="" width="100" />
                                  <div className="image-item__btn-wrapper">
                                     <button
                                        className="btn-hover"
-                                       onClick={() => onImageUpdate(index)}
+                                       onClick={(e) => {
+                                          onImageUpdate(index)
+                                          e.preventDefault()
+                                       }}
                                     >
                                        Update
                                     </button>
                                     <button
                                        className="btn-hover"
-                                       onClick={() => onImageRemove(index)}
+                                       onClick={(e) => {
+                                          onImageRemove(index)
+                                          e.preventDefault()
+                                       }}
                                     >
                                        Remove
                                     </button>
