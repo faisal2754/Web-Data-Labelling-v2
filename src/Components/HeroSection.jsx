@@ -25,7 +25,7 @@ function HeroSection() {
                className="btns"
                buttonStyle="btn-hover"
                buttonSize="btn--large"
-               to="/"
+               to="/view-job"
             >
                Find Job
             </Button>
