@@ -19,13 +19,12 @@ import '../Styles/Dashboard.css'
 import Footer from '../Components/Footer'
 import UserDetails from '../Components/UserDetails'
 import UserProfile from '../Components/UserProfile'
-
+import NavbarOther from '../Components/NavbarOther'
 
 export const Dashboard = (props) => {
-
    return (
       <div>
-         <Navbar />
+         <NavbarOther />
          <div>
             <link
                href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
@@ -45,7 +44,7 @@ export const Dashboard = (props) => {
                         Nick Murphy — writes, performs and records all of his own
                         music."
                      />
-                     <UserDetails/>
+                     <UserDetails />
                   </div>
                </div>
             </div>

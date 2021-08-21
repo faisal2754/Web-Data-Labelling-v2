@@ -6,15 +6,6 @@ import { Link } from 'react-router-dom'
 function Footer() {
    return (
       <div className="footer-container">
-         <section className="footer-subscription">
-            <p className="footer-subscription-heading">
-               Start Your Labelling Journey Now!
-            </p>
-            <p className="footer-subscription-text">Sign up to Label.ml</p>
-            <div className="input-areas">
-               <Button buttonStyle="btn--outline">Sign Up</Button>
-            </div>
-         </section>
          <div class="footer-links">
             <div className="footer-link-wrapper">
                <div class="footer-link-items">
@@ -32,7 +23,6 @@ function Footer() {
                </div>
                <div class="footer-link-items">
                   <h2>About Us</h2>
-                  <Link to="/">How it works</Link>
                   <Link to="/">Our Company</Link>
                   <Link to="/">Terms and Conditions</Link>
                   <Link to="/">Contact Us</Link>
@@ -43,14 +33,10 @@ function Footer() {
             <div class="social-media-wrap">
                <div class="footer-logo">
                   <Link to="/" className="social-logo">
-                     <img
-                        src="./images/logo(white).png"
-                        alt="bug"
-                        height={120}
-                     />
+                     <img src="./images/login_logo.png" alt="bug" height={60} />
                   </Link>
                </div>
-               <small class="website-rights">Label.ml © 2021</small>
+               <small class="website-rights">LABEL.ml © 2021</small>
             </div>
          </section>
       </div>
