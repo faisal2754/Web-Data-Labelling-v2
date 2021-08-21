@@ -6,6 +6,7 @@ import '../Styles/Navbar.css'
 function Navbar() {
    const [click, setClick] = useState(false)
    const [button, setButton] = useState(true)
+   const [navbar, setNavbar] = useState(false)
 
    const handleClick = () => setClick(!click)
    const closeMobileMenu = () => setClick(false)
@@ -13,8 +14,10 @@ function Navbar() {
    const showButton = () => {
       if (window.innerWidth <= 960) {
          setButton(false)
+         setNavbar(true)
       } else {
          setButton(true)
+         setNavbar(false)
       }
    }
 
@@ -24,8 +27,24 @@ function Navbar() {
 
    window.addEventListener('resize', showButton)
 
+   const changeBackground = () => {
+      if (window.scrollY >= 80) {
+         setNavbar(true)
+      } else {
+         setNavbar(false)
+      }
+   }
+
+   const changeNav = () => {
+      console.log('BOYYY')
+   }
+
+   window.addEventListener('scroll', changeBackground)
+
+   window.addEventListener('hashchange', changeNav)
+
    return (
-      <nav className="navbar">
+      <nav className={navbar ? 'navbar active' : 'navbar'}>
          <div className="navbar-container">
             <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
                <img src="./images/logo(white).png" alt="bug" height={120} />
@@ -55,7 +74,7 @@ function Navbar() {
                      className="nav-links"
                      onClick={closeMobileMenu}
                   >
-                     How-To
+                     How it Works
                   </Link>
                </li>
 

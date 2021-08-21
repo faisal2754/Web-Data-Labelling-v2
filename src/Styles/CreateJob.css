@@ -1,7 +1,9 @@
 .jobInfo{
-    border: solid 2px black;
+    display: flex;
+    justify-content: space-evenly;
     border-radius: 30px;
-
+    flex-direction: column;
+    /* box-shadow: 20px 20px 50px 10px rgb(234, 0, 255); */
     padding: 2rem;
     background: rgb(226, 226, 226);
 }
@@ -10,12 +12,13 @@
     margin: 2rem;
     display: flex;
     justify-content: center;
-    flex-direction: row;
+    flex-flow: row wrap;
     align-content: flex-start;
+    padding: 2rem ;
+
 }
 .credit-section{
     background: rgb(226, 226, 226);
-    border: solid 2px black;
     border-radius: 30px;
 
     padding: 2rem;
@@ -24,21 +27,107 @@
     justify-content: space-evenly;
 }
 .submitSection{
+    color: white;
     display: flex;
     justify-content: center;
     padding: 1rem;
 }
 
 .imageSection{
-    border: solid 2px black;
-    border-radius: 30px;
+    min-height: 500px;
+    max-height: 500px;
 
-    padding: 2rem;
-    margin: 1rem;
+    border-radius: 30px;
+    padding: 1rem;
+    margin-left:2rem; 
+    margin-right:2rem ; 
     background: rgb(226, 226, 226);
+    overflow-y: scroll
 }
 
 .labelButton{
     border: black;
 
 }
+
+
+
+.btn {
+    padding: 8px 20px;
+    border-radius: 2px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+ }
+ 
+ .btn-hover {
+    background-image: linear-gradient(
+       to right,
+       #9733ee,
+       #da22ff,
+       #da22ff,
+       #9733ee
+    );
+    box-shadow: 0 3px 10px 0 #190030;
+    width: 200px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    margin: 20px;
+    height: 55px;
+    text-align: center;
+    border: none;
+    background-size: 300% 100%;
+ 
+    border-radius: 50px;
+    -o-transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+ }
+ 
+ .btn-hover:hover {
+    background-position: 100% 0;
+    -o-transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+ }
+ 
+ .btn-hover:focus {
+    outline: none;
+ }
+ 
+ .btn--outline {
+    background-color: transparent;
+    color: #fff;
+    padding: 8px 20px;
+    box-shadow: 0 3px 10px 0 #21003d;
+    border: 2px solid var(--primary);
+    border-radius: 50px;
+    transition: all 0.3s ease-out;
+ }
+ 
+ .btn--small {
+    padding: 6px 15px;
+    font-size: 16px;
+    width: 110px;
+    height: 45px;
+ }
+ 
+ .btn--medium {
+    padding: 8px 20px;
+    font-size: 18px;
+ }
+ 
+ .btn--large {
+    padding: 12px 26px;
+    font-size: 20px;
+ }
+ 
+ .btn--outline:hover {
+    transition: all 0.3s ease-out;
+    background: #da22ff;
+    color: #ffffff;
+    transition: 250ms;
+ }
+ 

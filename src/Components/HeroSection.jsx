@@ -6,7 +6,7 @@ import '../App.css'
 function HeroSection() {
    return (
       <div className="hero-container">
-         <video src="./videos/PurpleBG.mp4" autoPlay loop muted />
+         <video src="./videos/header-hero.mp4" autoPlay loop muted />
          <h1>
             Crowd Sourced <br /> Data Labelling <br />
             Market Place for ML
@@ -25,7 +25,7 @@ function HeroSection() {
                className="btns"
                buttonStyle="btn-hover"
                buttonSize="btn--large"
-               to="/"
+               to="/view-job"
             >
                Find Job
             </Button>

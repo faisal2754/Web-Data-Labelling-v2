@@ -1,4 +1,4 @@
-import { useState ,useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import React from 'react'
 import ImageList from '@material-ui/core/ImageList'
 import ImageListItem from '@material-ui/core/ImageListItem'
@@ -7,13 +7,21 @@ import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 import CloudUploadIcon from '@material-ui/icons/CloudUpload'
 import { nanoid } from 'nanoid'
+import ImageUploading from 'react-images-uploading'
 
 const CreateJob = () => {
    const [title, setTitle] = useState('')
    const [description, setDescription] = useState('')
    const [labels, setLabels] = useState([{}])
    const [currentTotal, setCurrentTotal] = useState(0)
-   // const [clear, setClear] = useState(false)
+   const [images, setImages] = useState([])
+
+   const maxNumber = 100
+   const onChange = (imageList, addUpdateIndex) => {
+      // data for submit
+      console.log(imageList, addUpdateIndex)
+      setImages(imageList)
+   }
 
    useEffect(() => {
       document.querySelector('#totalCredits').value = 0
@@ -28,9 +36,8 @@ const CreateJob = () => {
       let currentCredits = document.querySelector('#credits').value
       let currentLabellers = document.querySelector('#numLabellers').value
       if (currentCredits == 0) return
-      let newTotal = currentCredits*currentLabellers
-      setCurrentTotal(newTotal);
-      // print(newTotal)
+      let newTotal = currentCredits * currentLabellers
+      setCurrentTotal(newTotal)
    }
 
    // const Clear = (e) => {
@@ -52,31 +59,56 @@ const CreateJob = () => {
             <div className="mainForm">
                <div className="jobInfo">
                   <div className="textField">
-                     <label>Title</label>
-                     <input
-                        type="text"
-                        value={title}
-                        onChange={(e) => {
-                           setTitle(e.target.value)
-                        }}
-                     />
+                     <TextField id="title" label="Title" variant="outlined" />
                   </div>
                   <div className="textField">
-                     <label>Description</label>
-                     <textarea
-                        value={description}
-                        onChange={(e) => {
-                           setDescription(e.target.value)
-                        }}
-                     ></textarea>
+                     <TextField
+                        id="description"
+                        label="Description"
+                        multiline
+                        rows={4}
+                        defaultValue=""
+                        variant="outlined"
+                     />{' '}
                   </div>
+                  {({ imageList, dragProps, isDragging }) => (
+                     <div {...dragProps}>
+                        {isDragging ? 'Drop here please' : 'Upload space'}
+                        {imageList.map((image, index) => (
+                           <img key={index} src={image.data_url} />
+                        ))}
+                     </div>
+                  )}
 
+                  {({ imageList, onImageUpload, onImageRemoveAll, errors }) =>
+                     errors && (
+                        <div>
+                           {errors.maxNumber && (
+                              <span>
+                                 Number of selected images exceed maxNumber
+                              </span>
+                           )}
+                           {errors.acceptType && (
+                              <span>Your selected file type is not allow</span>
+                           )}
+                           {errors.maxFileSize && (
+                              <span>Selected file size exceed maxFileSize</span>
+                           )}
+                           {errors.resolution && (
+                              <span>
+                                 Selected file is not match your desired
+                                 resolution
+                              </span>
+                           )}
+                        </div>
+                     )
+                  }
                   <div className="labelSection">
                      <button
-                        className="labelButton"
+                        className="btn-hover"
                         type="button"
                         onClick={() => {
-                           if(labels.length>4) return
+                           if (labels.length > 4) return
                            setLabels((currentLabels) => [
                               ...currentLabels,
                               {
@@ -91,7 +123,8 @@ const CreateJob = () => {
                      {labels.map((p) => {
                         return (
                            <div key={p.id}>
-                              <input
+                              <TextField
+                                 style={{ padding: '3 rem' }}
                                  onChange={(e) => {
                                     const label = e.target.value
                                     setLabels((currentLabels) =>
@@ -104,12 +137,12 @@ const CreateJob = () => {
                                              : x
                                        )
                                     )
-                                    // e.target.value
                                  }}
-                                 placeholder="label"
+                                 placeholder="Please enter a Label"
                                  value={p.label}
                               />
                               <button
+                                 className="btn"
                                  onClick={() => {
                                     setLabels((currentLabels) =>
                                        currentLabels.filter(
@@ -133,7 +166,7 @@ const CreateJob = () => {
                         </ImageListItem>
                      ))}
                   </ImageList> */}
-                  <input
+                  {/* <input
                      id="imageInput"
                      type="file"
                      accept="image/*"
@@ -142,7 +175,76 @@ const CreateJob = () => {
                         e.preventDefault()
                      }}
                   />
-                  <label htmlFor="imageInput" className="imageUpload"></label>
+                  <label htmlFor="imageInput" className="imageUpload"></label> */}
+
+                  <ImageUploading
+                     multiple
+                     value={images}
+                     onChange={onChange}
+                     maxNumber={maxNumber}
+                     dataURLKey="data_url"
+                  >
+                     {({
+                        imageList,
+                        onImageUpload,
+                        onImageRemoveAll,
+                        onImageUpdate,
+                        onImageRemove,
+                        isDragging,
+                        dragProps
+                     }) => (
+                        // write your building UI
+                        <div className="upload__image-wrapper">
+                           <button
+                              className="btn-hover"
+                              style={isDragging ? { color: 'red' } : null}
+                              onClick={(e) => {
+                                 onImageUpload()
+                                 e.preventDefault()
+                              }}
+                              {...dragProps}
+                           >
+                              Click or Drop here
+                           </button>
+                           &nbsp;
+                           <button
+                              className="btn-hover"
+                              onClick={(e) => {
+                                 onImageRemoveAll()
+                                 e.preventDefault()
+                              }}
+                           >
+                              Remove all images
+                           </button>
+                           <h2>Total Images : {imageList.length}</h2>
+                           {imageList.slice(0, 5).map((image, index) => (
+                              <div key={index} className="image-item">
+                                 <img src={image.data_url} alt="" width="100" />
+                                 <div className="image-item__btn-wrapper">
+                                    <button
+                                       className="btn-hover"
+                                       onClick={(e) => {
+                                          onImageUpdate(index)
+                                          e.preventDefault()
+                                       }}
+                                    >
+                                       Update
+                                    </button>
+                                    <button
+                                       className="btn-hover"
+                                       onClick={(e) => {
+                                          onImageRemove(index)
+                                          e.preventDefault()
+                                       }}
+                                    >
+                                       Remove
+                                    </button>
+                                 </div>
+                              </div>
+                           ))}
+                        </div>
+                     )}
+                  </ImageUploading>
                </div>
 
                <div className="credit-section">
@@ -167,13 +269,15 @@ const CreateJob = () => {
                      // onChange={Calculate}
                      variant="outlined"
                   />
-                  <h4 id="totalCredits">{currentTotal}</h4>
-                  <button onClick={Calculate}>Calculate</button>
-
+                  <h2 id="totalCredits">Total: {currentTotal}</h2>
+                  <button className="btn-hover" onClick={Calculate}>
+                     Calculate
+                  </button>
                </div>
             </div>
             <div className="submitSection">
                <Button
+                  className="btn-hover"
                   variant="contained"
                   color="default"
                   type="submit"
