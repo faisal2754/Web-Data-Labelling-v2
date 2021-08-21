@@ -34,10 +34,15 @@
 }
 
 .imageSection{
+    min-height: 500px;
+    max-height: 500px;
+
     border-radius: 30px;
-    padding: 2rem;
-    margin: 1rem;
+    padding: 1rem;
+    margin-left:2rem; 
+    margin-right:2rem ; 
     background: rgb(226, 226, 226);
+    overflow-y: scroll
 }
 
 .labelButton{
