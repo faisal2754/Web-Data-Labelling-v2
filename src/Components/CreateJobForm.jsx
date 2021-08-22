@@ -49,7 +49,7 @@ const CreateJob = () => {
    // }
 
    return (
-      <div>
+      <div className="createJob_page">
          <form
             encType="multipart/form-data"
             onSubmit={(e) => {

@@ -7,8 +7,6 @@ const CreateJob = () => {
    return (
       <div>
          <NavbarOther />
-         <h1>Create Job page</h1>
-
          <CreateJobForm />
          <Footer />
       </div>
