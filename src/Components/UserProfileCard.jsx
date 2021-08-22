@@ -30,10 +30,6 @@ const UserProfile = (props) => {
                      <i className="ni education_hat mr-2" />
                      {props.education}
                   </div>
-                  <hr className="my-4" />
-                  <p>
-                     {props.about}
-                  </p>
                   {/* <a href="#">Show more</a> */}
                </div>
             </div>
