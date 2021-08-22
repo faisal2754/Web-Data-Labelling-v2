@@ -12,7 +12,7 @@ const UserDetails = () => {
                   </div>
                   <div className="col-4 text-right">
                      <a href="#!" className="btn btn-sm btn-primary">
-                        Settings
+                        Update Profile
                      </a>
                   </div>
                </div>
@@ -93,22 +93,40 @@ const UserDetails = () => {
                               />
                            </div>
                         </div>
-                     </div>
-                  </div>
-                  <hr className="my-4" />
-                  {/* Description */}
-                  <h6 className="heading-small text-muted mb-4">About me</h6>
-                  <div className="pl-lg-4">
-                     <div className="form-group focused">
-                        <label>About Me</label>
-                        <textarea
-                           rows={4}
-                           className="form-control form-control-alternative"
-                           placeholder="A few words about you ..."
-                           defaultValue={
-                              'A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.'
-                           }
-                        />
+                        <div className="col-lg-6">
+                           <div className="form-group focused">
+                              <label
+                                 className="form-control-label"
+                                 htmlFor="input-last-name"
+                              >
+                                 New Password
+                              </label>
+                              <input
+                                 type="text"
+                                 id="input-last-name"
+                                 className="form-control form-control-alternative"
+                                 placeholder="New Password"
+                                 defaultValue=""
+                              />
+                           </div>
+                        </div>
+                        <div className="col-lg-6">
+                           <div className="form-group focused">
+                              <label
+                                 className="form-control-label"
+                                 htmlFor="input-last-name"
+                              >
+                                 Confirm Password
+                              </label>
+                              <input
+                                 type="text"
+                                 id="input-last-name"
+                                 className="form-control form-control-alternative"
+                                 placeholder="Confirm New Password"
+                                 defaultValue=""
+                              />
+                           </div>
+                        </div>
                      </div>
                   </div>
                </form>
