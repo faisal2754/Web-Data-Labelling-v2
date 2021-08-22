@@ -7,8 +7,6 @@ const Register = () => {
    return (
       <div>
          <NavbarOther />
-         <h1>Register Page</h1>
-
          <RegisterForm />
          <Footer />
       </div>

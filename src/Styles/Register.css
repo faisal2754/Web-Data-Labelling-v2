@@ -1,51 +1,87 @@
-.register {
-   background-color: white;
-   height: 70vh;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+input {
+   font-family: 'Poppins', sans-serif;
+}
+
+.login_logo {
+   margin-top: 25px;
+   object-fit: contain;
+   width: 115px;
+   margin-right: auto;
+   margin-left: auto;
 }
 
 .register_container {
-   width: 350px;
-   height: 55vh;
+   position: relative;
+   width: 100%;
+   background-color: #fff;
+   height: 110vh;
+   background-image: linear-gradient(135deg, #81ffef 10%, #f067b4 100%);
+}
+
+.forms-container {
+   width: 100%;
+   height: 100%;
+   top: 0;
+   left: 0;
+   position: relative;
+   text-align: center;
+}
+
+form {
    display: flex;
-   flex-direction: column;
-   border-radius: 30px;
-   border: 3px solid black;
-   padding: 20px;
-   margin-top: 100px;
    align-items: center;
-   margin-bottom: 90px;
+   justify-content: center;
+   flex-direction: column;
+   height: 105vh;
 }
 
-.register_container > h1 {
-   font-weight: 550;
-   margin-top: 1px;
-   margin-bottom: 20px;
+.title {
+   font-size: 2.2rem;
+   color: #444;
+   margin-bottom: 10px;
+}
+
+.input-field {
+   max-width: 350px;
+   width: 100%;
+   background-color: #f0f0f0;
+   margin: 10px 0;
+   height: 55px;
+   border-radius: 55px;
+   display: grid;
+   grid-template-columns: 15% 85%;
+   padding: 0 0.4rem;
+   position: relative;
+}
+
+.input-field i {
    text-align: center;
-   object-fit: contain;
+   line-height: 55px;
+   color: #acacac;
+   font-size: 1.1rem;
 }
 
-.register_container > form > input {
-   height: 35px;
-   margin-bottom: 20px;
-   background-color: white;
-   width: 300px;
-   border-radius: 15px;
-   padding-left: 5px;
-   border-color: violet;
-   margin-left: auto;
-   margin-right: auto;
-   display: block;
+.input-field input {
+   background: none;
+   outline: none;
+   border: none;
+   line-height: 1;
+   font-weight: 600;
+   font-size: 1.1rem;
+   color: #333;
 }
 
-.register_container > p {
-   margin-top: 15px;
-   font-size: 15px;
-   text-align: center;
-   font-weight: 400;
-   font-size: 13px;
+.input-field input::placeholder {
+   color: #aaa;
+   font-weight: 500;
 }
 
 .register_registerButton {
@@ -58,60 +94,67 @@
 }
 
 .register_registerButton {
-   background-size: 200% auto;
-   border-radius: 15px;
-   width: 300px;
-   height: 35px;
-   border: 1px solid;
-   margin-top: 10px;
-   color: white;
+   background-size: 200%;
+   width: 9.375rem;
+   border: none;
+   outline: none;
+   height: 3.125rem;
+   border-radius: 3.063rem;
+   color: #fff;
+   text-transform: uppercase;
+   font-weight: 600;
+   margin: 0.625rem 0;
+   cursor: pointer;
    transition: 0.5s;
    display: block;
-   cursor: pointer;
-   font-weight: 350;
 }
 
 .register_registerButton:hover {
-   background-position: right center; /* change the direction of the change here */
+   background-position: right center;
    color: #fff;
    text-decoration: none;
 }
-
 .register_registerButton:active {
    background-color: #a75ce0;
    transition: background-size 0;
 }
 
-.register_loginButton {
-   background-image: linear-gradient(
-      to right,
-      #9733ee 0%,
-      #da22ff 51%,
-      #9733ee 100%
-   );
+.social-text {
+   padding: 0.7rem 0;
+   font-size: 1rem;
 }
 
-.register_loginButton {
-   background-size: 200% auto;
-   border-radius: 15px;
-   width: 300px;
-   height: 35px;
-   border: 1px solid;
-   margin-top: 10px;
-   color: white;
-   transition: 0.5s;
-   display: block;
-   cursor: pointer;
-   font-weight: 350;
+.other-text {
+   padding: 0.7rem 0;
+   font-size: 1rem;
 }
 
-.register_loginButton:hover {
-   background-position: right center; /* change the direction of the change here */
-   color: #fff;
+.underlineHover {
+   text-decoration: underline;
+   color: black;
+}
+
+.social-media {
+   display: flex;
+   justify-content: center;
+}
+
+.social-icon {
+   height: 46px;
+   width: 46px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin: 0 0.45rem;
+   color: #333;
+   border-radius: 50%;
+   border: 1px solid #333;
    text-decoration: none;
+   font-size: 1.1rem;
+   transition: 0.3s;
 }
 
-.register_loginButton:active {
-   background-color: #a75ce0;
-   transition: background-size 0;
+.social-icon:hover {
+   color: #a75ce0;
+   border-color: #a75ce0;
 }

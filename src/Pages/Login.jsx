@@ -7,8 +7,6 @@ const Login = () => {
    return (
       <div>
          <NavbarOther />
-         <h1>Login Page</h1>
-
          <LoginForm />
          <Footer />
       </div>
