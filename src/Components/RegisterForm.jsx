@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import '../Styles/Register.css'
 import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'
-import Checkbox from '@material-ui/core/Checkbox'
 
 const Register = () => {
    const [username, setUsername] = useState('')
@@ -10,27 +9,27 @@ const Register = () => {
    const [password, setPassword] = useState('')
    const [checked, setChecked] = React.useState(true)
 
-   const signIn = (e) => {
-      e.preventDefault()
-      //some backend functionality
-   }
+   // const signIn = (e) => {
+   //    e.preventDefault()
+   //    //some backend functionality
+   // }
 
-   const register = (e) => {
-      e.preventDefault()
-      //some backend functionality
-   }
+   // const register = (e) => {
+   //    e.preventDefault()
+   //    //some backend functionality
+   // }
    const history = useHistory()
 
-   const handleChange = (event) => {
-      setChecked(event.target.checked)
-   }
+   // const handleChange = (event) => {
+   //    setChecked(event.target.checked)
+   // }
 
    return (
       <div className="register_container">
          <div class="forms-container">
             <form class="register-form">
                <Link to="/">
-                  <img className="login_logo" src="./images/login_logo.png" />
+                  <img className="login_logo" alt="LOGO" src="./images/login_logo.png" />
                </Link>
                <h2 class="title">Register</h2>
                <div class="input-field">
@@ -70,7 +69,7 @@ const Register = () => {
                      value={checked}
                      onChange={(e) => setChecked(e.target.value)}
                      id="conf_pword"
-                     placeholder=" Confirm Password"
+                     placeholder="Confirm Password"
                   />
                </div>
                <button
@@ -84,7 +83,7 @@ const Register = () => {
                </button>
 
                <p class="social-text">Or sign up with</p>
-               <div class="social-media">
+               {/* <div class="social-media">
                   <a href="#" class="social-icon">
                      <i class="fab fa-facebook-f"></i>
                   </a>
@@ -94,7 +93,7 @@ const Register = () => {
                   <a href="#" class="social-icon">
                      <i class="fab fa-google"></i>
                   </a>
-               </div>
+               </div> */}
                <p class="other-text">
                   Already a member?{' '}
                   <a id="hover" class="underlineHover" href="/login">

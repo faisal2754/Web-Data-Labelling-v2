@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import React from 'react'
-import ImageList from '@material-ui/core/ImageList'
-import ImageListItem from '@material-ui/core/ImageListItem'
+
 import '../Styles/CreateJob.css'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
@@ -10,12 +9,9 @@ import { nanoid } from 'nanoid'
 import ImageUploading from 'react-images-uploading'
 
 const CreateJob = () => {
-   const [title, setTitle] = useState('')
-   const [description, setDescription] = useState('')
    const [labels, setLabels] = useState([{}])
    const [currentTotal, setCurrentTotal] = useState(0)
    const [images, setImages] = useState([])
-
    const maxNumber = 100
    const onChange = (imageList, addUpdateIndex) => {
       // data for submit
@@ -35,29 +31,20 @@ const CreateJob = () => {
       e.preventDefault()
       let currentCredits = document.querySelector('#credits').value
       let currentLabellers = document.querySelector('#numLabellers').value
-      if (currentCredits == 0) return
+      if (currentCredits === 0) return
       let newTotal = currentCredits * currentLabellers
       setCurrentTotal(newTotal)
    }
-
-   // const Clear = (e) => {
-   //    e.preventDefault()
-   //    console.log('sum:', currentTotal)
-   //    document.querySelector('form').reset()
-   //    setClear(true)
-   //    setCurrentTotal(0)
-   // }
-
    return (
-      <div>
+      <div className="createJob_page">
          <form
             encType="multipart/form-data"
             onSubmit={(e) => {
                console.log(e.target)
             }}
          >
-            <div className="mainForm">
-               <div className="jobInfo">
+            <div className="createJob_mainForm">
+               <div className="createJob_jobInfo">
                   <div className="textField">
                      <TextField id="title" label="Title" variant="outlined" />
                   </div>
@@ -75,7 +62,7 @@ const CreateJob = () => {
                      <div {...dragProps}>
                         {isDragging ? 'Drop here please' : 'Upload space'}
                         {imageList.map((image, index) => (
-                           <img key={index} src={image.data_url} />
+                           <img key={index} alt="img" src={image.data_url} />
                         ))}
                      </div>
                   )}
@@ -158,25 +145,8 @@ const CreateJob = () => {
                      })}
                   </div>
                </div>
-               <div className="imageSection">
-                  {/* <ImageList rowHeight={100} cols={2}>
-                     {itemData.map((item) => (
-                        <ImageListItem key={item.img} cols={item.cols || 1}>
-                           <img src={item.img} alt={item.title} />
-                        </ImageListItem>
-                     ))}
-                  </ImageList> */}
-                  {/* <input
-                     id="imageInput"
-                     type="file"
-                     accept="image/*"
-                     multiple
-                     onChange={(e) => {
-                        e.preventDefault()
-                     }}
-                  />
-                  <label htmlFor="imageInput" className="imageUpload"></label> */}
-
+               <div className="createJob_imageSection">
+                  
                   <ImageUploading
                      multiple
                      value={images}
@@ -247,7 +217,7 @@ const CreateJob = () => {
                   </ImageUploading>
                </div>
 
-               <div className="credit-section">
+               <div className="createJob_credit-section">
                   <TextField
                      id="credits"
                      label="Credits"
@@ -275,7 +245,7 @@ const CreateJob = () => {
                   </button>
                </div>
             </div>
-            <div className="submitSection">
+            <div className="createJob_submitSection">
                <Button
                   className="btn-hover"
                   variant="contained"

@@ -1,5 +1,4 @@
 import './App.css'
-import Navbar from './Components/Navbar'
 import CreateJob from './Pages/CreateJob'
 import DashboardSidebar from './Components/DashboardSidebar'
 import Login from './Pages/Login'
@@ -12,7 +11,7 @@ import Settings from './Pages/Dashboard/Settings'
 import MyJobs from './Pages/Dashboard/MyJobs'
 import React from 'react'
 
-import { BrowserRouter as Router, Switch, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 
 
 const App = () => {

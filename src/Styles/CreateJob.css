@@ -1,4 +1,8 @@
-.jobInfo{
+.createJob_page{
+   background-image: linear-gradient(135deg, #81ffef 10%, #f067b4 100%);
+}
+
+.createJob_jobInfo{
     display: flex;
     justify-content: space-evenly;
     border-radius: 30px;
@@ -8,7 +12,7 @@
     background: rgb(226, 226, 226);
 }
 
-.mainForm{
+.createJob_mainForm{
     margin: 2rem;
     display: flex;
     justify-content: center;
@@ -17,7 +21,7 @@
     padding: 2rem ;
 
 }
-.credit-section{
+.createJob_credit-section{
     background: rgb(226, 226, 226);
     border-radius: 30px;
 
@@ -26,14 +30,14 @@
     flex-direction: column;
     justify-content: space-evenly;
 }
-.submitSection{
+.createJob_submitSection{
     color: white;
     display: flex;
     justify-content: center;
     padding: 1rem;
 }
 
-.imageSection{
+.createJob_imageSection{
     min-height: 500px;
     max-height: 500px;
 
@@ -44,12 +48,6 @@
     background: rgb(226, 226, 226);
     overflow-y: scroll
 }
-
-.labelButton{
-    border: black;
-
-}
-
 
 
 .btn {

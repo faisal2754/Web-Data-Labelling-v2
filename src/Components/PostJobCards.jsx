@@ -5,7 +5,6 @@ import '../Styles/PostJobCards.css'
 function PostJobCards() {
    return (
       <div className="cards">
-         <h2></h2>
          <div className="cards__container">
             <div className="cards__wrapper">
                <ul className="cards__items">

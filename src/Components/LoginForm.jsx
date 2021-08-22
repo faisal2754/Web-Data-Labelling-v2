@@ -7,15 +7,15 @@ const Login = () => {
    const [email, setEmail] = useState('')
    const [password, setPassword] = useState('')
 
-   const signIn = (e) => {
-      e.preventDefault()
-      //some backend functionality
-   }
+   // const signIn = (e) => {
+   //    e.preventDefault()
+   //    //some backend functionality
+   // }
 
-   const register = (e) => {
-      e.preventDefault()
-      //some backend functionality
-   }
+   // const register = (e) => {
+   //    e.preventDefault()
+   //    //some backend functionality
+   // }
 
    const history = useHistory()
 
@@ -24,7 +24,7 @@ const Login = () => {
          <div class="forms-container">
             <form class="sign-in-form">
                <Link to="/">
-                  <img className="login_logo" src="./images/login_logo.png" />
+                  <img className="login_logo" alt="LOGO" src="./images/login_logo.png" />
                </Link>
                <h2 class="title">Sign in</h2>
                <div class="input-field">
@@ -60,7 +60,7 @@ const Login = () => {
                   LOGIN
                </button>
                <p class="social-text">Or login with</p>
-               <div class="social-media">
+               {/* <div class="social-media">
                   <a href="#" class="social-icon">
                      <i class="fab fa-facebook-f"></i>
                   </a>
@@ -70,7 +70,7 @@ const Login = () => {
                   <a href="#" class="social-icon">
                      <i class="fab fa-google"></i>
                   </a>
-               </div>
+               </div> */}
 
                <p class="other-text">
                   Not a member?{' '}
