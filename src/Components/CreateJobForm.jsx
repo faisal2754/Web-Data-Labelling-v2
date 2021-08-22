@@ -56,8 +56,8 @@ const CreateJob = () => {
                console.log(e.target)
             }}
          >
-            <div className="mainForm">
-               <div className="jobInfo">
+            <div className="createJob_mainForm">
+               <div className="createJob_jobInfo">
                   <div className="textField">
                      <TextField id="title" label="Title" variant="outlined" />
                   </div>
@@ -158,25 +158,8 @@ const CreateJob = () => {
                      })}
                   </div>
                </div>
-               <div className="imageSection">
-                  {/* <ImageList rowHeight={100} cols={2}>
-                     {itemData.map((item) => (
-                        <ImageListItem key={item.img} cols={item.cols || 1}>
-                           <img src={item.img} alt={item.title} />
-                        </ImageListItem>
-                     ))}
-                  </ImageList> */}
-                  {/* <input
-                     id="imageInput"
-                     type="file"
-                     accept="image/*"
-                     multiple
-                     onChange={(e) => {
-                        e.preventDefault()
-                     }}
-                  />
-                  <label htmlFor="imageInput" className="imageUpload"></label> */}
-
+               <div className="createJob_imageSection">
+                  
                   <ImageUploading
                      multiple
                      value={images}
@@ -247,7 +230,7 @@ const CreateJob = () => {
                   </ImageUploading>
                </div>
 
-               <div className="credit-section">
+               <div className="createJob_credit-section">
                   <TextField
                      id="credits"
                      label="Credits"
@@ -275,7 +258,7 @@ const CreateJob = () => {
                   </button>
                </div>
             </div>
-            <div className="submitSection">
+            <div className="createJob_submitSection">
                <Button
                   className="btn-hover"
                   variant="contained"
