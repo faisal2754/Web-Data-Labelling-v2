@@ -20,29 +20,35 @@ const Login = () => {
    const history = useHistory()
 
    return (
-      <div className="login">
-         <div className="login_container">
-            <Link to="/">
-               <img className="login_logo" src="./images/login_logo.png" />
-            </Link>
+      <div class="login_container">
+         <div class="forms-container">
+            <form class="sign-in-form">
+               <Link to="/">
+                  <img className="login_logo" src="./images/login_logo.png" />
+               </Link>
+               <h2 class="title">Sign in</h2>
+               <div class="input-field">
+                  <i class="fas fa-envelope icon"></i>
+                  <input
+                     type="text"
+                     value={email}
+                     onChange={(e) => setEmail(e.target.value)}
+                     id="email"
+                     placeholder="Email"
+                  />
+               </div>
+               <div class="input-field">
+                  <i class="fas fa-lock icon"></i>
+                  <input
+                     type="password"
+                     value={password}
+                     onChange={(e) => setPassword(e.target.value)}
+                     id="pword"
+                     placeholder="Password"
+                  />
+               </div>
 
-            <h1>Login</h1>
-            <form>
-               <input
-                  type="text"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  id="email"
-                  placeholder="Email*"
-               />
-
-               <input
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  id="pword"
-                  placeholder="Password*"
-               />
+               <p class="forgot-pass">Forgot Password?</p>
 
                <button
                   type="submit"
@@ -51,22 +57,39 @@ const Login = () => {
                   }}
                   className="login_signInButton"
                >
-                  Login
+                  LOGIN
                </button>
+               <p class="social-text">Or login with</p>
+               <div class="social-media">
+                  <a href="#" class="social-icon">
+                     <i class="fab fa-facebook-f"></i>
+                  </a>
+                  <a href="#" class="social-icon">
+                     <i class="fab fa-twitter"></i>
+                  </a>
+                  <a href="#" class="social-icon">
+                     <i class="fab fa-google"></i>
+                  </a>
+               </div>
+
+               <p class="other-text">
+                  Not a member?{' '}
+                  <a id="hover" class="underlineHover" href="/register">
+                     Sign up now
+                  </a>
+               </p>
             </form>
-
-            <p>No account? </p>
-
-            <button
-               onClick={() => {
-                  history.push('/register')
-               }}
-               className="login_registerButton"
-            >
-               Register
-            </button>
          </div>
       </div>
+
+      //         {/* <button
+      //            onClick={() => {
+      //               history.push('/register')
+      //            }}
+      //            className="login_registerButton"
+      //         >
+      //            Register
+      //         </button> */}
    )
 }
 
