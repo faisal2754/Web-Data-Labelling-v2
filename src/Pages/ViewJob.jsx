@@ -10,56 +10,51 @@ import Footer from '../Components/Footer'
 
 
 
-
+const jobs = [{
+   image: "./images/purple_gradient.jpg",
+   name: "Job Name",
+   credits: 100,
+   description: "This is the description",
+   uploader: "Email of Uploader"
+}, {
+   image: "./images/purple_gradient.jpg",
+   name: "Job Name",
+   credits: 100,
+   description: "This is the description",
+   uploader: "Email of Uploader"
+},{
+   image: "./images/purple_gradient.jpg",
+   name: "Job Name",
+   credits: 100,
+   description: "This is the description",
+   uploader: "Email of Uploader"
+},{
+   image: "./images/purple_gradient.jpg",
+   name: "Job Name",
+   credits: 100,
+   description: "This is the description",
+   uploader: "Email of Uploader"
+},{
+   image: "./images/purple_gradient.jpg",
+   name: "Job Name",
+   credits: 100,
+   description: "This is the description",
+   uploader: "Email of Uploader"
+},{
+   image: "./images/purple_gradient.jpg",
+   name: "Job Name",
+   credits: 100,
+   description: "This is the description",
+   uploader: "Email of Uploader"
+},{
+   image: "./images/purple_gradient.jpg",
+   name: "Job Name",
+   credits: 100,
+   description: "This is the description",
+   uploader: "Email of Uploader"
+}]
 
 function ViewJob() {
-
-   
-   const [jobs, setJobs] = useState([{
-      image: "./images/purple_gradient.jpg",
-      name: "Job Name",
-      credits: 100,
-      description: "This is the description",
-      uploader: "Email of Uploader"
-   }, {
-      image: "./images/purple_gradient.jpg",
-      name: "Job Name",
-      credits: 100,
-      description: "This is the description",
-      uploader: "Email of Uploader"
-   },{
-      image: "./images/purple_gradient.jpg",
-      name: "Job Name",
-      credits: 100,
-      description: "This is the description",
-      uploader: "Email of Uploader"
-   },{
-      image: "./images/purple_gradient.jpg",
-      name: "Job Name",
-      credits: 100,
-      description: "This is the description",
-      uploader: "Email of Uploader"
-   },{
-      image: "./images/purple_gradient.jpg",
-      name: "Job Name",
-      credits: 100,
-      description: "This is the description",
-      uploader: "Email of Uploader"
-   },{
-      image: "./images/purple_gradient.jpg",
-      name: "Job Name",
-      credits: 100,
-      description: "This is the description",
-      uploader: "Email of Uploader"
-   },{
-      image: "./images/purple_gradient.jpg",
-      name: "Job Name",
-      credits: 100,
-      description: "This is the description",
-      uploader: "Email of Uploader"
-   }])
-
-
 
    const[anchorElement,setAnchorElement] = useState(null)
    const  handleOpenMenu = e => {
@@ -72,7 +67,7 @@ function ViewJob() {
    return (
       <div className="viewJob">
          <NavbarOther />
-         {setJobs()}
+
          <div className="viewJob__header">
             <video src="./videos/gradient.mp4" autoPlay loop muted/>
 
