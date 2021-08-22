@@ -69,7 +69,7 @@ const Register = () => {
                      value={checked}
                      onChange={(e) => setChecked(e.target.value)}
                      id="conf_pword"
-                     placeholder=" Confirm Password"
+                     placeholder="Confirm Password"
                   />
                </div>
                <button
