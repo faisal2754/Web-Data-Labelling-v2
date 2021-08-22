@@ -8,6 +8,12 @@ import { Menu, MenuItem } from '@material-ui/core'
 import '../App.css'
 import Footer from '../Components/Footer'
 
+const jobInfo= {
+   image: "./images/purple_gradient.jpg",
+   name: "Job Name",
+   credits: 100
+}
+
 
 function ViewJob() {
    const[anchorElement,setAnchorElement] = useState(null)
@@ -53,6 +59,8 @@ function ViewJob() {
          </div>
 
          <div className="viewJob__container">
+
+            {/* jobInfo.map() */}
             <div className="viewJob__row">
                <CardItem
                   src="./images/purple_gradient.jpg"
