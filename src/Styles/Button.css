@@ -52,7 +52,7 @@
    color: rgb(255, 255, 255);
    padding: 8px 20px;
    box-shadow: 0 3px 10px 0 #21003d;
-   border: 2px solid var(--primary);
+   border: 2px solid #37ecff;
    border-radius: 50px;
    transition: all 0.3s ease-out;
    text-shadow: 2px 1px 4px black;
@@ -77,7 +77,7 @@
 
 .btn--outline:hover {
    transition: all 0.3s ease-out;
-   background: #37ecff;
+   background: #37ecff !important;
    color: #ffffff;
    transition: 250ms;
 }
