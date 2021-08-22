@@ -1,7 +1,7 @@
 {
   "name": "web-data-labelling-v2",
   "version": "0.1.0",
-  "homepage": "https://faisal2754.github.io/Web-Data-Labelling-v2",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.12.3",
