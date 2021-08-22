@@ -1,24 +1,8 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import {
-   Card,
-   Typography,
-   InputAdornment,
-   Icon,
-   CardContent,
-   CardMedia,
-   CardActionArea,
-   CardActions,
-   Button,
-   Grid,
-   TextField
-} from '@material-ui/core'
-import { Save, Email, People } from '@material-ui/icons'
-import Navbar from '../Components/Navbar'
-import '../Styles/Dashboard.css'
+import '../Styles/UserProfile.css'
 import Footer from '../Components/Footer'
 import UserDetails from '../Components/UserDetails'
-import UserProfile from '../Components/UserProfile'
+import UserProfile from '../Components/UserProfileCard'
 import NavbarOther from '../Components/NavbarOther'
 
 export const Dashboard = (props) => {
