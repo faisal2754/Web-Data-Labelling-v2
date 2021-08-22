@@ -13,7 +13,7 @@ import Footer from '../Components/Footer'
 
 
 function ViewJob() {
-   
+
    
    const [jobs, setJobs] = useState([{
       image: "./images/purple_gradient.jpg",
@@ -72,7 +72,7 @@ function ViewJob() {
    return (
       <div className="viewJob">
          <NavbarOther />
-
+         {setJobs()}
          <div className="viewJob__header">
             <video src="./videos/gradient.mp4" autoPlay loop muted/>
 

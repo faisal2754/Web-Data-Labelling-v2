@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import React from 'react'
-import ImageList from '@material-ui/core/ImageList'
-import ImageListItem from '@material-ui/core/ImageListItem'
+
 import '../Styles/CreateJob.css'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
@@ -10,12 +9,9 @@ import { nanoid } from 'nanoid'
 import ImageUploading from 'react-images-uploading'
 
 const CreateJob = () => {
-   const [title, setTitle] = useState('')
-   const [description, setDescription] = useState('')
    const [labels, setLabels] = useState([{}])
    const [currentTotal, setCurrentTotal] = useState(0)
    const [images, setImages] = useState([])
-
    const maxNumber = 100
    const onChange = (imageList, addUpdateIndex) => {
       // data for submit
@@ -35,19 +31,10 @@ const CreateJob = () => {
       e.preventDefault()
       let currentCredits = document.querySelector('#credits').value
       let currentLabellers = document.querySelector('#numLabellers').value
-      if (currentCredits == 0) return
+      if (currentCredits === 0) return
       let newTotal = currentCredits * currentLabellers
       setCurrentTotal(newTotal)
    }
-
-   // const Clear = (e) => {
-   //    e.preventDefault()
-   //    console.log('sum:', currentTotal)
-   //    document.querySelector('form').reset()
-   //    setClear(true)
-   //    setCurrentTotal(0)
-   // }
-
    return (
       <div className="createJob_page">
          <form
@@ -75,7 +62,7 @@ const CreateJob = () => {
                      <div {...dragProps}>
                         {isDragging ? 'Drop here please' : 'Upload space'}
                         {imageList.map((image, index) => (
-                           <img key={index} src={image.data_url} />
+                           <img key={index} alt="img" src={image.data_url} />
                         ))}
                      </div>
                   )}
