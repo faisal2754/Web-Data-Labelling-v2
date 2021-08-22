@@ -46,12 +46,13 @@
     padding-right: 2%;
     
     flex-flow: row wrap;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(250px, 1fr));
+
 }
 
 .viewJob__cardItem{
-    flex-basis: 25%;
-    flex: 1;
+    padding-bottom: 30px;
 }
 
 

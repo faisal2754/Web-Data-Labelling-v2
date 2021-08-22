@@ -51,6 +51,12 @@ function ViewJob() {
       credits: 100,
       description: "This is the description",
       uploader: "Email of Uploader"
+   },{
+      image: "./images/purple_gradient.jpg",
+      name: "Job Name",
+      credits: 100,
+      description: "This is the description",
+      uploader: "Email of Uploader"
    }])
 
 
@@ -102,13 +108,13 @@ function ViewJob() {
             
             <div className="viewJob__row">
                {jobs.map((job) => { return(
-                  
-                  <CardItem className="viewJob__cardItem"
+                  <div className="viewJob__cardItem">
+                  <CardItem 
                    src= {job.image}
                    text= {job.description}
                    credits={ job.credits}
                   />
-                  
+                  </div>
                 )
                } )
                }
