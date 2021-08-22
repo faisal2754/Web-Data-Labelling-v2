@@ -8,14 +8,53 @@ import { Menu, MenuItem } from '@material-ui/core'
 import '../App.css'
 import Footer from '../Components/Footer'
 
-const jobInfo= {
-   image: "./images/purple_gradient.jpg",
-   name: "Job Name",
-   credits: 100
-}
+
+
 
 
 function ViewJob() {
+   
+   
+   const [jobs, setJobs] = useState([{
+      image: "./images/purple_gradient.jpg",
+      name: "Job Name",
+      credits: 100,
+      description: "This is the description",
+      uploader: "Email of Uploader"
+   }, {
+      image: "./images/purple_gradient.jpg",
+      name: "Job Name",
+      credits: 100,
+      description: "This is the description",
+      uploader: "Email of Uploader"
+   },{
+      image: "./images/purple_gradient.jpg",
+      name: "Job Name",
+      credits: 100,
+      description: "This is the description",
+      uploader: "Email of Uploader"
+   },{
+      image: "./images/purple_gradient.jpg",
+      name: "Job Name",
+      credits: 100,
+      description: "This is the description",
+      uploader: "Email of Uploader"
+   },{
+      image: "./images/purple_gradient.jpg",
+      name: "Job Name",
+      credits: 100,
+      description: "This is the description",
+      uploader: "Email of Uploader"
+   },{
+      image: "./images/purple_gradient.jpg",
+      name: "Job Name",
+      credits: 100,
+      description: "This is the description",
+      uploader: "Email of Uploader"
+   }])
+
+
+
    const[anchorElement,setAnchorElement] = useState(null)
    const  handleOpenMenu = e => {
       setAnchorElement(e.currentTarget);
@@ -60,57 +99,19 @@ function ViewJob() {
 
          <div className="viewJob__container">
 
-            {/* jobInfo.map() */}
-            <div className="viewJob__row">
-               <CardItem
-                  src="./images/purple_gradient.jpg"
-                  text="Job Name"
-                  credits="1 credit"
-               />
-
-               <CardItem
-                  src="./images/purple_gradient.jpg"
-                  text="Job Name"
-                  credits="1 credit"
-               />
-
-               <CardItem
-                  src="./images/purple_gradient.jpg"
-                  text="Job Name"
-                  credits="1 credit"
-               />
-
-               <CardItem
-                  src="./images/purple_gradient.jpg"
-                  text="Job Name"
-                  credits="10 credit"
-               />
-            </div>
             
             <div className="viewJob__row">
-               <CardItem
-                  src="./images/purple_gradient.jpg"
-                  text="Job Name"
-                  credits="1 credit"
-               />
-
-               <CardItem
-                  src="./images/purple_gradient.jpg"
-                  text="Job Name"
-                  credits="1 credit"
-               />
-
-               <CardItem
-                  src="./images/purple_gradient.jpg"
-                  text="Job Name"
-                  credits="1 credit"
-               />
-
-               <CardItem
-                  src="./images/purple_gradient.jpg"
-                  text="Job Name"
-                  credits=" credit"
-               />
+               {jobs.map((job) => { return(
+                  
+                  <CardItem className="viewJob__cardItem"
+                   src= {job.image}
+                   text= {job.description}
+                   credits={ job.credits}
+                  />
+                  
+                )
+               } )
+               }
             </div>
          </div>
          <Footer />
