@@ -13,6 +13,7 @@ import React from 'react'
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import HowToFind from './Pages/HowToFind'
+import DashboardHome from './Pages/Dashboard/DashboardHome'
 
 const App = () => {
    return (
@@ -29,6 +30,7 @@ const App = () => {
             <Route path="/dashboard/settings" exact component={Settings} />
             <Route path="/dashboard/profile" exact component={Profile} />
             <Route path="/dashboard/my-jobs" exact component={MyJobs} />
+            <Route path="/dashboard/home" exact component={DashboardHome} />
          </Switch>
       </Router>
    )
