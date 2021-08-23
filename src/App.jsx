@@ -17,7 +17,7 @@ import DashboardHome from './Pages/Dashboard/DashboardHome'
 
 const App = () => {
    return (
-      <Router >
+      <Router basename="/">
          <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/dashboard" exact component={DashboardSidebar} />
