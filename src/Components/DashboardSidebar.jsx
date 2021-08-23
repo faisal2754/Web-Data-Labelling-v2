@@ -7,7 +7,7 @@ import '../Styles/DashboardNav.css'
 import { IconContext } from 'react-icons'
 
 const DashboardSidebar = () => {
-    const [sidebar, setSidebar] = useState(false)
+    const [sidebar, setSidebar] = useState(true)
 
     const showSidebar = () => setSidebar(!sidebar) 
    return (

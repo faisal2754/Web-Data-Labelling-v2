@@ -5,6 +5,7 @@ import Home from './Home'
 import Profile from './Dashboard/Profile'
 import Settings from './Dashboard/Settings'
 import MyJobs from './Dashboard/MyJobs'
+import NavbarOther from '../Components/NavbarOther'
 
 
 const DashboardRouting = () => {
@@ -13,6 +14,7 @@ const DashboardRouting = () => {
     console.log(isOnDashboard)
    return (
       <Router>
+         <NavbarOther/>
          {isOnDashboard ? <DashboardSidebar /> : <div></div>}
          <Switch>
             <Route path="/" exact component={Home}/>

@@ -29,15 +29,15 @@ export const SidebarData  = [
         className: 'dash--nav-text'
     },
     {
-        title: 'Messages',
-        path: '/dashboard/messages',
-        icon: <FaIcons.FaEnvelopeOpenText/>,
+        title: 'Profile',
+        path: '/dashboard/profile',
+        icon: <IoIcons.IoMdPerson/>,
         className: 'dash--nav-text'
     },
     {
         title: 'Support',
         path: '/dashboard/support',
-        icon: <IoIcons.IoMdHelpCircle/>,
+        icon: <IoIcons.IoMdPerson/>,
         className: 'dash--nav-text'
     }
 ]
