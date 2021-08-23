@@ -11,13 +11,13 @@ import Settings from './Pages/Dashboard/Settings'
 import MyJobs from './Pages/Dashboard/MyJobs'
 import React from 'react'
 
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { HashRouter as Router, Switch, Route } from 'react-router-dom'
 import HowToFind from './Pages/HowToFind'
 import DashboardHome from './Pages/Dashboard/DashboardHome'
 
 const App = () => {
    return (
-      <Router>
+      <Router >
          <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/dashboard" exact component={DashboardSidebar} />

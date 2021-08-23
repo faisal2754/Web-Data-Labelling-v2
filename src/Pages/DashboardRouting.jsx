@@ -1,7 +1,7 @@
 import React from 'react'
 import DashboardSidebar from '../Components/DashboardSidebar'
 import {
-   BrowserRouter as Router,
+   HashRouter as Router,
    Switch,
    Route,
    useLocation
