@@ -25,25 +25,25 @@ function HowToTabs() {
    window.addEventListener('resize', showButton)
 
    return (
-      <nav className="navbar-other">
-         <div className="navbar-container">
+      <tabs className="tabs-other">
+         <div className="tabs-container">
             <div className="menu-icon" onClick={handleClick}>
                <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
             </div>
-            <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-               <li className="nav-item">
+            <ul className={click ? 'tabs-menu active' : 'tabs-menu'}>
+               <li className="tabs-item">
                   <Link
                      to="/how-to"
-                     className="nav-links"
+                     className="tabs-links"
                      onClick={closeMobileMenu}
                   >
                      How to Submit Jobs
                   </Link>
                </li>
-               <li className="nav-item">
+               <li className="tabs-item">
                   <Link
                      to="/how-to-find"
-                     className="nav-links"
+                     className="tabs-links"
                      onClick={closeMobileMenu}
                   >
                      How to Find Jobs
@@ -51,7 +51,7 @@ function HowToTabs() {
                </li>
             </ul>
          </div>
-      </nav>
+      </tabs>
    )
 }
 

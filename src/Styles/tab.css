@@ -35,7 +35,7 @@
    font-size: 1.8rem;
 }
 
-.tab-menu {
+.tabs-menu {
    display: inline-flex;
    grid-template-columns: repeat(4, auto);
    grid-gap: 10px;
@@ -54,6 +54,7 @@
    color: #fff;
    display: flex;
    align-items: center;
+   margin-left: -150%;
    text-decoration: none;
    padding: 0.5rem 1rem;
    height: 100%;
@@ -79,7 +80,7 @@
 }
 
 @media screen and (max-width: 960px) {
-   .tabsbarItems {
+   .tabsItems {
       position: relative;
    }
 
@@ -116,7 +117,7 @@
       border-radius: 0;
    }
 
-   .tabsbar-logo {
+   .tabs-logo {
       position: absolute;
       top: 0;
       left: 0;
