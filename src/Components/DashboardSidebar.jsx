@@ -17,6 +17,9 @@ const DashboardSidebar = () => {
             {/* <Link to="#" className="dash--menu-bars">
                <FaIcons.FaBars />  Can add onClick={showsideBar} for menu toggle
             </Link> */}
+            <Link to="/" className="navbar-logo">
+               <img src="../../images/logo(white).png" alt="bug" height={120} />
+            </Link>
          </div>
          <nav className={sidebar ? 'dash--nav-menu active' : 'dash--nav-menu'}>
              <ul className='dash--nav-menu-items' >
