@@ -18,11 +18,11 @@ const UserDetails = () => {
                </div>
             </div>
             <div className="card-body">
-               <form>
+               <form className="user--form">
                   <h6 className="heading-small text-muted mb-4">
                      User information
                   </h6>
-                  <div className="pl-lg-4">
+                  <div className="pl-lg-6">
                      <div className="row">
                         <div className="col-lg-6">
                            <div className="form-group focused">

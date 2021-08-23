@@ -150,7 +150,7 @@
     }
  
     .col-lg-6 {
-       max-width: 50%;
+       max-width: 100%;
        flex: 0 0 50%;
     }
  
@@ -435,6 +435,14 @@ h6 {
     margin-bottom: 0.5rem;
  }
 
+ .pl-lg-6 {
+    width: 100%;
+ }
+
+ .user--form {
+    height: 40vh
+ }
+
  @media (min-width: 576px) {
     .form-inline label {
        display: flex;
@@ -461,6 +469,7 @@ h6 {
        width: auto;
     }
  }
+
 
  .focused .input-group-alternative {
     box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08) !important;
