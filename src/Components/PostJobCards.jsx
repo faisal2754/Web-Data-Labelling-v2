@@ -20,6 +20,13 @@ function PostJobCards() {
                      credits="Step 2"
                      path="/"
                   />
+               </ul>
+            </div>
+         </div>
+
+         <div className="cards__container">
+            <div className="cards__wrapper">
+               <ul className="cards__items">
                   <CardItem
                      src="./images/HowTo/login6.gif"
                      text="Fill in your details in the available fields. Make sure to keep details as precise as possible for better results."

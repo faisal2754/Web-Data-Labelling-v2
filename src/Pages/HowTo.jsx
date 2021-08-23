@@ -9,6 +9,7 @@ function HowTo() {
    return (
       <div>
          <NavbarOther />
+
          <HowToSection />
          <PostJobCards />
          <Footer />
