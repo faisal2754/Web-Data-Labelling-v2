@@ -9,14 +9,14 @@ function PostJobCards() {
             <div className="cards__wrapper">
                <ul className="cards__items">
                   <CardItem
-                     src="./images/HowTo/login3.gif"
+                     src="./images/HowTo/login2.gif"
                      text="In order to use our platform for finding a job, it is advisable for you to log in to gain full functionality of our platform but it is not required to view available jobs. If you haven't already, you can create an account here."
                      credits="Step 1"
                      path="/"
                   />
                   <CardItem
                      src="./images/HowTo/login5.gif"
-                     text="Now that you've logged in, you can navigate to the page to post your Job . Currently we only support Data Labelling jobs that utilize pictures but plan to expand in the future."
+                     text="Navigating to the page will allow you to see all available data labelling jobs. You can also sort the jobs based on different filters. Select a data labelling job which you would like to work on. You can either accept the job or change your mind and hit cancel and unselect the job."
                      credits="Step 2"
                      path="/"
                   />
@@ -28,14 +28,14 @@ function PostJobCards() {
             <div className="cards__wrapper">
                <ul className="cards__items">
                   <CardItem
-                     src="./images/HowTo/login6.gif"
-                     text="Fill in your details in the available fields. Make sure to keep details as precise as possible for better results."
+                     src="./images/HowTo/login.gif"
+                     text="You can select accept job to work on the job you have picked out. If you have not already signed in, you will be prompted to. Once you are signed in you will be taken to your dashboard where you can view the selected job under 'Accepted Jobs' and work on it."
                      credits="Step 3"
                      path="/"
                   />
                   <CardItem
-                     src="./images/HowTo/submit.gif"
-                     text="You can now sit back and relax while we let one of our top tier community members do the labelling."
+                     src="./images/HowTo/find.gif"
+                     text="Select the accepted job in your dashbaord to start the data labelling process. On the labelling page, select a label for each image. Once the labelling is complete, you will receive a success message to inform you that the labelling job is completed."
                      credits="Step 4"
                      path="/"
                   />

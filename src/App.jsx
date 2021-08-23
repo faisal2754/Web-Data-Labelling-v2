@@ -11,8 +11,8 @@ import Settings from './Pages/Dashboard/Settings'
 import MyJobs from './Pages/Dashboard/MyJobs'
 import React from 'react'
 
-import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
-
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import HowToFind from './Pages/HowToFind'
 
 const App = () => {
    return (
@@ -25,6 +25,7 @@ const App = () => {
             <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={Register} />
             <Route path="/how-to" exact component={HowTo} />
+            <Route path="/how-to-find" exact component={HowToFind} />
             <Route path="/dashboard/settings" exact component={Settings} />
             <Route path="/dashboard/profile" exact component={Profile} />
             <Route path="/dashboard/my-jobs" exact component={MyJobs} />

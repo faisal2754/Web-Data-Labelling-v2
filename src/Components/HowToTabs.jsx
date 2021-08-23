@@ -32,13 +32,17 @@ function HowToTabs() {
             </div>
             <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                <li className="nav-item">
-                  <Link to="/" className="nav-links" onClick={closeMobileMenu}>
+                  <Link
+                     to="/how-to"
+                     className="nav-links"
+                     onClick={closeMobileMenu}
+                  >
                      How to Submit Jobs
                   </Link>
                </li>
                <li className="nav-item">
                   <Link
-                     to="/dashboard"
+                     to="/how-to-find"
                      className="nav-links"
                      onClick={closeMobileMenu}
                   >
