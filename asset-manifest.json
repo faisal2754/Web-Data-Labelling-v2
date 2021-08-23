@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Web-Data-Labelling-v2/static/css/main.8a545eb6.chunk.css",
-    "main.js": "/Web-Data-Labelling-v2/static/js/main.84d466be.chunk.js",
-    "main.js.map": "/Web-Data-Labelling-v2/static/js/main.84d466be.chunk.js.map",
+    "main.js": "/Web-Data-Labelling-v2/static/js/main.3ecb2e1a.chunk.js",
+    "main.js.map": "/Web-Data-Labelling-v2/static/js/main.3ecb2e1a.chunk.js.map",
     "runtime-main.js": "/Web-Data-Labelling-v2/static/js/runtime-main.2f57bdd5.js",
     "runtime-main.js.map": "/Web-Data-Labelling-v2/static/js/runtime-main.2f57bdd5.js.map",
     "static/css/2.ed1298f3.chunk.css": "/Web-Data-Labelling-v2/static/css/2.ed1298f3.chunk.css",
@@ -18,6 +18,6 @@
     "static/css/2.ed1298f3.chunk.css",
     "static/js/2.ec120b89.chunk.js",
     "static/css/main.8a545eb6.chunk.css",
-    "static/js/main.84d466be.chunk.js"
+    "static/js/main.3ecb2e1a.chunk.js"
   ]
 }
