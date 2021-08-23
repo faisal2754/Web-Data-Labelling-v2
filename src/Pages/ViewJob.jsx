@@ -7,6 +7,8 @@ import NavbarOther from '../Components/NavbarOther'
 import { Menu, MenuItem } from '@material-ui/core'
 import '../App.css'
 import Footer from '../Components/Footer'
+import Modal from '../Components/Modal'
+import '../Styles/ViewJob.css'
 
 
 
@@ -16,46 +18,51 @@ const jobs = [{
    credits: 100,
    description: "This is the description",
    uploader: "Email of Uploader"
-}, {
-   image: "./images/purple_gradient.jpg",
-   name: "Job Name",
-   credits: 100,
-   description: "This is the description",
-   uploader: "Email of Uploader"
-},{
-   image: "./images/purple_gradient.jpg",
-   name: "Job Name",
-   credits: 100,
-   description: "This is the description",
-   uploader: "Email of Uploader"
-},{
-   image: "./images/purple_gradient.jpg",
-   name: "Job Name",
-   credits: 100,
-   description: "This is the description",
-   uploader: "Email of Uploader"
-},{
-   image: "./images/purple_gradient.jpg",
-   name: "Job Name",
-   credits: 100,
-   description: "This is the description",
-   uploader: "Email of Uploader"
-},{
-   image: "./images/purple_gradient.jpg",
-   name: "Job Name",
-   credits: 100,
-   description: "This is the description",
-   uploader: "Email of Uploader"
-},{
-   image: "./images/purple_gradient.jpg",
-   name: "Job Name",
-   credits: 100,
-   description: "This is the description",
-   uploader: "Email of Uploader"
-}]
+}
+// , {
+//    image: "./images/purple_gradient.jpg",
+//    name: "Job Name",
+//    credits: 100,
+//    description: "This is the description",
+//    uploader: "Email of Uploader"
+// }
+// ,{
+//    image: "./images/purple_gradient.jpg",
+//    name: "Job Name",
+//    credits: 100,
+//    description: "This is the description",
+//    uploader: "Email of Uploader"
+// },{
+//    image: "./images/purple_gradient.jpg",
+//    name: "Job Name",
+//    credits: 100,
+//    description: "This is the description",
+//    uploader: "Email of Uploader"
+// },{
+//    image: "./images/purple_gradient.jpg",
+//    name: "Job Name",
+//    credits: 100,
+//    description: "This is the description",
+//    uploader: "Email of Uploader"
+// },{
+//    image: "./images/purple_gradient.jpg",
+//    name: "Job Name",
+//    credits: 100,
+//    description: "This is the description",
+//    uploader: "Email of Uploader"
+// },{
+//    image: "./images/purple_gradient.jpg",
+//    name: "Job Name",
+//    credits: 100,
+//    description: "This is the description",
+//    uploader: "Email of Uploader"
+// }
+]
 
 function ViewJob() {
 
+   const [modalOpen, setModalOpen] = useState(false);
+   
    const[anchorElement,setAnchorElement] = useState(null)
    const  handleOpenMenu = e => {
       setAnchorElement(e.currentTarget);
@@ -103,13 +110,23 @@ function ViewJob() {
             
             <div className="viewJob__row">
                {jobs.map((job) => { return(
-                  <div className="viewJob__cardItem">
-                  <CardItem 
-                   src= {job.image}
-                   text= {job.description}
-                   credits={ job.credits}
-                  />
+                  <div className="viewJob__cardItem" onClick={() => {setModalOpen(true)}}>
+                     <CardItem 
+                        
+                        src= {job.image}
+                        text= {job.description}
+                        credits={ job.credits}
+                     />
+                     {modalOpen && <Modal setOpenModal={setModalOpen} closeModal={setModalOpen}
+                      src= {job.image}
+                      description= {job.description}
+                      credits={ job.credits}
+                      name={job.name}
+                      uploader={job.uploader}
+                      
+                     />}
                   </div>
+                  
                 )
                } )
                }

@@ -3,28 +3,29 @@ import { Button } from './Button'
 import '../Styles/HowToSection.css'
 import '../App.css'
 
-function HowToSection() {
+function HowToFindSection() {
    return (
       <div className="hero-container">
          <video src="./videos/gradient.mp4" autoPlay loop muted />
          <h1>
-            How to <br /> Submit a Job <br />
+            How to <br /> Find and Label a Job! <br />
          </h1>
          <p>
-            Here is a step-by-step guide to submitting a job on our Platform!
+            Here is a step-by-step guide on how to find a job and complete it on
+            our Platform!
          </p>
          <div className="hero-btns">
             <Button
                className="btns"
                buttonStyle="btn-hover"
                buttonSize="btn--large"
-               to="/create-job"
+               to="/view-job"
             >
-               Post a Job
+               Find a Job
             </Button>
          </div>
       </div>
    )
 }
 
-export default HowToSection
+export default HowToFindSection

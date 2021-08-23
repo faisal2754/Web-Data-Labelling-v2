@@ -1,21 +1,21 @@
 import React from 'react'
 import '../App.css'
-import HowToSection from '../Components/HowToSection'
+import HowToFindSection from '../Components/HowToFindSection'
 import Footer from '../Components/Footer'
-import PostJobCards from '../Components/PostJobCards'
+import FindJobCards from '../Components/FindJobCards'
 import NavbarOther from '../Components/NavbarOther'
 import HowTotabs from '../Components/HowToTabs'
 
-function HowTo() {
+function HowToFind() {
    return (
       <div>
          <NavbarOther />
          <HowTotabs />
-         <HowToSection />
-         <PostJobCards />
+         <HowToFindSection />
+         <FindJobCards />
          <Footer />
       </div>
    )
 }
 
-export default HowTo
+export default HowToFind
