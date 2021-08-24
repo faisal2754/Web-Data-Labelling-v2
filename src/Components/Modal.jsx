@@ -96,7 +96,7 @@ export const Modal = ({ showModal, setShowModal }) => {
    }, [keyPress])
 
    return (
-      <>
+      <div>
          {showModal ? (
             <Background onClick={closeModal} ref={modalRef}>
                <animated.div style={animation}>
@@ -108,7 +108,7 @@ export const Modal = ({ showModal, setShowModal }) => {
                      <ModalContent>
                         <h1>Are you ready?</h1>
                         <p>Get exclusive access to our next launch.</p>
-                        <button>Join Now</button>
+                        <button>Accept Job</button>
                      </ModalContent>
                      <CloseModalButton
                         aria-label="Close modal"
@@ -118,7 +118,7 @@ export const Modal = ({ showModal, setShowModal }) => {
                </animated.div>
             </Background>
          ) : null}
-      </>
+      </div>
    )
 }
 
