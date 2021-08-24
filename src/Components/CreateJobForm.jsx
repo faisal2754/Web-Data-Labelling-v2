@@ -1,12 +1,26 @@
 import { useState, useEffect } from 'react'
 import React from 'react'
-
 import '../Styles/CreateJob.css'
-import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
-import CloudUploadIcon from '@material-ui/icons/CloudUpload'
 import { nanoid } from 'nanoid'
 import ImageUploading from 'react-images-uploading'
+import {
+   ApolloClient,
+   InMemoryCache,
+   ApolloProvider,
+   useQuery,
+   gql
+ } from "@apollo/client";
+ 
+ const client = new ApolloClient({
+   uri: 'https://data-labelling-server-prod.herokuapp.com/graphql',
+   cache: new InMemoryCache()
+ });
+ 
+ 
+
+
+
 
 const CreateJob = () => {
    const [labels, setLabels] = useState([])
@@ -27,8 +41,8 @@ const CreateJob = () => {
       let currentCredits = document.querySelector('#credits').value
       let currentLabellers = document.querySelector('#numLabellers').value
       if (currentCredits === 0) return
-      if (currentLabellers<0 || currentCredits<0){
-         alert("You cant have negative credits or labellers")
+      if (currentLabellers < 0 || currentCredits < 0) {
+         alert('You cant have negative credits or labellers')
          return
       }
       let newTotal = currentCredits * currentLabellers
@@ -45,7 +59,12 @@ const CreateJob = () => {
             <div className="createJob_mainForm">
                <div className="createJob_jobInfo">
                   <div className="textField">
-                     <TextField id="title" fullWidth label="Title" variant="outlined" />
+                     <TextField
+                        id="title"
+                        fullWidth
+                        label="Title"
+                        variant="outlined"
+                     />
                   </div>
                   <div className="textField">
                      <TextField
@@ -260,7 +279,6 @@ const CreateJob = () => {
                   variant="contained"
                   color="default"
                   type="submit"
-                  
                >
                   Upload
                </button>
