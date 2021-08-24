@@ -27,6 +27,10 @@ const CreateJob = () => {
       let currentCredits = document.querySelector('#credits').value
       let currentLabellers = document.querySelector('#numLabellers').value
       if (currentCredits === 0) return
+      if (currentLabellers<0 || currentCredits<0){
+         alert("You cant have negative credits or labellers")
+         return
+      }
       let newTotal = currentCredits * currentLabellers
       setCurrentTotal(newTotal)
    }
@@ -251,15 +255,15 @@ const CreateJob = () => {
                </div>
             </div>
             <div className="createJob_submitSection">
-               <Button
+               <button
                   className="btn-hover"
                   variant="contained"
                   color="default"
                   type="submit"
-                  startIcon={<CloudUploadIcon />}
+                  
                >
                   Upload
-               </Button>
+               </button>
             </div>
          </form>
       </div>
