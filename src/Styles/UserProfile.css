@@ -68,11 +68,9 @@
  
     .order-xl-1 {
        order: 1;
-       margin-left: 13%;
     }
  
     .order-xl-2 {
-       max-width: 20%;
        order: 2;
     }
  }
