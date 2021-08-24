@@ -4,26 +4,12 @@ import '../Styles/CreateJob.css'
 import TextField from '@material-ui/core/TextField'
 import { nanoid } from 'nanoid'
 import ImageUploading from 'react-images-uploading'
-import {
-   ApolloClient,
-   InMemoryCache,
-   ApolloProvider,
-   useQuery,
-   gql
- } from "@apollo/client";
- 
- const client = new ApolloClient({
-   uri: 'https://data-labelling-server-prod.herokuapp.com/graphql',
-   cache: new InMemoryCache()
- });
- 
- 
-
-
-
+import GET_USERS from 'graphqlqueries.js'
+import { useQuery } from '@apollo/client'
 
 const CreateJob = () => {
    const [labels, setLabels] = useState([])
+   const { loading, error, data } = useQuery(GET_USERS)
    const [currentTotal, setCurrentTotal] = useState(0)
    const [images, setImages] = useState([])
    const maxNumber = 100
@@ -53,7 +39,8 @@ const CreateJob = () => {
          <form
             encType="multipart/form-data"
             onSubmit={(e) => {
-               console.log(e.target)
+               console.log(data)
+               e.preventDefault()
             }}
          >
             <div className="createJob_mainForm">
