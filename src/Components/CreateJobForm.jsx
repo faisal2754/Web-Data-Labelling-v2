@@ -41,12 +41,13 @@ const CreateJob = () => {
             <div className="createJob_mainForm">
                <div className="createJob_jobInfo">
                   <div className="textField">
-                     <TextField id="title" label="Title" variant="outlined" />
+                     <TextField id="title" fullWidth label="Title" variant="outlined" />
                   </div>
                   <div className="textField">
                      <TextField
                         id="description"
                         label="Description"
+                        fullWidth
                         multiline
                         rows={4}
                         defaultValue=""
