@@ -59,7 +59,14 @@ input[type=number] {
     margin-left:2rem; 
     margin-right:2rem ; 
     background: rgb(226, 226, 226);
-    overflow-y: scroll
+    overflow: auto
+}
+
+.createJob_imagePrev{
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   max-width: 300px;
 }
 
 
