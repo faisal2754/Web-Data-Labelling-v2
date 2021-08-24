@@ -1,4 +1,4 @@
-.modal__background {
+/* .modal__background {
    z-index: 3;
    background-color: rgba(200, 200, 200);
    position: fixed;
@@ -35,12 +35,12 @@
    font-size: 25px;
    cursor: pointer;
 }
-/*
+
 
 .modal__wrapper{
     max-width: 200px;
     max-height: 200px;
-} */
+}
 .modal__image {
    top: 0;
    right: 0;
@@ -58,4 +58,4 @@
 .modal__info {
    display: flex;
    justify-content: center;
-}
+} */

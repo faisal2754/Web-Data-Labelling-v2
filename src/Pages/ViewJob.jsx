@@ -67,7 +67,11 @@ const jobs = [
 ]
 
 function ViewJob() {
-   const [modalOpen, setModalOpen] = useState(false)
+   const [showModal, setShowModal] = useState(false);
+
+   const openModal = () => {
+    setShowModal(prev => !prev);
+   };
 
    const [anchorElement, setAnchorElement] = useState(null)
    const handleOpenMenu = (e) => {
@@ -79,7 +83,9 @@ function ViewJob() {
 
    return (
       <div className="viewJob">
+        
          <NavbarOther />
+         <Modal showModal={showModal} setShowModal={setShowModal} />
 
          <div className="viewJob__header">
             <video src="./videos/gradient.mp4" autoPlay loop muted />
@@ -117,9 +123,7 @@ function ViewJob() {
                   return (
                      <div
                         className="viewJob__cardItem"
-                        onClick={() => {
-                           setModalOpen(true)
-                        }}
+                        onClick={openModal}
                      >
                         <CardItem
                            src={job.image}
@@ -129,7 +133,7 @@ function ViewJob() {
                      </div>
                   )
                })}
-               {modalOpen && <Modal setOpenModal={setModalOpen} />}
+               
             </div>
          </div>
          <Footer />

@@ -84,6 +84,11 @@
 .viewJob__filters>Button{
     font-size: 30px;
 }
+.viewJob__filters>{
+    font-size: 30px;
+}
+
+
 
 .viewJob > Footer{
     padding-top: 2%;
