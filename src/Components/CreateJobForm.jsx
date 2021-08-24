@@ -4,7 +4,7 @@ import '../Styles/CreateJob.css'
 import TextField from '@material-ui/core/TextField'
 import { nanoid } from 'nanoid'
 import ImageUploading from 'react-images-uploading'
-import GET_USERS from 'graphqlqueries.js'
+import { GET_USERS } from '../graphql/queries'
 import { useQuery } from '@apollo/client'
 
 const CreateJob = () => {
