@@ -9,7 +9,7 @@ import { nanoid } from 'nanoid'
 import ImageUploading from 'react-images-uploading'
 
 const CreateJob = () => {
-   const [labels, setLabels] = useState([{}])
+   const [labels, setLabels] = useState([])
    const [currentTotal, setCurrentTotal] = useState(0)
    const [images, setImages] = useState([])
    const maxNumber = 100
@@ -22,11 +22,6 @@ const CreateJob = () => {
    useEffect(() => {
       document.querySelector('#totalCredits').value = 0
    }, [])
-
-   // useEffect(() => {
-   //    if (clear) document.querySelector('#totalCredits').value = ''
-   // })
-
    const Calculate = (e) => {
       e.preventDefault()
       let currentCredits = document.querySelector('#credits').value
@@ -46,12 +41,13 @@ const CreateJob = () => {
             <div className="createJob_mainForm">
                <div className="createJob_jobInfo">
                   <div className="textField">
-                     <TextField id="title" label="Title" variant="outlined" />
+                     <TextField id="title" fullWidth label="Title" variant="outlined" />
                   </div>
                   <div className="textField">
                      <TextField
                         id="description"
                         label="Description"
+                        fullWidth
                         multiline
                         rows={4}
                         defaultValue=""
@@ -111,7 +107,6 @@ const CreateJob = () => {
                         return (
                            <div key={p.id}>
                               <TextField
-                                 style={{ padding: '3 rem' }}
                                  onChange={(e) => {
                                     const label = e.target.value
                                     setLabels((currentLabels) =>
@@ -129,7 +124,12 @@ const CreateJob = () => {
                                  value={p.label}
                               />
                               <button
-                                 className="btn"
+                                 className="btn-hover"
+                                 style={{
+                                    width: '10%',
+                                    height: '100%',
+                                    margin: '10px '
+                                 }}
                                  onClick={() => {
                                     setLabels((currentLabels) =>
                                        currentLabels.filter(
@@ -146,7 +146,6 @@ const CreateJob = () => {
                   </div>
                </div>
                <div className="createJob_imageSection">
-                  
                   <ImageUploading
                      multiple
                      value={images}
@@ -187,10 +186,15 @@ const CreateJob = () => {
                               Remove all images
                            </button>
                            <h2>Total Images : {imageList.length}</h2>
-                           {imageList.slice(0, 5).map((image, index) => (
-                              <div key={index} className="image-item">
-                                 <img src={image.data_url} alt="" width="100" />
-                                 <div className="image-item__btn-wrapper">
+                           <div className="createJob_imagePrev">
+                              {imageList.map((image, index) => (
+                                 <div key={index} className="image-item">
+                                    <img
+                                       src={image.data_url}
+                                       alt=""
+                                       width="100"
+                                    />
+                                    {/* <div className="image-item__btn-wrapper">
                                     <button
                                        className="btn-hover"
                                        onClick={(e) => {
@@ -209,9 +213,10 @@ const CreateJob = () => {
                                     >
                                        Remove
                                     </button>
+                                 </div> */}
                                  </div>
-                              </div>
-                           ))}
+                              ))}
+                           </div>
                         </div>
                      )}
                   </ImageUploading>
