@@ -1,14 +1,14 @@
 
-import { gql } from "@apollo/client";
+import {gql} from "@apollo/client";
 
-const GET_USERS = gql`
+const GET_USERS=gql`
     query Users{
         users{
-            password
-            email
+            balance
+            avatar
         }
     }
 
 `
 
-export { GET_USERS }
+export {GET_USERS}
