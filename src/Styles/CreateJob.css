@@ -53,20 +53,15 @@ input[type=number] {
 .createJob_imageSection{
     min-height: 500px;
     max-height: 500px;
+
     border-radius: 30px;
     padding: 1rem;
     margin-left:2rem; 
     margin-right:2rem ; 
     background: rgb(226, 226, 226);
-    overflow: auto
+    overflow-y: scroll
 }
 
-.createJob_images-prev{
-   display: flex;
-   flex-direction: row;
-   flex-wrap: wrap;
-   max-width: 300px;
-}
 
 .btn {
     padding: 8px 20px;
