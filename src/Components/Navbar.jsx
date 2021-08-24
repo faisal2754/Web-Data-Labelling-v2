@@ -98,6 +98,16 @@ function Navbar() {
                   </Link>
                </li>
 
+               <li className="nav-item">
+                  <Link
+                     to="/label-job"
+                     className="nav-links"
+                     onClick={closeMobileMenu}
+                  >
+                     Label Job
+                  </Link>
+               </li>
+
                <li>
                   <Link
                      to="/login"
