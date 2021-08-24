@@ -18,12 +18,13 @@
     padding: 25px;
 }
 
-/*
+
 .modal__jobName{
     display: inline-block;
     text-align: center;
     margin-top: 10px;
 }
+
 
 .modal__close {
     display: flex;
@@ -35,14 +36,15 @@
     border: none;
     font-size: 25px;
     cursor: pointer;
+
 }
+/*
 
 .modal__wrapper{
     max-width: 200px;
     max-height: 200px;
 } */
 .modal__image{
-    
     top: 0;
     right: 0;
     bottom: 0;
@@ -55,3 +57,8 @@
     object-fit: cover;
     transition: all 0.2s linear;
 } 
+
+.modal__info{
+    display: flex;
+    justify-content: center;
+}
