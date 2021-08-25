@@ -74,6 +74,7 @@ form {
    outline: none;
    border: none;
    line-height: 1;
+   border-radius: 100px;
    font-weight: 600;
    font-size: 1.1rem;
    color: #333;

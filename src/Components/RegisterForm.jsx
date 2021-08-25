@@ -4,6 +4,7 @@ import { Link, Redirect } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'
 import { useMutation } from '@apollo/client'
 import {REGISTER_USER} from '../graphql/mutations'
+import Cookies from 'js-cookie'
 
 
 const Register = () => {
@@ -14,6 +15,7 @@ const Register = () => {
 
    const [register, {data, loading, error}] = useMutation(REGISTER_USER,{
       onCompleted(data){
+         // Cookies.set(data.login.jwt)
          console.log(data)
       }
    })
