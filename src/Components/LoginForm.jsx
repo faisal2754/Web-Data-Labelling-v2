@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import '../Styles/Login.css'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'
 import { LOGIN_USER } from '../graphql/mutations'
 import { useMutation } from '@apollo/client'
 import { EmailOutlined } from '@material-ui/icons'
+import Cookies from 'js-cookie'
 
 const Login = () => {
    const [email, setEmail] = useState('')
@@ -14,23 +15,26 @@ const Login = () => {
    // const signIn = (e) => {
    //    e.preventDefault()
    //    //some backend functionality
-   // }
+   // 
 
    const history = useHistory()
+   if(data){
+      Cookies.set('jwt', data.login.jwt, {expires: 1});//Sets the cookie in the browser and makes it expire in 1 day
+      <Redirect to="/dashboard"/>
+   }
 
    return (
       <div class="login_container">
          <div class="forms-container">
             <form
-               onSubmit={(e) => {
+               onSubmit={async (e) => {
                   e.preventDefault()
-                  login({
+                  await login({
                      variables: {
                         email: email,
                         password: password
                      }
                   })
-                  console.log(data)
                }}
                class="sign-in-form"
             >
@@ -70,7 +74,7 @@ const Login = () => {
                   
                   className="login_signInButton"
                >
-                  LOGIN
+                  {loading ? "Loading..." : "LOGIN"}
                </button>
                <p class="social-text">Or login with</p>
                {/* <div class="social-media">
