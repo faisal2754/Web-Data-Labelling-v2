@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import LoginForm from './LoginForm'
 import '../Styles/Register.css'
 import { Link, Redirect } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'
@@ -15,9 +14,6 @@ const Register = () => {
 
    const [register, {data, loading, error}] = useMutation(REGISTER_USER,{
       onCompleted(data){
-         history.push(
-            <LoginForm />
-         )
          console.log(data)
       }
    })
