@@ -12,7 +12,9 @@ import {
 
 const client = new ApolloClient({
   uri: 'https://data-labelling-server-prod.herokuapp.com/graphql',
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
+  credentials: "include",
+  
 });
 
 ReactDOM.render(
