@@ -1,4 +1,4 @@
-.slider {
+.label-slider {
    position: relative;
    display: flex;
    justify-content: center;
@@ -33,12 +33,12 @@
    user-select: none;
 }
 
-.slide {
+.label-slide {
    opacity: 0;
    transition-duration: 1s ease;
 }
 
-.slide.active {
+.label-slide.active {
    opacity: 1;
    transition-duration: 1s;
    transform: scale(1.08);

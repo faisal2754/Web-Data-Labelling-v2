@@ -18,8 +18,8 @@
 
 .image-section {
    display: flex;
-   width: 50%;
-   height: 50%;
+   width: 50rem;
+   height: 38rem;
    justify-content: space-evenly;
    border-radius: 30px;
    left: 0;
