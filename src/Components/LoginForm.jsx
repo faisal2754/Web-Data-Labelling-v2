@@ -9,7 +9,9 @@ import { EmailOutlined } from '@material-ui/icons'
 const Login = () => {
    const [email, setEmail] = useState('')
    const [password, setPassword] = useState('')
-   const [login, { data, loading, error }] = useMutation(LOGIN_USER)
+   const [login, { data, loading, error }] = useMutation(LOGIN_USER,{onCompleted(data){
+      confirm(data)      
+   }})
 
    // const signIn = (e) => {
    //    e.preventDefault()
@@ -65,11 +67,7 @@ const Login = () => {
 
                <p class="forgot-pass">Forgot Password?</p>
 
-               <button
-                  type="submit"
-                  
-                  className="login_signInButton"
-               >
+               <button type="submit" className="login_signInButton">
                   LOGIN
                </button>
                <p class="social-text">Or login with</p>
