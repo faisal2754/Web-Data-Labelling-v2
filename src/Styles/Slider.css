@@ -1,4 +1,4 @@
-.slider {
+.label-slider {
    position: relative;
    display: flex;
    justify-content: center;
@@ -16,7 +16,7 @@
    top: 50%;
    right: 0;
    font-size: 3rem;
-   color: #000;
+   color: rgb(255, 255, 255);
    z-index: 10;
    cursor: pointer;
    user-select: none;
@@ -27,18 +27,18 @@
    top: 50%;
    left: 0;
    font-size: 3rem;
-   color: #000;
+   color: rgb(255, 255, 255);
    z-index: 10;
    cursor: pointer;
    user-select: none;
 }
 
-.slide {
+.label-slide {
    opacity: 0;
    transition-duration: 1s ease;
 }
 
-.slide.active {
+.label-slide.active {
    opacity: 1;
    transition-duration: 1s;
    transform: scale(1.08);
