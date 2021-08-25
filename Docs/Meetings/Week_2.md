@@ -95,9 +95,10 @@ Langiwe Mwale (Frontend):
 - Impediments: redux knowledge
 
 Ioanni Balassis: (Frontend):
-- Tasks completed yesterday: fixed modal
-- Tasks for the day: begin authentication and deployment
+- Tasks completed yesterday: worked on the login page
+- Tasks for the day: finish login
 - Impediments: behind on uni work
+
 
 Jonathan Nunes (Frontend):
 - Tasks completed yesterday: created label job 
