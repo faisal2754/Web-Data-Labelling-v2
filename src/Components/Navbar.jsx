@@ -60,7 +60,7 @@ function Navbar() {
                </li>
                <li className="nav-item">
                   <Link
-                     to="/dashboard/home"
+                     to="/dashboard"
                      className="nav-links"
                      onClick={closeMobileMenu}
                   >
@@ -95,6 +95,16 @@ function Navbar() {
                      onClick={closeMobileMenu}
                   >
                      Find A Job
+                  </Link>
+               </li>
+
+               <li className="nav-item">
+                  <Link
+                     to="/label-job"
+                     className="nav-links"
+                     onClick={closeMobileMenu}
+                  >
+                     Label Job
                   </Link>
                </li>
 

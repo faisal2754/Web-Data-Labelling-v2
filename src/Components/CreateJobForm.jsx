@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react'
 import React from 'react'
-
 import '../Styles/CreateJob.css'
-import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
-import CloudUploadIcon from '@material-ui/icons/CloudUpload'
 import { nanoid } from 'nanoid'
 import ImageUploading from 'react-images-uploading'
+import { GET_USERS } from '../graphql/queries'
+import { useQuery } from '@apollo/client'
 
 const CreateJob = () => {
    const [labels, setLabels] = useState([])
+   const { loading, error, data } = useQuery(GET_USERS)
    const [currentTotal, setCurrentTotal] = useState(0)
    const [images, setImages] = useState([])
    const maxNumber = 100
@@ -22,27 +22,27 @@ const CreateJob = () => {
    useEffect(() => {
       document.querySelector('#totalCredits').value = 0
    }, [])
-
-   // useEffect(() => {
-   //    if (clear) document.querySelector('#totalCredits').value = ''
-   // })
-
    const Calculate = (e) => {
       e.preventDefault()
       let currentCredits = document.querySelector('#credits').value
       let currentLabellers = document.querySelector('#numLabellers').value
       if (currentCredits === 0) return
+      if (currentLabellers < 0 || currentCredits < 0) {
+         alert('You cant have negative credits or labellers')
+         return
+      }
       let newTotal = currentCredits * currentLabellers
       setCurrentTotal(newTotal)
    }
-
-   const handleSubmit = (e) => {
-      alert(document.querySelector('#title').value)
-      e.preventDefault()
-   }
    return (
       <div className="createJob_page">
-         <form encType="multipart/form-data" onSubmit={handleSubmit}>
+         <form
+            encType="multipart/form-data"
+            onSubmit={(e) => {
+               console.log(data)
+               e.preventDefault()
+            }}
+         >
             <div className="createJob_mainForm">
                <div className="createJob_jobInfo">
                   <div className="textField">
@@ -56,8 +56,8 @@ const CreateJob = () => {
                   <div className="textField">
                      <TextField
                         id="description"
-                        fullWidth
                         label="Description"
+                        fullWidth
                         multiline
                         rows={4}
                         defaultValue=""
@@ -135,7 +135,11 @@ const CreateJob = () => {
                               />
                               <button
                                  className="btn-hover"
-                                 style={{ height: '100%' ,width:"10%", margin: "5px"}}
+                                 style={{
+                                    width: '10%',
+                                    height: '100%',
+                                    margin: '10px '
+                                 }}
                                  onClick={() => {
                                     setLabels((currentLabels) =>
                                        currentLabels.filter(
@@ -192,8 +196,7 @@ const CreateJob = () => {
                               Remove all images
                            </button>
                            <h2>Total Images : {imageList.length}</h2>
-                           <div className="createJob_images-prev">
-                              {/* {imageList.slice(0, 5).map((image, index) => ( */}
+                           <div className="createJob_imagePrev">
                               {imageList.map((image, index) => (
                                  <div key={index} className="image-item">
                                     <img
@@ -201,8 +204,8 @@ const CreateJob = () => {
                                        alt=""
                                        width="100"
                                     />
-                                    <div className="image-item__btn-wrapper">
-                                       {/* <button
+                                    {/* <div className="image-item__btn-wrapper">
+                                    <button
                                        className="btn-hover"
                                        onClick={(e) => {
                                           onImageUpdate(index)
@@ -219,8 +222,8 @@ const CreateJob = () => {
                                        }}
                                     >
                                        Remove
-                                    </button> */}
-                                    </div>
+                                    </button>
+                                 </div> */}
                                  </div>
                               ))}
                            </div>
@@ -258,7 +261,12 @@ const CreateJob = () => {
                </div>
             </div>
             <div className="createJob_submitSection">
-               <button className="btn-hover" variant="contained" type="submit">
+               <button
+                  className="btn-hover"
+                  variant="contained"
+                  color="default"
+                  type="submit"
+               >
                   Upload
                </button>
             </div>

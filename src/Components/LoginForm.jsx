@@ -2,17 +2,16 @@ import React, { useState } from 'react'
 import '../Styles/Login.css'
 import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'
+import { LOGIN_USER } from '../graphql/mutations'
+import { useMutation } from '@apollo/client'
+import { EmailOutlined } from '@material-ui/icons'
 
 const Login = () => {
    const [email, setEmail] = useState('')
    const [password, setPassword] = useState('')
+   const [login, { data, loading, error }] = useMutation(LOGIN_USER)
 
    // const signIn = (e) => {
-   //    e.preventDefault()
-   //    //some backend functionality
-   // }
-
-   // const register = (e) => {
    //    e.preventDefault()
    //    //some backend functionality
    // }
@@ -22,9 +21,25 @@ const Login = () => {
    return (
       <div class="login_container">
          <div class="forms-container">
-            <form class="sign-in-form">
+            <form
+               onSubmit={(e) => {
+                  e.preventDefault()
+                  login({
+                     variables: {
+                        email: email,
+                        password: password
+                     }
+                  })
+                  console.log(data)
+               }}
+               class="sign-in-form"
+            >
                <Link to="/">
-                  <img className="login_logo" alt="LOGO" src="./images/login_logo.png" />
+                  <img
+                     className="login_logo"
+                     alt="LOGO"
+                     src="./images/login_logo.png"
+                  />
                </Link>
                <h2 class="title">Sign in</h2>
                <div class="input-field">
@@ -52,9 +67,7 @@ const Login = () => {
 
                <button
                   type="submit"
-                  onClick={() => {
-                     history.push('/')
-                  }}
+                  
                   className="login_signInButton"
                >
                   LOGIN

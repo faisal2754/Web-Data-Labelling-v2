@@ -9,15 +9,15 @@ import ViewJob from './Pages/ViewJob'
 import Profile from './Pages/Dashboard/Profile'
 import Settings from './Pages/Dashboard/Settings'
 import MyJobs from './Pages/Dashboard/MyJobs'
+import LabelJob from './Pages/LabelJob'
 import React from 'react'
 
-import { HashRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import HowToFind from './Pages/HowToFind'
-import DashboardHome from './Pages/Dashboard/DashboardHome'
 
 const App = () => {
    return (
-      <Router basename="/">
+      <Router>
          <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/dashboard" exact component={DashboardSidebar} />
@@ -30,7 +30,7 @@ const App = () => {
             <Route path="/dashboard/settings" exact component={Settings} />
             <Route path="/dashboard/profile" exact component={Profile} />
             <Route path="/dashboard/my-jobs" exact component={MyJobs} />
-            <Route path="/dashboard/home" exact component={DashboardHome} />
+            <Route path="/label-job" exact component={LabelJob} />
          </Switch>
       </Router>
    )

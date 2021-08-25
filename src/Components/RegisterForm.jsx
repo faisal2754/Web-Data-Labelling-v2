@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import '../Styles/Register.css'
 import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'
+import { useMutation } from '@apollo/client'
+import { REGISTER_USER } from '../graphql/mutations'
 
 const Register = () => {
    const [username, setUsername] = useState('')
@@ -9,6 +11,7 @@ const Register = () => {
    const [password, setPassword] = useState('')
    const [checked, setChecked] = React.useState(true)
 
+   const [register, { data, loading, error }] = useMutation(REGISTER_USER)
    // const signIn = (e) => {
    //    e.preventDefault()
    //    //some backend functionality
@@ -27,9 +30,26 @@ const Register = () => {
    return (
       <div className="register_container">
          <div class="forms-container">
-            <form class="register-form">
+            <form
+               class="register-form"
+               onSubmit={(e) => {
+                  e.preventDefault()
+                  register({
+                     variables: {
+                        username: username,
+                        email: email,
+                        password: password
+                     }
+                  })
+                  console.log(data)
+               }}
+            >
                <Link to="/">
-                  <img className="login_logo" alt="LOGO" src="./images/login_logo.png" />
+                  <img
+                     className="login_logo"
+                     alt="LOGO"
+                     src="./images/login_logo.png"
+                  />
                </Link>
                <h2 class="title">Register</h2>
                <div class="input-field">
@@ -74,12 +94,12 @@ const Register = () => {
                </div>
                <button
                   type="submit"
-                  onClick={() => {
-                     history.push('/')
-                  }}
+                  // onClick={() => {
+                  //    history.push('/')
+                  // }}
                   className="register_registerButton"
                >
-                  SIGN UP
+                  {loading ? 'registering...' : 'Sign Up'}
                </button>
 
                <p class="social-text">Or sign up with</p>
