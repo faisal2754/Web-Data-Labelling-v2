@@ -12,27 +12,15 @@ const Register = () => {
    const [email, setEmail] = useState('')
    const [password, setPassword] = useState('')
    const [checked, setChecked] = React.useState(true)
+   const [redirect, setRedirect] = useState(false)
 
-   const [register, {data, loading, error}] = useMutation(REGISTER_USER,{
-      onCompleted(data){
-         // Cookies.set(data.login.jwt)
-         console.log(data)
-      }
-   })
-   // const signIn = (e) => {
-   //    e.preventDefault()
-   //    //some backend functionality
-   // }
-
-   // const register = (e) => {
-   //    e.preventDefault()
-   //    //some backend functionality
-   // }
+   const [register, {data, loading, error}] = useMutation(REGISTER_USER)
+  
    const history = useHistory()
 
-   // const handleChange = (event) => {
-   //    setChecked(event.target.checked)
-   // }
+   if(data){
+      return <Redirect to="/login" />
+   }
 
    return (
       <div className="register_container">
