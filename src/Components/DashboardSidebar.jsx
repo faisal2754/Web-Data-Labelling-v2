@@ -1,15 +1,21 @@
 import React, {useState} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import * as FaIcons from 'react-icons/fa'
 import * as AiIcons from 'react-icons/ai'
 import {SidebarData} from './SidebarData'
 import '../Styles/DashboardNav.css'
 import { IconContext } from 'react-icons'
 
-const DashboardSidebar = () => {
+const DashboardSidebar = ( {authorized} ) => {
+
     const [sidebar, setSidebar] = useState(true)
 
     const showSidebar = () => setSidebar(!sidebar) 
+
+    if (!authorized){
+        return <Redirect to="/login"/>
+    }
+
    return (
       <div>
         <IconContext.Provider value={{color: "#fff"}}>

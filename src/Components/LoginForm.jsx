@@ -19,7 +19,7 @@ const Login = () => {
 
    const history = useHistory()
    if(data && !error){
-      // console.log(data)
+      Cookies.set('jwt', data.login.jwt, {expires: 1})
       return <Redirect to="/dashboard"/>
    }
 

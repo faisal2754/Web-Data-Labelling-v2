@@ -12,6 +12,7 @@ import MyJobs from './Pages/Dashboard/MyJobs'
 import LabelJob from './Pages/LabelJob'
 import React from 'react'
 
+
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import HowToFind from './Pages/HowToFind'
 
@@ -20,7 +21,7 @@ const App = () => {
       <Router>
          <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/dashboard" exact component={DashboardSidebar} />
+            <Route path="/dashboard" exact component={() => <DashboardSidebar auhtorized={false}/>} />
             <Route path="/create-job" exact component={CreateJob} />
             <Route path="/view-job" exact component={ViewJob} />
             <Route path="/login" exact component={Login} />
