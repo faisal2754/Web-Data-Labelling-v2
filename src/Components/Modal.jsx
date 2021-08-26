@@ -63,7 +63,7 @@ const CloseModalButton = styled(MdClose)`
    z-index: 10;
 `
 
-export const Modal = ({ showModal, setShowModal }) => {
+export const Modal = ({ showModal, setShowModal, src, text }) => {
    const modalRef = useRef()
 
    const animation = useSpring({
@@ -98,22 +98,16 @@ export const Modal = ({ showModal, setShowModal }) => {
    return (
       <div>
          {showModal ? (
-            <Background onClick={closeModal} ref={modalRef}>
+            <Background ref={modalRef}>
                <animated.div style={animation}>
                   <ModalWrapper showModal={showModal}>
-                     <ModalImg
-                        src="./images/purple_gradient.jpg"
-                        alt="camera"
-                     />
+                     <ModalImg alt="Travel" src={src} />
                      <ModalContent>
                         <h1>Are you ready?</h1>
-                        <p>Get exclusive access to our next launch.</p>
+                        <p>{text}</p>
                         <button>Accept Job</button>
                      </ModalContent>
-                     <CloseModalButton
-                        aria-label="Close modal"
-                        onClick={() => setShowModal((prev) => !prev)}
-                     />
+                     <CloseModalButton aria-label="Close modal" />
                   </ModalWrapper>
                </animated.div>
             </Background>
