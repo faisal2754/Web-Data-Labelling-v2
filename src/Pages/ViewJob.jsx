@@ -78,7 +78,7 @@ function ViewJob() {
    if (data) {
       console.log(data)
       jobs = data.viewJobs
-      console.log(jobs)
+      console.log(jobs.job_owner)
    }
 
    const [showModal, setShowModal] = useState(false)
@@ -105,9 +105,11 @@ function ViewJob() {
                   <Modal
                      id={job.job_id}
                      src={job.preview_images[0]}
-                     text={jobs.description}
-                     // src={job.image}
+                     text={job.description}
+                     credits={job.credits}
+                     uploader={job.job_owner.username}
                      showModal={showModal}
+                     title={job.title}
                      setShowModal={setShowModal}
                   />
                </div>
@@ -151,7 +153,6 @@ function ViewJob() {
                         <CardItem
                            id={job.job_id}
                            src={job.preview_images[0]}
-                           // src={job.image}
                            text={job.description}
                            credits={job.credits}
                         />
