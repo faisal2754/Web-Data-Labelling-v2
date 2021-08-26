@@ -9,6 +9,14 @@ const REGISTER_USER = gql`
         }
     }
 `
+const CREATE_JOB = gql`
+    mutation createJob($title:String!, $description:String!, $credits:Int!, $labels:[String]!, $num_partitions:Int!, $files:[Upload]){
+        createJob(title:$title, description:$description, credits:$credits, labels:$labels, num_partitions:$num_partitions, files:$files){
+            job_id
+        }
+    }
+`
+
 
 const LOGIN_USER = gql`
     mutation Login($email: String!, $password: String!){
@@ -20,5 +28,5 @@ const LOGIN_USER = gql`
     }
 `
 
-export { REGISTER_USER, LOGIN_USER }
+export { REGISTER_USER, LOGIN_USER, CREATE_JOB }
 

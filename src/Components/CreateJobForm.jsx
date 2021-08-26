@@ -4,24 +4,31 @@ import '../Styles/CreateJob.css'
 import TextField from '@material-ui/core/TextField'
 import { nanoid } from 'nanoid'
 import ImageUploading from 'react-images-uploading'
-import { GET_USERS } from '../graphql/queries'
-import { useQuery } from '@apollo/client'
+import { useMutation } from '@apollo/client'
+import { CREATE_JOB } from '../graphql/mutations'
 
 const CreateJob = () => {
    const [labels, setLabels] = useState([])
-   const { loading, error, data } = useQuery(GET_USERS)
+   const [createjob, { loading, error, data }] = useMutation(CREATE_JOB)
    const [currentTotal, setCurrentTotal] = useState(0)
    const [images, setImages] = useState([])
    const maxNumber = 100
    const onChange = (imageList, addUpdateIndex) => {
       // data for submit
-      console.log(imageList, addUpdateIndex)
+      // console.log(imageList, addUpdateIndex)
       setImages(imageList)
    }
 
    useEffect(() => {
       document.querySelector('#totalCredits').value = 0
    }, [])
+
+   if (data) {
+      console.log(data)
+   }
+   if (error) {
+      console.log(error)
+   }
    const Calculate = (e) => {
       e.preventDefault()
       let currentCredits = document.querySelector('#credits').value
@@ -38,9 +45,33 @@ const CreateJob = () => {
       <div className="createJob_page">
          <form
             encType="multipart/form-data"
-            onSubmit={(e) => {
-               console.log(data)
+            onSubmit={async (e) => {
                e.preventDefault()
+               const dataForSubmit = {
+                  jobTitle: document.querySelector('#title').value,
+                  jobDescription: document.querySelector('#description').value,
+                  labels: labels.map((label) => label.label),
+                  images: images.map((image) => image.file),
+                  totalCreditsCost: currentTotal,
+                  numLabellers: parseInt(
+                     document.querySelector('#numLabellers').value
+                  ),
+                  numPartitions: parseInt(
+                     document.querySelector('#imgPerSection').value
+                  )
+               }
+               console.log(dataForSubmit)
+               await createjob({
+                  variables: {
+                     title: dataForSubmit.jobTitle,
+                     description: dataForSubmit.jobDescription,
+                     credits: dataForSubmit.totalCreditsCost,
+                     labels: dataForSubmit.labels,
+                     num_partitions: dataForSubmit.numPartitions,
+                     files: dataForSubmit.images
+                  },
+                  fetchPolicy: 'network-only'
+               })
             }}
          >
             <div className="createJob_mainForm">
@@ -202,7 +233,7 @@ const CreateJob = () => {
                                     <img
                                        src={image.data_url}
                                        alt=""
-                                       width="100"
+                                       width="200"
                                     />
                                     {/* <div className="image-item__btn-wrapper">
                                     <button

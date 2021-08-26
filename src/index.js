@@ -6,12 +6,10 @@ import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
-  useQuery,
-  gql
 } from "@apollo/client";
 
 const client = new ApolloClient({
-  uri: 'https://data-labelling-server-prod.herokuapp.com/graphql',
+  uri: 'https://data-labelling-server.herokuapp.com/graphql',
   cache: new InMemoryCache(),
   credentials: "include",
   
