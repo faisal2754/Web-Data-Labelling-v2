@@ -105,6 +105,7 @@ function ViewJob() {
                   <Modal
                      id={job.job_id}
                      src={job.preview_images[0]}
+                     text={jobs.description}
                      // src={job.image}
                      showModal={showModal}
                      setShowModal={setShowModal}
