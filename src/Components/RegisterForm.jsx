@@ -1,58 +1,86 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../Styles/Register.css'
 import { Link, Redirect } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'
 import { useMutation } from '@apollo/client'
-import {REGISTER_USER} from '../graphql/mutations'
+import { REGISTER_USER } from '../graphql/mutations'
 import Cookies from 'js-cookie'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
 
+// const schema = yup.object().shape({
+//    username: yup.string().required(),
+//    email: yup.string().email().required(),
+//    password: yup.string().min(5).required(),
+//    checked: yup.string().oneOf([yup.ref('password'), null])
+// })
 
 const Register = () => {
    const [username, setUsername] = useState('')
    const [email, setEmail] = useState('')
    const [password, setPassword] = useState('')
-   const [checked, setChecked] = React.useState(true)
+   const [confirmPass, setConfirmPass] = useState('')
+   const [errorMsg, setErrorMsg] = useState('')
 
-   const [register, {data, loading, error}] = useMutation(REGISTER_USER,{
-      onCompleted(data){
-         // Cookies.set(data.login.jwt)
-         console.log(data)
+   const [registerMutation, { data, loading, error }] =
+      useMutation(REGISTER_USER)
+
+   const submitForm = (e) => {
+      let isValid = true
+      e.preventDefault()
+      if (!username) {
+         isValid = false
+         setErrorMsg('Please enter username')
+      } else if (!email) {
+         isValid = false
+         setErrorMsg('Please enter email')
+      } else if (!/\S+@\S+\.\S+/.test(email)) {
+         isValid = false
+         setErrorMsg('Please enter valid email')
+      } else if (!password) {
+         isValid = false
+         setErrorMsg('Please enter password')
+      } else if (password.length < 5) {
+         isValid = false
+         setErrorMsg('Password must be at least 5 characters')
+      } else if (password != confirmPass) {
+         isValid = false
+         setErrorMsg('Passwords do not match!')
       }
-   })
-   // const signIn = (e) => {
-   //    e.preventDefault()
-   //    //some backend functionality
-   // }
+      if (isValid) {
+         registerMutation({
+            variables: {
+               username: username,
+               email: email,
+               password: password
+            }
+         })
+      }
 
-   // const register = (e) => {
-   //    e.preventDefault()
-   //    //some backend functionality
-   // }
+      //   console.log(data)
+   }
+
    const history = useHistory()
 
-   // const handleChange = (event) => {
-   //    setChecked(event.target.checked)
-   // }
+   if (data) {
+      return <Redirect to="/login" />
+   }
 
    return (
       <div className="register_container">
          <div class="forms-container">
-            <form class="register-form"
-            onSubmit={e =>{
-               e.preventDefault();
-               register(
-                  {
-                     variables: {
-                        username: username, 
-                        email: email, 
-                        password: password
-                     }
-                  }
-               )
-               console.log(data)
-            }}>
+            <form
+               class="register-form"
+               //    onSubmit={handleSubmit(submitForm)}
+               onSubmit={submitForm}
+            >
                <Link to="/">
-                  <img className="login_logo" alt="LOGO" src="./images/login_logo.png" />
+                  <img
+                     className="login_logo"
+                     alt="LOGO"
+                     src="./images/login_logo.png"
+                  />
                </Link>
                <h2 class="title">Register</h2>
                <div class="input-field">
@@ -60,9 +88,15 @@ const Register = () => {
                   <input
                      type="text"
                      value={username}
-                     onChange={(e) => setUsername(e.target.value)}
+                     onChange={(e) => {
+                        setUsername(e.target.value)
+                        console.log(e)
+                     }}
                      id="username"
                      placeholder="Username"
+                     name="username"
+                     //  {...register('username')}
+                     //  ref={register}
                   />
                </div>
                <div class="input-field">
@@ -73,6 +107,9 @@ const Register = () => {
                      onChange={(e) => setEmail(e.target.value)}
                      id="email"
                      placeholder="Email"
+                     //  ref={register}
+                     name="email"
+                     //  {...register('email')}
                   />
                </div>
                <div class="input-field">
@@ -83,18 +120,25 @@ const Register = () => {
                      onChange={(e) => setPassword(e.target.value)}
                      id="pword"
                      placeholder="Password"
+                     //  ref={register}
+                     name="password"
+                     //  {...register('password')}
                   />
                </div>
                <div class="input-field">
                   <i class="fas fa-lock icon"></i>
                   <input
                      type="password"
-                     value={checked}
-                     onChange={(e) => setChecked(e.target.value)}
+                     value={confirmPass}
+                     onChange={(e) => setConfirmPass(e.target.value)}
                      id="conf_pword"
                      placeholder="Confirm Password"
+                     //ref={register}
+                     name="checked"
+                     //  {...register('checked')}
                   />
                </div>
+               {errorMsg && <p>{errorMsg}</p>}
                <button
                   type="submit"
                   // onClick={() => {
@@ -102,10 +146,10 @@ const Register = () => {
                   // }}
                   className="register_registerButton"
                >
-                  {loading ? "registering..." : "Sign Up"}
+                  {loading ? 'registering...' : 'Sign Up'}
                </button>
 
-               <p class="social-text">Or sign up with</p>
+               {/* <p class="social-text">Or sign up with</p> */}
                {/* <div class="social-media">
                   <a href="#" class="social-icon">
                      <i class="fab fa-facebook-f"></i>
