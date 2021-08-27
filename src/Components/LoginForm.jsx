@@ -22,6 +22,8 @@ const Login = () => {
       <div class="login_container">
          <div class="forms-container">
             <form
+               class="sign-in-form"
+               // onSubmit={submitForm}
                onSubmit={async (e) => {
                   e.preventDefault()
                   await login({
@@ -31,7 +33,7 @@ const Login = () => {
                      }
                   })
                }}
-               class="sign-in-form"
+               //    class="sign-in-form"
             >
                <Link to="/">
                   <img
