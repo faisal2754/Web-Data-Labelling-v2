@@ -2,30 +2,64 @@ import React from 'react'
 import Footer from '../Components/Footer'
 import ImageSlider from '../Components/ImageSlider'
 import NavbarOther from '../Components/NavbarOther'
-import { SliderData } from '../Components/SliderData'
 import '../Styles/LabelJob.css'
+import { GET_LABEL_JOB_INFO } from '../graphql/queries.js'
+import { useQuery } from '@apollo/client'
+import { nanoid } from 'nanoid'
 
 function LabelJob() {
+   const { loading, error, data } = useQuery(GET_LABEL_JOB_INFO, {
+      variables: {
+         job_id: 1
+      }
+   })
+   if (loading) return 'Loading...'
+   if (error) return `Error! ${error.message}`
+
+   let images = []
+   let labels = []
+   let image_ids = []
+   let title = ''
+
+   if (data) {
+      images = data.labelJobInfo.images
+      labels = data.labelJobInfo.labels
+      image_ids = data.labelJobInfo.image_ids
+      title = data.labelJobInfo.title
+   }
+
+   let slides = []
+   for (let i = 0; i < images.length; i++) {
+      slides.push({ images: images[i], image_ids: image_ids[i] })
+   }
+
    return (
       <div>
          <NavbarOther />
          <div className="label-job-page">
             <div className="label-job-form">
                <div className="image-section">
-                  <h2>Images 0/0</h2>
+                  <h2>{title}</h2>
                   <div className="image-slider-container">
-                     <ImageSlider slides={SliderData} />
+                     <ImageSlider slides={slides} />
                   </div>
                </div>
                <div className="label-section">
                   <div className="labels-container">
                      <h2>Labels</h2>
                      <div className="radio-toolbar">
-                        <input type="radio" value="label1" name="label" /> Label
-                        1
-                        <input type="radio" value="label2" name="label" />
-                        Label 2
-                        <input type="radio" value="Other" name="label" /> Other
+                        {labels.map((label) => (
+                           <>
+                              <input
+                                 type="radio"
+                                 value={label}
+                                 key={nanoid()}
+                                 name="label"
+                              />{' '}
+                              <label>{label}</label>
+                           </>
+                        ))}
+                        <input type="radio" value="other" name="label" /> Other
                      </div>
                   </div>
                </div>

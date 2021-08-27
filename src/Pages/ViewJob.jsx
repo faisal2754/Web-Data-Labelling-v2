@@ -9,69 +9,83 @@ import '../App.css'
 import Footer from '../Components/Footer'
 import Modal from '../Components/Modal'
 import '../Styles/ViewJob.css'
-import styled from 'styled-components'
+import { GET_JOBS } from '../graphql/queries'
+import { useQuery } from '@apollo/client'
 
-const jobs = [
-   {
-      id: 1,
-      image: './images/purple_gradient.jpg',
-      name: 'Job Name',
-      credits: 100,
-      description: 'This is the description',
-      uploader: 'Email of Uploader'
-   },
-   {
-      id: 2,
-      image: './images/purple_gradient.jpg',
-      name: 'Job Name',
-      credits: 100,
-      description: 'This is the description',
-      uploader: 'Email of Uploader'
-   }
-   // ,{
-   //    id: 3,
-   //    image: "./images/purple_gradient.jpg",
-   //    name: "Job Name",
-   //    credits: 100,
-   //    description: "This is the description",
-   //    uploader: "Email of Uploader"
-   // },{
-   //    id: 4,
-   //    image: "./images/purple_gradient.jpg",
-   //    name: "Job Name",
-   //    credits: 100,
-   //    description: "This is the description",
-   //    uploader: "Email of Uploader"
-   // },{
-   //    id: 5,
-   //    image: "./images/purple_gradient.jpg",
-   //    name: "Job Name",
-   //    credits: 100,
-   //    description: "This is the description",
-   //    uploader: "Email of Uploader"
-   // },{
-   //    id: 6,
-   //    image: "./images/purple_gradient.jpg",
-   //    name: "Job Name",
-   //    credits: 100,
-   //    description: "This is the description",
-   //    uploader: "Email of Uploader"
-   // },{
-   //    id: 7,
-   //    image: "./images/purple_gradient.jpg",
-   //    name: "Job Name",
-   //    credits: 100,
-   //    description: "This is the description",
-   //    uploader: "Email of Uploader"
-   // }
-]
+// const jobs = [
+//    {
+//       job_id: 1,
+//       image: './images/purple_gradient.jpg',
+//       name: 'Job Name',
+//       credits: 100,
+//       description: 'This is the description',
+//       uploader: 'Email of Uploader'
+//    },
+//    {
+//       job_id: 2,
+//       image: './images/img-9.jpg',
+//       name: 'Job Name',
+//       credits: 100,
+//       description: 'This is the description',
+//       uploader: 'Email of Uploader'
+//    },
+//    {
+//       job_id: 3,
+//       image: './images/purple_gradient.jpg',
+//       name: 'Job Name',
+//       credits: 100,
+//       description: 'This is the description',
+//       uploader: 'Email of Uploader'
+//    },
+//    {
+//       job_id: 4,
+//       image: './images/purple_gradient.jpg',
+//       name: 'Job Name',
+//       credits: 100,
+//       description: 'This is the description',
+//       uploader: 'Email of Uploader'
+//    },
+//    {
+//       job_id: 5,
+//       image: './images/purple_gradient.jpg',
+//       name: 'Job Name',
+//       credits: 100,
+//       description: 'This is the description',
+//       uploader: 'Email of Uploader'
+//    },
+//    {
+//       job_id: 6,
+//       image: './images/purple_gradient.jpg',
+//       name: 'Job Name',
+//       credits: 100,
+//       description: 'This is the description',
+//       uploader: 'Email of Uploader'
+//    },
+//    {
+//       job_id: 7,
+//       image: './images/purple_gradient.jpg',
+//       name: 'Job Name',
+//       credits: 100,
+//       description: 'This is the description',
+//       uploader: 'Email of Uploader'
+//    }
+// ]
 
 function ViewJob() {
-   const [showModal, setShowModal] = useState(false);
+   let jobs = []
+   const { data } = useQuery(GET_JOBS)
+
+   if (data) {
+      console.log(data)
+      jobs = data.viewJobs
+      console.log(jobs.job_owner)
+   }
+
+   const [showModal, setShowModal] = useState(false)
 
    const openModal = () => {
-    setShowModal(prev => !prev);
-   };
+      setShowModal((prev) => !prev)
+   }
 
    const [anchorElement, setAnchorElement] = useState(null)
    const handleOpenMenu = (e) => {
@@ -83,10 +97,24 @@ function ViewJob() {
 
    return (
       <div className="viewJob">
-        
          <NavbarOther />
-         <Modal showModal={showModal} setShowModal={setShowModal} />
 
+         {jobs.map((job) => {
+            return (
+               <div className="viewJob__modal" onClick={openModal}>
+                  <Modal
+                     id={job.job_id}
+                     src={job.preview_images[0]}
+                     text={job.description}
+                     credits={job.credits}
+                     uploader={job.job_owner.username}
+                     showModal={showModal}
+                     title={job.title}
+                     setShowModal={setShowModal}
+                  />
+               </div>
+            )
+         })}
          <div className="viewJob__header">
             <video src="./videos/gradient.mp4" autoPlay loop muted />
 
@@ -121,19 +149,16 @@ function ViewJob() {
             <div className="viewJob__row">
                {jobs.map((job) => {
                   return (
-                     <div
-                        className="viewJob__cardItem"
-                        onClick={openModal}
-                     >
+                     <div className="viewJob__cardItem" onClick={openModal}>
                         <CardItem
-                           src={job.image}
+                           id={job.job_id}
+                           src={job.preview_images[0]}
                            text={job.description}
                            credits={job.credits}
                         />
                      </div>
                   )
                })}
-               
             </div>
          </div>
          <Footer />
