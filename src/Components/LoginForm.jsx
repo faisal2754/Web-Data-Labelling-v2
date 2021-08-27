@@ -11,16 +11,11 @@ const Login = () => {
    const [email, setEmail] = useState('')
    const [password, setPassword] = useState('')
    const [login, { data, loading, error }] = useMutation(LOGIN_USER)
-   const [redirect, setRedirect] = useState(false);
-   // const signIn = (e) => {
-   //    e.preventDefault()
-   //    //some backend functionality
-   // 
 
    const history = useHistory()
-   if(data && !error){
-      Cookies.set('jwt', data.login.jwt, {expires: 1})
-      return <Redirect to="/dashboard"/>
+   if (data) {
+      // Cookies.set('jwt', data.login.jwt, {expires: 1});//Sets the cookie in the browser and makes it expire in 1 day
+      ;<Redirect to="/dashboard" />
    }
 
    return (
@@ -69,12 +64,8 @@ const Login = () => {
 
                <p class="forgot-pass">Forgot Password?</p>
 
-               <button
-                  type="submit"
-                  
-                  className="login_signInButton"
-               >
-                  {loading ? "Loading..." : "LOGIN"}
+               <button type="submit" className="login_signInButton">
+                  {loading ? 'Loading...' : 'LOGIN'}
                </button>
                <p class="social-text">Or login with</p>
                {/* <div class="social-media">
