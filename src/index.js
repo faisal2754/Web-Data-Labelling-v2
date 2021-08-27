@@ -9,6 +9,8 @@ import {
    useQuery,
    gql
 } from '@apollo/client'
+import store from './Auth/Authtoken'
+import { Provider } from 'react-redux'
 
 const client = new ApolloClient({
    uri: 'https://data-labelling-server.herokuapp.com/graphql',

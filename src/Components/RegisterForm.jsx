@@ -5,16 +5,6 @@ import { useHistory } from 'react-router-dom'
 import { useMutation } from '@apollo/client'
 import { REGISTER_USER } from '../graphql/mutations'
 import Cookies from 'js-cookie'
-import { useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup'
-
-// const schema = yup.object().shape({
-//    username: yup.string().required(),
-//    email: yup.string().email().required(),
-//    password: yup.string().min(5).required(),
-//    checked: yup.string().oneOf([yup.ref('password'), null])
-// })
 
 const Register = () => {
    const [username, setUsername] = useState('')
@@ -57,8 +47,6 @@ const Register = () => {
             }
          })
       }
-
-      //   console.log(data)
    }
 
    const history = useHistory()
@@ -70,11 +58,7 @@ const Register = () => {
    return (
       <div className="register_container">
          <div class="forms-container">
-            <form
-               class="register-form"
-               //    onSubmit={handleSubmit(submitForm)}
-               onSubmit={submitForm}
-            >
+            <form class="register-form" onSubmit={submitForm}>
                <Link to="/">
                   <img
                      className="login_logo"
@@ -95,8 +79,6 @@ const Register = () => {
                      id="username"
                      placeholder="Username"
                      name="username"
-                     //  {...register('username')}
-                     //  ref={register}
                   />
                </div>
                <div class="input-field">
@@ -107,9 +89,7 @@ const Register = () => {
                      onChange={(e) => setEmail(e.target.value)}
                      id="email"
                      placeholder="Email"
-                     //  ref={register}
                      name="email"
-                     //  {...register('email')}
                   />
                </div>
                <div class="input-field">
@@ -120,9 +100,7 @@ const Register = () => {
                      onChange={(e) => setPassword(e.target.value)}
                      id="pword"
                      placeholder="Password"
-                     //  ref={register}
                      name="password"
-                     //  {...register('password')}
                   />
                </div>
                <div class="input-field">
@@ -133,19 +111,11 @@ const Register = () => {
                      onChange={(e) => setConfirmPass(e.target.value)}
                      id="conf_pword"
                      placeholder="Confirm Password"
-                     //ref={register}
                      name="checked"
-                     //  {...register('checked')}
                   />
                </div>
                {errorMsg && <p>{errorMsg}</p>}
-               <button
-                  type="submit"
-                  // onClick={() => {
-                  //    history.push('/')
-                  // }}
-                  className="register_registerButton"
-               >
+               <button type="submit" className="register_registerButton">
                   {loading ? 'registering...' : 'Sign Up'}
                </button>
 
