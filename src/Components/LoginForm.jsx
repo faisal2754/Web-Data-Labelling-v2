@@ -11,22 +11,19 @@ const Login = () => {
    const [email, setEmail] = useState('')
    const [password, setPassword] = useState('')
    const [login, { data, loading, error }] = useMutation(LOGIN_USER)
-   const [redirect, setRedirect] = useState(false);
-   // const signIn = (e) => {
-   //    e.preventDefault()
-   //    //some backend functionality
-   // 
 
    const history = useHistory()
-   if(data && !error){
-      // console.log(data)
-      return <Redirect to="/dashboard"/>
+   if (data && !error) {
+      Cookies.set('jwt', data.login.jwt, { expires: 1 })
+      return <Redirect to="/dashboard" />
    }
 
    return (
       <div class="login_container">
          <div class="forms-container">
             <form
+               class="sign-in-form"
+               // onSubmit={submitForm}
                onSubmit={async (e) => {
                   e.preventDefault()
                   await login({
@@ -36,7 +33,7 @@ const Login = () => {
                      }
                   })
                }}
-               class="sign-in-form"
+               //    class="sign-in-form"
             >
                <Link to="/">
                   <img
@@ -69,12 +66,8 @@ const Login = () => {
 
                <p class="forgot-pass">Forgot Password?</p>
 
-               <button
-                  type="submit"
-                  
-                  className="login_signInButton"
-               >
-                  {loading ? "Loading..." : "LOGIN"}
+               <button type="submit" className="login_signInButton">
+                  {loading ? 'Loading...' : 'LOGIN'}
                </button>
                <p class="social-text">Or login with</p>
                {/* <div class="social-media">

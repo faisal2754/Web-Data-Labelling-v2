@@ -1,18 +1,24 @@
 import React, { useState } from 'react'
+import { useEffect } from 'react'
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa'
 import '../Styles/Slider.css'
 
-const ImageSlider = ({ slides }) => {
+const ImageSlider = ({ slides, indexCallback }) => {
    const [current, setCurrent] = useState(0)
    const length = slides.length
-   console.log(length)
+
+   useEffect(() => {
+      indexCallback(current)
+   }, [current])
 
    const nextSlide = () => {
-      setCurrent(current === length - 1 ? 0 : current + 1)
+      let num = current === length - 1 ? 0 : current + 1
+      setCurrent(num)
    }
 
    const prevSlide = () => {
       setCurrent(current === 0 ? length - 1 : current - 1)
+      indexCallback(current)
    }
 
    if (!Array.isArray(slides) || slides.length <= 0) {

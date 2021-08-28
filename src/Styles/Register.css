@@ -85,6 +85,13 @@ form {
    font-weight: 500;
 }
 
+.input-field p {
+   color: red;
+   text-align: center;
+   font-size: 0.9rem;
+   white-space: nowrap;
+}
+
 .register_registerButton {
    background-image: linear-gradient(
       to right,

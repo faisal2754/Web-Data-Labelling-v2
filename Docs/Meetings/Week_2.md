@@ -166,3 +166,46 @@ Sipho Sikakane (Scrum master/Frontend):
 - Tasks completed yesterday: More work on jwt and authentication
 - Tasks for the day: Manage user sessions with jwt
 - Impediments: Time
+
+## Daily Scrum Meeting 27th August 2021 11:00am (Friday)
+
+Aharon Cohen (Frontend):
+- Tasks completed yesterday: Completed form validation
+- Tasks for the day: Finish login functionality
+- Impediments: Lectures and quizzes
+
+Langiwe Mwale (Frontend):
+- Tasks completed Yesterday: tried various upload attempts
+- Task for the Day: upload images issue
+- Impediments: file issues upload
+
+Ioanni Balassis: (Frontend):
+- Tasks completed yesterday: worked on frontend
+- Tasks for the day: finish viewjob page on the weekend
+- Impediments: behind on uni work
+
+Jonathan Nunes (Frontend):
+- Tasks completed yesterday: Got and displayed labelling information
+- Tasks for the day: Assign labels to images and send information to backend
+- Impediments: Other university work
+
+Faisal Saleem (Backend):
+- Tasks completed yesterday: Work on job labelling process
+- Tasks for the day: Work on job labelling process
+- Impediments: None
+
+Ghulame Mujtaba Arbi (Frontend):
+- Tasks completed yesterday: Completed post job side of how-to page
+- Tasks for the day: Work on tabs to switch between how-to pages
+- Impediments: Time, work on other projects outside of uni work
+
+Tristan Bester (Backend):
+- Tasks completed yesterday: Worked on connecting frontend to labelling process route
+- Tasks for the day: Allow frontend to send labelling results to backend
+- Impediments: None
+
+Sipho Sikakane (Scrum master/Frontend):
+- Tasks completed yesterday: Redirecting to correct pages after login and register
+- Tasks for the day: Manage user sessions with jwt
+- Impediments: Time
+
