@@ -7,10 +7,27 @@ import { GET_LABEL_JOB_INFO } from '../graphql/queries.js'
 import { useQuery } from '@apollo/client'
 import { nanoid } from 'nanoid'
 import { Button } from '../Components/Button'
+import { useEffect } from 'react'
 
 function LabelJob() {
    const [index, setIndex] = useState()
-   const [assignedLabels, setAssignedLabels] = useState()
+   const [assignedLabels, setAssignedLabels] = useState({})
+
+   let slides = []
+
+   const checkRadioButton = () => {
+      if (slides[index]) {
+         if (slides[index].image_id in assignedLabels) {
+            document.getElementById(
+               assignedLabels[slides[index].image_id]
+            ).checked = true
+         }
+      }
+   }
+
+   useEffect(() => {
+      checkRadioButton()
+   }, [index])
 
    const { loading, error, data } = useQuery(GET_LABEL_JOB_INFO, {
       variables: {
@@ -32,9 +49,8 @@ function LabelJob() {
       title = data.labelJobInfo.title
    }
 
-   let slides = []
    for (let i = 0; i < images.length; i++) {
-      slides.push({ images: images[i], image_ids: image_ids[i] })
+      slides.push({ images: images[i], image_id: image_ids[i] })
    }
 
    const onChangeSlide = (index) => {
@@ -42,30 +58,14 @@ function LabelJob() {
    }
 
    const assignLabel = (value) => {
-      let assignedLabelsCopy = assignedLabels.slice()
-      assignedLabelsCopy[index] = value
-      setAssignedLabels(assignedLabelsCopy)
-      console.log('Image No. ' + index + ' = ' + value)
-      console.log(assignedLabels)
+      let temp = {}
+      Object.assign(temp, assignedLabels)
+      const imageId = slides[index].image_id
+      temp[imageId] = value
+      setAssignedLabels(temp)
    }
 
-   let finalLabels = []
-   const setFinalLabels = () => {
-      for (let j = 0; j < images.length; j++) {
-         if (typeof assignedLabels[j] === 'undefined') {
-            finalLabels.push({
-               image_ids: image_ids[j],
-               labels: null
-            })
-         } else {
-            finalLabels.push({
-               image_ids: image_ids[j],
-               labels: assignedLabels[j]
-            })
-         }
-      }
-      console.log(finalLabels)
-   }
+   console.log(assignedLabels)
 
    return (
       <div>
@@ -88,9 +88,10 @@ function LabelJob() {
                         {labels.map((label) => (
                            <>
                               <input
+                                 id={label}
                                  type="radio"
                                  value={label}
-                                 key={nanoid()}
+                                 // key={nanoid()}
                                  name="label"
                                  onClick={(e) => assignLabel(e.target.value)}
                               />{' '}
@@ -112,9 +113,9 @@ function LabelJob() {
                className="btns"
                buttonStyle="btn--outline"
                buttonSize="btn--large"
-               onClick={setFinalLabels}
-            />
-            Save
+            >
+               Save
+            </Button>
          </div>
          <Footer />
       </div>
