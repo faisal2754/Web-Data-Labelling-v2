@@ -55,6 +55,10 @@ function LabelJob() {
 
    const onChangeSlide = (index) => {
       setIndex(index)
+
+      for (let i = 0; i < labels.length; i++) {
+         document.getElementById(labels[i]).checked = false
+      }
    }
 
    const assignLabel = (value) => {
@@ -66,6 +70,14 @@ function LabelJob() {
    }
 
    console.log(assignedLabels)
+
+   const saveState = () => {
+      const imageIds = Object.keys(assignedLabels)
+      const labels = Object.values(assignedLabels)
+
+      console.log(imageIds)
+      console.log(labels)
+   }
 
    return (
       <div>
@@ -113,6 +125,7 @@ function LabelJob() {
                className="btns"
                buttonStyle="btn--outline"
                buttonSize="btn--large"
+               onClick={saveState}
             >
                Save
             </Button>
