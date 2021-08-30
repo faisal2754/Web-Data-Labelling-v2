@@ -9,7 +9,7 @@ import {
    useQuery,
    gql
 } from '@apollo/client'
-import store from './Auth/Authtoken'
+import store from './redux/store'
 import { Provider } from 'react-redux'
 
 const client = new ApolloClient({
