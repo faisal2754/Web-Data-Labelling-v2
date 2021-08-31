@@ -131,7 +131,10 @@ export const Modal = ({
 
                         <button className="modal__acceptJob">Accept Job</button>
                      </ModalContent>
-                     <CloseModalButton aria-label="Close modal" />
+                     <CloseModalButton
+                        aria-label="Close modal"
+                        onClick={() => setShowModal((prev) => !prev)}
+                     />
                   </ModalWrapper>
                </animated.div>
             </Background>
