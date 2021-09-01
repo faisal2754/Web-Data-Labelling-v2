@@ -11,7 +11,7 @@ const UserDetails = () => {
                      <h3 className="mb-0">My account</h3>
                   </div>
                   <div className="col-4 text-right">
-                     <a href="#!" className="btn btn-sm btn-primary">
+                     <a href="#!" className="user-btn user-btn-sm user-btn-primary">
                         Update Profile
                      </a>
                   </div>

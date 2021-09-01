@@ -78,15 +78,25 @@ function ViewJob() {
    const { data } = useQuery(GET_JOBS)
 
    if (data) {
-      console.log(data)
+      // console.log(data)
       jobs = data.viewJobs
-      console.log(jobs.job_owner)
+      // console.log(jobs.job_owner)
    }
 
    const [showModal, setShowModal] = useState(false)
 
-   const openModal = () => {
+   const openModal = (currentId) => {
       setShowModal((prev) => !prev)
+      console.log(currentId)
+      for (let i = 0; i < jobs.length; i++) {
+         console.log(jobs[i].job_id)
+         if (jobs[i].job_id != currentId) {
+            console.log('YESS')
+            document.getElementById(jobs[i].job_id).style.display = 'none'
+         } else {
+            document.getElementById(jobs[i].job_id).style.display = 'block'
+         }
+      }
    }
 
    const [anchorElement, setAnchorElement] = useState(null)
@@ -153,9 +163,12 @@ function ViewJob() {
             <div className="viewJob__row">
                {jobs.map((job) => {
                   return (
-                     <div className="viewJob__cardItem" onClick={openModal}>
+                     <div
+                        className="viewJob__cardItem"
+                        onClick={(e) => openModal(job.job_id)}
+                     >
                         <CardItem
-                           id={job.job_id}
+                           // id={job.job_id.concat('card')}
                            src={job.preview_images[0]}
                            // src={job.preview_images}
                            text={job.description}
