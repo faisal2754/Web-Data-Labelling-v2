@@ -5,7 +5,7 @@ import { LOGIN_USER } from '../graphql/mutations'
 import { useMutation } from '@apollo/client'
 import { EmailOutlined } from '@material-ui/icons'
 import Cookies from 'js-cookie'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { updateEmail, updateJWT, updateUsername } from '../redux/user'
 
 const Login = () => {
@@ -13,15 +13,18 @@ const Login = () => {
    const [password, setPassword] = useState('')
    const [login, { data, loading, error }] = useMutation(LOGIN_USER)
 
-   //Adding to the redux user variable
-   const email = useSelector((state) => state.user.email)
+   //Example code on how to call the variables in store
+   // const email = useSelector((state) => state.user.email)
    const dispatch = useDispatch();
 
    const history = useHistory()
    if (data && !error) {
       Cookies.set('jwt', data.login.jwt, { expires: 1 })
-      dispatch(updateEmail(userEmail));
-      console.log(email);
+      //Set our redux variables
+      dispatch(updateEmail(data.login.email));
+      dispatch(updateUsername(data.login.username))
+      dispatch(updateJWT(data.login.jwt))
+      console.log(data)
       return <Redirect to="/dashboard" />
    }
 

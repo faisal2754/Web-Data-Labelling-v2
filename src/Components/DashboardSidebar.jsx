@@ -5,14 +5,16 @@ import * as AiIcons from 'react-icons/ai'
 import {SidebarData} from './SidebarData'
 import '../Styles/DashboardNav.css'
 import { IconContext } from 'react-icons'
+import { useSelector } from 'react-redux'
 
-const DashboardSidebar = ( {authorized} ) => {
+const DashboardSidebar = () => {
 
+    const jwt = useSelector((state) => state.user.jwt)
     const [sidebar, setSidebar] = useState(true)
 
     const showSidebar = () => setSidebar(!sidebar) 
 
-    if (!authorized){
+    if (jwt == ""){
         return <Redirect to="/login"/>
     }
 
