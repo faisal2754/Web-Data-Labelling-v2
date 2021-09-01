@@ -29,6 +29,12 @@ const CreateJob = () => {
    if (error) {
       console.log(error)
    }
+const handlefiles=(e)=>{
+   let myfiles=e.target.files;
+
+   console.log(myfiles)
+}
+
    const Calculate = (e) => {
       e.preventDefault()
       let currentCredits = document.querySelector('#credits').value
@@ -47,11 +53,13 @@ const CreateJob = () => {
             encType="multipart/form-data"
             onSubmit={async (e) => {
                e.preventDefault()
+               // console.log(e.target.files)
                const dataForSubmit = {
                   jobTitle: document.querySelector('#title').value,
                   jobDescription: document.querySelector('#description').value,
                   labels: labels.map((label) => label.label),
-                  images: images.map((image) => image.file),
+                  images:document.querySelector('#testimageup').files,
+                  // images: images.map((image) => image.file),
                   totalCreditsCost: currentTotal,
                   numLabellers: parseInt(
                      document.querySelector('#numLabellers').value
@@ -60,7 +68,7 @@ const CreateJob = () => {
                      document.querySelector('#imgPerSection').value
                   )
                }
-               console.log(dataForSubmit)
+               // console.log(dataForSubmit.images)
                await createjob({
                   variables: {
                      title: dataForSubmit.jobTitle,
@@ -68,9 +76,8 @@ const CreateJob = () => {
                      credits: dataForSubmit.totalCreditsCost,
                      labels: dataForSubmit.labels,
                      num_partitions: dataForSubmit.numPartitions,
-                     files: dataForSubmit.images
-                  },
-                  fetchPolicy: 'network-only'
+                     files: images
+                  }
                })
             }}
          >
@@ -187,7 +194,8 @@ const CreateJob = () => {
                   </div>
                </div>
                <div className="createJob_imageSection">
-                  <ImageUploading
+                  <input id="testimageup" type="file" multiple onChange={handlefiles}/>
+                  {/* <ImageUploading
                      multiple
                      value={images}
                      onChange={onChange}
@@ -209,8 +217,9 @@ const CreateJob = () => {
                               className="btn-hover"
                               style={isDragging ? { color: 'red' } : null}
                               onClick={(e) => {
-                                 onImageUpload()
                                  e.preventDefault()
+                                 console.log(e.target.files)
+                                 onImageUpload()
                               }}
                               {...dragProps}
                            >
@@ -254,13 +263,13 @@ const CreateJob = () => {
                                     >
                                        Remove
                                     </button>
-                                 </div> */}
+                                 </div> 
                                  </div>
                               ))}
                            </div>
                         </div>
                      )}
-                  </ImageUploading>
+                  </ImageUploading> */}
                </div>
 
                <div className="createJob_credit-section">
