@@ -4,10 +4,11 @@
    margin: 0;
    padding: 0;
    box-sizing: border-box;
+   font-family: 'Montserrat', sans-serif;
 }
 
 input {
-   font-family: 'Poppins', sans-serif;
+   font-family: 'Montserrat', sans-serif;
 }
 
 .login_logo {
@@ -138,8 +139,10 @@ form {
 }
 
 .underlineHover {
-   text-decoration: underline;
+   text-decoration: none;
    color: black;
+   font-family: 'Montserrat', sans-serif;
+   font-weight: bolder;
 }
 
 .social-media {
