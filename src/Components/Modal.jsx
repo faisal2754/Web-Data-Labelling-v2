@@ -67,6 +67,7 @@ const CloseModalButton = styled(MdClose)`
 `
 
 export const Modal = ({
+   id,
    showModal,
    setShowModal,
    src,
@@ -107,7 +108,7 @@ export const Modal = ({
    }, [keyPress])
 
    return (
-      <div>
+      <div id={id}>
          {showModal ? (
             <Background ref={modalRef}>
                <animated.div style={animation}>
@@ -131,7 +132,10 @@ export const Modal = ({
 
                         <button className="modal__acceptJob">Accept Job</button>
                      </ModalContent>
-                     <CloseModalButton aria-label="Close modal" />
+                     <CloseModalButton
+                        aria-label="Close modal"
+                        onClick={() => setShowModal((prev) => !prev)}
+                     />
                   </ModalWrapper>
                </animated.div>
             </Background>

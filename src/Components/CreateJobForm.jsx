@@ -4,24 +4,38 @@ import '../Styles/CreateJob.css'
 import TextField from '@material-ui/core/TextField'
 import { nanoid } from 'nanoid'
 import ImageUploading from 'react-images-uploading'
-import { GET_USERS } from '../graphql/queries'
-import { useQuery } from '@apollo/client'
+import { useMutation } from '@apollo/client'
+import { CREATE_JOB } from '../graphql/mutations'
+import { Redirect } from 'react-router-dom'
 
 const CreateJob = () => {
    const [labels, setLabels] = useState([])
-   const { loading, error, data } = useQuery(GET_USERS)
+   const [createjob, { loading, error, data }] = useMutation(CREATE_JOB)
    const [currentTotal, setCurrentTotal] = useState(0)
    const [images, setImages] = useState([])
    const maxNumber = 100
    const onChange = (imageList, addUpdateIndex) => {
       // data for submit
-      console.log(imageList, addUpdateIndex)
+      // console.log(imageList, addUpdateIndex)
       setImages(imageList)
    }
 
    useEffect(() => {
       document.querySelector('#totalCredits').value = 0
    }, [])
+
+   if (data) {
+      return <Redirect to="/view-job" />
+   }
+   if (error) {
+      console.log(error)
+   }
+   const handlefiles = (e) => {
+      let myfiles = e.target.files
+
+      console.log(myfiles)
+   }
+
    const Calculate = (e) => {
       e.preventDefault()
       let currentCredits = document.querySelector('#credits').value
@@ -38,9 +52,34 @@ const CreateJob = () => {
       <div className="createJob_page">
          <form
             encType="multipart/form-data"
-            onSubmit={(e) => {
-               console.log(data)
+            onSubmit={async (e) => {
                e.preventDefault()
+               // console.log(e.target.files)
+               const dataForSubmit = {
+                  jobTitle: document.querySelector('#title').value,
+                  jobDescription: document.querySelector('#description').value,
+                  labels: labels.map((label) => label.label),
+                  images: document.querySelector('#testimageup').files,
+                  // images: images.map((image) => image.file),
+                  totalCreditsCost: currentTotal,
+                  numLabellers: parseInt(
+                     document.querySelector('#numLabellers').value
+                  ),
+                  numPartitions: parseInt(
+                     document.querySelector('#imgPerSection').value
+                  )
+               }
+               // console.log(dataForSubmit.images)
+               await createjob({
+                  variables: {
+                     title: dataForSubmit.jobTitle,
+                     description: dataForSubmit.jobDescription,
+                     credits: dataForSubmit.totalCreditsCost,
+                     labels: dataForSubmit.labels,
+                     num_partitions: dataForSubmit.numPartitions,
+                     files: images
+                  }
+               })
             }}
          >
             <div className="createJob_mainForm">
@@ -156,7 +195,13 @@ const CreateJob = () => {
                   </div>
                </div>
                <div className="createJob_imageSection">
-                  <ImageUploading
+                  <input
+                     id="testimageup"
+                     type="file"
+                     multiple
+                     onChange={handlefiles}
+                  />
+                  {/* <ImageUploading
                      multiple
                      value={images}
                      onChange={onChange}
@@ -178,8 +223,9 @@ const CreateJob = () => {
                               className="btn-hover"
                               style={isDragging ? { color: 'red' } : null}
                               onClick={(e) => {
-                                 onImageUpload()
                                  e.preventDefault()
+                                 console.log(e.target.files)
+                                 onImageUpload()
                               }}
                               {...dragProps}
                            >
@@ -202,7 +248,7 @@ const CreateJob = () => {
                                     <img
                                        src={image.data_url}
                                        alt=""
-                                       width="100"
+                                       width="200"
                                     />
                                     {/* <div className="image-item__btn-wrapper">
                                     <button
@@ -223,13 +269,13 @@ const CreateJob = () => {
                                     >
                                        Remove
                                     </button>
-                                 </div> */}
+                                 </div> 
                                  </div>
                               ))}
                            </div>
                         </div>
                      )}
-                  </ImageUploading>
+                  </ImageUploading> */}
                </div>
 
                <div className="createJob_credit-section">

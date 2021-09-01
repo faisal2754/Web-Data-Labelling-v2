@@ -15,76 +15,88 @@ import { useQuery } from '@apollo/client'
 // const jobs = [
 //    {
 //       job_id: 1,
-//       image: './images/purple_gradient.jpg',
-//       name: 'Job Name',
+//       imapreview_imagesge: './images/purple_gradient.jpg',
+//       title: 'Job Name',
 //       credits: 100,
 //       description: 'This is the description',
 //       uploader: 'Email of Uploader'
 //    },
 //    {
 //       job_id: 2,
-//       image: './images/img-9.jpg',
-//       name: 'Job Name',
+//       preview_images: './images/img-9.jpg',
+//       title: 'Job Name',
 //       credits: 100,
 //       description: 'This is the description',
 //       uploader: 'Email of Uploader'
 //    },
 //    {
 //       job_id: 3,
-//       image: './images/purple_gradient.jpg',
-//       name: 'Job Name',
+//       preview_images: './images/purple_gradient.jpg',
+//       title: 'Job Name',
 //       credits: 100,
 //       description: 'This is the description',
 //       uploader: 'Email of Uploader'
 //    },
 //    {
 //       job_id: 4,
-//       image: './images/purple_gradient.jpg',
-//       name: 'Job Name',
+//       preview_images: './images/purple_gradient.jpg',
+//       title: 'Job Name',
 //       credits: 100,
 //       description: 'This is the description',
 //       uploader: 'Email of Uploader'
 //    },
 //    {
 //       job_id: 5,
-//       image: './images/purple_gradient.jpg',
-//       name: 'Job Name',
+//       preview_images: './images/purple_gradient.jpg',
+//       title: 'Job Name',
 //       credits: 100,
 //       description: 'This is the description',
 //       uploader: 'Email of Uploader'
 //    },
 //    {
 //       job_id: 6,
-//       image: './images/purple_gradient.jpg',
-//       name: 'Job Name',
+//       preview_images: './images/purple_gradient.jpg',
+//       title: 'Job Name',
 //       credits: 100,
 //       description: 'This is the description',
 //       uploader: 'Email of Uploader'
 //    },
 //    {
 //       job_id: 7,
-//       image: './images/purple_gradient.jpg',
-//       name: 'Job Name',
+//       preview_images: './images/purple_gradient.jpg',
+//       title: 'Job Name',
 //       credits: 100,
 //       description: 'This is the description',
 //       uploader: 'Email of Uploader'
 //    }
 // ]
 
+function openModalSingle(props) {}
+
 function ViewJob() {
    let jobs = []
    const { data } = useQuery(GET_JOBS)
 
    if (data) {
-      console.log(data)
+      // console.log(data)
       jobs = data.viewJobs
-      console.log(jobs.job_owner)
+      // console.log(jobs.job_owner)
    }
 
    const [showModal, setShowModal] = useState(false)
 
-   const openModal = () => {
+   const openModal = (currentId) => {
       setShowModal((prev) => !prev)
+      console.log(currentId)
+      for (let i = 0; i < jobs.length; i++) {
+         console.log(jobs[i].job_id)
+         if (jobs[i].job_id != currentId) {
+            console.log('YESS')
+            document.getElementById(jobs[i].job_id).style.display = 'none'
+         } else {
+            document.getElementById(jobs[i].job_id).style.display = 'block'
+         }
+      }
    }
 
    const [anchorElement, setAnchorElement] = useState(null)
@@ -101,15 +113,17 @@ function ViewJob() {
 
          {jobs.map((job) => {
             return (
-               <div className="viewJob__modal" onClick={openModal}>
+               <div className="viewJob__modal">
                   <Modal
                      id={job.job_id}
                      src={job.preview_images[0]}
+                     // src={job.preview_images}
                      text={job.description}
                      credits={job.credits}
                      uploader={job.job_owner.username}
-                     showModal={showModal}
+                     // uploader={job.jobOwner}
                      title={job.title}
+                     showModal={showModal}
                      setShowModal={setShowModal}
                   />
                </div>
@@ -149,10 +163,14 @@ function ViewJob() {
             <div className="viewJob__row">
                {jobs.map((job) => {
                   return (
-                     <div className="viewJob__cardItem" onClick={openModal}>
+                     <div
+                        className="viewJob__cardItem"
+                        onClick={(e) => openModal(job.job_id)}
+                     >
                         <CardItem
-                           id={job.job_id}
+                           // id={job.job_id.concat('card')}
                            src={job.preview_images[0]}
+                           // src={job.preview_images}
                            text={job.description}
                            credits={job.credits}
                         />

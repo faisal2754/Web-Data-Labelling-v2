@@ -1,20 +1,30 @@
 import React, { useState } from 'react'
 import '../Styles/Login.css'
-import { Link, Redirect } from 'react-router-dom'
-import { useHistory } from 'react-router-dom'
+import { Link, Redirect, useHistory } from 'react-router-dom'
 import { LOGIN_USER } from '../graphql/mutations'
 import { useMutation } from '@apollo/client'
 import { EmailOutlined } from '@material-ui/icons'
 import Cookies from 'js-cookie'
+import { useDispatch } from 'react-redux'
+import { updateEmail, updateJWT, updateUsername } from '../redux/user'
 
 const Login = () => {
-   const [email, setEmail] = useState('')
+   const [userEmail, setUserEmail] = useState('')
    const [password, setPassword] = useState('')
    const [login, { data, loading, error }] = useMutation(LOGIN_USER)
+
+   //Example code on how to call the variables in store
+   // const email = useSelector((state) => state.user.email)
+   const dispatch = useDispatch();
 
    const history = useHistory()
    if (data && !error) {
       Cookies.set('jwt', data.login.jwt, { expires: 1 })
+      //Set our redux variables
+      dispatch(updateEmail(data.login.email));
+      dispatch(updateUsername(data.login.username))
+      dispatch(updateJWT(data.login.jwt))
+      console.log(data)
       return <Redirect to="/dashboard" />
    }
 
@@ -28,7 +38,7 @@ const Login = () => {
                   e.preventDefault()
                   await login({
                      variables: {
-                        email: email,
+                        email: userEmail,
                         password: password
                      }
                   })
@@ -47,8 +57,8 @@ const Login = () => {
                   <i class="fas fa-envelope icon"></i>
                   <input
                      type="text"
-                     value={email}
-                     onChange={(e) => setEmail(e.target.value)}
+                     value={userEmail}
+                     onChange={(e) => setUserEmail(e.target.value)}
                      id="email"
                      placeholder="Email"
                   />

@@ -29,6 +29,12 @@
    background: rgb(255, 255, 255);
 }
 
+.image-section > h2 {
+   position: absolute;
+   height: 33rem;
+   width: 45rem;
+}
+
 .image-slider-container {
    padding: 5%;
 }
@@ -42,4 +48,6 @@
    flex-direction: column;
    justify-content: space-evenly;
    width: 15%;
+   height: 20rem;
+   align-self: center;
 }
