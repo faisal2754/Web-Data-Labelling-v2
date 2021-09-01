@@ -6,6 +6,7 @@ import { nanoid } from 'nanoid'
 import ImageUploading from 'react-images-uploading'
 import { useMutation } from '@apollo/client'
 import { CREATE_JOB } from '../graphql/mutations'
+import { Redirect } from 'react-router-dom'
 
 const CreateJob = () => {
    const [labels, setLabels] = useState([])
@@ -24,16 +25,16 @@ const CreateJob = () => {
    }, [])
 
    if (data) {
-      console.log(data)
+      return <Redirect to="/view-job" />
    }
    if (error) {
       console.log(error)
    }
-const handlefiles=(e)=>{
-   let myfiles=e.target.files;
+   const handlefiles = (e) => {
+      let myfiles = e.target.files
 
-   console.log(myfiles)
-}
+      console.log(myfiles)
+   }
 
    const Calculate = (e) => {
       e.preventDefault()
@@ -58,7 +59,7 @@ const handlefiles=(e)=>{
                   jobTitle: document.querySelector('#title').value,
                   jobDescription: document.querySelector('#description').value,
                   labels: labels.map((label) => label.label),
-                  images:document.querySelector('#testimageup').files,
+                  images: document.querySelector('#testimageup').files,
                   // images: images.map((image) => image.file),
                   totalCreditsCost: currentTotal,
                   numLabellers: parseInt(
@@ -194,7 +195,12 @@ const handlefiles=(e)=>{
                   </div>
                </div>
                <div className="createJob_imageSection">
-                  <input id="testimageup" type="file" multiple onChange={handlefiles}/>
+                  <input
+                     id="testimageup"
+                     type="file"
+                     multiple
+                     onChange={handlefiles}
+                  />
                   {/* <ImageUploading
                      multiple
                      value={images}
