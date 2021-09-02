@@ -11,76 +11,20 @@ import Modal from '../Components/Modal'
 import '../Styles/ViewJob.css'
 import { GET_JOBS } from '../graphql/queries'
 import { useQuery } from '@apollo/client'
-
-// const jobs = [
-//    {
-//       job_id: 1,
-//       imapreview_imagesge: './images/purple_gradient.jpg',
-//       title: 'Job Name',
-//       credits: 100,
-//       description: 'This is the description',
-//       uploader: 'Email of Uploader'
-//    },
-//    {
-//       job_id: 2,
-//       preview_images: './images/img-9.jpg',
-//       title: 'Job Name',
-//       credits: 100,
-//       description: 'This is the description',
-//       uploader: 'Email of Uploader'
-//    },
-//    {
-//       job_id: 3,
-//       preview_images: './images/purple_gradient.jpg',
-//       title: 'Job Name',
-//       credits: 100,
-//       description: 'This is the description',
-//       uploader: 'Email of Uploader'
-//    },
-//    {
-//       job_id: 4,
-//       preview_images: './images/purple_gradient.jpg',
-//       title: 'Job Name',
-//       credits: 100,
-//       description: 'This is the description',
-//       uploader: 'Email of Uploader'
-//    },
-//    {
-//       job_id: 5,
-//       preview_images: './images/purple_gradient.jpg',
-//       title: 'Job Name',
-//       credits: 100,
-//       description: 'This is the description',
-//       uploader: 'Email of Uploader'
-//    },
-//    {
-//       job_id: 6,
-//       preview_images: './images/purple_gradient.jpg',
-//       title: 'Job Name',
-//       credits: 100,
-//       description: 'This is the description',
-//       uploader: 'Email of Uploader'
-//    },
-//    {
-//       job_id: 7,
-//       preview_images: './images/purple_gradient.jpg',
-//       title: 'Job Name',
-//       credits: 100,
-//       description: 'This is the description',
-//       uploader: 'Email of Uploader'
-//    }
-// ]
+import { useSelector } from 'react-redux'
 
 function openModalSingle(props) {}
 
 function ViewJob() {
+   const jwt = useSelector((state) => state.user.jwt)
+
    let jobs = []
    const { data } = useQuery(GET_JOBS)
 
    if (data) {
-      // console.log(data)
+      console.log(data)
       jobs = data.viewJobs
-      // console.log(jobs.job_owner)
+      console.log(jobs.job_owner)
    }
 
    const [showModal, setShowModal] = useState(false)
@@ -117,14 +61,14 @@ function ViewJob() {
                   <Modal
                      id={job.job_id}
                      src={job.preview_images[0]}
-                     // src={job.preview_images}
                      text={job.description}
                      credits={job.credits}
                      uploader={job.job_owner.username}
-                     // uploader={job.jobOwner}
                      title={job.title}
                      showModal={showModal}
                      setShowModal={setShowModal}
+                     // uploader={job.jobOwner}
+                     // src={job.preview_images}
                   />
                </div>
             )
@@ -168,11 +112,11 @@ function ViewJob() {
                         onClick={(e) => openModal(job.job_id)}
                      >
                         <CardItem
-                           // id={job.job_id.concat('card')}
                            src={job.preview_images[0]}
-                           // src={job.preview_images}
-                           text={job.description}
+                           text={job.title}
                            credits={job.credits}
+                           // src={job.preview_images}
+                           // id={job.job_id.concat('card')}
                         />
                      </div>
                   )

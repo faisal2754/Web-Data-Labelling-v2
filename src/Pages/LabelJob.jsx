@@ -3,7 +3,7 @@ import Footer from '../Components/Footer'
 import ImageSlider from '../Components/ImageSlider'
 import NavbarOther from '../Components/NavbarOther'
 import '../Styles/LabelJob.css'
-import { GET_LABEL_JOB_INFO } from '../graphql/queries.js'
+import { GET_LABEL_JOB_INFO, GET_SAVED_STATE } from '../graphql/queries.js'
 import { useQuery } from '@apollo/client'
 import { nanoid } from 'nanoid'
 import { Button } from '../Components/Button'
@@ -12,8 +12,7 @@ import { useEffect } from 'react'
 function LabelJob() {
    const [index, setIndex] = useState()
    const [assignedLabels, setAssignedLabels] = useState({})
-
-   let slides = []
+   const [slides, setSlides] = useState([])
 
    const checkRadioButton = () => {
       if (slides[index]) {
@@ -25,15 +24,65 @@ function LabelJob() {
       }
    }
 
+   const checkCompletion = () => {
+      console.log(
+         'slides length = ' +
+            slides.length +
+            ' assigned labels length = ' +
+            Object.keys(assignedLabels).length
+      )
+      if (
+         Object.keys(assignedLabels).length + 1 >= slides.length &&
+         Object.keys(assignedLabels).length != 0
+      ) {
+         document.getElementById('submitButton').style.display = 'inline-block'
+      } else {
+         document.getElementById('submitButton').style.display = 'none'
+      }
+   }
+
    useEffect(() => {
       checkRadioButton()
    }, [index])
 
    const { loading, error, data } = useQuery(GET_LABEL_JOB_INFO, {
       variables: {
-         job_id: 1
+         job_id: 33
       }
    })
+
+   const partition_id = data?.labelJobInfo?.partition_id
+   const { data: restoredData } = useQuery(GET_SAVED_STATE, {
+      skip: !partition_id,
+      variables: {
+         partition_id
+      }
+   })
+
+   useEffect(() => {
+      if (restoredData) {
+         let temp = {}
+         Object.assign(temp, assignedLabels)
+
+         for (let i = 0; i < restoredData.labelJobState.labels.length; i++) {
+            const imageId = restoredData.labelJobState.image_ids[i]
+            temp[imageId] = restoredData.labelJobState.labels[i]
+         }
+         setAssignedLabels(temp)
+
+         let tempSlides = []
+         for (let i = 0; i < images.length; i++) {
+            tempSlides.push({ images: images[i], image_id: image_ids[i] })
+         }
+         setSlides(tempSlides)
+         checkRadioButton()
+         checkCompletion()
+      }
+   }, [restoredData, data])
+
+   checkRadioButton()
+   console.log(assignedLabels)
+
    if (loading) return 'Loading...'
    if (error) return `Error! ${error.message}`
 
@@ -49,16 +98,13 @@ function LabelJob() {
       title = data.labelJobInfo.title
    }
 
-   for (let i = 0; i < images.length; i++) {
-      slides.push({ images: images[i], image_id: image_ids[i] })
-   }
-
    const onChangeSlide = (index) => {
       setIndex(index)
 
       for (let i = 0; i < labels.length; i++) {
          document.getElementById(labels[i]).checked = false
       }
+      document.getElementById('other').checked = false
    }
 
    const assignLabel = (value) => {
@@ -67,22 +113,38 @@ function LabelJob() {
       const imageId = slides[index].image_id
       temp[imageId] = value
       setAssignedLabels(temp)
+      checkCompletion()
    }
-
-   console.log(assignedLabels)
 
    const saveState = () => {
       const imageIds = Object.keys(assignedLabels)
       const labels = Object.values(assignedLabels)
-
-      console.log(imageIds)
-      console.log(labels)
    }
 
    return (
       <div>
          <NavbarOther />
+
          <div className="label-job-page">
+            <div className="submitSection">
+               <Button
+                  className="btns"
+                  buttonStyle="btn--outline"
+                  buttonSize="btn--large"
+                  onClick={saveState}
+               >
+                  Save
+               </Button>
+               <Button
+                  id="submitButton"
+                  className="btns"
+                  buttonStyle="btn--primary"
+                  buttonSize="btn--large"
+                  onClick={saveState}
+               >
+                  Submit
+               </Button>
+            </div>
             <div className="label-job-form">
                <div className="image-section">
                   <h2>{title}</h2>
@@ -111,6 +173,7 @@ function LabelJob() {
                            </>
                         ))}
                         <input
+                           id="other"
                            type="radio"
                            value="other"
                            name="label"
@@ -121,14 +184,6 @@ function LabelJob() {
                   </div>
                </div>
             </div>
-            <Button
-               className="btns"
-               buttonStyle="btn--outline"
-               buttonSize="btn--large"
-               onClick={saveState}
-            >
-               Save
-            </Button>
          </div>
          <Footer />
       </div>

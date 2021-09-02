@@ -4,6 +4,8 @@ import styled from 'styled-components'
 import { MdClose } from 'react-icons/md'
 import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet'
 import '../Styles/Modal.css'
+import { useSelector } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 const Background = styled.div`
    z-index: 1;
@@ -76,6 +78,8 @@ export const Modal = ({
    credits,
    title
 }) => {
+   const jwt = useSelector((state) => state.user.jwt)
+
    const modalRef = useRef()
 
    const animation = useSpring({
@@ -107,6 +111,12 @@ export const Modal = ({
       return () => document.removeEventListener('keydown', keyPress)
    }, [keyPress])
 
+   const checkLogin = () => {
+      if (jwt == '') {
+         return <Redirect to="/login" />
+      }
+   }
+
    return (
       <div id={id}>
          {showModal ? (
@@ -130,7 +140,12 @@ export const Modal = ({
                            {text}
                         </div>
 
-                        <button className="modal__acceptJob">Accept Job</button>
+                        <button
+                           className="modal__acceptJob"
+                           onClick={() => checkLogin()}
+                        >
+                           Accept Job
+                        </button>
                      </ModalContent>
                      <CloseModalButton
                         aria-label="Close modal"
