@@ -7,6 +7,7 @@ const STYLES = ['btn-hover', 'btn--outline', 'btn--test']
 const SIZES = ['btn--medium', 'btn--large', 'btn--small']
 
 export const Button = ({
+   id,
    children,
    type,
    onClick,
@@ -23,6 +24,7 @@ export const Button = ({
    return (
       <Link to={to} className="btn-mobile">
          <button
+            id={id}
             className={`btn ${checkButtonStyle} ${checkButtonSize}`}
             onClick={onClick}
             type={type}

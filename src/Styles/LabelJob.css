@@ -7,7 +7,7 @@
    justify-content: space-evenly;
    flex-flow: row wrap;
    align-content: flex-start;
-   padding: 5rem;
+   padding: 3rem;
 }
 
 .radio-toolbar {

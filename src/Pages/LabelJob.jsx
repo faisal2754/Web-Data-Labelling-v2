@@ -24,13 +24,30 @@ function LabelJob() {
       }
    }
 
+   const checkCompletion = () => {
+      console.log(
+         'slides length = ' +
+            slides.length +
+            ' assigned labels length = ' +
+            Object.keys(assignedLabels).length
+      )
+      if (
+         Object.keys(assignedLabels).length + 1 >= slides.length &&
+         Object.keys(assignedLabels).length != 0
+      ) {
+         document.getElementById('submitButton').style.display = 'inline-block'
+      } else {
+         document.getElementById('submitButton').style.display = 'none'
+      }
+   }
+
    useEffect(() => {
       checkRadioButton()
    }, [index])
 
    const { loading, error, data } = useQuery(GET_LABEL_JOB_INFO, {
       variables: {
-         job_id: 22
+         job_id: 33
       }
    })
 
@@ -58,13 +75,13 @@ function LabelJob() {
             tempSlides.push({ images: images[i], image_id: image_ids[i] })
          }
          setSlides(tempSlides)
-         console.log(tempSlides)
          checkRadioButton()
+         checkCompletion()
       }
    }, [restoredData, data])
 
    checkRadioButton()
-   // console.log(assignedLabels)
+   console.log(assignedLabels)
 
    if (loading) return 'Loading...'
    if (error) return `Error! ${error.message}`
@@ -87,6 +104,7 @@ function LabelJob() {
       for (let i = 0; i < labels.length; i++) {
          document.getElementById(labels[i]).checked = false
       }
+      document.getElementById('other').checked = false
    }
 
    const assignLabel = (value) => {
@@ -95,6 +113,7 @@ function LabelJob() {
       const imageId = slides[index].image_id
       temp[imageId] = value
       setAssignedLabels(temp)
+      checkCompletion()
    }
 
    const saveState = () => {
@@ -105,7 +124,27 @@ function LabelJob() {
    return (
       <div>
          <NavbarOther />
+
          <div className="label-job-page">
+            <div className="submitSection">
+               <Button
+                  className="btns"
+                  buttonStyle="btn--outline"
+                  buttonSize="btn--large"
+                  onClick={saveState}
+               >
+                  Save
+               </Button>
+               <Button
+                  id="submitButton"
+                  className="btns"
+                  buttonStyle="btn--primary"
+                  buttonSize="btn--large"
+                  onClick={saveState}
+               >
+                  Submit
+               </Button>
+            </div>
             <div className="label-job-form">
                <div className="image-section">
                   <h2>{title}</h2>
@@ -134,6 +173,7 @@ function LabelJob() {
                            </>
                         ))}
                         <input
+                           id="other"
                            type="radio"
                            value="other"
                            name="label"
@@ -144,14 +184,6 @@ function LabelJob() {
                   </div>
                </div>
             </div>
-            <Button
-               className="btns"
-               buttonStyle="btn--outline"
-               buttonSize="btn--large"
-               onClick={saveState}
-            >
-               Save
-            </Button>
          </div>
          <Footer />
       </div>
