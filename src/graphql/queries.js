@@ -26,19 +26,20 @@ const GET_JOBS = gql`
 `
 
 const GET_ME = gql`
-   query getCurrentUser{
-  me{
-     username
-    email
-    avatar
-    balance
-  }
-}
+   query getCurrentUser {
+      me {
+         username
+         email
+         avatar
+         balance
+      }
+   }
 `
 
 const GET_LABEL_JOB_INFO = gql`
    query LabelJobInfo($job_id: ID!) {
       labelJobInfo(job_id: $job_id) {
+         partition_id
          image_ids
          images
          labels
@@ -47,4 +48,13 @@ const GET_LABEL_JOB_INFO = gql`
    }
 `
 
-export { GET_USERS, GET_JOBS, GET_LABEL_JOB_INFO, GET_ME }
+const GET_SAVED_STATE = gql`
+   query LabelJobState($partition_id: ID!) {
+      labelJobState(partition_id: $partition_id) {
+         image_ids
+         labels
+      }
+   }
+`
+
+export { GET_USERS, GET_JOBS, GET_LABEL_JOB_INFO, GET_SAVED_STATE }

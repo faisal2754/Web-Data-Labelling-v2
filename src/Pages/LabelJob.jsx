@@ -3,7 +3,7 @@ import Footer from '../Components/Footer'
 import ImageSlider from '../Components/ImageSlider'
 import NavbarOther from '../Components/NavbarOther'
 import '../Styles/LabelJob.css'
-import { GET_LABEL_JOB_INFO } from '../graphql/queries.js'
+import { GET_LABEL_JOB_INFO, GET_SAVED_STATE } from '../graphql/queries.js'
 import { useQuery } from '@apollo/client'
 import { nanoid } from 'nanoid'
 import { Button } from '../Components/Button'
@@ -31,9 +31,18 @@ function LabelJob() {
 
    const { loading, error, data } = useQuery(GET_LABEL_JOB_INFO, {
       variables: {
-         job_id: 1
+         job_id: 22
       }
    })
+
+   const partition_id = data?.labelJobInfo?.partition_id
+   const { data: restoredData } = useQuery(GET_SAVED_STATE, {
+      skip: !partition_id,
+      variables: {
+         partition_id
+      }
+   })
+
    if (loading) return 'Loading...'
    if (error) return `Error! ${error.message}`
 
@@ -41,6 +50,10 @@ function LabelJob() {
    let labels = []
    let image_ids = []
    let title = ''
+
+   if (restoredData) {
+      console.log(restoredData)
+   }
 
    if (data) {
       images = data.labelJobInfo.images
@@ -74,9 +87,6 @@ function LabelJob() {
    const saveState = () => {
       const imageIds = Object.keys(assignedLabels)
       const labels = Object.values(assignedLabels)
-
-      console.log(imageIds)
-      console.log(labels)
    }
 
    return (
