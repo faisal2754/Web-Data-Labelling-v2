@@ -12,8 +12,7 @@ import { useEffect } from 'react'
 function LabelJob() {
    const [index, setIndex] = useState()
    const [assignedLabels, setAssignedLabels] = useState({})
-
-   let slides = []
+   const [slides, setSlides] = useState([])
 
    const checkRadioButton = () => {
       if (slides[index]) {
@@ -43,6 +42,30 @@ function LabelJob() {
       }
    })
 
+   useEffect(() => {
+      if (restoredData) {
+         let temp = {}
+         Object.assign(temp, assignedLabels)
+
+         for (let i = 0; i < restoredData.labelJobState.labels.length; i++) {
+            const imageId = restoredData.labelJobState.image_ids[i]
+            temp[imageId] = restoredData.labelJobState.labels[i]
+         }
+         setAssignedLabels(temp)
+
+         let tempSlides = []
+         for (let i = 0; i < images.length; i++) {
+            tempSlides.push({ images: images[i], image_id: image_ids[i] })
+         }
+         setSlides(tempSlides)
+         console.log(tempSlides)
+         checkRadioButton()
+      }
+   }, [restoredData, data])
+
+   checkRadioButton()
+   // console.log(assignedLabels)
+
    if (loading) return 'Loading...'
    if (error) return `Error! ${error.message}`
 
@@ -51,19 +74,11 @@ function LabelJob() {
    let image_ids = []
    let title = ''
 
-   if (restoredData) {
-      console.log(restoredData)
-   }
-
    if (data) {
       images = data.labelJobInfo.images
       labels = data.labelJobInfo.labels
       image_ids = data.labelJobInfo.image_ids
       title = data.labelJobInfo.title
-   }
-
-   for (let i = 0; i < images.length; i++) {
-      slides.push({ images: images[i], image_id: image_ids[i] })
    }
 
    const onChangeSlide = (index) => {
@@ -81,8 +96,6 @@ function LabelJob() {
       temp[imageId] = value
       setAssignedLabels(temp)
    }
-
-   console.log(assignedLabels)
 
    const saveState = () => {
       const imageIds = Object.keys(assignedLabels)
