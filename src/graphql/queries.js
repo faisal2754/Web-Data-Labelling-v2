@@ -25,6 +25,17 @@ const GET_JOBS = gql`
    }
 `
 
+const GET_ME = gql`
+   query getCurrentUser{
+  me{
+     username
+    email
+    avatar
+    balance
+  }
+}
+`
+
 const GET_LABEL_JOB_INFO = gql`
    query LabelJobInfo($job_id: ID!) {
       labelJobInfo(job_id: $job_id) {
@@ -36,4 +47,4 @@ const GET_LABEL_JOB_INFO = gql`
    }
 `
 
-export { GET_USERS, GET_JOBS, GET_LABEL_JOB_INFO }
+export { GET_USERS, GET_JOBS, GET_LABEL_JOB_INFO, GET_ME }

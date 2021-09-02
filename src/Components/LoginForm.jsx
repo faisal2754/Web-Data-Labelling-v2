@@ -15,13 +15,13 @@ const Login = () => {
 
    //Example code on how to call the variables in store
    // const email = useSelector((state) => state.user.email)
-   const dispatch = useDispatch();
+   const dispatch = useDispatch()
 
    const history = useHistory()
    if (data && !error) {
       Cookies.set('jwt', data.login.jwt, { expires: 1 })
       //Set our redux variables
-      dispatch(updateEmail(data.login.email));
+      dispatch(updateEmail(data.login.email))
       dispatch(updateUsername(data.login.username))
       dispatch(updateJWT(data.login.jwt))
       console.log(data)
@@ -74,7 +74,7 @@ const Login = () => {
                   />
                </div>
 
-               <p class="forgot-pass">Forgot Password?</p>
+               {/* <p class="forgot-pass">Forgot Password?</p> */}
 
                <button type="submit" className="login_signInButton">
                   {loading ? 'Loading...' : 'LOGIN'}

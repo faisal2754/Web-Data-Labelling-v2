@@ -82,4 +82,40 @@ Sipho Sikakane (Scrum master/Frontend):
 - Tasks for the day: Manage user sessions with jwt
 - Impediments: Time
 
+## Daily Scrum Meeting 1st September 2021 11:00am (Wednesday)
+
+Aharon Cohen (Frontend):
+- Tasks completed yesterday: Began redesigning dashboard
+- Tasks for the day: Continue dashboard
+- Impediments: AAA lab, lectures, OS lab
+
+Langiwe Mwale (Frontend):
+- Tasks completed Yesterday: image uploads
+- Task for the Day: view accepted jobs page
+- Impediments: file issues upload
+
+Ioanni Balassis: (Frontend):
+- Tasks completed yesterday: worked on frontend
+- Tasks for the day: continue with modal
+- Impediments: PC test
+
+Jonathan Nunes (Frontend):
+- Tasks completed yesterday: Worked on labelling process, Fixed modal issue
+- Tasks for the day: Continue labelling process
+- Impediments: Other university work
+
+Faisal Saleem (Backend):
+- Tasks completed yesterday: Process labels received from frontend
+- Tasks for the day: Work on job labelling process
+- Impediments: None
+
+Ghulame Mujtaba Arbi (Frontend):
+- Tasks completed yesterday: Completed post job side of how-to page
+- Tasks for the day: Work on tabs to switch between how-to pages
+- Impediments: Time, work on other projects outside of uni work
+
+Tristan Bester (Backend):
+- Tasks completed yesterday: Process labels received from frontend
+- Tasks for the day: Work on job labelling process
+- Impediments: None
 

@@ -1,7 +1,7 @@
 import { Card } from '@material-ui/core'
 import React from 'react'
 
-const UserDetails = () => {
+const UserDetails = (props) => {
    return (
       <div className="col-xl-8 order-xl-1">
          <div className="card bg-secondary shadow">
@@ -36,8 +36,8 @@ const UserDetails = () => {
                                  type="text"
                                  id="input-username"
                                  className="form-control form-control-alternative"
-                                 placeholder="Username"
-                                 defaultValue="lucky.jesse"
+                                 placeholder={props.username}
+                                 defaultValue={props.username}
                               />
                            </div>
                         </div>
@@ -53,7 +53,8 @@ const UserDetails = () => {
                                  type="email"
                                  id="input-email"
                                  className="form-control form-control-alternative"
-                                 placeholder="jesse@example.com"
+                                 // placeholder={props.email}
+                                 text={props.email}
                               />
                            </div>
                         </div>
