@@ -11,6 +11,7 @@ const UserProfile = (props) => {
                         <img
                            src="https://demos.creative-tim.com/argon-dashboard/assets/img/theme/team-4.jpg"
                            className="rounded-circle"
+                           alt=""
                         />
                      </a>
                   </div>
