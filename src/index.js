@@ -7,13 +7,31 @@ import {
    InMemoryCache,
    ApolloProvider,
    useQuery,
-   gql
+   gql,
+   HttpLink,
+   ApolloLink,
+   concat
 } from '@apollo/client'
+import Cookies from 'js-cookie'
 import store from './redux/store'
 import { Provider } from 'react-redux'
 
+const httpLink = new HttpLink({ uri:  'https://data-labelling-server.herokuapp.com/graphql'});
+
+const authMiddleware = new ApolloLink((operation, forward) => {
+   operation.setContext(({ headers = {} }) => ({
+      headers: {
+         ...headers,
+         Authorization: "Bearer " + Cookies.get('jwt') || null,
+      }
+   }));
+
+   return forward(operation);
+})
+
 const client = new ApolloClient({
-   uri: 'https://data-labelling-server.herokuapp.com/graphql',
+   // uri: 'https://data-labelling-server.herokuapp.com/graphql',
+   link: concat(authMiddleware, httpLink),
    cache: new InMemoryCache(),
    credentials: 'include'
 })
