@@ -3,7 +3,7 @@ import React from 'react'
 import '../Styles/CreateJob.css'
 import TextField from '@material-ui/core/TextField'
 import { nanoid } from 'nanoid'
-import ImageUploading from 'react-images-uploading'
+// import ImageUploading from 'react-images-uploading'
 import { useMutation } from '@apollo/client'
 import { CREATE_JOB } from '../graphql/mutations'
 import { Redirect } from 'react-router-dom'
@@ -13,12 +13,12 @@ const CreateJob = () => {
    const [createjob, { loading, error, data }] = useMutation(CREATE_JOB)
    const [currentTotal, setCurrentTotal] = useState(0)
    const [images, setImages] = useState([])
-   const maxNumber = 100
-   const onChange = (imageList, addUpdateIndex) => {
-      // data for submit
-      // console.log(imageList, addUpdateIndex)
-      setImages(imageList)
-   }
+   // const onChange = (imageList, addUpdateIndex) => {
+   //    // data for submit
+   //    // console.log(imageList, addUpdateIndex)
+   //    setImages(imageList)
+   // }
+   
 
    useEffect(() => {
       document.querySelector('#totalCredits').value = 0
@@ -31,6 +31,7 @@ const CreateJob = () => {
       console.log(error)
    }
    const handlefiles = (e) => {
+      setImages()
       let myfiles = e.target.files
 
       console.log(myfiles)
@@ -313,7 +314,7 @@ const CreateJob = () => {
                   color="default"
                   type="submit"
                >
-                  Upload
+                  {loading ? 'Submitting...' : 'Upload'}
                </button>
             </div>
          </form>

@@ -11,7 +11,10 @@ const UserDetails = (props) => {
                      <h3 className="mb-0">My account</h3>
                   </div>
                   <div className="col-4 text-right">
-                     <a href="#!" className="user-btn user-btn-sm user-btn-primary">
+                     <a
+                        href="#!"
+                        className="user-btn user-btn-sm user-btn-primary"
+                     >
                         Update Profile
                      </a>
                   </div>
@@ -53,7 +56,7 @@ const UserDetails = (props) => {
                                  type="email"
                                  id="input-email"
                                  className="form-control form-control-alternative"
-                                 // placeholder={props.email}
+                                 placeholder={props.email}
                                  text={props.email}
                               />
                            </div>

@@ -35,7 +35,19 @@ const GET_ME = gql`
   }
 }
 `
-
+const GET_ACCEPTED_JOBS = gql`
+   query acceptedJobs{
+   acceptedJobs{
+     job_owner{
+       username
+     }
+     title
+     credits
+     description
+     preview_images
+   }
+ }
+`
 const GET_LABEL_JOB_INFO = gql`
    query LabelJobInfo($job_id: ID!) {
       labelJobInfo(job_id: $job_id) {
@@ -47,4 +59,4 @@ const GET_LABEL_JOB_INFO = gql`
    }
 `
 
-export { GET_USERS, GET_JOBS, GET_LABEL_JOB_INFO, GET_ME }
+export { GET_USERS, GET_JOBS, GET_LABEL_JOB_INFO, GET_ME, GET_ACCEPTED_JOBS }
