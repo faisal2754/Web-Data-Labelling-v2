@@ -13,7 +13,6 @@ import { GET_JOBS } from '../graphql/queries'
 import { useQuery } from '@apollo/client'
 import { useSelector } from 'react-redux'
 
-function openModalSingle(props) {}
 
 function ViewJob() {
    const jwt = useSelector((state) => state.user.jwt)
@@ -31,11 +30,8 @@ function ViewJob() {
 
    const openModal = (currentId) => {
       setShowModal((prev) => !prev)
-      console.log(currentId)
       for (let i = 0; i < jobs.length; i++) {
-         console.log(jobs[i].job_id)
-         if (jobs[i].job_id != currentId) {
-            console.log('YESS')
+         if (jobs[i].job_id !== currentId) {
             document.getElementById(jobs[i].job_id).style.display = 'none'
          } else {
             document.getElementById(jobs[i].job_id).style.display = 'block'

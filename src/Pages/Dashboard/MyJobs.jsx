@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import DashboardSidebar from '../../Components/DashboardSidebar'
-import { GET_ME, GET_ACCEPTED_JOBS } from '../../graphql/queries'
+import { GET_ACCEPTED_JOBS } from '../../graphql/queries'
 import { useQuery } from '@apollo/client'
 import Modal from '../../Components/Modal'
 import CardItem from '../../Components/CardItem'
@@ -13,6 +13,7 @@ function MyJobs() {
    let jobs = []
    if (data) {
       jobs = data.acceptedJobs
+      console.log(jobs.preview_images)
    }
    if (error) {
       console.log(error)
@@ -22,14 +23,13 @@ function MyJobs() {
       setShowModal((prev) => !prev)
       for (let i = 0; i < jobs.length; i++) {
          console.log(jobs)
-         if (jobs[i].job_id != currentId) {
+         if (jobs[i].job_id !== currentId) {
             document.getElementById(jobs[i].job_id).style.display = 'none'
          } else {
             document.getElementById(jobs[i].job_id).style.display = 'block'
          }
       }
    }
-   // if(error_jobs) console.log(error_jobs)
    return (
       <div>
          <DashboardSidebar />
