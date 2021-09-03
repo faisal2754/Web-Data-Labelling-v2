@@ -20,13 +20,14 @@ function MyJobs() {
 
    const openModal = (currentId) => {
       setShowModal((prev) => !prev)
-      // for (let i = 0; i < jobs.length; i++) {
-      //    if (jobs[i].job_id !== currentId) {
-      //       document.getElementById(jobs[i].job_id).style.display = 'none'
-      //    } else {
-      //       document.getElementById(jobs[i].job_id).style.display = 'block'
-      //    }
-      // }
+      for (let i = 0; i < jobs.length; i++) {
+         console.log(jobs)
+         if (jobs[i].job_id != currentId) {
+            document.getElementById(jobs[i].job_id).style.display = 'none'
+         } else {
+            document.getElementById(jobs[i].job_id).style.display = 'block'
+         }
+      }
    }
    // if(error_jobs) console.log(error_jobs)
    return (
@@ -35,6 +36,7 @@ function MyJobs() {
 
          <div className="myJobs">
             <h1>Here are my Jobs</h1>
+            {loading? <h1>Loading</h1>:"Done"}
             {jobs.map((job) => {
                return (
                   <div className="viewJob__modal">
