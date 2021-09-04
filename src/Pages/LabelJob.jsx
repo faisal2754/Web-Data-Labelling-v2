@@ -25,7 +25,7 @@ function LabelJob() {
       }
    }
 
-   const is_complete = false
+   let is_complete = false
    const checkCompletion = () => {
       console.log(
          'slides length = ' +
@@ -62,7 +62,10 @@ function LabelJob() {
       }
    })
 
-   const [submitJob, { data, loading, error }] = useMutation(SAVE_STATE)
+   const [
+      submitJob,
+      { data: submitJobData, loading: submitJobLoading, error: submitJobError }
+   ] = useMutation(SAVE_STATE)
 
    useEffect(() => {
       if (restoredData) {
@@ -121,19 +124,22 @@ function LabelJob() {
       checkCompletion()
    }
 
-   const saveState = () => {
-      const imageIds = Object.keys(assignedLabels)
-      const labels = Object.values(assignedLabels)
-   }
+   console.log(Object.keys(assignedLabels).map((id) => Number(id)))
+   console.log(Object.values(assignedLabels))
+   let arrayThing = ['hello', 'yes', 'bro']
+   console.log(arrayThing)
+   console.log(partition_id)
 
-   submitJob({
-      variables: {
-         image_ids: Object.keys(assignedLabels),
-         labels: Object.values(assignedLabels),
-         partition_id: partition_id,
-         is_complete: is_complete
-      }
-   })
+   const saveState = () => {
+      submitJob({
+         variables: {
+            image_ids: Object.keys(assignedLabels).map((id) => Number(id)),
+            labels: Object.values(assignedLabels),
+            partition_id: partition_id,
+            is_complete: is_complete
+         }
+      })
+   }
 
    return (
       <div>
@@ -154,7 +160,7 @@ function LabelJob() {
                   className="btns"
                   buttonStyle="btn--primary"
                   buttonSize="btn--large"
-                  onClick={submitJob}
+                  onClick={saveState}
                >
                   Submit
                </Button>

@@ -54,7 +54,7 @@ const SAVE_STATE = gql`
       $image_ids: [ID]!
       $labels: [String]!
       $partition_id: ID
-      $is_complete: boolean
+      $is_complete: Boolean
    ) {
       saveState(
          image_ids: $image_ids
