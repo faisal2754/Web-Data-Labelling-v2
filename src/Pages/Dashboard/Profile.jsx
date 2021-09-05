@@ -5,9 +5,15 @@ import UserProfile from '../../Components/UserProfileCard'
 import DashboardSidebar from '../../Components/DashboardSidebar'
 import { useQuery } from '@apollo/client'
 import { GET_ME } from '../../graphql/queries'
+import Cookies from 'js-cookie'
+import { Redirect } from 'react-router'
 
 export const Dashboard = (props) => {
    const { loading, error, data } = useQuery(GET_ME)
+
+   if (Cookies.get('jwt') == null) {
+      return <Redirect to="/login" />
+   }
 
    if (data) console.log(data)
    if (error) console.log(error)
