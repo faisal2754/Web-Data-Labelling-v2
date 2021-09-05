@@ -36,7 +36,7 @@ function MyJobs() {
 
          <div className="myJobs">
             <h1>Here are my Jobs</h1>
-            {loading? <h1>Loading</h1>:"Done"}
+            {loading ? <h1>Loading</h1> : 'Done'}
             {jobs.map((job) => {
                return (
                   <div className="viewJob__modal">
