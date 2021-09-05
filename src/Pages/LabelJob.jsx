@@ -6,7 +6,6 @@ import '../Styles/LabelJob.css'
 import { GET_LABEL_JOB_INFO, GET_SAVED_STATE } from '../graphql/queries.js'
 import { SAVE_STATE } from '../graphql/mutations'
 import { useQuery, useMutation } from '@apollo/client'
-import { nanoid } from 'nanoid'
 import { Button } from '../Components/Button'
 import { useEffect } from 'react'
 

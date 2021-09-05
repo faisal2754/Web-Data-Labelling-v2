@@ -6,7 +6,7 @@ import '../App.css'
 function HowToFindSection() {
    return (
       <div className="hero-container">
-         <video src="./videos/gradient.mp4" autoPlay loop muted />
+         <video src="./videos/header-hero.mp4" autoPlay loop muted />
          <h1>
             How to <br /> Find and Label a Job! <br />
          </h1>

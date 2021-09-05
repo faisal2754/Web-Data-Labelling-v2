@@ -8,11 +8,12 @@ import {
 } from 'react-router-dom'
 import Home from './Home'
 import Profile from './Dashboard/Profile'
-import Settings from './Dashboard/Settings'
-import MyJobs from './Dashboard/MyJobs'
+import CreatedJobs from './Dashboard/CreatedJobs'
+import AcceptedJobs from './Dashboard/AcceptedJobs'
 import AboutUs from './Dashboard/AboutUs'
 import Support from './Dashboard/Support'
 import NavbarOther from '../Components/NavbarOther'
+//import AcceptedJobs from './Dashboard/AcceptedJobs'
 
 const DashboardRouting = () => {
    const location = useLocation()
@@ -23,9 +24,17 @@ const DashboardRouting = () => {
          {isOnDashboard ? <DashboardSidebar /> : <div></div>}
          <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/dashboard/settings" exact component={Settings} />
+            <Route
+               path="/dashboard/created-jobs"
+               exact
+               component={CreatedJobs}
+            />
             <Route path="/dashboard/profile" exact component={Profile} />
-            <Route path="/dashboard/my-jobs" exact component={MyJobs} />
+            <Route
+               path="/dashboard/accepted-jobs"
+               exact
+               component={AcceptedJobs}
+            />
             <Route path="/dashboard/about-us" exact component={AboutUs} />
             <Route path="/dashboard/support" exact component={Support} />
          </Switch>

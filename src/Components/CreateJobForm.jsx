@@ -7,6 +7,9 @@ import { nanoid } from 'nanoid'
 import { useMutation } from '@apollo/client'
 import { CREATE_JOB } from '../graphql/mutations'
 import { Redirect } from 'react-router-dom'
+import { typeFromAST } from 'graphql'
+import { toast } from 'react-toastify'
+
 
 const CreateJob = () => {
    const [labels, setLabels] = useState([])
@@ -18,6 +21,10 @@ const CreateJob = () => {
    //    // console.log(imageList, addUpdateIndex)
    //    setImages(imageList)
    // }
+   const showError = () => {
+      toast.error("An error occured")
+      toast.clearWaitingQueue()
+   }
 
    useEffect(() => {
       document.querySelector('#totalCredits').value = 0
@@ -79,7 +86,7 @@ const CreateJob = () => {
                      num_partitions: dataForSubmit.numPartitions,
                      files: dataForSubmit.images
                   }
-               })
+               }).catch((error) => showError())
             }}
          >
             <div className="createJob_mainForm">

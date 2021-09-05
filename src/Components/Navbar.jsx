@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Button } from './Button'
 import { Link } from 'react-router-dom'
 import '../Styles/Navbar.css'
+import { useSelector } from 'react-redux'
 
 function Navbar() {
    const [click, setClick] = useState(false)
@@ -10,6 +11,11 @@ function Navbar() {
 
    const handleClick = () => setClick(!click)
    const closeMobileMenu = () => setClick(false)
+   const jwt = useSelector((state) => state.user.jwt)
+   let isJwt = false;
+   if(jwt != ''){
+      isJwt = true;
+   }
 
    const showButton = () => {
       if (window.innerWidth <= 960) {
@@ -107,7 +113,7 @@ function Navbar() {
                   </Link>
                </li>
 
-               <li>
+                <li>
                   <Link
                      to="/login"
                      className="nav-links-mobile"
@@ -127,12 +133,12 @@ function Navbar() {
                   </Link>
                </li>
             </ul>
-            {button && (
+            {button && !isJwt ? (
                <Button buttonStyle="btn--outline" to="/login">
                   Login
                </Button>
-            )}
-            {button && (
+            ): <div></div>}
+            {button && !isJwt ? (
                <Button
                   buttonStyle="btn--primary"
                   buttonSize="btn--small"
@@ -140,7 +146,7 @@ function Navbar() {
                >
                   Sign Up
                </Button>
-            )}
+            ) : <div></div>}
          </div>
       </nav>
    )
