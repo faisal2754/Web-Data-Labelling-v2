@@ -18,6 +18,7 @@ import { Provider } from 'react-redux'
 
 const httpLink = new HttpLink({ uri:  'https://data-labelling-server.herokuapp.com/graphql'});
 
+
 const authMiddleware = new ApolloLink((operation, forward) => {
    operation.setContext(({ headers = {} }) => ({
       headers: {
@@ -40,6 +41,7 @@ ReactDOM.render(
    <React.StrictMode>
       <ApolloProvider client={client}>
          <Provider store={store}>
+         
             <App />
          </Provider>
       </ApolloProvider>

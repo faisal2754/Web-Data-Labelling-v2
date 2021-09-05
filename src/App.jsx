@@ -13,11 +13,20 @@ import AboutUs from './Pages/Dashboard/AboutUs'
 import Support from './Pages/Dashboard/Support'
 import LabelJob from './Pages/LabelJob'
 import React from 'react'
-
+import Cookies from 'js-cookie'
+import { useDispatch } from 'react-redux'
+import { updateJWT } from './redux/user'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import HowToFind from './Pages/HowToFind'
 
 const App = () => {
+
+   const dispatch = useDispatch();
+
+   if(Cookies.get('jwt') != null){
+      dispatch(updateJWT(Cookies.get('jwt')))
+   }
+
    return (
       <Router>
          <Switch>

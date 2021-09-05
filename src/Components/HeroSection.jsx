@@ -2,8 +2,15 @@ import React from 'react'
 import { Button } from './Button'
 import '../Styles/HeroSection.css'
 import '../App.css'
+import { useSelector } from 'react-redux'
 
 function HeroSection() {
+   const jwt = useSelector((state) => state.user.jwt)
+   let isJwt = false;
+   if(jwt != ''){
+      isJwt = true;
+   }
+
    return (
       <div className="hero-container">
          <video src="./videos/header-hero.mp4" autoPlay loop muted />
@@ -12,6 +19,7 @@ function HeroSection() {
             Market Place for ML
          </h1>
          <p>Sign up now to start your labelling journey</p>
+         {isJwt ? <div></div> :
          <div className="hero-btns">
             <Button
                className="btns"
@@ -29,7 +37,8 @@ function HeroSection() {
             >
                Find Job
             </Button>
-         </div>
+         </div> 
+         }
       </div>
    )
 }
