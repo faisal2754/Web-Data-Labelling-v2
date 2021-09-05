@@ -18,6 +18,8 @@ import { useDispatch } from 'react-redux'
 import { updateJWT } from './redux/user'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import HowToFind from './Pages/HowToFind'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
 
@@ -29,6 +31,7 @@ const App = () => {
 
    return (
       <Router>
+      <ToastContainer limit={1}/>
          <Switch>
             <Route path="/" exact component={Home} />
             <Route

@@ -7,6 +7,7 @@ import { EmailOutlined } from '@material-ui/icons'
 import Cookies from 'js-cookie'
 import { useDispatch } from 'react-redux'
 import { updateEmail, updateJWT, updateUsername } from '../redux/user'
+import { toast } from 'react-toastify'
 
 const Login = () => {
    const [userEmail, setUserEmail] = useState('')
@@ -28,6 +29,12 @@ const Login = () => {
       return <Redirect to="/dashboard" />
    }
 
+   if (error) {
+      toast.error("An error occured")
+      toast.clearWaitingQueue(); //Prevents duplicates of the toast from coming up
+   }
+   
+
    return (
       <div class="login_container">
          <div class="forms-container">
@@ -41,9 +48,8 @@ const Login = () => {
                         email: userEmail,
                         password: password
                      }
-                  })
+                  }).catch((error) => console.log(error))
                }}
-               //    class="sign-in-form"
             >
                <Link to="/">
                   <img
