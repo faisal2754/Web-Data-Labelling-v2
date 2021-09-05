@@ -11,14 +11,20 @@ export const SidebarData = [
       className: 'dash--nav-text'
    },
    {
-      title: 'My Jobs',
-      path: '/dashboard/my-jobs',
+      title: 'Profile',
+      path: '/dashboard/profile',
+      icon: <IoIcons.IoMdPerson />,
+      className: 'dash--nav-text'
+   },
+   {
+      title: 'Accepted Jobs',
+      path: '/dashboard/accepted-jobs',
       icon: <IoIcons.IoIosPaper />,
       className: 'dash--nav-text'
    },
    {
-      title: 'Settings',
-      path: '/dashboard/settings',
+      title: 'Created Jobs',
+      path: '/dashboard/created-jobs',
       icon: <FaIcons.FaCartPlus />,
       className: 'dash--nav-text'
    },
@@ -26,12 +32,6 @@ export const SidebarData = [
       title: 'About Us',
       path: '/dashboard/about-us',
       icon: <IoIcons.IoMdPeople />,
-      className: 'dash--nav-text'
-   },
-   {
-      title: 'Profile',
-      path: '/dashboard/profile',
-      icon: <IoIcons.IoMdPerson />,
       className: 'dash--nav-text'
    },
    {

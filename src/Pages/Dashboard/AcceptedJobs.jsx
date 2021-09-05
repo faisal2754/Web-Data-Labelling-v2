@@ -5,7 +5,7 @@ import { useQuery } from '@apollo/client'
 import Modal from '../../Components/Modal'
 import CardItem from '../../Components/CardItem'
 
-function MyJobs() {
+function AcceptedJobs() {
    // const { loading, error, data } = useQuery(GET_ME)
    const { loading, error, data } = useQuery(GET_ACCEPTED_JOBS)
    const [showModal, setShowModal] = useState(false)
@@ -33,9 +33,8 @@ function MyJobs() {
    return (
       <div>
          <DashboardSidebar />
-
-         <div className="myJobs">
-            <h1>Here are my Jobs</h1>
+         <div className="accepted-jobs">
+            <h1>Accepted Jobs</h1>
             {loading ? <h1>Loading</h1> : 'Done'}
             {jobs.map((job) => {
                return (
@@ -76,4 +75,4 @@ function MyJobs() {
    )
 }
 
-export default MyJobs
+export default AcceptedJobs
