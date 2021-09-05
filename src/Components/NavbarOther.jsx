@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Button } from './Button'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import '../Styles/Navbar_other.css'
 
 function NavbarOther() {
@@ -9,6 +10,12 @@ function NavbarOther() {
 
    const handleClick = () => setClick(!click)
    const closeMobileMenu = () => setClick(false)
+
+   const jwt = useSelector((state) => state.user.jwt)
+   let isJwt = false;
+   if(jwt != ''){
+      isJwt = true;
+   }
 
    const showButton = () => {
       if (window.innerWidth <= 960) {
@@ -78,7 +85,7 @@ function NavbarOther() {
                      Find A Job
                   </Link>
                </li>
-
+               
                <li>
                   <Link
                      to="/login"
@@ -87,8 +94,7 @@ function NavbarOther() {
                   >
                      Login
                   </Link>
-               </li>
-
+               </li>         
                <li>
                   <Link
                      to="/register"
@@ -98,13 +104,16 @@ function NavbarOther() {
                      Sign Up
                   </Link>
                </li>
+            
             </ul>
-            {button && (
+            
+            {button && !isJwt ? (
+               
                <Button buttonStyle="btn--outline" to="/login">
                   Login
                </Button>
-            )}
-            {button && (
+            ) : <div></div>}
+            {button && !isJwt ? (
                <Button
                   buttonStyle="btn--primary"
                   buttonSize="btn--small"
@@ -112,7 +121,7 @@ function NavbarOther() {
                >
                   Sign Up
                </Button>
-            )}
+            ) : <div></div>}
          </div>
       </nav>
    )
