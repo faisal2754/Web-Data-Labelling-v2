@@ -10,7 +10,7 @@ import { Redirect } from 'react-router-dom'
 
 const CreateJob = () => {
    const [labels, setLabels] = useState([])
-   const [createjob, { loading, error, data }] = useMutation(CREATE_JOB)
+   const [createJob, { loading, error, data }] = useMutation(CREATE_JOB)
    const [currentTotal, setCurrentTotal] = useState(0)
    const [images, setImages] = useState([])
    // const onChange = (imageList, addUpdateIndex) => {
@@ -18,7 +18,6 @@ const CreateJob = () => {
    //    // console.log(imageList, addUpdateIndex)
    //    setImages(imageList)
    // }
-   
 
    useEffect(() => {
       document.querySelector('#totalCredits').value = 0
@@ -34,7 +33,6 @@ const CreateJob = () => {
       setImages()
       let myfiles = e.target.files
 
-      console.log(myfiles)
    }
 
    const Calculate = (e) => {
@@ -53,7 +51,7 @@ const CreateJob = () => {
       <div className="createJob_page">
          <form
             encType="multipart/form-data"
-            onSubmit={async (e) => {
+            onSubmit={(e) => {
                e.preventDefault()
                // console.log(e.target.files)
                const dataForSubmit = {
@@ -70,15 +68,16 @@ const CreateJob = () => {
                      document.querySelector('#imgPerSection').value
                   )
                }
-               // console.log(dataForSubmit.images)
-               await createjob({
+
+               console.log(dataForSubmit)
+               createJob({
                   variables: {
                      title: dataForSubmit.jobTitle,
                      description: dataForSubmit.jobDescription,
                      credits: dataForSubmit.totalCreditsCost,
                      labels: dataForSubmit.labels,
                      num_partitions: dataForSubmit.numPartitions,
-                     files: images
+                     files: dataForSubmit.images
                   }
                })
             }}

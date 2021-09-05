@@ -13,7 +13,6 @@ function MyJobs() {
    let jobs = []
    if (data) {
       jobs = data.acceptedJobs
-      console.log(jobs.preview_images)
    }
    if (error) {
       console.log(error)
@@ -22,7 +21,6 @@ function MyJobs() {
    const openModal = (currentId) => {
       setShowModal((prev) => !prev)
       for (let i = 0; i < jobs.length; i++) {
-         console.log(jobs)
          if (jobs[i].job_id !== currentId) {
             document.getElementById(jobs[i].job_id).style.display = 'none'
          } else {
@@ -36,7 +34,6 @@ function MyJobs() {
 
          <div className="myJobs">
             <h1>Here are my Jobs</h1>
-            {loading ? <h1>Loading</h1> : 'Done'}
             {jobs.map((job) => {
                return (
                   <div className="viewJob__modal">
@@ -48,29 +45,34 @@ function MyJobs() {
                         uploader={job.job_owner.username}
                         title={job.title}
                         showModal={showModal}
+                        buttonLabel="Do Job"
                         setShowModal={setShowModal}
                      />
                   </div>
                )
             })}
-            <div className="viewJob__row">
-               {jobs.map((job) => {
-                  return (
-                     <div
-                        className="viewJob__cardItem"
-                        onClick={(e) => openModal(job.job_id)}
-                     >
-                        <CardItem
-                           // id={job.job_id.concat('card')}
-                           // src={job.preview_images[0]}
-                           // src={job.preview_images}
-                           text={job.description}
-                           credits={job.credits}
-                        />
-                     </div>
-                  )
-               })}
-            </div>
+            {loading ? (
+               <h1>Loading</h1>
+            ) : (
+               <div className="viewJob__row">
+                  {jobs.map((job) => {
+                     return (
+                        <div
+                           className="viewJob__cardItem"
+                           onClick={(e) => openModal(job.job_id)}
+                        >
+                           <CardItem
+                              // id={job.job_id.concat('card')}
+                              // src={job.preview_images[0]}
+                              // src={job.preview_images}
+                              text={job.description}
+                              credits={job.credits}
+                           />
+                        </div>
+                     )
+                  })}
+               </div>
+            )}
          </div>
       </div>
    )

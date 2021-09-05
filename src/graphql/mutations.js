@@ -10,7 +10,7 @@ const REGISTER_USER = gql`
    }
 `
 const CREATE_JOB = gql`
-   mutation createJob(
+   mutation CreateJob(
       $title: String!
       $description: String!
       $credits: Int!
@@ -34,7 +34,9 @@ const CREATE_JOB = gql`
 `
 
 const LOGIN_USER = gql`
-   mutation Login($email: String!, $password: String!) {
+   mutation Login(
+      $email: String!,
+    $password: String!) {
       login(email: $email, password: $password) {
          username
          email

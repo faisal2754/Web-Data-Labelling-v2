@@ -9,8 +9,6 @@ import { GET_ME } from '../../graphql/queries'
 export const Dashboard = (props) => {
    const { loading, error, data } = useQuery(GET_ME)
 
-   if (data) console.log(data)
-   if (error) console.log(error)
 
    return (
       <div>

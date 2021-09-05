@@ -74,7 +74,6 @@ const Register = () => {
                      value={username}
                      onChange={(e) => {
                         setUsername(e.target.value)
-                        console.log(e)
                      }}
                      id="username"
                      placeholder="Username"
