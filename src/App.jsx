@@ -7,8 +7,8 @@ import Home from './Pages/Home'
 import HowTo from './Pages/HowTo'
 import ViewJob from './Pages/ViewJob'
 import Profile from './Pages/Dashboard/Profile'
-import Settings from './Pages/Dashboard/Settings'
-import MyJobs from './Pages/Dashboard/MyJobs'
+import CreatedJobs from './Pages/Dashboard/CreatedJobs'
+import AcceptedJobs from './Pages/Dashboard/AcceptedJobs'
 import AboutUs from './Pages/Dashboard/AboutUs'
 import Support from './Pages/Dashboard/Support'
 import LabelJob from './Pages/LabelJob'
@@ -33,9 +33,17 @@ const App = () => {
             <Route path="/register" exact component={Register} />
             <Route path="/how-to" exact component={HowTo} />
             <Route path="/how-to-find" exact component={HowToFind} />
-            <Route path="/dashboard/settings" exact component={Settings} />
+            <Route
+               path="/dashboard/created-jobs"
+               exact
+               component={CreatedJobs}
+            />
             <Route path="/dashboard/profile" exact component={Profile} />
-            <Route path="/dashboard/my-jobs" exact component={MyJobs} />
+            <Route
+               path="/dashboard/accepted-jobs"
+               exact
+               component={AcceptedJobs}
+            />
             <Route path="/dashboard/about-us" exact component={AboutUs} />
             <Route path="/dashboard/support" exact component={Support} />
             <Route path="/label-job" exact component={LabelJob} />
