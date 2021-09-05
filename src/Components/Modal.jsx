@@ -2,10 +2,12 @@ import React, { useRef, useEffect, useCallback } from 'react'
 import { useSpring, animated } from 'react-spring'
 import styled from 'styled-components'
 import { MdClose } from 'react-icons/md'
-import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet'
 import '../Styles/Modal.css'
 import { useSelector } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import { useMutation } from '@apollo/client'
+import { ACCEPT_JOB } from '../graphql/mutations'
+import Cookies from 'js-cookie'
 
 const Background = styled.div`
    z-index: 1;
@@ -79,6 +81,7 @@ export const Modal = ({
    title
 }) => {
    const jwt = useSelector((state) => state.user.jwt)
+   const jwt1 = Cookies.get('jwt')
 
    const modalRef = useRef()
 
@@ -112,8 +115,13 @@ export const Modal = ({
    }, [keyPress])
 
    const checkLogin = () => {
-      if (jwt == '') {
+      if (!jwt1) {
+         console.log('Hello')
+         // needs to send user to the login page as they can't accept a job without logging in.
          return <Redirect to="/login" />
+      } else {
+         console.log('Bye bye')
+         // needs to use accept job mutation to add the job to users accepted jobs
       }
    }
 
@@ -142,7 +150,7 @@ export const Modal = ({
 
                         <button
                            className="modal__acceptJob"
-                           onClick={() => checkLogin()}
+                           onClick={(e) => checkLogin()}
                         >
                            Accept Job
                         </button>

@@ -49,4 +49,20 @@ const ACCEPT_JOB = gql`
    }
 `
 
-export { REGISTER_USER, LOGIN_USER, CREATE_JOB, ACCEPT_JOB }
+const SAVE_STATE = gql`
+   mutation SaveState(
+      $image_ids: [ID]!
+      $labels: [String]!
+      $partition_id: ID
+      $is_complete: Boolean
+   ) {
+      saveState(
+         image_ids: $image_ids
+         labels: $labels
+         partition_id: $partition_id
+         is_complete: $is_complete
+      )
+   }
+`
+
+export { REGISTER_USER, LOGIN_USER, CREATE_JOB, ACCEPT_JOB, SAVE_STATE }

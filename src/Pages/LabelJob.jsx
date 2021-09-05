@@ -4,7 +4,8 @@ import ImageSlider from '../Components/ImageSlider'
 import NavbarOther from '../Components/NavbarOther'
 import '../Styles/LabelJob.css'
 import { GET_LABEL_JOB_INFO, GET_SAVED_STATE } from '../graphql/queries.js'
-import { useQuery } from '@apollo/client'
+import { SAVE_STATE } from '../graphql/mutations'
+import { useQuery, useMutation } from '@apollo/client'
 import { nanoid } from 'nanoid'
 import { Button } from '../Components/Button'
 import { useEffect } from 'react'
@@ -24,6 +25,7 @@ function LabelJob() {
       }
    }
 
+   let is_complete = false
    const checkCompletion = () => {
       console.log(
          'slides length = ' +
@@ -36,6 +38,7 @@ function LabelJob() {
          Object.keys(assignedLabels).length != 0
       ) {
          document.getElementById('submitButton').style.display = 'inline-block'
+         is_complete = true
       } else {
          document.getElementById('submitButton').style.display = 'none'
       }
@@ -58,6 +61,11 @@ function LabelJob() {
          partition_id
       }
    })
+
+   const [
+      submitJob,
+      { data: submitJobData, loading: submitJobLoading, error: submitJobError }
+   ] = useMutation(SAVE_STATE)
 
    useEffect(() => {
       if (restoredData) {
@@ -116,9 +124,21 @@ function LabelJob() {
       checkCompletion()
    }
 
+   console.log(Object.keys(assignedLabels).map((id) => Number(id)))
+   console.log(Object.values(assignedLabels))
+   let arrayThing = ['hello', 'yes', 'bro']
+   console.log(arrayThing)
+   console.log(partition_id)
+
    const saveState = () => {
-      const imageIds = Object.keys(assignedLabels)
-      const labels = Object.values(assignedLabels)
+      submitJob({
+         variables: {
+            image_ids: Object.keys(assignedLabels).map((id) => Number(id)),
+            labels: Object.values(assignedLabels),
+            partition_id: partition_id,
+            is_complete: is_complete
+         }
+      })
    }
 
    return (
