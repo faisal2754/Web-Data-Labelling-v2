@@ -3,8 +3,9 @@ import { useSpring, animated } from 'react-spring'
 import styled from 'styled-components'
 import { MdClose } from 'react-icons/md'
 import '../Styles/Modal.css'
+// import { Link, Redirect, useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { Redirect } from 'react-router-dom'
+import { Link, Redirect,useHistory } from 'react-router-dom'
 import { useMutation } from '@apollo/client'
 import { ACCEPT_JOB } from '../graphql/mutations'
 import Cookies from 'js-cookie'
@@ -75,14 +76,17 @@ export const Modal = ({
    showModal,
    setShowModal,
    src,
+   destination,
    text,
    uploader,
    credits,
-   title
+   title,
+   buttonLabel
 }) => {
+   const history=useHistory()
    const jwt = useSelector((state) => state.user.jwt)
    const jwt1 = Cookies.get('jwt')
-
+   // var buttonPressed=false
    const modalRef = useRef()
 
    const animation = useSpring({
@@ -92,7 +96,7 @@ export const Modal = ({
       opacity: showModal ? 1 : 0,
       transform: showModal ? `translateY(0%)` : `translateY(-100%)`
    })
-
+   const [AcceptJob, { loading, error, data }] = useMutation(ACCEPT_JOB)
    const closeModal = (e) => {
       if (modalRef.current === e.target) {
          setShowModal(false)
@@ -103,7 +107,6 @@ export const Modal = ({
       (e) => {
          if (e.key === 'Escape' && showModal) {
             setShowModal(false)
-            console.log('I pressed')
          }
       },
       [setShowModal, showModal]
@@ -114,16 +117,27 @@ export const Modal = ({
       return () => document.removeEventListener('keydown', keyPress)
    }, [keyPress])
 
-   const checkLogin = () => {
-      if (!jwt1) {
-         console.log('Hello')
-         // needs to send user to the login page as they can't accept a job without logging in.
-         return <Redirect to="/login" />
-      } else {
-         console.log('Bye bye')
-         // needs to use accept job mutation to add the job to users accepted jobs
+   //This checks their login on page load
+   if (!jwt1) {
+      destination = '/login'
+   }
+
+   const acceptJob = () => {
+      AcceptJob({
+         variables: {
+            job_id: id
+         }
+      })
+      
+      if(data){
+         console.log(data)
+         history.push("/dashboard")
       }
    }
+   // if(buttonPressed){
+   //    console.log("HELLO AGAIN")
+   //    return <Redirect to="/login" />
+   // }
 
    return (
       <div id={id}>
@@ -147,13 +161,14 @@ export const Modal = ({
                            Description: <br></br>
                            {text}
                         </div>
-
-                        <button
-                           className="modal__acceptJob"
-                           onClick={(e) => checkLogin()}
-                        >
-                           Accept Job
-                        </button>
+                        <Link to={destination}>
+                           <button
+                              className="modal__acceptJob"
+                              onClick={acceptJob}
+                           >
+                              {buttonLabel}
+                           </button>
+                        </Link>
                      </ModalContent>
                      <CloseModalButton
                         aria-label="Close modal"

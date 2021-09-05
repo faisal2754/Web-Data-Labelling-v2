@@ -1,9 +1,7 @@
 import React from 'react'
 import '../../Styles/UserProfile.css'
-import Footer from '../../Components/Footer'
 import UserDetails from '../../Components/UserDetails'
 import UserProfile from '../../Components/UserProfileCard'
-import NavbarOther from '../../Components/NavbarOther'
 import DashboardSidebar from '../../Components/DashboardSidebar'
 import { useQuery } from '@apollo/client'
 import { GET_ME } from '../../graphql/queries'
@@ -12,6 +10,7 @@ export const Dashboard = (props) => {
    const { loading, error, data } = useQuery(GET_ME)
 
    if (data) console.log(data)
+   if (error) console.log(error)
 
    return (
       <div>

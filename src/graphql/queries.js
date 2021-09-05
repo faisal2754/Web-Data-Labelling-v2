@@ -43,6 +43,7 @@ const GET_ACCEPTED_JOBS = gql`
      }
      title
      credits
+     job_id
      description
      preview_images
    }
