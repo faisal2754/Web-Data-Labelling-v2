@@ -30,7 +30,9 @@ const Login = () => {
    }
 
    if (error) {
-      toast.error("An error occured")
+      toast.error("An error occured", {
+         position: toast.POSITION.BOTTOM_CENTER
+       })
       toast.clearWaitingQueue(); //Prevents duplicates of the toast from coming up
    }
    
