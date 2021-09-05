@@ -6,7 +6,7 @@ function CreatedJobs() {
       <div>
          <DashboardSidebar />
          <div className="created-jobs">
-            <h1>Created Jobs</h1>
+            <h1>View your Created Jobs</h1>
          </div>
       </div>
    )

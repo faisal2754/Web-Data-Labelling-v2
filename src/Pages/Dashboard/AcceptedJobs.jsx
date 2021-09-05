@@ -34,7 +34,7 @@ function AcceptedJobs() {
       <div>
          <DashboardSidebar />
          <div className="accepted-jobs">
-            <h1>Accepted Jobs</h1>
+            <h1>View your Accepted Jobs</h1>
             {loading ? <h1>Loading</h1> : 'Done'}
             {jobs.map((job) => {
                return (
