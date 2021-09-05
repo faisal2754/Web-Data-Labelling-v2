@@ -5,7 +5,7 @@ import { MdClose } from 'react-icons/md'
 import '../Styles/Modal.css'
 // import { Link, Redirect, useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { Link, Redirect,useHistory } from 'react-router-dom'
+import { Link, Redirect, useHistory } from 'react-router-dom'
 import { useMutation } from '@apollo/client'
 import { ACCEPT_JOB } from '../graphql/mutations'
 import Cookies from 'js-cookie'
@@ -45,7 +45,6 @@ const ModalImg = styled.img`
 const ModalContent = styled.div`
    display: flex;
    flex-direction: column;
-   // justify-content: center;
    align-items: center;
    line-height: 1.8;
    color: #141414;
@@ -83,7 +82,7 @@ export const Modal = ({
    title,
    buttonLabel
 }) => {
-   const history=useHistory()
+   const history = useHistory()
    const jwt = useSelector((state) => state.user.jwt)
    const jwt1 = Cookies.get('jwt')
    // var buttonPressed=false
@@ -123,16 +122,18 @@ export const Modal = ({
    }
 
    const acceptJob = () => {
-      AcceptJob({
-         variables: {
-            job_id: id
-         }
-      })
-      
-      if(data){
-         console.log(data)
-         history.push("/dashboard")
+      if (!jwt) {
+      } else {
+         AcceptJob({
+            variables: {
+               job_id: id
+            }
+         }).catch((error) => console.log(error))
+         history.push('/dashboard/my-jobs')
       }
+      // if (data) {
+      //    console.log(data)
+      // }
    }
    // if(buttonPressed){
    //    console.log("HELLO AGAIN")
