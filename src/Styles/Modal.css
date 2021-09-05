@@ -24,4 +24,7 @@
    font-size: x-large;
    position: absolute;
    bottom: 5%;
+   padding-left: auto;
+   padding-right: auto;
 }
+

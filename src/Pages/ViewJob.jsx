@@ -13,7 +13,6 @@ import { GET_JOBS } from '../graphql/queries'
 import { useQuery } from '@apollo/client'
 import { useSelector } from 'react-redux'
 
-
 function ViewJob() {
    const jwt = useSelector((state) => state.user.jwt)
 
@@ -63,6 +62,7 @@ function ViewJob() {
                      title={job.title}
                      showModal={showModal}
                      setShowModal={setShowModal}
+                     buttonLabel={'Accept Job'}
                      // uploader={job.jobOwner}
                      // src={job.preview_images}
                   />
