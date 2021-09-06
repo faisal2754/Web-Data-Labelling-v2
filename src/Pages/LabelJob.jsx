@@ -125,9 +125,6 @@ function LabelJob() {
 
    console.log(Object.keys(assignedLabels).map((id) => Number(id)))
    console.log(Object.values(assignedLabels))
-   let arrayThing = ['hello', 'yes', 'bro']
-   console.log(arrayThing)
-   console.log(partition_id)
 
    const saveState = () => {
       submitJob({
@@ -145,25 +142,6 @@ function LabelJob() {
          <NavbarOther />
 
          <div className="label-job-page">
-            <div className="submitSection">
-               <Button
-                  className="btns"
-                  buttonStyle="btn--outline"
-                  buttonSize="btn--large"
-                  onClick={saveState}
-               >
-                  Save
-               </Button>
-               <Button
-                  id="submitButton"
-                  className="btns"
-                  buttonStyle="btn--primary"
-                  buttonSize="btn--large"
-                  onClick={saveState}
-               >
-                  Submit
-               </Button>
-            </div>
             <div className="label-job-form">
                <div className="image-section">
                   <h2>{title}</h2>
@@ -174,32 +152,53 @@ function LabelJob() {
                      />
                   </div>
                </div>
-               <div className="label-section">
-                  <div className="labels-container">
-                     <h2>Labels</h2>
-                     <div className="radio-toolbar">
-                        {labels.map((label) => (
-                           <>
-                              <input
-                                 id={label}
-                                 type="radio"
-                                 value={label}
-                                 // key={nanoid()}
-                                 name="label"
-                                 onClick={(e) => assignLabel(e.target.value)}
-                              />{' '}
-                              <label>{label}</label>
-                           </>
-                        ))}
-                        <input
-                           id="other"
-                           type="radio"
-                           value="other"
-                           name="label"
-                           onClick={(e) => assignLabel(e.target.value)}
-                        />{' '}
-                        Other
+               <div className="label-save">
+                  <div className="label-section">
+                     <div className="labels-container">
+                        <h2>Labels</h2>
+                        <div className="radio-toolbar">
+                           {labels.map((label) => (
+                              <>
+                                 <input
+                                    id={label}
+                                    type="radio"
+                                    value={label}
+                                    // key={nanoid()}
+                                    name="label"
+                                    onClick={(e) => assignLabel(e.target.value)}
+                                 />{' '}
+                                 <label>{label}</label>
+                              </>
+                           ))}
+                           <input
+                              id="other"
+                              type="radio"
+                              value="other"
+                              name="label"
+                              onClick={(e) => assignLabel(e.target.value)}
+                           />{' '}
+                           Other
+                        </div>
                      </div>
+                  </div>
+                  <div className="submitSection">
+                     <Button
+                        className="btns"
+                        buttonStyle="btn--outline"
+                        buttonSize="btn--large"
+                        onClick={saveState}
+                     >
+                        Save
+                     </Button>
+                     <Button
+                        id="submitButton"
+                        className="btns"
+                        buttonStyle="btn--primary"
+                        buttonSize="btn--large"
+                        onClick={saveState}
+                     >
+                        Submit
+                     </Button>
                   </div>
                </div>
             </div>

@@ -16,6 +16,12 @@
    flex-direction: column;
 }
 
+.label-save {
+   align-items: center;
+   display: flex;
+   flex-direction: column;
+}
+
 .image-section {
    display: flex;
    width: 50rem;
@@ -47,7 +53,14 @@
    display: flex;
    flex-direction: column;
    justify-content: space-evenly;
-   width: 15%;
+   width: 15rem;
    height: 20rem;
    align-self: center;
+   margin-top: 10rem;
+}
+
+.submitSection {
+   display: flex;
+   align-items: center;
+   margin-top: 4rem;
 }
