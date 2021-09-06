@@ -31,19 +31,7 @@ function AcceptedJobs() {
    }
    return (
       <div>
-         <DashboardSidebar />
-         <div className="acceptedJobs__header">
-            <video src="../videos/gradient.mp4" autoPlay loop muted />
-            <h1>View your Accepted Jobs</h1>
-         </div>
-         <div className="acceptedJobs__Loading">
-            <h1>
-               <b>
-                  {loading ? <h1>Loading</h1> : 'Pick A Job To Start Labeling'}{' '}
-               </b>
-            </h1>
-         </div>
-         <div>
+         <div className="acceptJobs__Modal">
             {jobs.map((job) => {
                return (
                   <div className="acceptJobs__modal">
@@ -62,6 +50,21 @@ function AcceptedJobs() {
                   </div>
                )
             })}
+         </div>
+
+         <DashboardSidebar />
+         <div className="acceptedJobs__header">
+            <video src="../videos/header-hero.mp4" autoPlay loop muted />
+            <h1>View your Accepted Jobs</h1>
+         </div>
+         <div className="acceptedJobs__Loading">
+            <h1>
+               <b>
+                  {loading ? <h1>Loading</h1> : 'Pick A Job To Start Labeling'}{' '}
+               </b>
+            </h1>
+         </div>
+         <div>
             {loading ? (
                <h1>Loading</h1>
             ) : (

@@ -4,6 +4,7 @@ import { GET_CREATED_JOBS } from '../../graphql/queries'
 import { useQuery } from '@apollo/client'
 import Modal from '../../Components/Modal'
 import CardItem from '../../Components/CardItem'
+import '../../Styles/CreatedJobs.css'
 
 function CreatedJobs() {
    const { loading, error, data } = useQuery(GET_CREATED_JOBS)
@@ -31,44 +32,66 @@ function CreatedJobs() {
    }
    return (
       <div>
-         <DashboardSidebar />
-         <div className="created-jobs">
-            <h1>View your Created Jobs</h1>
-            {loading ? <h1>Loading</h1> : 'These Are The Current Jobs You Own'}
+         <div className="createdJobs__Modal">
             {jobs.map((job) => {
                return (
-                  <div className="viewJob__modal">
+                  <div className="createdJobs__modal">
                      <Modal
                         id={job.job_id}
                         // src={job.preview_images[0]}
+                        src="../images/purple_gradient.jpg"
                         text={job.description}
                         credits={job.credits}
                         uploader={job.job_owner.username}
                         title={job.title}
                         showModal={showModal}
+                        buttonLabel="Do Job"
                         setShowModal={setShowModal}
                      />
                   </div>
                )
             })}
-            <div className="viewJob__row">
-               {jobs.map((job) => {
-                  return (
-                     <div
-                        className="viewJob__cardItem"
-                        onClick={(e) => openModal(job.job_id)}
-                     >
-                        <CardItem
-                           // id={job.job_id.concat('card')}
-                           // src={job.preview_images[0]}
-                           // src={job.preview_images}
-                           text={job.description}
-                           credits={job.credits}
-                        />
-                     </div>
-                  )
-               })}
-            </div>
+         </div>
+
+         <DashboardSidebar />
+         <div className="createdJobs__header">
+            <video src="../videos/header-hero.mp4" autoPlay loop muted />
+            <h1>View your Created Jobs</h1>
+         </div>
+         <div className="createdJobs__Loading">
+            <h1>
+               <b>
+                  {loading ? (
+                     <h1>Loading</h1>
+                  ) : (
+                     'These Are The Jobs You Currently Own'
+                  )}
+               </b>
+            </h1>
+         </div>
+         <div>
+            {loading ? (
+               <h1>Loading</h1>
+            ) : (
+               <div className="createdJobs__row">
+                  {jobs.map((job) => {
+                     return (
+                        <div
+                           className="createdJobs__cardItem"
+                           onClick={(e) => openModal(job.job_id)}
+                        >
+                           <CardItem
+                              // id={job.job_id.concat('card')}
+                              // src={job.preview_images[0]}
+                              src="../images/purple_gradient.jpg"
+                              text={job.description}
+                              credits={job.credits}
+                           />
+                        </div>
+                     )
+                  })}
+               </div>
+            )}
          </div>
       </div>
    )
