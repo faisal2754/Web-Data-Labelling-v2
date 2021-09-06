@@ -13,6 +13,11 @@ The larger PBI of creating the UI/UX to our site was broken up into the followin
 - Styling all pages and their elements
 - Adding extra UI/UX elements to enhance user experience (eg. animations, speeding up website)
 
+The larger PBI of adding user accounts and functionality to our site was broken up into the following smaller PBI's:
+- Create User Accounts and Authentication
+- Display and Edit Profile information
+
+
 
 ## Daily Scrum Meeting 17th August 2021 11:00am (Tuesday)
 
