@@ -18,8 +18,8 @@ function HeroSection() {
             Crowd Sourced <br /> Data Labelling <br />
             Market Place for ML
          </h1>
-
-         <p>Sign up now to start your labelling journey</p>
+         {!isJwt ? <p></p> : <p>Create Or Find a Job Now</p>}
+         {isJwt ? <p></p> : <p>Sign up now to start your labelling journey</p>}
          {isJwt ? (
             <div></div>
          ) : (
@@ -31,6 +31,28 @@ function HeroSection() {
                   to="/register"
                >
                   Sign Up
+               </Button>
+               <Button
+                  className="btns"
+                  buttonStyle="btn-hover"
+                  buttonSize="btn--large"
+                  to="/view-job"
+               >
+                  Find Job
+               </Button>
+            </div>
+         )}
+         {!isJwt ? (
+            <div></div>
+         ) : (
+            <div className="hero-btns" style={{ paddingLeft: '7%' }}>
+               <Button
+                  className="btns"
+                  buttonStyle="btn--outline"
+                  buttonSize="btn--large"
+                  to="/create-job"
+               >
+                  Create Job
                </Button>
                <Button
                   className="btns"
