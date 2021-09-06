@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux'
 import { Link, Redirect, useHistory } from 'react-router-dom'
 import { useMutation } from '@apollo/client'
 import { ACCEPT_JOB } from '../graphql/mutations'
+import { GET_ACCEPTED_JOBS } from '../graphql/queries'
 import Cookies from 'js-cookie'
 
 const Background = styled.div`
@@ -127,9 +128,10 @@ export const Modal = ({
          AcceptJob({
             variables: {
                job_id: id
-            }
+            },
+            refetchQueries: [{ query: GET_ACCEPTED_JOBS }]
          }).catch((error) => console.log(error))
-         history.push('/dashboard/my-jobs')
+         history.push('/dashboard/accepted-jobs')
       }
       // if (data) {
       //    console.log(data)
