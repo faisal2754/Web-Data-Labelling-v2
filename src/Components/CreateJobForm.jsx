@@ -10,7 +10,6 @@ import { Redirect } from 'react-router-dom'
 import { typeFromAST } from 'graphql'
 import { toast } from 'react-toastify'
 
-
 const CreateJob = () => {
    const [labels, setLabels] = useState([])
    const [createjob, { loading, error, data }] = useMutation(CREATE_JOB)
@@ -22,7 +21,7 @@ const CreateJob = () => {
    //    setImages(imageList)
    // }
    const showError = () => {
-      toast.error("An error occured")
+      toast.error('An error occured')
       toast.clearWaitingQueue()
    }
 
@@ -31,7 +30,7 @@ const CreateJob = () => {
    }, [])
 
    if (data) {
-      return <Redirect to="/view-job" />
+      return <Redirect to="/dashboard/CreatedJobs" />
    }
    if (error) {
       console.log(error)
