@@ -3,6 +3,7 @@ import '../Styles/Register.css'
 import { Link, Redirect } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'
 import { useMutation } from '@apollo/client'
+import { toast } from 'react-toastify'
 import { REGISTER_USER } from '../graphql/mutations'
 import Cookies from 'js-cookie'
 
@@ -21,22 +22,23 @@ const Register = () => {
       e.preventDefault()
       if (!username) {
          isValid = false
-         setErrorMsg('Please enter username')
+         toast.error('Please enter a username')
       } else if (!email) {
          isValid = false
-         setErrorMsg('Please enter email')
+         toast.error('Please enter an email address')
       } else if (!/\S+@\S+\.\S+/.test(email)) {
          isValid = false
-         setErrorMsg('Please enter valid email')
+         toast.error('Please enter a valid email')
       } else if (!password) {
          isValid = false
-         setErrorMsg('Please enter password')
+         toast.error('Please enter a password')
+
       } else if (password.length < 5) {
          isValid = false
-         setErrorMsg('Password must be at least 5 characters')
+         toast.error('Password must be at least 5 characters')
       } else if (password != confirmPass) {
          isValid = false
-         setErrorMsg('Passwords do not match!')
+         toast.error('Passwords do not match')
       }
       if (isValid) {
          registerMutation({
