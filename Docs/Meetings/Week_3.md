@@ -119,3 +119,86 @@ Tristan Bester (Backend):
 - Tasks for the day: Work on job labelling process
 - Impediments: None
 
+## Daily Scrum Meeting 2nd September 2021 11:00am (Thursday)
+
+Aharon Cohen (Frontend):
+- Tasks completed yesterday: Worked on dashboard
+- Tasks for the day: Continue dashboard
+- Impediments: AAA lab, lectures, OS lab
+
+Langiwe Mwale (Frontend):
+- Tasks completed Yesterday: added accepted jobs
+- Task for the Day: fix modal bug and link to do job page
+- Impediments: cant fix error made by someone else
+
+Ioanni Balassis: (Frontend):
+- Tasks completed yesterday: worked on frontend
+- Tasks for the day: view job acept jobs
+- Impediments: behind on uni
+
+Jonathan Nunes (Frontend):
+- Tasks completed yesterday: Worked on labelling process
+- Tasks for the day: Continue labelling process
+- Impediments: Other university work
+
+Faisal Saleem (Backend):
+- Tasks completed yesterday: Process labelling state from backend
+- Tasks for the day: Work on job labelling process
+- Impediments: None
+
+Ghulame Mujtaba Arbi (Frontend):
+- Tasks completed yesterday: Completed post job side of how-to page
+- Tasks for the day: Work on tabs to switch between how-to pages
+- Impediments: Time, work on other projects outside of uni work
+
+Tristan Bester (Backend):
+- Tasks completed yesterday: Process labels received from frontend
+- Tasks for the day: Work on job labelling process
+- Impediments: None
+
+Sipho Sikakane (Scrum master/Frontend):
+- Tasks completed yesterday: Complete Authentication across the site
+- Tasks for the day: Make sure users can’t access unauthorized areas
+- Impediments: Time
+
+## Daily Scrum Meeting 3rd September 2021 11:00am (Friday)
+
+Aharon Cohen (Frontend):
+- Tasks completed yesterday: Worked on dashboard
+- Tasks for the day: Continue dashboard
+- Impediments: AAA lab, lectures, OS lab
+
+Langiwe Mwale (Frontend):
+- Tasks completed Yesterday: added accepted jobs
+- Task for the Day: fix modal bug and link to do job page
+- Impediments: cant fix error made by someone else
+
+Ioanni Balassis: (Frontend):
+- Tasks completed yesterday: worked on frontend
+- Tasks for the day: view job acept jobs
+- Impediments: behind on uni
+
+Jonathan Nunes (Frontend):
+- Tasks completed yesterday: Worked on labelling process
+- Tasks for the day: Continue labelling process
+- Impediments: Other university work
+
+Faisal Saleem (Backend):
+- Tasks completed yesterday: Process labelling state from backend
+- Tasks for the day: Work on job labelling process
+- Impediments: None
+
+Ghulame Mujtaba Arbi (Frontend):
+- Tasks completed yesterday: Completed post job side of how-to page
+- Tasks for the day: Work on tabs to switch between how-to pages
+- Impediments: Time, work on other projects outside of uni work
+
+Tristan Bester (Backend):
+- Tasks completed yesterday: Process labels received from frontend
+- Tasks for the day: Work on job labelling process
+- Impediments: None
+
+Sipho Sikakane (Scrum master/Frontend):
+- Tasks completed yesterday: Complete Authentication across the site
+- Tasks for the day: Make sure users can’t access unauthorized areas
+- Impediments: Time
