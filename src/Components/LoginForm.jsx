@@ -26,16 +26,15 @@ const Login = () => {
       dispatch(updateUsername(data.login.username))
       dispatch(updateJWT(data.login.jwt))
       console.log(data)
-      return <Redirect to="/dashboard" />
+      return <Redirect to="/dashboard/profile" />
    }
 
    if (error) {
-      toast.error("An error occured", {
+      toast.error('An error occured', {
          position: toast.POSITION.BOTTOM_CENTER
-       })
-      toast.clearWaitingQueue(); //Prevents duplicates of the toast from coming up
+      })
+      toast.clearWaitingQueue() //Prevents duplicates of the toast from coming up
    }
-   
 
    return (
       <div class="login_container">
