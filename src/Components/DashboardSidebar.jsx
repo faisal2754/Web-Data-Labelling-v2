@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux'
 
 const DashboardSidebar = () => {
    const jwt = useSelector((state) => state.user.jwt)
-   const [sidebar, setSidebar] = useState(true)
+   const [sidebar, setSidebar] = useState(false)
 
    const showSidebar = () => setSidebar(!sidebar)
 

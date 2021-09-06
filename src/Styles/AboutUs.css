@@ -1,8 +1,109 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
-
-* {
-   margin: 0px;
-   padding: 0px;
-   box-sizing: border-box;
-   font-family: 'Poppins', sans-serif;
+.aboutUs{
+   margin-left: 10%;
+   margin-right: 10%;
+   margin-top: 5%;
+   padding-left: 10%;
+   padding-right: 10%;
+   background:white;
+   border-radius: 0.625rem;
+   margin-bottom: 10%;
+   box-shadow: 3px 3px 10px 0 #21003d;
+   
 }
+
+.aboutUs__header > h1 {
+   color: black;
+   font-size: 70px;
+   text-shadow: 3px 0px 10px #9733ee;
+   margin-top: -50px;
+   padding-top: 10%;
+   font-family: 'Montserrat', sans-serif;
+   padding: 5%;
+   height: 25vh;
+   width: 100%;
+   justify-content: center;
+   box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0);
+   flex-direction: column;
+   flex-direction: center;
+   text-align: center;
+}
+
+.aboutUs__desc{
+padding-left: 5%;
+padding-right: 5%;
+text-align: center;
+padding-bottom: 5%;
+color:black;
+font-size: large;
+
+}
+
+.aboutUs__body > h1 {
+   color:black;
+   font-size: 30px;
+   text-shadow: 3px 0px 10px #9733ee;
+   padding-top: 10%;
+   font-family: 'Montserrat', sans-serif;
+   padding: 5%;
+   height: 25vh;
+   width: 100%;
+   justify-content: center;
+   box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0);
+   flex-direction: column;
+   flex-direction: center;
+   text-align: center;
+   text-decoration: underline;
+}
+
+.aboutUs__bodyDesc{
+   margin-top: -10%;
+   padding-left: 5%;
+   padding-right: 5%;
+   text-align: center;
+   padding-bottom: 5%;
+   color:black;
+   font-size: large;
+}
+
+
+.aboutUs__team{
+   
+   padding-left: 5%;
+   padding-right: 5%;
+   text-align: center;
+   padding-bottom: 5%;
+   color:black;
+   font-size: large;
+   /* text-shadow: 3px 0px 10px grey; */
+}
+
+.aboutUs__team > h1 {
+   color:black;
+   font-size: 30px;
+   text-shadow: 3px 0px 10px #9733ee;
+   padding-top: 10%;
+   font-family: 'Montserrat', sans-serif;
+   padding: 5%;
+   height: 25vh;
+   width: 100%;
+   justify-content: center;
+   box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0);
+   flex-direction: column;
+   flex-direction: center;
+   text-align: center;
+   text-decoration: underline;
+}
+
+.aboutUs__teamDesc{
+   margin-top: -10%;
+   padding-left: 5%;
+   padding-right: 5%;
+   text-align: center;
+   padding-bottom: 5%;
+   color:black;
+   font-size: large;
+}
+
+
+
+
