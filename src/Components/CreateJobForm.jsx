@@ -30,7 +30,7 @@ const CreateJob = () => {
    }, [])
 
    if (data) {
-      return <Redirect to="/dashboard/CreatedJobs" />
+      return <Redirect to="/dashboard/created-jobs" />
    }
    if (error) {
       console.log(error)
