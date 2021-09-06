@@ -12,10 +12,10 @@ function NavbarOther() {
    const closeMobileMenu = () => setClick(false)
 
    const jwt = useSelector((state) => state.user.jwt)
-   let isJwt = false;
+   let isJwt = false
    // eslint-disable-next-line eqeqeq
-   if(jwt != ''){
-      isJwt = true;
+   if (jwt != '') {
+      isJwt = true
    }
 
    const showButton = () => {
@@ -47,16 +47,19 @@ function NavbarOther() {
                      Home
                   </Link>
                </li>
-               <li className="nav-item">
-                  <Link
-                     to="/dashboard"
-                     className="nav-links"
-                     onClick={closeMobileMenu}
-                  >
-                     Dashboard
-                  </Link>
-               </li>
-
+               {!isJwt ? (
+                  <li></li>
+               ) : (
+                  <li className="nav-item">
+                     <Link
+                        to="/dashboard"
+                        className="nav-links"
+                        onClick={closeMobileMenu}
+                     >
+                        Dashboard
+                     </Link>
+                  </li>
+               )}
                <li className="nav-item">
                   <Link
                      to="/how-to"
@@ -66,17 +69,19 @@ function NavbarOther() {
                      How it Works
                   </Link>
                </li>
-
-               <li className="nav-item">
-                  <Link
-                     to="/create-job"
-                     className="nav-links"
-                     onClick={closeMobileMenu}
-                  >
-                     Create Job
-                  </Link>
-               </li>
-
+               {!isJwt ? (
+                  <li></li>
+               ) : (
+                  <li className="nav-item">
+                     <Link
+                        to="/create-job"
+                        className="nav-links"
+                        onClick={closeMobileMenu}
+                     >
+                        Create Job
+                     </Link>
+                  </li>
+               )}
                <li className="nav-item">
                   <Link
                      to="/view-job"
@@ -86,7 +91,7 @@ function NavbarOther() {
                      Find A Job
                   </Link>
                </li>
-               
+
                <li>
                   <Link
                      to="/login"
@@ -95,7 +100,7 @@ function NavbarOther() {
                   >
                      Login
                   </Link>
-               </li>         
+               </li>
                <li>
                   <Link
                      to="/register"
@@ -105,15 +110,22 @@ function NavbarOther() {
                      Sign Up
                   </Link>
                </li>
-            
             </ul>
-            
+
             {button && !isJwt ? (
-               
                <Button buttonStyle="btn--outline" to="/login">
                   Login
                </Button>
-            ) : <div></div>}
+            ) : (
+               <div></div>
+            )}
+            {button && isJwt ? (
+               <Button buttonStyle="btn--outline" to="/login">
+                  Sign Out
+               </Button>
+            ) : (
+               <div></div>
+            )}
             {button && !isJwt ? (
                <Button
                   buttonStyle="btn--primary"
@@ -122,7 +134,9 @@ function NavbarOther() {
                >
                   Sign Up
                </Button>
-            ) : <div></div>}
+            ) : (
+               <div></div>
+            )}
          </div>
       </nav>
    )

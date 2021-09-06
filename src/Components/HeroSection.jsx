@@ -6,9 +6,9 @@ import { useSelector } from 'react-redux'
 
 function HeroSection() {
    const jwt = useSelector((state) => state.user.jwt)
-   let isJwt = false;
-   if(jwt != ''){
-      isJwt = true;
+   let isJwt = false
+   if (jwt != '') {
+      isJwt = true
    }
 
    return (
@@ -18,27 +18,30 @@ function HeroSection() {
             Crowd Sourced <br /> Data Labelling <br />
             Market Place for ML
          </h1>
+
          <p>Sign up now to start your labelling journey</p>
-         {isJwt ? <div></div> :
-         <div className="hero-btns">
-            <Button
-               className="btns"
-               buttonStyle="btn--outline"
-               buttonSize="btn--large"
-               to="/register"
-            >
-               Sign Up
-            </Button>
-            <Button
-               className="btns"
-               buttonStyle="btn-hover"
-               buttonSize="btn--large"
-               to="/view-job"
-            >
-               Find Job
-            </Button>
-         </div> 
-         }
+         {isJwt ? (
+            <div></div>
+         ) : (
+            <div className="hero-btns">
+               <Button
+                  className="btns"
+                  buttonStyle="btn--outline"
+                  buttonSize="btn--large"
+                  to="/register"
+               >
+                  Sign Up
+               </Button>
+               <Button
+                  className="btns"
+                  buttonStyle="btn-hover"
+                  buttonSize="btn--large"
+                  to="/view-job"
+               >
+                  Find Job
+               </Button>
+            </div>
+         )}
       </div>
    )
 }

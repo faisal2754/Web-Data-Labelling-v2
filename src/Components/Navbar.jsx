@@ -12,9 +12,9 @@ function Navbar() {
    const handleClick = () => setClick(!click)
    const closeMobileMenu = () => setClick(false)
    const jwt = useSelector((state) => state.user.jwt)
-   let isJwt = false;
-   if(jwt != ''){
-      isJwt = true;
+   let isJwt = false
+   if (jwt != '') {
+      isJwt = true
    }
 
    const showButton = () => {
@@ -41,8 +41,7 @@ function Navbar() {
       }
    }
 
-   const changeNav = () => {
-   }
+   const changeNav = () => {}
 
    window.addEventListener('scroll', changeBackground)
 
@@ -63,16 +62,19 @@ function Navbar() {
                      Home
                   </Link>
                </li>
-               <li className="nav-item">
-                  <Link
-                     to="/dashboard"
-                     className="nav-links"
-                     onClick={closeMobileMenu}
-                  >
-                     Dashboard
-                  </Link>
-               </li>
-
+               {!isJwt ? (
+                  <li></li>
+               ) : (
+                  <li className="nav-item">
+                     <Link
+                        to="/dashboard"
+                        className="nav-links"
+                        onClick={closeMobileMenu}
+                     >
+                        Dashboard
+                     </Link>
+                  </li>
+               )}
                <li className="nav-item">
                   <Link
                      to="/how-to"
@@ -82,17 +84,19 @@ function Navbar() {
                      How it Works
                   </Link>
                </li>
-
-               <li className="nav-item">
-                  <Link
-                     to="/create-job"
-                     className="nav-links"
-                     onClick={closeMobileMenu}
-                  >
-                     Create Job
-                  </Link>
-               </li>
-
+               {!isJwt ? (
+                  <li></li>
+               ) : (
+                  <li className="nav-item">
+                     <Link
+                        to="/create-job"
+                        className="nav-links"
+                        onClick={closeMobileMenu}
+                     >
+                        Create Job
+                     </Link>
+                  </li>
+               )}
                <li className="nav-item">
                   <Link
                      to="/view-job"
@@ -102,18 +106,20 @@ function Navbar() {
                      Find A Job
                   </Link>
                </li>
-
-               <li className="nav-item">
-                  <Link
-                     to="/label-job"
-                     className="nav-links"
-                     onClick={closeMobileMenu}
-                  >
-                     Label Job
-                  </Link>
-               </li>
-
-                <li>
+               {!isJwt ? (
+                  <li></li>
+               ) : (
+                  <li className="nav-item">
+                     <Link
+                        to="/label-job"
+                        className="nav-links"
+                        onClick={closeMobileMenu}
+                     >
+                        Label Job
+                     </Link>
+                  </li>
+               )}
+               <li>
                   <Link
                      to="/login"
                      className="nav-links-mobile"
@@ -137,7 +143,16 @@ function Navbar() {
                <Button buttonStyle="btn--outline" to="/login">
                   Login
                </Button>
-            ): <div></div>}
+            ) : (
+               <div></div>
+            )}
+            {button && isJwt ? (
+               <Button buttonStyle="btn--outline" to="/login">
+                  Sign Out
+               </Button>
+            ) : (
+               <div></div>
+            )}
             {button && !isJwt ? (
                <Button
                   buttonStyle="btn--primary"
@@ -146,7 +161,9 @@ function Navbar() {
                >
                   Sign Up
                </Button>
-            ) : <div></div>}
+            ) : (
+               <div></div>
+            )}
          </div>
       </nav>
    )
