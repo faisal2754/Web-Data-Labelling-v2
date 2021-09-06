@@ -1,5 +1,8 @@
 # Week 1
 
+##Backlog Refinement Meeting
+
+
 ## Daily Scrum Meeting 17th August 2021 11:00am (Tuesday)
 
 Aharon Cohen (Frontend):
