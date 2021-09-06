@@ -6,8 +6,6 @@
     flex-direction: column;
 }
 
-
-
 .viewJob__banner{
     object-fit: cover;
     width: 100%;
@@ -23,9 +21,7 @@
     justify-content: center;
     box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0);
     flex-direction: column;
-    flex-direction: center;
-
-    
+    flex-direction: center;    
 }
 
 .viewJob__header> h1{

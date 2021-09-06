@@ -4,6 +4,7 @@ import { GET_ACCEPTED_JOBS } from '../../graphql/queries'
 import { useQuery } from '@apollo/client'
 import Modal from '../../Components/Modal'
 import CardItem from '../../Components/CardItem'
+import '../../Styles/AcceptedJobs.css'
 
 function AcceptedJobs() {
    // const { loading, error, data } = useQuery(GET_ME)
@@ -31,15 +32,25 @@ function AcceptedJobs() {
    return (
       <div>
          <DashboardSidebar />
-         <div className="accepted-jobs">
+         <div className="acceptedJobs__header">
+            <video src="../videos/gradient.mp4" autoPlay loop muted />
             <h1>View your Accepted Jobs</h1>
-            {loading ? <h1>Loading</h1> : 'Done'}
+         </div>
+         <div className="acceptedJobs__Loading">
+            <h1>
+               <b>
+                  {loading ? <h1>Loading</h1> : 'Pick A Job To Start Labeling'}{' '}
+               </b>
+            </h1>
+         </div>
+         <div>
             {jobs.map((job) => {
                return (
-                  <div className="viewJob__modal">
+                  <div className="acceptJobs__modal">
                      <Modal
                         id={job.job_id}
                         // src={job.preview_images[0]}
+                        src="../images/purple_gradient.jpg"
                         text={job.description}
                         credits={job.credits}
                         uploader={job.job_owner.username}
@@ -54,17 +65,17 @@ function AcceptedJobs() {
             {loading ? (
                <h1>Loading</h1>
             ) : (
-               <div className="viewJob__row">
+               <div className="acceptJob__row">
                   {jobs.map((job) => {
                      return (
                         <div
-                           className="viewJob__cardItem"
+                           className="acceptJob__cardItem"
                            onClick={(e) => openModal(job.job_id)}
                         >
                            <CardItem
                               // id={job.job_id.concat('card')}
                               // src={job.preview_images[0]}
-                              // src={job.preview_images}
+                              src="../images/purple_gradient.jpg"
                               text={job.description}
                               credits={job.credits}
                            />

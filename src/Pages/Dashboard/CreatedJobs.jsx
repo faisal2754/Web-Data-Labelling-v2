@@ -34,7 +34,7 @@ function CreatedJobs() {
          <DashboardSidebar />
          <div className="created-jobs">
             <h1>View your Created Jobs</h1>
-            {loading ? <h1>Loading</h1> : 'Done'}
+            {loading ? <h1>Loading</h1> : 'These Are The Current Jobs You Own'}
             {jobs.map((job) => {
                return (
                   <div className="viewJob__modal">
