@@ -19,25 +19,24 @@ import { updateJWT } from './redux/user'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import HowToFind from './Pages/HowToFind'
 import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css'
 
 const App = () => {
+   const dispatch = useDispatch()
 
-   const dispatch = useDispatch();
-
-   if(Cookies.get('jwt') != null){
+   if (Cookies.get('jwt') != null) {
       dispatch(updateJWT(Cookies.get('jwt')))
    }
 
    return (
       <Router>
-      <ToastContainer limit={1}/>
+         <ToastContainer limit={1} />
          <Switch>
             <Route path="/" exact component={Home} />
             <Route
                path="/dashboard"
                exact
-               component={() => <DashboardSidebar auhtorized={false} />}
+               component={() => <DashboardSidebar authorized={false} />}
             />
             <Route path="/create-job" exact component={CreateJob} />
             <Route path="/view-job" exact component={ViewJob} />
