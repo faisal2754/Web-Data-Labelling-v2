@@ -20,9 +20,7 @@ function ViewJob() {
    const { data } = useQuery(GET_JOBS)
 
    if (data) {
-      console.log(data)
       jobs = data.viewJobs
-      console.log(jobs.job_owner)
    }
 
    const [showModal, setShowModal] = useState(false)
@@ -57,6 +55,7 @@ function ViewJob() {
                      id={job.job_id}
                      src={job.preview_images[0]}
                      text={job.description}
+                     buttonLabel="Accept Job"
                      credits={job.credits}
                      uploader={job.job_owner.username}
                      title={job.title}

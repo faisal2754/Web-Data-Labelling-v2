@@ -3,8 +3,8 @@ import '../Styles/Register.css'
 import { Link, Redirect } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'
 import { useMutation } from '@apollo/client'
+import { toast } from 'react-toastify'
 import { REGISTER_USER } from '../graphql/mutations'
-import Cookies from 'js-cookie'
 
 const Register = () => {
    const [username, setUsername] = useState('')
@@ -16,43 +16,51 @@ const Register = () => {
    const [registerMutation, { data, loading, error }] =
       useMutation(REGISTER_USER)
 
-   const submitForm = (e) => {
+   const submitForm = async (e) => {
       let isValid = true
       e.preventDefault()
       if (!username) {
          isValid = false
-         setErrorMsg('Please enter username')
+         toast.error('Please enter a username')
       } else if (!email) {
          isValid = false
-         setErrorMsg('Please enter email')
+         toast.error('Please enter an email address')
       } else if (!/\S+@\S+\.\S+/.test(email)) {
          isValid = false
-         setErrorMsg('Please enter valid email')
+         toast.error('Please enter a valid email')
       } else if (!password) {
          isValid = false
-         setErrorMsg('Please enter password')
+         toast.error('Please enter a password')
+
       } else if (password.length < 5) {
          isValid = false
-         setErrorMsg('Password must be at least 5 characters')
+         toast.error('Password must be at least 5 characters')
       } else if (password != confirmPass) {
          isValid = false
-         setErrorMsg('Passwords do not match!')
+         toast.error('Passwords do not match')
       }
       if (isValid) {
-         registerMutation({
+         await registerMutation({
             variables: {
                username: username,
                email: email,
                password: password
             }
-         })
+         }).catch(()=>showError())
       }
    }
+const showError=()=>{
+   toast.error("Some error occured")
+
+}
 
    const history = useHistory()
 
    if (data) {
       return <Redirect to="/login" />
+   }
+   if(error){
+      showError()
    }
 
    return (
@@ -74,7 +82,6 @@ const Register = () => {
                      value={username}
                      onChange={(e) => {
                         setUsername(e.target.value)
-                        console.log(e)
                      }}
                      id="username"
                      placeholder="Username"

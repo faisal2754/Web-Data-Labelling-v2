@@ -42,7 +42,6 @@ function Navbar() {
    }
 
    const changeNav = () => {
-      console.log('BOYYY')
    }
 
    window.addEventListener('scroll', changeBackground)

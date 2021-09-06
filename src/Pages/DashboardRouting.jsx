@@ -18,7 +18,6 @@ import NavbarOther from '../Components/NavbarOther'
 const DashboardRouting = () => {
    const location = useLocation()
    const isOnDashboard = location.pathname.includes('/dashboard')
-   console.log(isOnDashboard)
    return (
       <Router>
          <NavbarOther />

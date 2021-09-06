@@ -29,9 +29,11 @@ input[type=number] {
 }
 
 .createJob_mainForm{
+   
+
     margin: 2rem;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     flex-flow: row wrap;
     align-content: flex-start;
     padding: 2rem ;

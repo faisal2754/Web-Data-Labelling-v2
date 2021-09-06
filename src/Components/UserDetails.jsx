@@ -7,7 +7,7 @@ const UserDetails = (props) => {
             <div className="card-header bg-white border-0">
                <div className="row align-items-center">
                   <div className="col-8">
-                     <h3 className="mb-0">My account</h3>
+                     <h3 className="mb-0">My Account</h3>
                   </div>
                   <div className="col-4 text-right">
                      <a
@@ -39,7 +39,7 @@ const UserDetails = (props) => {
                                  id="input-username"
                                  className="form-control form-control-alternative"
                                  placeholder={props.username}
-                                 defaultValue={props.username}
+                                 defaultValue=""
                               />
                            </div>
                         </div>
@@ -62,45 +62,13 @@ const UserDetails = (props) => {
                         </div>
                      </div>
                      <div className="row">
-                        <div className="col-lg-6">
-                           <div className="form-group focused">
-                              <label
-                                 className="form-control-label"
-                                 htmlFor="input-first-name"
-                              >
-                                 First name
-                              </label>
-                              <input
-                                 type="text"
-                                 id="input-first-name"
-                                 className="form-control form-control-alternative"
-                                 placeholder="First name"
-                                 defaultValue="Lucky"
-                              />
-                           </div>
-                        </div>
+                        
                         <div className="col-lg-6">
                            <div className="form-group focused">
                               <label
                                  className="form-control-label"
                                  htmlFor="input-last-name"
-                              >
-                                 Last name
-                              </label>
-                              <input
-                                 type="text"
-                                 id="input-last-name"
-                                 className="form-control form-control-alternative"
-                                 placeholder="Last name"
-                                 defaultValue="Jesse"
-                              />
-                           </div>
-                        </div>
-                        <div className="col-lg-6">
-                           <div className="form-group focused">
-                              <label
-                                 className="form-control-label"
-                                 htmlFor="input-last-name"
+                                 placeholder="Password"
                               >
                                  New Password
                               </label>
@@ -118,6 +86,7 @@ const UserDetails = (props) => {
                               <label
                                  className="form-control-label"
                                  htmlFor="input-last-name"
+                                 placeholder="Confirm Password"
                               >
                                  Confirm Password
                               </label>

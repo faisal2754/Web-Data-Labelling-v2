@@ -31,17 +31,11 @@ export const Dashboard = (props) => {
                <div className="container-fluid mt--7">
                   <div className="row">
                      {loading ? (
-                        <div>loading...</div>
+                        <h2>loading...</h2>
                      ) : (
                         <UserProfile
                            firstName={data.me.username}
-                           lastName="Doe"
-                           age="19"
-                           title="Solution Manager - Creative Tim Officer"
-                           education="University of Computer Science"
-                           about="Ryan — the name taken by Melbourne-raised, Brooklyn-based
-                        Nick Murphy — writes, performs and records all of his own
-                        music."
+                           
                         />
                      )}
                      {loading ? (

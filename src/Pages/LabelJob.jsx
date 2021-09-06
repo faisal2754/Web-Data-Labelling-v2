@@ -26,12 +26,7 @@ function LabelJob() {
 
    let is_complete = false
    const checkCompletion = () => {
-      console.log(
-         'slides length = ' +
-            slides.length +
-            ' assigned labels length = ' +
-            Object.keys(assignedLabels).length
-      )
+      
       if (
          Object.keys(assignedLabels).length + 1 >= slides.length &&
          Object.keys(assignedLabels).length != 0
