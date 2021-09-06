@@ -67,12 +67,13 @@ const CreateJob = () => {
       // console.log(images)
       form.append(
          'map',
-         JSON.stringify(
+         JSON
+            .stringify
             // images.map((image) => {
             //    const originalimgname = image.file.name
             //    return { originalimgname: ['variables.files.originalimgname'] }
             // })
-         )
+            ()
       )
       // images.forEach((img) => {
       //    const originalimgname = img.file.name
@@ -87,17 +88,18 @@ const CreateJob = () => {
       )
       console.log(res)
    }
- 
+
    const Calculate = (e) => {
       e.preventDefault()
       let currentCredits = document.querySelector('#credits').value
-      let currentLabellers = document.querySelector('#numLabellers').value
+      // let currentLabellers = document.querySelector('#numLabellers').value
       if (currentCredits === 0) return
-      if (currentLabellers < 0 || currentCredits < 0) {
-         alert('You cant have negative credits or labellers')
+      if (currentCredits <= 0 || currentCredits === '') {
+         toast.error('invalid number of credits')
+         toast.clearWaitingQueue()
          return
       }
-      let newTotal = currentCredits * currentLabellers
+      let newTotal = currentCredits
       setCurrentTotal(newTotal)
    }
    return (
@@ -115,13 +117,34 @@ const CreateJob = () => {
                   images: document.querySelector('#testimageup').files,
                   // images: images.map((image) => image.file),
                   totalCreditsCost: currentTotal,
-                  numLabellers: parseInt(
-                     document.querySelector('#numLabellers').value
-                  ),
+                  // numLabellers: parseInt(
+                  //    document.querySelector('#numLabellers').value
+                  // ),
                   numPartitions: parseInt(
                      document.querySelector('#imgPerSection').value
                   )
                }
+               if (dataForSubmit.jobTitle === '') {
+                  toast.error('Please enter a valid job title')
+                  // toast.clearWaitingQueue()
+                  return
+               }
+               if(dataForSubmit.jobDescription===''){
+                  toast.error('Please enter a valid job description')
+                  // toast.clearWaitingQueue()
+                  return
+               }
+               if(dataForSubmit.labels.length===0){
+                  toast.error('Please enter at least one label')
+                  // toast.clearWaitingQueue()
+                  return
+               }
+               if(dataForSubmit.images.length===0){
+                  toast.error('Please upload at least 1 image')
+                  // toast.clearWaitingQueue()
+                  return
+               }
+               if(dataForSubmit.labels.some)
 
                console.log(dataForSubmit)
                await createJob({
@@ -340,13 +363,13 @@ const CreateJob = () => {
                      // onChange={Calculate}
                      variant="outlined"
                   />
-                  <TextField
+                  {/* <TextField
                      id="numLabellers"
                      label="Number of Labellers"
                      type="number"
                      // onChange={Calculate}
                      variant="outlined"
-                  />
+                  /> */}
                   <TextField
                      id="imgPerSection"
                      label="Number of Partitions"
