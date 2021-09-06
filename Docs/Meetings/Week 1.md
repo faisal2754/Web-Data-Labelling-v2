@@ -6,7 +6,8 @@ The larger PBI of adding site functionality was broken up into the following sma
 - Create Jobs Functionality
 - View Jobs Functionality
 - Label Jobs Functionality
-These PBI's were also made to be our top priority and thus put at the top of our product backlog.
+- Create Job Partitioning System
+ /These PBI's were also made to be our top priority and thus put at the top of our product backlog.
 
 The larger PBI of creating the UI/UX to our site was broken up into the following smaller PBI's:
 - Creating all pages as well as their elements
