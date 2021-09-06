@@ -1,6 +1,17 @@
 # Week 1
 
-##Backlog Refinement Meeting
+## Backlog Refinement Meeting
+
+The larger PBI of adding site functionality was broken up into the following smaller PBI's:
+- Create Jobs Functionality
+- View Jobs Functionality
+- Label Jobs Functionality
+These PBI's were also made to be our top priority and thus put at the top of our product backlog.
+
+The larger PBI of creating the UI/UX to our site was broken up into the following smaller PBI's:
+- Creating all pages as well as their elements
+- Styling all pages and their elements
+- Adding extra UI/UX elements to enhance user experience (eg. animations, speeding up website)
 
 
 ## Daily Scrum Meeting 17th August 2021 11:00am (Tuesday)
