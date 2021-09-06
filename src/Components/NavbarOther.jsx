@@ -13,6 +13,7 @@ function NavbarOther() {
 
    const jwt = useSelector((state) => state.user.jwt)
    let isJwt = false;
+   // eslint-disable-next-line eqeqeq
    if(jwt != ''){
       isJwt = true;
    }
