@@ -31,7 +31,7 @@ const CreateJob = () => {
    }, [])
 
    if (data) {
-      return <Redirect to="/view-job" />
+      return <Redirect to="/dashboard/created-jobs" />
    }
    if (error) {
       console.log(error)
