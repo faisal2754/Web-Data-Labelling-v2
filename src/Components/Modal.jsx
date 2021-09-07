@@ -10,6 +10,7 @@ import { useMutation } from '@apollo/client'
 import { ACCEPT_JOB } from '../graphql/mutations'
 import { GET_ACCEPTED_JOBS } from '../graphql/queries'
 import Cookies from 'js-cookie'
+import { toast } from 'react-toastify'
 
 const Background = styled.div`
    z-index: 1;
@@ -130,17 +131,19 @@ export const Modal = ({
                job_id: id
             },
             refetchQueries: [{ query: GET_ACCEPTED_JOBS }]
-         }).catch((error) => console.log(error))
-         history.push('/dashboard/accepted-jobs')
+         })
+            .then(() => {
+               history.push('/dashboard/accepted-jobs')
+            })
+            .catch((error) => {
+               toast.error('You have already accepted this job', {
+                  position: toast.POSITION.BOTTOM_CENTER
+               })
+            })
+
+         toast.clearWaitingQueue() //Prevents duplicates of the toast from coming up
       }
-      // if (data) {
-      //    console.log(data)
-      // }
    }
-   // if(buttonPressed){
-   //    console.log("HELLO AGAIN")
-   //    return <Redirect to="/login" />
-   // }
 
    return (
       <div id={id}>
