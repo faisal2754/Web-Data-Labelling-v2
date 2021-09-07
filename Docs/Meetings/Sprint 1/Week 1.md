@@ -20,7 +20,14 @@ The larger PBI of adding user accounts and functionality to our site was broken 
 - Create User Accounts and Authentication
 - Display and Edit Profile information
 
-
+## Sprint Planning Meeting
+- Have a full skeleton of the site up and styled with correct color scheme and animations (Buttons and transitions etc)
+- Login and registration should be fully up and running , Meaning users should stay logged in as they visit other pages or leave the website page. Passwords should be encrypted.
+- Error handling should be efficient and look user friendly
+- Should be able to accept job from the view job page and have it show up in accepted job page(should not be able to accept job unless logged in , otherwise redirect)
+- Link backend and frontend with database queries/mutations (Important)
+- Certain pages should be locked to users unless they are logged in 
+- Job images should be separated according to the amount specified
 
 ## Daily Scrum Meeting 17th August 2021 11:00am (Tuesday)
 
