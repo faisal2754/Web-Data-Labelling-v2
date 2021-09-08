@@ -26,8 +26,8 @@ Faisal Saleem (Backend):
 - Impediments: None
 
 Ghulame Mujtaba Arbi (Frontend):
-- Tasks completed yesterday: Completed post job side of how-to page
-- Tasks for the day: Work on tabs to switch between how-to pages
+- Tasks completed yesterday: Completed how-to page theme design
+- Tasks for the day: Help out with uploading files
 - Impediments: Time, work on other projects outside of uni work
 
 Tristan Bester (Backend):

@@ -26,8 +26,8 @@ Faisal Saleem (Backend):
 - Impediments: None
 
 Ghulame Mujtaba Arbi (Frontend):
-- Tasks completed yesterday: Completed post job side of how-to page
-- Tasks for the day: Work on tabs to switch between how-to pages
+- Tasks completed yesterday: Continue working on tabs to switch between how-to pages
+- Tasks for the day: Complete work on tabs to switch between how-to pages
 - Impediments: Time, work on other projects outside of uni work
 
 Tristan Bester (Backend):
@@ -68,8 +68,8 @@ Faisal Saleem (Backend):
 - Impediments: None
 
 Ghulame Mujtaba Arbi (Frontend):
-- Tasks completed yesterday: Completed post job side of how-to page
-- Tasks for the day: Work on tabs to switch between how-to pages
+- Tasks completed yesterday: Completed work on tabs to switch between how-to pages
+- Tasks for the day: Change card design on how-to page
 - Impediments: Time, work on other projects outside of uni work
  
 Tristan Bester (Backend):
@@ -111,8 +111,8 @@ Faisal Saleem (Backend):
 - Impediments: None
 
 Ghulame Mujtaba Arbi (Frontend):
-- Tasks completed yesterday: Completed post job side of how-to page
-- Tasks for the day: Work on tabs to switch between how-to pages
+- Tasks completed yesterday: Changed card design on how to page
+- Tasks for the day: Fix up how-to page theme
 - Impediments: Time, work on other projects outside of uni work
  
 Tristan Bester (Backend):
@@ -153,8 +153,8 @@ Faisal Saleem (Backend):
 - Impediments: None
 
 Ghulame Mujtaba Arbi (Frontend):
-- Tasks completed yesterday: Completed post job side of how-to page
-- Tasks for the day: Work on tabs to switch between how-to pages
+- Tasks completed yesterday: Fixed up how-to page theme
+- Tasks for the day: Research how to optimize website loading time
 - Impediments: Time, work on other projects outside of uni work
 
 Tristan Bester (Backend):
@@ -195,8 +195,8 @@ Faisal Saleem (Backend):
 - Impediments: None
 
 Ghulame Mujtaba Arbi (Frontend):
-- Tasks completed yesterday: Completed post job side of how-to page
-- Tasks for the day: Work on tabs to switch between how-to pages
+- Tasks completed yesterday: Researched how to optimize website loading time
+- Tasks for the day: Help out with other website pages
 - Impediments: Time, work on other projects outside of uni work
 
 Tristan Bester (Backend):
