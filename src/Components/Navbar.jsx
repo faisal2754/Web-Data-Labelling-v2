@@ -3,6 +3,8 @@ import { Button } from './Button'
 import { Link } from 'react-router-dom'
 import '../Styles/Navbar.css'
 import { useSelector } from 'react-redux'
+import Cookies from 'js-cookie'
+import { ToastContainer, toast } from 'react-toastify';
 
 function Navbar() {
    const [click, setClick] = useState(false)
@@ -39,6 +41,11 @@ function Navbar() {
       } else {
          setNavbar(false)
       }
+   }
+   const deleteJWT=()=>{
+      Cookies.remove("jwt")//deletes the jwt token on signout 
+      window.location.reload()
+      // toast.warning("You have logged out")
    }
 
    const changeNav = () => {}
@@ -147,7 +154,7 @@ function Navbar() {
                <div></div>
             )}
             {button && isJwt ? (
-               <Button buttonStyle="btn--outline" to="/login">
+               <Button buttonStyle="btn--outline" onClick={deleteJWT} >
                   Sign Out
                </Button>
             ) : (
