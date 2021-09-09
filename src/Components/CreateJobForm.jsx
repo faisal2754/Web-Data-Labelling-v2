@@ -9,7 +9,7 @@ import { CREATE_JOB } from '../graphql/mutations'
 import { Redirect } from 'react-router-dom'
 import { toast } from 'react-toastify'
 const FormData = require('form-data')
-const axios = require('axios').default
+// const axios = require('axios').default
 
 const CreateJob = () => {
    const [labels, setLabels] = useState([])
@@ -82,11 +82,11 @@ const CreateJob = () => {
 
       // const headers = form.getHeaders()
       console.log(form)
-      const res = await axios.post(
-         'https://data-labelling-server.herokuapp.com/graphql',
-         form
-      )
-      console.log(res)
+      // const res = await axios.post(
+      //    'https://data-labelling-server.herokuapp.com/graphql',
+      //    form
+      // )
+      // console.log(res)
    }
 
    const Calculate = (e) => {
