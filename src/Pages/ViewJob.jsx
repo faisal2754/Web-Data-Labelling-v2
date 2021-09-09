@@ -17,7 +17,7 @@ function ViewJob() {
    const jwt = useSelector((state) => state.user.jwt)
 
    let jobs = []
-   const { data } = useQuery(GET_JOBS)
+   const { loading,error,data } = useQuery(GET_JOBS)
 
    if (data) {
       jobs = data.viewJobs
@@ -100,6 +100,8 @@ function ViewJob() {
          </div>
 
          <div className="viewJob__container">
+            {loading ? <h1>Loading</h1>:
+            
             <div className="viewJob__row">
                {jobs.map((job) => {
                   return (
@@ -117,7 +119,7 @@ function ViewJob() {
                      </div>
                   )
                })}
-            </div>
+            </div> }
          </div>
          <Footer />
       </div>

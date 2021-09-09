@@ -63,9 +63,9 @@ function AcceptedJobs() {
          </div>
          <div className="acceptedJobs__Loading">
             <h1>
-               <b>
+               
                   {loading ? <h1>Loading</h1> : 'Pick A Job To Start Labeling'}{' '}
-               </b>
+               
             </h1>
          </div>
          <div>
