@@ -46,7 +46,10 @@ function AcceptedJobs() {
                         showModal={showModal}
                         buttonLabel="Label Job"
                         setShowModal={setShowModal}
-                        destination="/label-job"
+                        destination={{
+                           pathname: '/label-job',
+                           currentID: job.job_id
+                        }}
                      />
                   </div>
                )

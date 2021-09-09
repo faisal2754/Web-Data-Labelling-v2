@@ -126,7 +126,7 @@ export const Modal = ({
    const acceptJob = () => {
       if (!jwt) {
       } else {
-         if (destination != '/label-job') {
+         if (destination.pathname != '/label-job') {
             AcceptJob({
                variables: {
                   job_id: id
