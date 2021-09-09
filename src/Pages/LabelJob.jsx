@@ -8,15 +8,18 @@ import { SAVE_STATE } from '../graphql/mutations'
 import { useQuery, useMutation } from '@apollo/client'
 import { Button } from '../Components/Button'
 import { useEffect } from 'react'
+import { current } from '@reduxjs/toolkit'
 
-function LabelJob() {
+function LabelJob(props) {
    const [index, setIndex] = useState()
    const [assignedLabels, setAssignedLabels] = useState({})
    const [slides, setSlides] = useState([])
+   const { currentID } = props.location
 
    const checkRadioButton = () => {
       if (slides[index]) {
          if (slides[index].image_id in assignedLabels) {
+            console.log(assignedLabels[slides[index].image_id])
             document.getElementById(
                assignedLabels[slides[index].image_id]
             ).checked = true
@@ -43,7 +46,7 @@ function LabelJob() {
 
    const { loading, error, data } = useQuery(GET_LABEL_JOB_INFO, {
       variables: {
-         job_id: 63
+         job_id: currentID
       }
    })
 
@@ -82,7 +85,6 @@ function LabelJob() {
    }, [restoredData, data])
 
    checkRadioButton()
-   console.log(assignedLabels)
 
    if (loading) return 'Loading...'
    if (error) return `Error! ${error.message}`
@@ -116,9 +118,6 @@ function LabelJob() {
       setAssignedLabels(temp)
       checkCompletion()
    }
-
-   console.log(Object.keys(assignedLabels).map((id) => Number(id)))
-   console.log(Object.values(assignedLabels))
 
    const saveState = () => {
       submitJob({
