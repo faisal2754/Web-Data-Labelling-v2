@@ -29,18 +29,19 @@ const Login = () => {
       return <Redirect to="/dashboard/profile" />
    }
 
-   if (error) {
-      toast.error('An error occured', {
-         position: toast.POSITION.BOTTOM_CENTER
-      })
-      toast.clearWaitingQueue() //Prevents duplicates of the toast from coming up
-   }
+   // if (error) {
+   //    console.log(error)
+   //    toast.error('An error occured', {
+   //       position: toast.POSITION.BOTTOM_CENTER
+   //    })
+   //    toast.clearWaitingQueue() //Prevents duplicates of the toast from coming up
+   // }
 
    return (
-      <div class="login_container">
-         <div class="forms-container">
+      <div className="login_container">
+         <div className="forms-container">
             <form
-               class="sign-in-form"
+               className="sign-in-form"
                // onSubmit={submitForm}
                onSubmit={async (e) => {
                   e.preventDefault()
@@ -49,7 +50,11 @@ const Login = () => {
                         email: userEmail,
                         password: password
                      }
-                  }).catch((error) => console.log(error))
+                  }).catch((error) =>
+                     toast.error(error.message, {
+                        position: toast.POSITION.BOTTOM_CENTER
+                     })
+                  )
                }}
             >
                <Link to="/">
@@ -59,9 +64,9 @@ const Login = () => {
                      src="./images/login_logo.png"
                   />
                </Link>
-               <h2 class="title">Sign in</h2>
-               <div class="input-field">
-                  <i class="fas fa-envelope icon"></i>
+               <h2 className="title">Sign in</h2>
+               <div className="input-field">
+                  <i className="fas fa-envelope icon"></i>
                   <input
                      type="text"
                      value={userEmail}
@@ -70,8 +75,8 @@ const Login = () => {
                      placeholder="Email"
                   />
                </div>
-               <div class="input-field">
-                  <i class="fas fa-lock icon"></i>
+               <div className="input-field">
+                  <i className="fas fa-lock icon"></i>
                   <input
                      type="password"
                      value={password}
@@ -81,27 +86,27 @@ const Login = () => {
                   />
                </div>
 
-               {/* <p class="forgot-pass">Forgot Password?</p> */}
+               {/* <p className="forgot-pass">Forgot Password?</p> */}
 
                <button type="submit" className="login_signInButton">
                   {loading ? 'Loading...' : 'LOGIN'}
                </button>
-               <p class="social-text">Or login with</p>
-               {/* <div class="social-media">
-                  <a href="#" class="social-icon">
-                     <i class="fab fa-facebook-f"></i>
+               <p className="social-text">Or login with</p>
+               {/* <div className="social-media">
+                  <a href="#" className="social-icon">
+                     <i className="fab fa-facebook-f"></i>
                   </a>
-                  <a href="#" class="social-icon">
-                     <i class="fab fa-twitter"></i>
+                  <a href="#" className="social-icon">
+                     <i className="fab fa-twitter"></i>
                   </a>
-                  <a href="#" class="social-icon">
-                     <i class="fab fa-google"></i>
+                  <a href="#" className="social-icon">
+                     <i className="fab fa-google"></i>
                   </a>
                </div> */}
 
-               <p class="other-text">
+               <p className="other-text">
                   Not a member?{' '}
-                  <a id="hover" class="underlineHover" href="/register">
+                  <a id="hover" className="underlineHover" href="/register">
                      Sign up now
                   </a>
                </p>

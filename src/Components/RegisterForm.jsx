@@ -3,7 +3,7 @@ import '../Styles/Register.css'
 import { Link, Redirect } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'
 import { useMutation } from '@apollo/client'
-import { toast } from 'react-toastify'
+import { ToastContainer,toast } from 'react-toastify'
 import { REGISTER_USER } from '../graphql/mutations'
 
 const Register = () => {
@@ -46,27 +46,31 @@ const Register = () => {
                email: email,
                password: password
             }
-         }).catch(()=>showError())
+         }).catch((error) =>{
+            if(error.message==="Unique constraint failed on the fields: (`email`)"){
+               toast.error("This email address already exists")
+               return
+            }
+            toast.error(error.message, {
+               position: toast.POSITION.BOTTOM_CENTER
+            })
+         }
+      )
       }
    }
-const showError=()=>{
-   toast.error("Some error occured")
 
-}
 
    const history = useHistory()
 
    if (data) {
       return <Redirect to="/login" />
    }
-   if(error){
-      showError()
-   }
+   
 
    return (
       <div className="register_container">
-         <div class="forms-container">
-            <form class="register-form" onSubmit={submitForm}>
+         <div className="forms-container">
+            <form className="register-form" onSubmit={submitForm}>
                <Link to="/">
                   <img
                      className="login_logo"
@@ -74,9 +78,9 @@ const showError=()=>{
                      src="./images/login_logo.png"
                   />
                </Link>
-               <h2 class="title">Register</h2>
-               <div class="input-field">
-                  <i class="fas fa-user icon"></i>
+               <h2 className="title">Register</h2>
+               <div className="input-field">
+                  <i className="fas fa-user icon"></i>
                   <input
                      type="text"
                      value={username}
@@ -88,8 +92,8 @@ const showError=()=>{
                      name="username"
                   />
                </div>
-               <div class="input-field">
-                  <i class="fas fa-envelope icon"></i>
+               <div className="input-field">
+                  <i className="fas fa-envelope icon"></i>
                   <input
                      type="text"
                      value={email}
@@ -99,8 +103,8 @@ const showError=()=>{
                      name="email"
                   />
                </div>
-               <div class="input-field">
-                  <i class="fas fa-lock icon"></i>
+               <div className="input-field">
+                  <i className="fas fa-lock icon"></i>
                   <input
                      type="password"
                      value={password}
@@ -110,8 +114,8 @@ const showError=()=>{
                      name="password"
                   />
                </div>
-               <div class="input-field">
-                  <i class="fas fa-lock icon"></i>
+               <div className="input-field">
+                  <i className="fas fa-lock icon"></i>
                   <input
                      type="password"
                      value={confirmPass}
@@ -126,21 +130,21 @@ const showError=()=>{
                   {loading ? 'registering...' : 'Sign Up'}
                </button>
 
-               {/* <p class="social-text">Or sign up with</p> */}
-               {/* <div class="social-media">
-                  <a href="#" class="social-icon">
-                     <i class="fab fa-facebook-f"></i>
+               {/* <p className="social-text">Or sign up with</p> */}
+               {/* <div className="social-media">
+                  <a href="#" className="social-icon">
+                     <i className="fab fa-facebook-f"></i>
                   </a>
-                  <a href="#" class="social-icon">
-                     <i class="fab fa-twitter"></i>
+                  <a href="#" className="social-icon">
+                     <i className="fab fa-twitter"></i>
                   </a>
-                  <a href="#" class="social-icon">
-                     <i class="fab fa-google"></i>
+                  <a href="#" className="social-icon">
+                     <i className="fab fa-google"></i>
                   </a>
                </div> */}
-               <p class="other-text">
+               <p className="other-text">
                   Already a member?{' '}
-                  <a id="hover" class="underlineHover" href="/login">
+                  <a id="hover" className="underlineHover" href="/login">
                      Login now
                   </a>
                </p>
