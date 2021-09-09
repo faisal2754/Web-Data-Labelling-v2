@@ -3,6 +3,7 @@ import { Button } from './Button'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import '../Styles/Navbar_other.css'
+import Cookies from 'js-cookie'
 
 function NavbarOther() {
    const [click, setClick] = useState(false)
@@ -16,6 +17,12 @@ function NavbarOther() {
    // eslint-disable-next-line eqeqeq
    if (jwt != '') {
       isJwt = true
+   }
+
+   const deleteJWT = () => {
+      Cookies.remove('jwt') //deletes the jwt token on signout
+      window.location.reload()
+      // toast.warning("You have logged out")
    }
 
    const showButton = () => {
@@ -120,7 +127,7 @@ function NavbarOther() {
                <div></div>
             )}
             {button && isJwt ? (
-               <Button buttonStyle="btn--outline" to="/login">
+               <Button buttonStyle="btn--outline" onClick={deleteJWT}>
                   Sign Out
                </Button>
             ) : (
