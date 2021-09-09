@@ -46,12 +46,12 @@ const Register = () => {
                email: email,
                password: password
             }
-         }).catch(()=>showError())
+         }).catch((error)=>showError(error))
       }
    }
-const showError=()=>{
+const showError=(error)=>{
    toast.error("Some error occured")
-
+   console.log(error)
 }
 
    const history = useHistory()
