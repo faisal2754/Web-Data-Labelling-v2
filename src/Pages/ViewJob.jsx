@@ -62,6 +62,7 @@ function ViewJob() {
                      showModal={showModal}
                      setShowModal={setShowModal}
                      buttonLabel={'Accept Job'}
+                     destination="/dashboard/accepted-jobs"
                      // uploader={job.jobOwner}
                      // src={job.preview_images}
                   />

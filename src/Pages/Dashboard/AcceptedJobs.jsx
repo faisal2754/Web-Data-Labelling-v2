@@ -44,8 +44,9 @@ function AcceptedJobs() {
                         uploader={job.job_owner.username}
                         title={job.title}
                         showModal={showModal}
-                        buttonLabel="Do Job"
+                        buttonLabel="Label Job"
                         setShowModal={setShowModal}
+                        destination="/label-job"
                      />
                   </div>
                )

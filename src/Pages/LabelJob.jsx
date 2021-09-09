@@ -26,7 +26,6 @@ function LabelJob() {
 
    let is_complete = false
    const checkCompletion = () => {
-      
       if (
          Object.keys(assignedLabels).length + 1 >= slides.length &&
          Object.keys(assignedLabels).length != 0
@@ -44,7 +43,7 @@ function LabelJob() {
 
    const { loading, error, data } = useQuery(GET_LABEL_JOB_INFO, {
       variables: {
-         job_id: 33
+         job_id: 63
       }
    })
 

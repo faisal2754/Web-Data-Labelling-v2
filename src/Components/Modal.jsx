@@ -126,22 +126,24 @@ export const Modal = ({
    const acceptJob = () => {
       if (!jwt) {
       } else {
-         AcceptJob({
-            variables: {
-               job_id: id
-            },
-            refetchQueries: [{ query: GET_ACCEPTED_JOBS }]
-         })
-            .then(() => {
-               history.push('/dashboard/accepted-jobs')
+         if (destination != '/label-job') {
+            AcceptJob({
+               variables: {
+                  job_id: id
+               },
+               refetchQueries: [{ query: GET_ACCEPTED_JOBS }]
             })
-            .catch((error) => {
-               toast.error('You have already accepted this job', {
-                  position: toast.POSITION.BOTTOM_CENTER
+               .then(() => {
+                  history.push('/dashboard/accepted-jobs')
                })
-            })
+               .catch((error) => {
+                  toast.error('You have already accepted this job', {
+                     position: toast.POSITION.BOTTOM_CENTER
+                  })
+               })
 
-         toast.clearWaitingQueue() //Prevents duplicates of the toast from coming up
+            toast.clearWaitingQueue() //Prevents duplicates of the toast from coming up
+         }
       }
    }
 
