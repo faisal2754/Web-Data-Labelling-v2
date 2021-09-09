@@ -11,9 +11,9 @@ input[type='number'] {
 }
 
 .createJob_page {
-   @media only screen and (min-width: 600px) {
+   /* @media only screen and (min-width: 600px) {
       padding: 5rem;
-   }
+   } */
    background-image: linear-gradient(135deg, #81ffef 10%, #f067b4 100%);
 }
 
@@ -54,7 +54,6 @@ input[type='number'] {
 .createJob_imageSection {
    min-height: 500px;
    max-height: 500px;
-
    border-radius: 30px;
    padding: 1rem;
    margin-left: 2rem;
