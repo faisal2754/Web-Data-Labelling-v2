@@ -5,6 +5,7 @@ import { useQuery } from '@apollo/client'
 import Modal from '../../Components/Modal'
 import CardItem from '../../Components/CardItem'
 import '../../Styles/AcceptedJobs.css'
+import ReactLoading from 'react-loading'
 
 function AcceptedJobs() {
    // const { loading, error, data } = useQuery(GET_ME)
@@ -62,15 +63,18 @@ function AcceptedJobs() {
             <h1>View your Accepted Jobs</h1>
          </div>
          <div className="acceptedJobs__Loading">
-            <h1>
-               
-                  {loading ? <h1>Loading</h1> : 'Pick A Job To Start Labeling'}{' '}
-               
-            </h1>
+            <h1>Pick A Job To Start Labeling</h1>
          </div>
-         <div>
+         <div className="acceptJob__Section">
             {loading ? (
-               <h1>Loading</h1>
+               <ReactLoading
+                  type={'spin'}
+                  color={'black'}
+                  height={'10%'}
+                  color={"#ffffff"}
+                  width={'10%'}
+                  className="acceptedJob__loadingSpin"
+               />
             ) : (
                <div className="acceptJob__row">
                   {jobs.map((job) => {

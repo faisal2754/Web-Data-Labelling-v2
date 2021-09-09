@@ -12,12 +12,13 @@ import '../Styles/ViewJob.css'
 import { GET_JOBS } from '../graphql/queries'
 import { useQuery } from '@apollo/client'
 import { useSelector } from 'react-redux'
+import ReactLoading from 'react-loading'
 
 function ViewJob() {
    const jwt = useSelector((state) => state.user.jwt)
 
    let jobs = []
-   const { loading,error,data } = useQuery(GET_JOBS)
+   const { loading, error, data } = useQuery(GET_JOBS)
 
    if (data) {
       jobs = data.viewJobs
@@ -100,26 +101,35 @@ function ViewJob() {
          </div>
 
          <div className="viewJob__container">
-            {loading ? <h1>Loading</h1>:
-            
-            <div className="viewJob__row">
-               {jobs.map((job) => {
-                  return (
-                     <div
-                        className="viewJob__cardItem"
-                        onClick={(e) => openModal(job.job_id)}
-                     >
-                        <CardItem
-                           src={job.preview_images[0]}
-                           text={job.title}
-                           credits={job.credits}
-                           // src={job.preview_images}
-                           // id={job.job_id.concat('card')}
-                        />
-                     </div>
-                  )
-               })}
-            </div> }
+            {loading ? (
+               <ReactLoading
+                  type={'spin'}
+                  color={'black'}
+                  height={'10%'}
+                  color={'#000000'}
+                  width={'10%'}
+                  className="acceptedJob__loadingSpin"
+               />
+            ) : (
+               <div className="viewJob__row">
+                  {jobs.map((job) => {
+                     return (
+                        <div
+                           className="viewJob__cardItem"
+                           onClick={(e) => openModal(job.job_id)}
+                        >
+                           <CardItem
+                              src={job.preview_images[0]}
+                              text={job.title}
+                              credits={job.credits}
+                              // src={job.preview_images}
+                              // id={job.job_id.concat('card')}
+                           />
+                        </div>
+                     )
+                  })}
+               </div>
+            )}
          </div>
          <Footer />
       </div>
