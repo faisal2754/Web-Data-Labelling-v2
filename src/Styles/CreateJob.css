@@ -35,6 +35,9 @@ input[type="file"] {
    padding: 2rem;
    background: rgb(255, 255, 255);
 }
+#labelImageUp{
+   margin-left:3.5rem
+}
 
 .createJob_jobInfo h3 {
    margin-top: -3.5rem;

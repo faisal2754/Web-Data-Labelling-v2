@@ -165,7 +165,7 @@ const updateImageCounter=(e)=>{
          >
             <div className="createJob_mainForm">
                <div className="createJob_jobInfo">
-                  <h3>Job Info:</h3>
+                  <h3 style={{padding:"1rem"}}>Job Info:</h3>
                   <div className="textField">
                      <TextField
                         id="title"
@@ -286,8 +286,9 @@ const updateImageCounter=(e)=>{
                   />
                   <label htmlFor="testimageup" 
                   className="btn-hover" 
+                  id="labelImageUp"
                   onChange={updateImageCounter}
-                  style={{padding:"1rem"}}>Upload Images</label>
+                  style={{padding:"1rem" }}>Upload Images</label>
                   <h2>Total Images : {totalImages}</h2>
                   {/* <ImageUploading
                      multiple
@@ -403,7 +404,7 @@ const updateImageCounter=(e)=>{
                   color="default"
                   type="submit"
                >
-                  {loading ? 'Submitting...' : 'Upload'}
+                  {loading ? 'Submitting...' : 'Submit Job'}
                </button>
             </div>
          </form>
