@@ -104,6 +104,7 @@ const CreateJob = () => {
    }
    return (
       <div className="createJob_page">
+         <h1>Create your Job</h1>
          <form
             encType="multipart/form-data"
             onSubmit={async (e) => {
@@ -129,24 +130,22 @@ const CreateJob = () => {
                   // toast.clearWaitingQueue()
                   return
                }
-               if(dataForSubmit.jobDescription===''){
+               if (dataForSubmit.jobDescription === '') {
                   toast.error('Please enter a valid job description')
                   // toast.clearWaitingQueue()
                   return
                }
-               if(dataForSubmit.labels.length===0){
+               if (dataForSubmit.labels.length === 0) {
                   toast.error('Please enter at least one label')
                   // toast.clearWaitingQueue()
                   return
                }
-               if(dataForSubmit.images.length===0){
+               if (dataForSubmit.images.length === 0) {
                   toast.error('Please upload at least 1 image')
                   // toast.clearWaitingQueue()
                   return
                }
-               if(dataForSubmit.labels.some)
-
-               console.log(dataForSubmit)
+               if (dataForSubmit.labels.some) console.log(dataForSubmit)
                await createJob({
                   variables: {
                      title: dataForSubmit.jobTitle,
@@ -161,6 +160,7 @@ const CreateJob = () => {
          >
             <div className="createJob_mainForm">
                <div className="createJob_jobInfo">
+                  <h3>Job Info:</h3>
                   <div className="textField">
                      <TextField
                         id="title"
@@ -272,6 +272,7 @@ const CreateJob = () => {
                   </div>
                </div>
                <div className="createJob_imageSection">
+                  <h3>Please upload your images here:</h3>
                   <input
                      id="testimageup"
                      type="file"
@@ -356,6 +357,8 @@ const CreateJob = () => {
                </div>
 
                <div className="createJob_credit-section">
+                  <h3>Credits Info:</h3>
+
                   <TextField
                      id="credits"
                      label="Credits"
