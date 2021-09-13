@@ -20,6 +20,12 @@ input[type="file"] {
    background-image: linear-gradient(135deg, #81ffef 10%, #f067b4 100%);
 }
 
+.createJob_page h1 {
+   text-align: center;
+   padding-top: 2rem;
+   font-size: 45px;
+}
+
 .createJob_jobInfo {
    display: flex;
    justify-content: space-evenly;
@@ -30,16 +36,19 @@ input[type="file"] {
    background: rgb(255, 255, 255);
 }
 
+.createJob_jobInfo h3 {
+   margin-top: -3.5rem;
+}
+
 .createJob_mainForm {
-   /* margin: 2rem; */
-   /* position: relative; */
-   /* height:200px; */
    display: flex;
    justify-content: space-evenly;
    flex-flow: row wrap;
    align-content: flex-start;
-   /* padding: 2rem; */
+   margin-bottom: 16rem;
+   margin-top: -5rem;
 }
+
 .createJob_credit-section {
    background: rgb(255, 255, 255);
    border-radius: 30px;
@@ -49,11 +58,17 @@ input[type="file"] {
    flex-direction: column;
    justify-content: space-evenly;
 }
+
+.createJob_credit-section h3 {
+   margin-top: -3rem;
+}
+
 .createJob_submitSection {
    color: white;
    display: flex;
    justify-content: center;
    padding: 1rem;
+   margin-top: -15rem;
 }
 
 .createJob_imageSection {
@@ -65,6 +80,10 @@ input[type="file"] {
    margin-right: 2rem;
    background: rgb(255, 255, 255);
    overflow: auto;
+}
+
+.createJob_imageSection input {
+   margin-top: 3rem;
 }
 
 .createJob_imagePrev {
