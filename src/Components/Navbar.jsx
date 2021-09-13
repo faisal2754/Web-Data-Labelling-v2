@@ -74,7 +74,7 @@ function Navbar() {
                ) : (
                   <li className="nav-item">
                      <Link
-                        to="/dashboard/accepted-jobs"
+                        to="/dashboard/profile"
                         className="nav-links"
                         onClick={closeMobileMenu}
                      >
