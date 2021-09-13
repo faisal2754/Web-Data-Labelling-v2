@@ -28,6 +28,7 @@ input[type="file"] {
 
 .createJob_jobInfo {
    display: flex;
+   /* border-right: solid 2px; */
    justify-content: space-evenly;
    border-radius: 30px;
    flex-direction: column;
@@ -44,6 +45,8 @@ input[type="file"] {
 }
 
 .createJob_mainForm {
+   background-color: white;
+border-radius: 30px;
    display: flex;
    justify-content: space-evenly;
    flex-flow: row wrap;
