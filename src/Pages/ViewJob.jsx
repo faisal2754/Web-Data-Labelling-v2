@@ -11,17 +11,21 @@ import Modal from '../Components/Modal'
 import '../Styles/ViewJob.css'
 import { GET_JOBS } from '../graphql/queries'
 import { useQuery } from '@apollo/client'
-import { useSelector } from 'react-redux'
+// import { useSelector } from 'react-redux'
 import ReactLoading from 'react-loading'
+import { toast } from 'react-toastify'
 
 function ViewJob() {
-   const jwt = useSelector((state) => state.user.jwt)
+   // const jwt = useSelector((state) => state.user.jwt)
 
    let jobs = []
    const { loading, error, data } = useQuery(GET_JOBS)
 
    if (data) {
       jobs = data.viewJobs
+   }
+   if(error){
+      toast.error("There was an error fetching the jobs")
    }
 
    const [showModal, setShowModal] = useState(false)
@@ -56,7 +60,7 @@ function ViewJob() {
                      id={job.job_id}
                      src={job.preview_images[0]}
                      text={job.description}
-                     buttonLabel="Accept Job"
+                     // buttonLabel="Accept Job"
                      credits={job.credits}
                      uploader={job.job_owner.username}
                      title={job.title}
@@ -104,7 +108,6 @@ function ViewJob() {
             {loading ? (
                <ReactLoading
                   type={'spin'}
-                  color={'black'}
                   height={'10%'}
                   color={'#000000'}
                   width={'10%'}

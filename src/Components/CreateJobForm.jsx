@@ -15,6 +15,7 @@ const CreateJob = () => {
    const [labels, setLabels] = useState([])
    const [createJob, { loading, error, data }] = useMutation(CREATE_JOB)
    const [currentTotal, setCurrentTotal] = useState(0)
+   const [totalImages,setTotalImages]=useState(0)
    // const [images, setImages] = useState([])
    // const onChange = (imageList, addUpdateIndex) => {
    //    // data for submit
@@ -25,7 +26,11 @@ const CreateJob = () => {
       toast.error('An error occured')
       toast.clearWaitingQueue()
    }
-
+const updateImageCounter=(e)=>{
+   const temp=document.querySelector('#testimageup').files.length;
+   setTotalImages(temp);
+}
+// let totalimages=0;
    useEffect(() => {
       document.querySelector('#totalCredits').value = 0
    }, [])
@@ -276,8 +281,13 @@ const CreateJob = () => {
                      id="testimageup"
                      type="file"
                      multiple
-                     // onChange={handlefiles}
+                     onChange={updateImageCounter}
                   />
+                  <label htmlFor="testimageup" 
+                  className="btn-hover" 
+                  onChange={updateImageCounter}
+                  style={{padding:"1rem"}}>Upload Images</label>
+                  <h2>Total Images : {totalImages}</h2>
                   {/* <ImageUploading
                      multiple
                      value={images}

@@ -5,7 +5,7 @@ import { MdClose } from 'react-icons/md'
 import '../Styles/Modal.css'
 // import { Link, Redirect, useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { Link, Redirect, useHistory } from 'react-router-dom'
+import { Link,  useHistory } from 'react-router-dom'
 import { useMutation } from '@apollo/client'
 import { ACCEPT_JOB } from '../graphql/mutations'
 import { GET_ACCEPTED_JOBS } from '../graphql/queries'
@@ -102,11 +102,11 @@ export const Modal = ({
       transform: showModal ? `translateY(0%)` : `translateY(-100%)`
    })
    const [AcceptJob, { loading, error, data }] = useMutation(ACCEPT_JOB)
-   const closeModal = (e) => {
-      if (modalRef.current === e.target) {
-         setShowModal(false)
-      }
-   }
+   // const closeModal = (e) => {
+   //    if (modalRef.current === e.target) {
+   //       setShowModal(false)
+   //    }
+   // }
 
    const keyPress = useCallback(
       (e) => {
@@ -130,6 +130,7 @@ export const Modal = ({
    const acceptJob = () => {
       if (!jwt) {
       } else {
+         // eslint-disable-next-line eqeqeq
          if (destination.pathname != '/label-job') {
             AcceptJob({
                variables: {
