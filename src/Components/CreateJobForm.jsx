@@ -3,12 +3,12 @@ import React from 'react'
 import '../Styles/CreateJob.css'
 import TextField from '@material-ui/core/TextField'
 import { nanoid } from 'nanoid'
-import ImageUploading from 'react-images-uploading'
+// import ImageUploading from 'react-images-uploading'
 import { useMutation } from '@apollo/client'
 import { CREATE_JOB } from '../graphql/mutations'
 import { Redirect } from 'react-router-dom'
 import { toast } from 'react-toastify'
-const FormData = require('form-data')
+// const FormData = require('form-data')
 // const axios = require('axios').default
 
 const CreateJob = () => {
@@ -46,53 +46,53 @@ const updateImageCounter=(e)=>{
    //    myfiles = e.target.files
    // }
 
-   const createFormDataJob = async () => {
-      const form = new FormData()
-      form.append(
-         'operations',
-         JSON.stringify({
-            query: 'mutation ($files: [Upload], $title: String!, $description: String!, $credits: Int!, $num_partitions: Int!, $labels: [String]!){\n  createJob (files: $files, title: $title, description: $description, credits: $credits, num_partitions: $num_partitions, labels: $labels){\n    job_id\n  }\n}',
-            variables: {
-               title: document.querySelector('#title').value,
-               description: document.querySelector('#description').value,
-               labels: labels.map((label) => label.label),
-               // images: images,
-               // images: images.map((image) => image.file),
-               credits: currentTotal,
-               numLabellers: parseInt(
-                  document.querySelector('#numLabellers').value
-               ),
-               numPartitions: parseInt(
-                  document.querySelector('#imgPerSection').value
-               )
-            }
-         })
-      )
-      // var images = document.querySelector('#testimageup')
-      // console.log(images)
-      form.append(
-         'map',
-         JSON
-            .stringify
-            // images.map((image) => {
-            //    const originalimgname = image.file.name
-            //    return { originalimgname: ['variables.files.originalimgname'] }
-            // })
-            ()
-      )
-      // images.forEach((img) => {
-      //    const originalimgname = img.file.name
-      //    form.append(originalimgname, img.data_url)
-      // })
+   // const createFormDataJob = async () => {
+   //    const form = new FormData()
+   //    form.append(
+   //       'operations',
+   //       JSON.stringify({
+   //          query: 'mutation ($files: [Upload], $title: String!, $description: String!, $credits: Int!, $num_partitions: Int!, $labels: [String]!){\n  createJob (files: $files, title: $title, description: $description, credits: $credits, num_partitions: $num_partitions, labels: $labels){\n    job_id\n  }\n}',
+   //          variables: {
+   //             title: document.querySelector('#title').value,
+   //             description: document.querySelector('#description').value,
+   //             labels: labels.map((label) => label.label),
+   //             // images: images,
+   //             // images: images.map((image) => image.file),
+   //             credits: currentTotal,
+   //             numLabellers: parseInt(
+   //                document.querySelector('#numLabellers').value
+   //             ),
+   //             numPartitions: parseInt(
+   //                document.querySelector('#imgPerSection').value
+   //             )
+   //          }
+   //       })
+   //    )
+   //    // var images = document.querySelector('#testimageup')
+   //    // console.log(images)
+   //    form.append(
+   //       'map',
+   //       JSON
+   //          .stringify
+   //          // images.map((image) => {
+   //          //    const originalimgname = image.file.name
+   //          //    return { originalimgname: ['variables.files.originalimgname'] }
+   //          // })
+   //          ()
+   //    )
+   //    // images.forEach((img) => {
+   //    //    const originalimgname = img.file.name
+   //    //    form.append(originalimgname, img.data_url)
+   //    // })
 
-      // const headers = form.getHeaders()
-      console.log(form)
-      // const res = await axios.post(
-      //    'https://data-labelling-server.herokuapp.com/graphql',
-      //    form
-      // )
-      // console.log(res)
-   }
+   //    // const headers = form.getHeaders()
+   //    console.log(form)
+   //    // const res = await axios.post(
+   //    //    'https://data-labelling-server.herokuapp.com/graphql',
+   //    //    form
+   //    // )
+   //    // console.log(res)
+   // }
 
    const Calculate = (e) => {
       e.preventDefault()

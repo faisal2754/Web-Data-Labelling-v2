@@ -1,31 +1,34 @@
 import React from 'react'
 import { EDIT_PROFILE } from '../graphql/mutations'
 import { useMutation } from '@apollo/client'
-import { useQuery } from '@apollo/client'
+// import { useQuery } from '@apollo/client'
 import { GET_ME } from '../graphql/queries'
 import { toast } from 'react-toastify'
 
 const UserDetails = (props) => {
-   const [EditProfile, { loading, error, data }] = useMutation(EDIT_PROFILE)
-
+   const [EditProfile] = useMutation(EDIT_PROFILE)
+   const showError = () => {
+      toast.error('An error occured')
+      toast.clearWaitingQueue()
+   }
    const editProfile = () => {
       let userNameChange
       let passwordChange
       //check if username is empty
-      if (document.getElementById('input-username').value == '') {
+      if (document.getElementById('input-username').value === '') {
          userNameChange = props.username
       } else {
          userNameChange = document.getElementById('input-username').value
       }
 
       // check if password is empty
-      if (document.getElementById('input-passwordNew').value == '') {
+      if (document.getElementById('input-passwordNew').value === '') {
          passwordChange = props.password
       } else {
          passwordChange = document.getElementById('input-passwordNew').value
       }
 
-      if (document.getElementById('input-passwordConfirm').value == '') {
+      if (document.getElementById('input-passwordConfirm').value === '') {
          passwordChange = props.password
       } else {
          passwordChange = document.getElementById('input-passwordNew').value
@@ -43,8 +46,10 @@ const UserDetails = (props) => {
                password: passwordChange
             },
             refetchQueries: [{ query: GET_ME }]
-         })
-         toast.success('Your Details Have Been Changed')
+         }).then(()=>{
+            toast.success('Your Details Have Been Changed')
+         }).catch((error)=>showError())
+         toast.clearWaitingQueue()
       }
    }
 

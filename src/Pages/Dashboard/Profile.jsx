@@ -34,7 +34,7 @@ export const Dashboard = (props) => {
                      {loading ? (
                         <ReactLoading
                            type={'spin'}
-                           color={'black'}
+                           // color={'black'}
                            height={'10%'}
                            color={'#000000'}
                            width={'10%'}

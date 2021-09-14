@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import '../Styles/Navbar.css'
 import { useSelector } from 'react-redux'
 import Cookies from 'js-cookie'
-import { ToastContainer, toast } from 'react-toastify'
 
 function Navbar() {
    const [click, setClick] = useState(false)
@@ -15,7 +14,7 @@ function Navbar() {
    const closeMobileMenu = () => setClick(false)
    const jwt = useSelector((state) => state.user.jwt)
    let isJwt = false
-   if (jwt != '') {
+   if (jwt !== '') {
       isJwt = true
    }
 

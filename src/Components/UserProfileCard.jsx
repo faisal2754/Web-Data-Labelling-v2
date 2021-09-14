@@ -7,7 +7,7 @@ const UserProfile = (props) => {
             <div className="row justify-content-center">
                <div className="col-lg-3 order-lg-2">
                   <div className="card-profile-image">
-                     <a href="#">
+                     <a href="/dashboard">
                         <img
                            src={props.avatarImage}
                            className="rounded-circle"
