@@ -30,7 +30,7 @@ export const Dashboard = (props) => {
             <div className="main-content">
                {/* Page content */}
                <div className="container-fluid mt--7">
-                  <div >
+                  <div>
                      {loading ? (
                         <ReactLoading
                            type={'spin'}
@@ -41,11 +41,14 @@ export const Dashboard = (props) => {
                            className="acceptedJob__loadingSpin"
                         />
                      ) : (
-                        <span style={{display:"flex"}}>
-                           <UserProfile firstName={data.me.username} />
+                        <span style={{ display: 'flex' }}>
+                           <UserProfile
+                              firstName={data.me.username}
+                              avatarImage={data.me.avatar}
+                           />
 
                            <UserDetails
-                              style={{width:"100%"}}
+                              style={{ width: '100%' }}
                               username={data.me.username}
                               email={data.me.email}
                            />

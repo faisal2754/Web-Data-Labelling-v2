@@ -3,7 +3,7 @@ import '../Styles/Register.css'
 import { Link, Redirect } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'
 import { useMutation } from '@apollo/client'
-import { ToastContainer,toast } from 'react-toastify'
+import { ToastContainer, toast } from 'react-toastify'
 import { REGISTER_USER } from '../graphql/mutations'
 
 const Register = () => {
@@ -31,7 +31,6 @@ const Register = () => {
       } else if (!password) {
          isValid = false
          toast.error('Please enter a password')
-
       } else if (password.length < 5) {
          isValid = false
          toast.error('Password must be at least 5 characters')
@@ -46,26 +45,27 @@ const Register = () => {
                email: email,
                password: password
             }
-         }).catch((error) =>{
-            if(error.message==="Unique constraint failed on the fields: (`email`)"){
-               toast.error("This email address already exists")
+         }).catch((error) => {
+            if (
+               error.message ===
+               'Unique constraint failed on the fields: (`email`)'
+            ) {
+               toast.error('This email address already exists')
                return
             }
             toast.error(error.message, {
                position: toast.POSITION.BOTTOM_CENTER
             })
-         }
-      )
+         })
+         toast.success('You Have Been Succesfully Registered')
       }
    }
-
 
    const history = useHistory()
 
    if (data) {
       return <Redirect to="/login" />
    }
-   
 
    return (
       <div className="register_container">

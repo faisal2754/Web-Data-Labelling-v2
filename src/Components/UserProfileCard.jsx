@@ -9,7 +9,7 @@ const UserProfile = (props) => {
                   <div className="card-profile-image">
                      <a href="#">
                         <img
-                           src="https://demos.creative-tim.com/argon-dashboard/assets/img/theme/team-4.jpg"
+                           src={props.avatarImage}
                            className="rounded-circle"
                            alt=""
                         />
@@ -21,7 +21,7 @@ const UserProfile = (props) => {
                <div className="text-center">
                   <h3>
                      {props.firstName} {props.lastName}
-                     <span className="font-weight-light">, {props.age}</span>
+                     <span className="font-weight-light"> {props.age}</span>
                   </h3>
                   <div className="h5 mt-4">
                      <i className="ni business_briefcase-24 mr-2" />
@@ -30,6 +30,14 @@ const UserProfile = (props) => {
                   <div>
                      <i className="ni education_hat mr-2" />
                      {props.education}
+                  </div>
+                  <div className="userProfileCard__updateBtn">
+                     <a
+                        href="#!"
+                        className="user-btn user-btn-sm user-btn-primary"
+                     >
+                        Update Avatar
+                     </a>
                   </div>
                   {/* <a href="#">Show more</a> */}
                </div>

@@ -1,6 +1,53 @@
 import React from 'react'
+import { EDIT_PROFILE } from '../graphql/mutations'
+import { useMutation } from '@apollo/client'
+import { useQuery } from '@apollo/client'
+import { GET_ME } from '../graphql/queries'
+import { toast } from 'react-toastify'
 
 const UserDetails = (props) => {
+   const [EditProfile, { loading, error, data }] = useMutation(EDIT_PROFILE)
+
+   const editProfile = () => {
+      let userNameChange
+      let passwordChange
+      //check if username is empty
+      if (document.getElementById('input-username').value == '') {
+         userNameChange = props.username
+      } else {
+         userNameChange = document.getElementById('input-username').value
+      }
+
+      // check if password is empty
+      if (document.getElementById('input-passwordNew').value == '') {
+         passwordChange = props.password
+      } else {
+         passwordChange = document.getElementById('input-passwordNew').value
+      }
+
+      if (document.getElementById('input-passwordConfirm').value == '') {
+         passwordChange = props.password
+      } else {
+         passwordChange = document.getElementById('input-passwordNew').value
+      }
+
+      if (
+         document.getElementById('input-passwordNew').value !==
+         document.getElementById('input-passwordConfirm').value
+      ) {
+         toast.error("Passwords Don't Match")
+      } else {
+         EditProfile({
+            variables: {
+               username: userNameChange,
+               password: passwordChange
+            },
+            refetchQueries: [{ query: GET_ME }]
+         })
+         toast.success('Your Details Have Been Changed')
+      }
+   }
+
    return (
       <div className="col-xl-8 order-xl-1">
          <div className="card bg-secondary shadow">
@@ -11,7 +58,8 @@ const UserDetails = (props) => {
                   </div>
                   <div className="col-4 text-right">
                      <a
-                        href="#!"
+                        onClick={editProfile}
+                        href="#/dashboard/profile"
                         className="user-btn user-btn-sm user-btn-primary"
                      >
                         Update Profile
@@ -39,7 +87,6 @@ const UserDetails = (props) => {
                                  id="input-username"
                                  className="form-control form-control-alternative"
                                  placeholder={props.username}
-                                 defaultValue=""
                               />
                            </div>
                         </div>
@@ -62,7 +109,6 @@ const UserDetails = (props) => {
                         </div>
                      </div>
                      <div className="row">
-                        
                         <div className="col-lg-6">
                            <div className="form-group focused">
                               <label
@@ -74,7 +120,7 @@ const UserDetails = (props) => {
                               </label>
                               <input
                                  type="text"
-                                 id="input-last-name"
+                                 id="input-passwordNew"
                                  className="form-control form-control-alternative"
                                  placeholder="New Password"
                                  defaultValue=""
@@ -85,14 +131,14 @@ const UserDetails = (props) => {
                            <div className="form-group focused">
                               <label
                                  className="form-control-label"
-                                 htmlFor="input-last-name"
+                                 htmlFor="input-passwordConfirm"
                                  placeholder="Confirm Password"
                               >
                                  Confirm Password
                               </label>
                               <input
                                  type="text"
-                                 id="input-last-name"
+                                 id="input-passwordConfirm"
                                  className="form-control form-control-alternative"
                                  placeholder="Confirm New Password"
                                  defaultValue=""
