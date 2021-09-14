@@ -16,18 +16,20 @@ import Cookies from 'js-cookie'
 import store from './redux/store'
 import { Provider } from 'react-redux'
 
-const httpLink = new HttpLink({ uri:  'https://data-labelling-server.herokuapp.com/graphql'});
-
+const httpLink = new HttpLink({
+   uri: 'https://data-labelling-server.herokuapp.com/graphql',
+   fetchOptions: { mode: 'no-cors' }
+})
 
 const authMiddleware = new ApolloLink((operation, forward) => {
    operation.setContext(({ headers = {} }) => ({
       headers: {
          ...headers,
-         Authorization: "Bearer " + Cookies.get('jwt') || null,
+         Authorization: 'Bearer ' + Cookies.get('jwt') || null
       }
-   }));
+   }))
 
-   return forward(operation);
+   return forward(operation)
 })
 
 const client = new ApolloClient({
