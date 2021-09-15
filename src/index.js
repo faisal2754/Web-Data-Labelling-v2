@@ -17,8 +17,7 @@ import store from './redux/store'
 import { Provider } from 'react-redux'
 
 const httpLink = new HttpLink({
-   uri: 'https://data-labelling-server.herokuapp.com/graphql',
-   fetchOptions: { mode: 'no-cors' }
+   uri: 'https://data-labelling-server.herokuapp.com/graphql'
 })
 
 const authMiddleware = new ApolloLink((operation, forward) => {
