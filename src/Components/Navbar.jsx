@@ -18,7 +18,7 @@ function Navbar() {
    const closeMobileMenu = () => setClick(false)
    const jwt = useSelector((state) => state.user.jwt)
    let isJwt = false
-   if (jwt != '') {
+   if (jwt !== '') {
       isJwt = true
    }
 
@@ -77,7 +77,7 @@ function Navbar() {
                ) : (
                   <li className="nav-item">
                      <Link
-                        to="/dashboard/accepted-jobs"
+                        to="/dashboard/profile"
                         className="nav-links"
                         onClick={closeMobileMenu}
                      >

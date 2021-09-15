@@ -32,6 +32,12 @@
 
 }
 
+.acceptedJob__loadingSpin{
+    margin: auto;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
 .acceptedJobs__Loading{
     
     height: 100px;

@@ -5,7 +5,7 @@ import { MdClose } from 'react-icons/md'
 import '../Styles/Modal.css'
 // import { Link, Redirect, useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { Link, Redirect, useHistory } from 'react-router-dom'
+import { Link,  useHistory } from 'react-router-dom'
 import { useMutation } from '@apollo/client'
 import { ACCEPT_JOB } from '../graphql/mutations'
 import { GET_ACCEPTED_JOBS } from '../graphql/queries'
@@ -37,11 +37,15 @@ const ModalWrapper = styled.div`
 `
 
 const ModalImg = styled.img`
-   display: block;
    width: 100%;
-   max-height: 500px;
-   border-radius: 10px 0 0 10px;
-   background: #000;
+   height: 95%;
+   padding-top: 2rem;
+   padding-bottom: 2rem;
+   padding-left: 2rem;
+   padding-right: 2rem;
+   border-radius: 45px;
+   background: #fff;
+   
 `
 
 const ModalContent = styled.div`
@@ -98,11 +102,11 @@ export const Modal = ({
       transform: showModal ? `translateY(0%)` : `translateY(-100%)`
    })
    const [AcceptJob, { loading, error, data }] = useMutation(ACCEPT_JOB)
-   const closeModal = (e) => {
-      if (modalRef.current === e.target) {
-         setShowModal(false)
-      }
-   }
+   // const closeModal = (e) => {
+   //    if (modalRef.current === e.target) {
+   //       setShowModal(false)
+   //    }
+   // }
 
    const keyPress = useCallback(
       (e) => {
@@ -126,6 +130,7 @@ export const Modal = ({
    const acceptJob = () => {
       if (!jwt) {
       } else {
+         // eslint-disable-next-line eqeqeq
          if (destination.pathname != '/label-job') {
             AcceptJob({
                variables: {
@@ -153,30 +158,36 @@ export const Modal = ({
             <Background ref={modalRef}>
                <animated.div style={animation}>
                   <ModalWrapper showModal={showModal}>
+                  
                      <ModalImg alt="Travel" src={src} />
+                     
                      <ModalContent>
                         <div className="modal__jobName">
-                           <h1>
-                              <b>{title}</b>
-                           </h1>
+                           <h1>{title}</h1>
                         </div>
 
-                        <div className="modal__uploaderLine">
-                           Job Owner: {uploader} || Credits: {credits}
-                        </div>
+                        <div className="modal__content">
+                           <div className="modal__uploaderLine">
+                              Job Owner: {uploader}
+                           </div>
+                           <div className="modal__creditLine">
+                              Credits:
+                              {credits}
+                           </div>
 
-                        <div className="modal__descriptionLine">
-                           Description: <br></br>
-                           {text}
+                           <div className="modal__descriptionLine">
+                              Description:
+                              {text}
+                           </div>
+                           <Link to={destination}>
+                              <button
+                                 className="modal__acceptJob"
+                                 onClick={acceptJob}
+                              >
+                                 {buttonLabel}
+                              </button>
+                           </Link>
                         </div>
-                        <Link to={destination}>
-                           <button
-                              className="modal__acceptJob"
-                              onClick={acceptJob}
-                           >
-                              {buttonLabel}
-                           </button>
-                        </Link>
                      </ModalContent>
                      <CloseModalButton
                         aria-label="Close modal"

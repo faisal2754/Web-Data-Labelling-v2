@@ -34,9 +34,7 @@ const CREATE_JOB = gql`
 `
 
 const LOGIN_USER = gql`
-   mutation Login(
-      $email: String!,
-    $password: String!) {
+   mutation Login($email: String!, $password: String!) {
       login(email: $email, password: $password) {
          username
          email
@@ -67,4 +65,20 @@ const SAVE_STATE = gql`
    }
 `
 
-export { REGISTER_USER, LOGIN_USER, CREATE_JOB, ACCEPT_JOB, SAVE_STATE }
+const EDIT_PROFILE = gql`
+   mutation EditProfile($username: String, $password: String, $avatar: String) {
+      editProfile(username: $username, password: $password, avatar: $avatar) {
+         username
+         password
+         avatar
+      }
+   }
+`
+export {
+   REGISTER_USER,
+   LOGIN_USER,
+   CREATE_JOB,
+   ACCEPT_JOB,
+   SAVE_STATE,
+   EDIT_PROFILE
+}

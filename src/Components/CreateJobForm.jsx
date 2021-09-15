@@ -3,18 +3,19 @@ import React from 'react'
 import '../Styles/CreateJob.css'
 import TextField from '@material-ui/core/TextField'
 import { nanoid } from 'nanoid'
-import ImageUploading from 'react-images-uploading'
+// import ImageUploading from 'react-images-uploading'
 import { useMutation } from '@apollo/client'
 import { CREATE_JOB } from '../graphql/mutations'
 import { Redirect } from 'react-router-dom'
 import { toast } from 'react-toastify'
-const FormData = require('form-data')
-const axios = require('axios').default
+// const FormData = require('form-data')
+// const axios = require('axios').default
 
 const CreateJob = () => {
    const [labels, setLabels] = useState([])
    const [createJob, { loading, error, data }] = useMutation(CREATE_JOB)
    const [currentTotal, setCurrentTotal] = useState(0)
+   const [totalImages,setTotalImages]=useState(0)
    // const [images, setImages] = useState([])
    // const onChange = (imageList, addUpdateIndex) => {
    //    // data for submit
@@ -25,7 +26,11 @@ const CreateJob = () => {
       toast.error('An error occured')
       toast.clearWaitingQueue()
    }
-
+const updateImageCounter=(e)=>{
+   const temp=document.querySelector('#testimageup').files.length;
+   setTotalImages(temp);
+}
+// let totalimages=0;
    useEffect(() => {
       document.querySelector('#totalCredits').value = 0
    }, [])
@@ -41,53 +46,53 @@ const CreateJob = () => {
    //    myfiles = e.target.files
    // }
 
-   const createFormDataJob = async () => {
-      const form = new FormData()
-      form.append(
-         'operations',
-         JSON.stringify({
-            query: 'mutation ($files: [Upload], $title: String!, $description: String!, $credits: Int!, $num_partitions: Int!, $labels: [String]!){\n  createJob (files: $files, title: $title, description: $description, credits: $credits, num_partitions: $num_partitions, labels: $labels){\n    job_id\n  }\n}',
-            variables: {
-               title: document.querySelector('#title').value,
-               description: document.querySelector('#description').value,
-               labels: labels.map((label) => label.label),
-               // images: images,
-               // images: images.map((image) => image.file),
-               credits: currentTotal,
-               numLabellers: parseInt(
-                  document.querySelector('#numLabellers').value
-               ),
-               numPartitions: parseInt(
-                  document.querySelector('#imgPerSection').value
-               )
-            }
-         })
-      )
-      // var images = document.querySelector('#testimageup')
-      // console.log(images)
-      form.append(
-         'map',
-         JSON
-            .stringify
-            // images.map((image) => {
-            //    const originalimgname = image.file.name
-            //    return { originalimgname: ['variables.files.originalimgname'] }
-            // })
-            ()
-      )
-      // images.forEach((img) => {
-      //    const originalimgname = img.file.name
-      //    form.append(originalimgname, img.data_url)
-      // })
+   // const createFormDataJob = async () => {
+   //    const form = new FormData()
+   //    form.append(
+   //       'operations',
+   //       JSON.stringify({
+   //          query: 'mutation ($files: [Upload], $title: String!, $description: String!, $credits: Int!, $num_partitions: Int!, $labels: [String]!){\n  createJob (files: $files, title: $title, description: $description, credits: $credits, num_partitions: $num_partitions, labels: $labels){\n    job_id\n  }\n}',
+   //          variables: {
+   //             title: document.querySelector('#title').value,
+   //             description: document.querySelector('#description').value,
+   //             labels: labels.map((label) => label.label),
+   //             // images: images,
+   //             // images: images.map((image) => image.file),
+   //             credits: currentTotal,
+   //             numLabellers: parseInt(
+   //                document.querySelector('#numLabellers').value
+   //             ),
+   //             numPartitions: parseInt(
+   //                document.querySelector('#imgPerSection').value
+   //             )
+   //          }
+   //       })
+   //    )
+   //    // var images = document.querySelector('#testimageup')
+   //    // console.log(images)
+   //    form.append(
+   //       'map',
+   //       JSON
+   //          .stringify
+   //          // images.map((image) => {
+   //          //    const originalimgname = image.file.name
+   //          //    return { originalimgname: ['variables.files.originalimgname'] }
+   //          // })
+   //          ()
+   //    )
+   //    // images.forEach((img) => {
+   //    //    const originalimgname = img.file.name
+   //    //    form.append(originalimgname, img.data_url)
+   //    // })
 
-      // const headers = form.getHeaders()
-      console.log(form)
-      const res = await axios.post(
-         'https://data-labelling-server.herokuapp.com/graphql',
-         form
-      )
-      console.log(res)
-   }
+   //    // const headers = form.getHeaders()
+   //    console.log(form)
+   //    // const res = await axios.post(
+   //    //    'https://data-labelling-server.herokuapp.com/graphql',
+   //    //    form
+   //    // )
+   //    // console.log(res)
+   // }
 
    const Calculate = (e) => {
       e.preventDefault()
@@ -104,6 +109,7 @@ const CreateJob = () => {
    }
    return (
       <div className="createJob_page">
+         <h1>Create your Job</h1>
          <form
             encType="multipart/form-data"
             onSubmit={async (e) => {
@@ -129,24 +135,22 @@ const CreateJob = () => {
                   // toast.clearWaitingQueue()
                   return
                }
-               if(dataForSubmit.jobDescription===''){
+               if (dataForSubmit.jobDescription === '') {
                   toast.error('Please enter a valid job description')
                   // toast.clearWaitingQueue()
                   return
                }
-               if(dataForSubmit.labels.length===0){
+               if (dataForSubmit.labels.length === 0) {
                   toast.error('Please enter at least one label')
                   // toast.clearWaitingQueue()
                   return
                }
-               if(dataForSubmit.images.length===0){
+               if (dataForSubmit.images.length === 0) {
                   toast.error('Please upload at least 1 image')
                   // toast.clearWaitingQueue()
                   return
                }
-               if(dataForSubmit.labels.some)
-
-               console.log(dataForSubmit)
+               if (dataForSubmit.labels.some) console.log(dataForSubmit)
                await createJob({
                   variables: {
                      title: dataForSubmit.jobTitle,
@@ -161,6 +165,7 @@ const CreateJob = () => {
          >
             <div className="createJob_mainForm">
                <div className="createJob_jobInfo">
+                  <h3 style={{padding:"1rem"}}>Job Info:</h3>
                   <div className="textField">
                      <TextField
                         id="title"
@@ -272,12 +277,19 @@ const CreateJob = () => {
                   </div>
                </div>
                <div className="createJob_imageSection">
+                  <h3>Please upload your images here:</h3>
                   <input
                      id="testimageup"
                      type="file"
                      multiple
-                     // onChange={handlefiles}
+                     onChange={updateImageCounter}
                   />
+                  <label htmlFor="testimageup" 
+                  className="btn-hover" 
+                  id="labelImageUp"
+                  onChange={updateImageCounter}
+                  style={{padding:"1rem" }}>Upload Images</label>
+                  <h2>Total Images : {totalImages}</h2>
                   {/* <ImageUploading
                      multiple
                      value={images}
@@ -356,6 +368,8 @@ const CreateJob = () => {
                </div>
 
                <div className="createJob_credit-section">
+                  <h3>Credits Info:</h3>
+
                   <TextField
                      id="credits"
                      label="Credits"
@@ -390,7 +404,7 @@ const CreateJob = () => {
                   color="default"
                   type="submit"
                >
-                  {loading ? 'Submitting...' : 'Upload'}
+                  {loading ? 'Submitting...' : 'Submit Job'}
                </button>
             </div>
          </form>

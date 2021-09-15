@@ -13,9 +13,9 @@ function Footer() {
 
    return (
       <div className="footer-container">
-         <div class="footer-links">
+         <div className="footer-links">
             <div className="footer-link-wrapper">
-               <div class="footer-link-items">
+               <div className="footer-link-items">
                   <h2>Main Pages</h2>
                   <Link to="/">Home</Link>
                   <Link to="/view-job">Find Job</Link>
@@ -26,7 +26,7 @@ function Footer() {
                {isJwt ? (
                   <div></div>
                ) : (
-                  <div class="footer-link-items">
+                  <div className="footer-link-items">
                      <h2>Profile</h2>
                      <Link to="/login">Login</Link>
                      <Link to="/register">Sign Up</Link>
@@ -35,7 +35,7 @@ function Footer() {
                {!isJwt ? (
                   <div></div>
                ) : (
-                  <div class="footer-link-items">
+                  <div className="footer-link-items">
                      <h2>Profile</h2>
                      <Link to="/create-job">Create Job</Link>
                      <Link to="/dashboard/created-jobs">My Jobs</Link>
@@ -43,21 +43,21 @@ function Footer() {
                      <Link to="/dashboard/profile">Edit Profile</Link>
                   </div>
                )}
-               <div class="footer-link-items">
+               <div className="footer-link-items">
                   <h2>About Us</h2>
                   <Link to="/">Our Company</Link>
                   <Link to="/">Terms and Conditions</Link>
                </div>
             </div>
          </div>
-         <section class="social-media">
-            <div class="social-media-wrap">
-               <div class="footer-logo">
+         <section className="social-media">
+            <div className="social-media-wrap">
+               <div className="footer-logo">
                   <Link to="/" className="social-logo">
                      <img src="./images/login_logo.png" alt="bug" height={60} />
                   </Link>
                </div>
-               <small class="website-rights">LABEL.ml © 2021</small>
+               <small className="website-rights">LABEL.ml © 2021</small>
             </div>
          </section>
       </div>

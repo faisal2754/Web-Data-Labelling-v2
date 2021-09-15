@@ -9,16 +9,26 @@ input::-webkit-inner-spin-button {
 input[type='number'] {
    -moz-appearance: textfield;
 }
+input[type="file"] {
+   display: none;
+}
 
 .createJob_page {
-   @media only screen and (min-width: 600px) {
+   /* @media only screen and (min-width: 600px) {
       padding: 5rem;
-   }
+   } */
    background-image: linear-gradient(135deg, #81ffef 10%, #f067b4 100%);
+}
+
+.createJob_page h1 {
+   text-align: center;
+   padding-top: 2rem;
+   font-size: 45px;
 }
 
 .createJob_jobInfo {
    display: flex;
+   /* border-right: solid 2px; */
    justify-content: space-evenly;
    border-radius: 30px;
    flex-direction: column;
@@ -26,15 +36,25 @@ input[type='number'] {
    padding: 2rem;
    background: rgb(255, 255, 255);
 }
+#labelImageUp{
+   margin-left:3.5rem
+}
+
+.createJob_jobInfo h3 {
+   margin-top: -3.5rem;
+}
 
 .createJob_mainForm {
-   margin: 2rem;
+   background-color: white;
+border-radius: 30px;
    display: flex;
    justify-content: space-evenly;
    flex-flow: row wrap;
    align-content: flex-start;
-   padding: 2rem;
+   margin-bottom: 16rem;
+   margin-top: -5rem;
 }
+
 .createJob_credit-section {
    background: rgb(255, 255, 255);
    border-radius: 30px;
@@ -44,23 +64,32 @@ input[type='number'] {
    flex-direction: column;
    justify-content: space-evenly;
 }
+
+.createJob_credit-section h3 {
+   margin-top: -3rem;
+}
+
 .createJob_submitSection {
    color: white;
    display: flex;
    justify-content: center;
    padding: 1rem;
+   margin-top: -15rem;
 }
 
 .createJob_imageSection {
    min-height: 500px;
    max-height: 500px;
-
    border-radius: 30px;
    padding: 1rem;
    margin-left: 2rem;
    margin-right: 2rem;
    background: rgb(255, 255, 255);
    overflow: auto;
+}
+
+.createJob_imageSection input {
+   margin-top: 3rem;
 }
 
 .createJob_imagePrev {

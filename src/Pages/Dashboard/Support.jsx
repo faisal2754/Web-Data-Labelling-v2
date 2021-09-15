@@ -7,8 +7,8 @@ function Support() {
    return (
       <div>
          <DashboardSidebar />
-         <section class="contact">
-            <div class="content">
+         <section className="contact">
+            <div className="content">
                <h1>Get in touch!</h1>
                <p>
                   Send us a message and tell us if you have any concerns or
@@ -16,13 +16,13 @@ function Support() {
                   we can!
                </p>
             </div>
-            <div class="container">
-               <div class="contactInfo">
-                  <div class="box">
-                     <div class="icon">
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+            <div className="container">
+               <div className="contactInfo">
+                  <div className="box">
+                     <div className="icon">
+                        <i className="fa fa-map-marker" aria-hidden="true"></i>
                      </div>
-                     <div class="text">
+                     <div className="text">
                         <h3>Address</h3>
                         <p>
                            192 Data Labelling Place, Johannesburg, South Africa,
@@ -30,20 +30,20 @@ function Support() {
                         </p>
                      </div>
                   </div>
-                  <div class="box">
-                     <div class="icon">
-                        <i class="fa fa-phone" aria-hidden="true"></i>
+                  <div className="box">
+                     <div className="icon">
+                        <i className="fa fa-phone" aria-hidden="true"></i>
                      </div>
-                     <div class="text">
+                     <div className="text">
                         <h3>Phone</h3>
                         <p>082-756-8979</p>
                      </div>
                   </div>
-                  <div class="box">
-                     <div class="icon">
-                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                  <div className="box">
+                     <div className="icon">
+                        <i className="fa fa-envelope" aria-hidden="true"></i>
                      </div>
-                     <div class="text">
+                     <div className="text">
                         <h3>Email</h3>
                         <p>data@labelling.com</p>
                      </div>
@@ -52,7 +52,7 @@ function Support() {
                {/* <div className="contactForm"> */}
                <form className="contactForm">
                   <h2>Send us a Message</h2>
-                  <div class="inputBox">
+                  <div className="inputBox">
                      <input
                         type="text"
                         placeholder="Full Name"
@@ -60,7 +60,7 @@ function Support() {
                         required="required"
                      />
                   </div>
-                  <div class="inputBox">
+                  <div className="inputBox">
                      <input
                         type="text"
                         placeholder="Email"
@@ -68,7 +68,7 @@ function Support() {
                         required="required"
                      />
                   </div>
-                  <div class="inputBox">
+                  <div className="inputBox">
                      <input
                         type="text"
                         placeholder="Type your Message..."
@@ -76,7 +76,7 @@ function Support() {
                         required="required"
                      />
                   </div>
-                  <div class="inputBox">
+                  <div className="inputBox">
                      <button type="submit" className="sendButton">
                         Send
                      </button>

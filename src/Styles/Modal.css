@@ -1,31 +1,45 @@
 .modal__jobName{
    padding-top: 10%;
+   font-family: 'Courier New', Courier, monospace;
 }
 
 .modal__uploaderLine{
-   
-   font-size: medium;
+   padding-top: 0.5rem ;
+   padding-bottom: 0.5rem ;
 }
 
 .modal__creditLine{
-   padding-top: 10%;
+
+   padding-top: 0.5rem ;
+   padding-bottom: 0.5rem ;
 }
 
 .modal__descriptionLine{
-   padding-top: 20%;
+   padding-top: 0.5rem ;
+   padding-bottom: 0.5rem ;
    display: flex;
-   flex-direction: column;
-   font-size: large;
-   font-weight: bold;
-
+   overflow: auto;
+   max-height: 13rem;
 }
 
 .modal__acceptJob{
+
    cursor: pointer;
-   font-size: x-large;
-   position: absolute;
+   border-radius: 15px;
+   font-size: large;
+   position:absolute;
    bottom: 5%;
-   padding-left: auto;
-   padding-right: auto;
+   right: 16%;
+   
+
+ 
+}
+
+.modal__content{
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   
+   max-width: 90%;
 }
 
