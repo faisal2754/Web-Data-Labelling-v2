@@ -124,11 +124,11 @@ Sipho Sikakane (Scrum master/Frontend):
 - Tasks for the day: Look at correct testing
 - Impediments: Time
  
-## Daily Scrum Meeting 16 September 2021 11:00am (Thursday)
+## Daily Scrum Meeting 16th September 2021 11:00am (Thursday)
 
 Aharon Cohen (Frontend):
-- Tasks completed yesterday: Did edit profile functionality
-- Tasks for the day: Set up update avatar functionality
+- Tasks completed yesterday: None
+- Tasks for the day: Jewish Holiday
 - Impediments: Other lectures and labs
 
 Langiwe Mwale (Frontend):
