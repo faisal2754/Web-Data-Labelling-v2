@@ -2,6 +2,7 @@ import './App.css'
 import CreateJob from './Pages/CreateJob'
 import DashboardSidebar from './Components/DashboardSidebar'
 import Login from './Pages/Login'
+import Bruh from './Components/Bruh'
 import Register from './Pages/Register'
 import Home from './Pages/Home'
 import HowTo from './Pages/HowTo'
@@ -39,6 +40,7 @@ const App = () => {
                component={() => <DashboardSidebar authorized={false} />}
             />
             <Route path="/create-job" exact component={CreateJob} />
+            <Route path="/Bruh" exact component={Bruh} />
             <Route path="/view-job" exact component={ViewJob} />
             <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={Register} />

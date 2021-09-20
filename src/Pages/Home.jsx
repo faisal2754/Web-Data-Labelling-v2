@@ -7,6 +7,7 @@ import Cards from '../Components/Cards'
 import HeroSection from '../Components/HeroSection'
 import Footer from '../Components/Footer'
 import Navbar from '../Components/Navbar'
+import Bruh from '../Components/Bruh'
 import Testimonials from '../Components/Testimonials'
 
 function Home() {
@@ -23,7 +24,7 @@ function Home() {
          <Navbar />
          <HeroSection />
          <Cards />
-         <Testimonials />
+         <Bruh/>
          <Footer />
       </div>
    )
