@@ -53,20 +53,14 @@ function DropdownMenu() {
             onEnter={calcHeight}
          >
             <div className="menu">
-               <DropdownItem>My Profile</DropdownItem>
-               <DropdownItem
-                  leftIcon={<CogIcon />}
-                  rightIcon={<ChevronIcon />}
-                  goToMenu="settings"
-               >
-                  Accepted Jobs
+               <DropdownItem>
+                  <a href="#/dashboard/profile">My Profile</a>
                </DropdownItem>
-               <DropdownItem
-                  leftIcon="🦧"
-                  rightIcon={<ChevronIcon />}
-                  goToMenu="animals"
-               >
-                  Created Jobs
+               <DropdownItem>
+                  <a href="#/dashboard/accepted-jobs">Accepted Jobs</a>
+               </DropdownItem>
+               <DropdownItem>
+                  <a href="#/dashboard/created-jobs">Created Jobs</a>
                </DropdownItem>
             </div>
          </CSSTransition>
