@@ -69,19 +69,21 @@ a {
 
 .dropdown {
    position: absolute;
-   top: 58px;
-   width: 300px;
+   top: 78px;
+   right: -20px;
+   width: 240px;
    transform: translateX(-45%);
    background-color: var(--bg);
    border: var(--border);
    border-radius: var(--border-radius);
-   padding: 1rem;
+   padding: 0.5rem;
    overflow: hidden;
    transition: height var(--speed) ease;
 }
 
 .menu {
    width: 100%;
+   margin-bottom: 5rem;
 }
 
 .menu-item {

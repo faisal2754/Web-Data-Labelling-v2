@@ -59,14 +59,14 @@ function DropdownMenu() {
                   rightIcon={<ChevronIcon />}
                   goToMenu="settings"
                >
-                  Settings
+                  Accepted Jobs
                </DropdownItem>
                <DropdownItem
                   leftIcon="🦧"
                   rightIcon={<ChevronIcon />}
                   goToMenu="animals"
                >
-                  Animals
+                  Created Jobs
                </DropdownItem>
             </div>
          </CSSTransition>
