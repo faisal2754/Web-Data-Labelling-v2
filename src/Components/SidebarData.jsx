@@ -27,17 +27,5 @@ export const SidebarData = [
       path: '/dashboard/created-jobs',
       icon: <FaIcons.FaCartPlus />,
       className: 'dash--nav-text'
-   },
-   {
-      title: 'About Us',
-      path: '/dashboard/about-us',
-      icon: <IoIcons.IoMdPeople />,
-      className: 'dash--nav-text'
-   },
-   {
-      title: 'Support',
-      path: '/dashboard/support',
-      icon: <IoIcons.IoMdPerson />,
-      className: 'dash--nav-text'
    }
 ]

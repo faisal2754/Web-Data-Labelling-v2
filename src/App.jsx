@@ -55,8 +55,6 @@ const App = () => {
                exact
                component={AcceptedJobs}
             />
-            <Route path="/dashboard/about-us" exact component={AboutUs} />
-            <Route path="/dashboard/support" exact component={Support} />
             <Route path="/label-job" exact component={LabelJob} />
          </Switch>
       </Router>
