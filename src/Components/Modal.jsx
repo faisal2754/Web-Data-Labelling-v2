@@ -86,7 +86,8 @@ export const Modal = ({
    uploader,
    credits,
    title,
-   buttonLabel
+   buttonLabel,
+   deletable
 }) => {
    const history = useHistory()
    const jwt = useSelector((state) => state.user.jwt)
@@ -179,6 +180,12 @@ export const Modal = ({
                               Description:
                               {text}
                            </div>
+                           {deletable ? <button
+                                 className="modal__ownedJobs"
+                                 onClick={acceptJob} 
+                              >
+                                 {buttonLabel}
+                              </button> : 
                            <Link to={destination}>
                               <button
                                  className="modal__acceptJob"
@@ -187,6 +194,7 @@ export const Modal = ({
                                  {buttonLabel}
                               </button>
                            </Link>
+                           }
                         </div>
                      </ModalContent>
                      <CloseModalButton

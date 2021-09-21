@@ -12,8 +12,8 @@ function CreatedJobs() {
 
    let jobs = []
    if (data) {
-      jobs = data.createdJobs
-      console.log(jobs.preview_images)
+      jobs = data.ownedJobs
+      console.log(data)
    }
    if (error) {
       console.log(error)
@@ -42,11 +42,11 @@ function CreatedJobs() {
                         src="../images/purple_gradient.jpg"
                         text={job.description}
                         credits={job.credits}
-                        uploader={job.job_owner.username}
                         title={job.title}
                         showModal={showModal}
-                        buttonLabel="Do Job"
+                        buttonLabel="Delete Job"
                         setShowModal={setShowModal}
+                        deletable={true}
                      />
                   </div>
                )
