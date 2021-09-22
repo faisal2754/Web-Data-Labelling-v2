@@ -7,10 +7,11 @@ import '../Styles/Modal.css'
 import { useSelector } from 'react-redux'
 import { Link,  useHistory } from 'react-router-dom'
 import { useMutation } from '@apollo/client'
-import { ACCEPT_JOB } from '../graphql/mutations'
+import { ACCEPT_JOB, DELETE_JOB } from '../graphql/mutations'
 import { GET_ACCEPTED_JOBS } from '../graphql/queries'
 import Cookies from 'js-cookie'
 import { toast } from 'react-toastify'
+import swal from 'sweetalert'
 
 const Background = styled.div`
    z-index: 1;
@@ -103,6 +104,8 @@ export const Modal = ({
       transform: showModal ? `translateY(0%)` : `translateY(-100%)`
    })
    const [AcceptJob, { loading, error, data }] = useMutation(ACCEPT_JOB)
+   const [deletejobMutation, { delData, delLoading, delError }] =
+      useMutation(DELETE_JOB)
    // const closeModal = (e) => {
    //    if (modalRef.current === e.target) {
    //       setShowModal(false)
@@ -182,7 +185,27 @@ export const Modal = ({
                            </div>
                            {deletable ? <button
                                  className="modal__ownedJobs"
-                                 onClick={acceptJob} 
+                                 onClick={
+                                    () => {swal({
+                                       title: "Are you sure?",
+                                       text: "You will not be able to recover this job!",
+                                       icon: "warning",
+                                       buttons: [true, "Yes, delete"],
+                                       dangerMode: true
+                                    }).then((confirm) => {
+                                       if(confirm){
+                                          deletejobMutation({
+                                             variables: {
+                                                job_id: id
+                                             }
+                                          })
+                                       }
+                                       if(delData){
+                                          toast.success("Job Deleted")
+                                          window.location.reload(false);
+                                       }
+                                    })}
+                                 } 
                               >
                                  {buttonLabel}
                               </button> : 

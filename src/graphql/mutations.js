@@ -49,6 +49,12 @@ const ACCEPT_JOB = gql`
    }
 `
 
+const DELETE_JOB = gql`
+   mutation deleteJob($job_id: ID!) {
+  deleteJob(job_id: $job_id)
+}
+`
+
 const SAVE_STATE = gql`
    mutation SaveState(
       $image_ids: [ID]!
@@ -80,5 +86,6 @@ export {
    CREATE_JOB,
    ACCEPT_JOB,
    SAVE_STATE,
-   EDIT_PROFILE
+   EDIT_PROFILE,
+   DELETE_JOB
 }

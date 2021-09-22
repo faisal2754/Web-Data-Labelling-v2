@@ -15,6 +15,7 @@ import {
 import Cookies from 'js-cookie'
 import store from './redux/store'
 import { Provider } from 'react-redux'
+import swal from 'sweetalert';
 
 const httpLink = new HttpLink({
    uri: 'https://data-labelling-server.herokuapp.com/graphql'
