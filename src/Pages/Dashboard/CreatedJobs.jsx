@@ -5,6 +5,7 @@ import { useQuery } from '@apollo/client'
 import Modal from '../../Components/Modal'
 import CardItem from '../../Components/CardItem'
 import '../../Styles/CreatedJobs.css'
+import NavbarOther from '../../Components/NavbarOther'
 
 function CreatedJobs() {
    const { loading, error, data } = useQuery(GET_CREATED_JOBS)
@@ -32,6 +33,7 @@ function CreatedJobs() {
    }
    return (
       <div>
+         <NavbarOther />
          <div className="createdJobs__Modal">
             {jobs.map((job) => {
                return (
@@ -53,7 +55,7 @@ function CreatedJobs() {
             })}
          </div>
 
-         <DashboardSidebar />
+         {/* <DashboardSidebar /> */}
          <div className="createdJobs__header">
             <video src="../videos/header-hero.mp4" autoPlay loop muted />
             <h1>View your Created Jobs</h1>

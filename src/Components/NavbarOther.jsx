@@ -57,7 +57,7 @@ function NavbarOther() {
                      Home
                   </Link>
                </li>
-               {!isJwt ? (
+               {/* {!isJwt ? (
                   <li></li>
                ) : (
                   <li className="nav-item">
@@ -69,7 +69,7 @@ function NavbarOther() {
                         Dashboard
                      </Link>
                   </li>
-               )}
+               )} */}
                <li className="nav-item">
                   <Link
                      to="/how-to"

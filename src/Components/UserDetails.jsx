@@ -46,9 +46,11 @@ const UserDetails = (props) => {
                password: passwordChange
             },
             refetchQueries: [{ query: GET_ME }]
-         }).then(()=>{
-            toast.success('Your Details Have Been Changed')
-         }).catch((error)=>showError())
+         })
+            .then(() => {
+               toast.success('Your Details Have Been Changed')
+            })
+            .catch((error) => showError())
          toast.clearWaitingQueue()
       }
    }
@@ -95,7 +97,7 @@ const UserDetails = (props) => {
                               />
                            </div>
                         </div>
-                        <div className="col-lg-6">
+                        {/* <div className="col-lg-6">
                            <div className="form-group">
                               <label
                                  className="form-control-label"
@@ -111,7 +113,7 @@ const UserDetails = (props) => {
                                  text={props.email}
                               />
                            </div>
-                        </div>
+                        </div> */}
                      </div>
                      <div className="row">
                         <div className="col-lg-6">

@@ -6,6 +6,7 @@ import Modal from '../../Components/Modal'
 import CardItem from '../../Components/CardItem'
 import '../../Styles/AcceptedJobs.css'
 import ReactLoading from 'react-loading'
+import NavbarOther from '../../Components/NavbarOther'
 
 function AcceptedJobs() {
    // const { loading, error, data } = useQuery(GET_ME)
@@ -32,6 +33,7 @@ function AcceptedJobs() {
    }
    return (
       <div>
+         <NavbarOther />
          <div className="acceptJobs__Modal">
             {jobs.map((job) => {
                return (
@@ -57,7 +59,7 @@ function AcceptedJobs() {
             })}
          </div>
 
-         <DashboardSidebar />
+         {/* <DashboardSidebar /> */}
          <div className="acceptedJobs__header">
             <video src="../videos/header-hero.mp4" autoPlay loop muted />
             <h1>View your Accepted Jobs</h1>
@@ -71,7 +73,7 @@ function AcceptedJobs() {
                   type={'spin'}
                   color={'black'}
                   height={'10%'}
-                  color={"#ffffff"}
+                  color={'#ffffff'}
                   width={'10%'}
                   className="acceptedJob__loadingSpin"
                />

@@ -1,10 +1,4 @@
 import '../Styles/DropdownMenu.css'
-import { ReactComponent as BellIcon } from './icons/bell.svg'
-import { ReactComponent as MessengerIcon } from './icons/messenger.svg'
-import { ReactComponent as CaretIcon } from './icons/caret.svg'
-import { ReactComponent as PlusIcon } from './icons/plus.svg'
-import { ReactComponent as CogIcon } from './icons/cog.svg'
-import { ReactComponent as ChevronIcon } from './icons/chevron.svg'
 import { ReactComponent as ArrowIcon } from './icons/arrow.svg'
 import { ReactComponent as BoltIcon } from './icons/bolt.svg'
 import { ReactComponent as ProfileIcon } from './icons/profile_icon2.svg'
@@ -38,15 +32,14 @@ function DropdownMenu() {
 
    function DropdownItem(props) {
       return (
-         <a
-            href="#"
+         <div
             className="menu-item"
             onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}
          >
             <span className="icon-button">{props.leftIcon}</span>
             {props.children}
             <span className="icon-right">{props.rightIcon}</span>
-         </a>
+         </div>
       )
    }
 
@@ -79,7 +72,7 @@ function DropdownMenu() {
             </div>
          </CSSTransition>
 
-         <CSSTransition
+         {/* <CSSTransition
             in={activeMenu === 'settings'}
             timeout={500}
             classNames="menu-secondary"
@@ -113,7 +106,7 @@ function DropdownMenu() {
                <DropdownItem leftIcon="🦋">Horse?</DropdownItem>
                <DropdownItem leftIcon="🦔">Hedgehog</DropdownItem>
             </div>
-         </CSSTransition>
+         </CSSTransition> */}
       </div>
    )
 }
