@@ -7,6 +7,7 @@ import ImageUploading from 'react-images-uploading'
 import { useMutation } from '@apollo/client'
 import { CREATE_JOB } from '../graphql/mutations'
 import { Redirect } from 'react-router-dom'
+import Cookies from 'js-cookie'
 import { toast } from 'react-toastify'
 import FormData from 'form-data'
 import axios from 'axios'
@@ -16,7 +17,7 @@ import axios from 'axios'
 
 const CreateJob = () => {
    const [labels, setLabels] = useState([])
-   const [createJob, { loading, error, data }] = useMutation(CREATE_JOB)
+   // const [createJob, { loading, error, data }] = useMutation(CREATE_JOB)
    const [currentTotal, setCurrentTotal] = useState(0)
    const [totalImages, setTotalImages] = useState(0)
    const [images, setImages] = useState([])
@@ -33,17 +34,9 @@ const CreateJob = () => {
       const temp = document.querySelector('#testimageup').files.length
       setTotalImages(temp)
    }
-   // let totalimages=0;
    useEffect(() => {
       document.querySelector('#totalCredits').value = 0
    }, [])
-
-   if (data) {
-      return <Redirect to="/dashboard/created-jobs" />
-   }
-   // if (error) {
-   //    console.log(error)
-   // }
 
    // let myfiles
    // const handlefiles = (e) => {
@@ -72,60 +65,81 @@ const CreateJob = () => {
             encType="multipart/form-data"
             onSubmit={async (e) => {
                e.preventDefault()
-               // await createFormDataJob()
-               let file = images[0].file
+               // let files = images.map((image) => image.file)[0]
+               
                const form = new FormData()
+               //TODO Dont allow more partitions than images
+               //! Begin Error checking
+               if (document.querySelector('#title').value === '') {
+                  toast.error('Please enter a valid job title')
+                  // toast.clearWaitingQueue()
+                  return
+               }
+               if (document.querySelector('#description').value === '') {
+                  toast.error('Please enter a valid job description')
+                  // toast.clearWaitingQueue()
+                  return
+               }
+               if (labels.map((label) => label.label).length === 0) {
+                  toast.error('Please enter at least one label')
+                  // toast.clearWaitingQueue()
+                  return
+               }
+               if (
+                  document.querySelector('#imgPerSection').value === 0 ||
+                  document.querySelector('#imgPerSection').value === ''
+               ) {
+                  toast.error('Invalid number of partitions')
+                  // toast.clearWaitingQueue()
+                  return
+               }
+               //// if (dataForSubmit.images.length === 0) {
+               ////    toast.error('Please upload at least 1 image')
+               // //   // toast.clearWaitingQueue()
+               ////    return
+               //// }
+               //! End Error Checking
+
                form.append(
                   'operations',
                   JSON.stringify({
                      query: 'mutation ($files: [Upload], $title: String!, $description: String!, $credits: Int!, $num_partitions: Int!, $labels: [String]!){\n  createJob (files: $files, title: $title, description: $description, credits: $credits, num_partitions: $num_partitions, labels: $labels){\n    job_id\n  }\n}',
                      variables: {
                         files: [],
+                        // title: 'faisal test',
                         title: document.querySelector('#title').value,
                         description:
                            document.querySelector('#description').value,
-                        credits: currentTotal,
-                        // images: images,
-                        // files: images.map((image) => image.file),
+
+                        credits: parseInt(currentTotal),
                         num_partitions: parseInt(
                            document.querySelector('#imgPerSection').value
-                           ),
-                           labels: labels.map((label) => label.label)
+                        ),
+                        labels: labels.map((label) => label.label)
                      }
                   })
                )
-               // var images = document.querySelector('#testimageup')
-               // console.log(images)
-               // console.log(file)
-               form.append(
-                  'map',
-                  JSON.stringify({
-                     0: ['variables.files.0']
-                  })
-               )
-               form.append('0', file, {
-                  filename: 'temp.png'
-               })
-               // form.append(
-               //    'map',
-               //    JSON.stringify(
-               //       images.map((image) => {
-               //          const originalimgname = image.file.name
-               //          return {
-               //             originalimgname: ['variables.files.originalimgname']
-               //          }
-               //       })
-               //    )
-               // )
-               // images.forEach((img) => {
-               //    const originalimgname = img.file.name
-               //    form.append(originalimgname, img.data_url)
-               // })
+
+               let variables = {}
+               for (let i = 0; i < images.length; i++) {
+                  variables[i] = []
+                  variables[i].push(`variables.files.${i}`)
+               }
+               form.append('map', JSON.stringify(variables))
+
+               for (let i = 0; i < images.length; i++) {
+                  form.append(i.toString(), images[i].file)
+               }
 
                // console.log(form)
                let res = axios.post(
                   'https://data-labelling-server.herokuapp.com/graphql',
-                  form
+                  form,
+                  {
+                     headers: {
+                        Authorization: 'Bearer ' + Cookies.get('jwt') || null
+                     }
+                  }
                )
 
                console.log(res)
@@ -423,7 +437,7 @@ const CreateJob = () => {
                   color="default"
                   type="submit"
                >
-                  {loading ? 'Submitting...' : 'Submit Job'}
+                  Submit Job
                </button>
             </div>
          </form>

@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom'
 import '../Styles/Navbar.css'
 import { useSelector } from 'react-redux'
 import Cookies from 'js-cookie'
+import { ToastContainer, toast } from 'react-toastify'
+import NavItem from './NavItem'
+import DropdownMenu from './DropdownMenu'
+import { ReactComponent as CaretIcon } from './icons/caret.svg'
 
 function Navbar() {
    const [click, setClick] = useState(false)
@@ -170,6 +174,9 @@ function Navbar() {
             ) : (
                <div></div>
             )}
+            <NavItem icon={<CaretIcon />}>
+               <DropdownMenu></DropdownMenu>
+            </NavItem>
          </div>
       </nav>
    )
