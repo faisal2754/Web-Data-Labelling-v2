@@ -7,7 +7,7 @@ import Cookies from 'js-cookie'
 import { ToastContainer, toast } from 'react-toastify'
 import NavItem from './NavItem'
 import DropdownMenu from './DropdownMenu'
-import { ReactComponent as CaretIcon } from './icons/caret.svg'
+import { ReactComponent as MenuIcon } from './icons/menu_icon.svg'
 
 function Navbar() {
    const [click, setClick] = useState(false)
@@ -156,13 +156,21 @@ function Navbar() {
             ) : (
                <div></div>
             )}
+
             {button && isJwt ? (
+               <NavItem icon={<MenuIcon />}>
+                  <DropdownMenu></DropdownMenu>
+               </NavItem>
+            ) : (
+               <div></div>
+            )}
+            {/* {button && isJwt ? (
                <Button buttonStyle="btn--outline" onClick={deleteJWT}>
                   Sign Out
                </Button>
             ) : (
                <div></div>
-            )}
+            )} */}
             {button && !isJwt ? (
                <Button
                   buttonStyle="btn--primary"
@@ -174,9 +182,6 @@ function Navbar() {
             ) : (
                <div></div>
             )}
-            <NavItem icon={<CaretIcon />}>
-               <DropdownMenu></DropdownMenu>
-            </NavItem>
          </div>
       </nav>
    )

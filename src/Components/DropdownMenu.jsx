@@ -7,6 +7,11 @@ import { ReactComponent as CogIcon } from './icons/cog.svg'
 import { ReactComponent as ChevronIcon } from './icons/chevron.svg'
 import { ReactComponent as ArrowIcon } from './icons/arrow.svg'
 import { ReactComponent as BoltIcon } from './icons/bolt.svg'
+import { ReactComponent as ProfileIcon } from './icons/profile_icon2.svg'
+import { ReactComponent as AcceptedIcon } from './icons/accepted_icon.svg'
+import { ReactComponent as OwnedIcon } from './icons/owned_icon.svg'
+import { ReactComponent as LogOutIcon } from './icons/logout_icon.svg'
+import Cookies from 'js-cookie'
 
 import React, { useState, useEffect, useRef } from 'react'
 import { CSSTransition } from 'react-transition-group'
@@ -15,6 +20,12 @@ function DropdownMenu() {
    const [activeMenu, setActiveMenu] = useState('main')
    const [menuHeight, setMenuHeight] = useState(null)
    const dropdownRef = useRef(null)
+
+   const deleteJWT = () => {
+      Cookies.remove('jwt') //deletes the jwt token on signout
+      window.location.reload()
+      // toast.warning("You have logged out")
+   }
 
    useEffect(() => {
       setMenuHeight(dropdownRef.current?.firstChild.offsetHeight)
@@ -53,14 +64,17 @@ function DropdownMenu() {
             onEnter={calcHeight}
          >
             <div className="menu">
-               <DropdownItem>
+               <DropdownItem leftIcon={<ProfileIcon />}>
                   <a href="#/dashboard/profile">My Profile</a>
                </DropdownItem>
-               <DropdownItem>
+               <DropdownItem leftIcon={<AcceptedIcon />}>
                   <a href="#/dashboard/accepted-jobs">Accepted Jobs</a>
                </DropdownItem>
-               <DropdownItem>
+               <DropdownItem leftIcon={<OwnedIcon />}>
                   <a href="#/dashboard/created-jobs">Created Jobs</a>
+               </DropdownItem>
+               <DropdownItem leftIcon={<LogOutIcon />}>
+                  <a onClick={deleteJWT}>Sign Out</a>
                </DropdownItem>
             </div>
          </CSSTransition>

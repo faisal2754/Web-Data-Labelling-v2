@@ -6,7 +6,7 @@ import '../Styles/Navbar_other.css'
 import Cookies from 'js-cookie'
 import NavItem from './NavItem'
 import DropdownMenu from './DropdownMenu'
-import { ReactComponent as CaretIcon } from './icons/caret.svg'
+import { ReactComponent as MenuIcon } from './icons/menu_icon.svg'
 
 function NavbarOther() {
    const [click, setClick] = useState(false)
@@ -130,12 +130,19 @@ function NavbarOther() {
                <div></div>
             )}
             {button && isJwt ? (
+               <NavItem icon={<MenuIcon />}>
+                  <DropdownMenu></DropdownMenu>
+               </NavItem>
+            ) : (
+               <div></div>
+            )}
+            {/* {button && isJwt ? (
                <Button buttonStyle="btn--outline" onClick={deleteJWT}>
                   Sign Out
                </Button>
             ) : (
                <div></div>
-            )}
+            )} */}
             {button && !isJwt ? (
                <Button
                   buttonStyle="btn--primary"
@@ -147,9 +154,6 @@ function NavbarOther() {
             ) : (
                <div></div>
             )}
-            <NavItem icon={<CaretIcon />}>
-               <DropdownMenu></DropdownMenu>
-            </NavItem>
          </div>
       </nav>
    )
