@@ -24,7 +24,7 @@ function Home() {
          <Navbar />
          <HeroSection />
          <Cards />
-         <Bruh/>
+         <Testimonials/>
          <Footer />
       </div>
    )
