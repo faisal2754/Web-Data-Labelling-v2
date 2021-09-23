@@ -51,10 +51,7 @@ const GET_ACCEPTED_JOBS = gql`
 `
 const GET_CREATED_JOBS = gql`
    query createdJobs {
-      createdJobs {
-         job_owner {
-            username
-         }
+      ownedJobs {
          title
          credits
          job_id

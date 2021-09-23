@@ -30,9 +30,16 @@
    position:absolute;
    bottom: 5%;
    right: 16%;
-   
+}
 
- 
+.modal__ownedJobs{
+   cursor: pointer;
+   border-radius: 15px;
+   font-size: large;
+   position:absolute;
+   bottom: 5%;
+   right: 16%;
+   background-color: crimson !important
 }
 
 .modal__content{

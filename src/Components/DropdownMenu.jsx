@@ -1,12 +1,11 @@
 import '../Styles/DropdownMenu.css'
-import { ReactComponent as BellIcon } from './icons/bell.svg'
-import { ReactComponent as MessengerIcon } from './icons/messenger.svg'
-import { ReactComponent as CaretIcon } from './icons/caret.svg'
-import { ReactComponent as PlusIcon } from './icons/plus.svg'
-import { ReactComponent as CogIcon } from './icons/cog.svg'
-import { ReactComponent as ChevronIcon } from './icons/chevron.svg'
 import { ReactComponent as ArrowIcon } from './icons/arrow.svg'
 import { ReactComponent as BoltIcon } from './icons/bolt.svg'
+import { ReactComponent as ProfileIcon } from './icons/profile_icon2.svg'
+import { ReactComponent as AcceptedIcon } from './icons/accepted_icon.svg'
+import { ReactComponent as OwnedIcon } from './icons/owned_icon.svg'
+import { ReactComponent as LogOutIcon } from './icons/logout_icon.svg'
+import Cookies from 'js-cookie'
 
 import React, { useState, useEffect, useRef } from 'react'
 import { CSSTransition } from 'react-transition-group'
@@ -15,6 +14,12 @@ function DropdownMenu() {
    const [activeMenu, setActiveMenu] = useState('main')
    const [menuHeight, setMenuHeight] = useState(null)
    const dropdownRef = useRef(null)
+
+   const deleteJWT = () => {
+      Cookies.remove('jwt') //deletes the jwt token on signout
+      window.location.reload()
+      // toast.warning("You have logged out")
+   }
 
    useEffect(() => {
       setMenuHeight(dropdownRef.current?.firstChild.offsetHeight)
@@ -27,15 +32,14 @@ function DropdownMenu() {
 
    function DropdownItem(props) {
       return (
-         <a
-            href="#"
+         <div
             className="menu-item"
             onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}
          >
             <span className="icon-button">{props.leftIcon}</span>
             {props.children}
             <span className="icon-right">{props.rightIcon}</span>
-         </a>
+         </div>
       )
    }
 
@@ -53,25 +57,22 @@ function DropdownMenu() {
             onEnter={calcHeight}
          >
             <div className="menu">
-               <DropdownItem>My Profile</DropdownItem>
-               <DropdownItem
-                  leftIcon={<CogIcon />}
-                  rightIcon={<ChevronIcon />}
-                  goToMenu="settings"
-               >
-                  Settings
+               <DropdownItem leftIcon={<ProfileIcon />}>
+                  <a href="#/dashboard/profile">My Profile</a>
                </DropdownItem>
-               <DropdownItem
-                  leftIcon="🦧"
-                  rightIcon={<ChevronIcon />}
-                  goToMenu="animals"
-               >
-                  Animals
+               <DropdownItem leftIcon={<AcceptedIcon />}>
+                  <a href="#/dashboard/accepted-jobs">Accepted Jobs</a>
+               </DropdownItem>
+               <DropdownItem leftIcon={<OwnedIcon />}>
+                  <a href="#/dashboard/created-jobs">Created Jobs</a>
+               </DropdownItem>
+               <DropdownItem leftIcon={<LogOutIcon />}>
+                  <a onClick={deleteJWT}>Sign Out</a>
                </DropdownItem>
             </div>
          </CSSTransition>
 
-         <CSSTransition
+         {/* <CSSTransition
             in={activeMenu === 'settings'}
             timeout={500}
             classNames="menu-secondary"
@@ -105,7 +106,7 @@ function DropdownMenu() {
                <DropdownItem leftIcon="🦋">Horse?</DropdownItem>
                <DropdownItem leftIcon="🦔">Hedgehog</DropdownItem>
             </div>
-         </CSSTransition>
+         </CSSTransition> */}
       </div>
    )
 }

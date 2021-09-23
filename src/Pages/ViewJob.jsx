@@ -24,8 +24,8 @@ function ViewJob() {
    if (data) {
       jobs = data.viewJobs
    }
-   if(error){
-      toast.error("There was an error fetching the jobs")
+   if (error) {
+      toast.error('There was an error fetching the jobs')
    }
 
    const [showModal, setShowModal] = useState(false)
@@ -80,7 +80,7 @@ function ViewJob() {
             <h1>Find A Job That Interests You</h1>
          </div>
 
-         <div className="viewJob__filters">
+         {/* <div className="viewJob__filters">
             <h1>
                <b>Filter Your Jobs By: </b>
             </h1>
@@ -102,7 +102,7 @@ function ViewJob() {
                <MenuItem># Photos ASC</MenuItem>
                <MenuItem># Photos DESC</MenuItem>
             </Menu>
-         </div>
+         </div> */}
 
          <div className="viewJob__container">
             {loading ? (

@@ -42,12 +42,18 @@ a {
 
 /* Icon Button */
 .icon-button {
-   --button-size: calc(var(--nav-size) * 0.5);
+   --button-size: calc(var(--nav-size) * 0.7);
    width: var(--button-size);
    height: var(--button-size);
    background-color: #484a4d;
+   /* background-image: linear-gradient(
+      to right,
+      #9733ee 0%,
+      #da22ff 51%,
+      #9733ee 100%
+   ); */
    border-radius: 50%;
-   padding: 5px;
+   padding: auto;
    margin: 2px;
    display: flex;
    align-items: center;
@@ -69,19 +75,22 @@ a {
 
 .dropdown {
    position: absolute;
-   top: 58px;
-   width: 300px;
+   top: 78px;
+   right: -20px;
+   width: 240px;
+   min-height: 240px;
    transform: translateX(-45%);
    background-color: var(--bg);
    border: var(--border);
    border-radius: var(--border-radius);
-   padding: 1rem;
+   padding: 0.5rem;
    overflow: hidden;
    transition: height var(--speed) ease;
 }
 
 .menu {
    width: 100%;
+   margin-bottom: 5rem;
 }
 
 .menu-item {
@@ -91,6 +100,8 @@ a {
    border-radius: var(--border-radius);
    transition: background var(--speed);
    padding: 0.5rem;
+   padding-bottom: 0.5rem;
+   margin-bottom: 0.5rem;
 }
 
 .menu-item .icon-button {
