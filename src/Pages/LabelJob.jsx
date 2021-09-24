@@ -9,6 +9,8 @@ import { useQuery, useMutation } from '@apollo/client'
 import { Button } from '../Components/Button'
 import { useEffect } from 'react'
 import { current } from '@reduxjs/toolkit'
+import { ToastContainer, toast } from 'react-toastify'
+import { Link, Redirect } from 'react-router-dom'
 
 function LabelJob(props) {
    const [index, setIndex] = useState()
@@ -119,7 +121,7 @@ function LabelJob(props) {
       checkCompletion()
    }
 
-   const saveState = () => {
+   const saveState = (buttonID) => {
       submitJob({
          variables: {
             image_ids: Object.keys(assignedLabels).map((id) => Number(id)),
@@ -128,6 +130,12 @@ function LabelJob(props) {
             is_complete: is_complete
          }
       })
+
+      if (buttonID == 'submitButton') {
+         return <Redirect to="/dashboard/accepted-jobs" />
+      } else {
+         toast.success('Your labelling progress has been saved.')
+      }
    }
 
    return (
@@ -176,10 +184,11 @@ function LabelJob(props) {
                   </div>
                   <div className="submitSection">
                      <Button
+                        id="saveButton"
                         className="btns"
                         buttonStyle="btn--outline"
                         buttonSize="btn--large"
-                        onClick={saveState}
+                        onClick={(e) => saveState(e.target.id)}
                      >
                         Save
                      </Button>
@@ -188,7 +197,7 @@ function LabelJob(props) {
                         className="btns"
                         buttonStyle="btn--primary"
                         buttonSize="btn--large"
-                        onClick={saveState}
+                        onClick={(e) => saveState(e.target.id)}
                      >
                         Submit
                      </Button>

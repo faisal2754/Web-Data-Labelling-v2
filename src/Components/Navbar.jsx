@@ -116,19 +116,7 @@ function Navbar() {
                      Find A Job
                   </Link>
                </li>
-               {!isJwt ? (
-                  <li></li>
-               ) : (
-                  <li className="nav-item">
-                     <Link
-                        to="/label-job"
-                        className="nav-links"
-                        onClick={closeMobileMenu}
-                     >
-                        Label Job
-                     </Link>
-                  </li>
-               )}
+
                <li>
                   <Link
                      to="/login"
