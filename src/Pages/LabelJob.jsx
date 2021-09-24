@@ -155,8 +155,8 @@ function LabelJob(props) {
                </div>
                <div className="label-save">
                   <div className="label-section">
+                     <h2>Labels</h2>
                      <div className="labels-container">
-                        <h2>Labels</h2>
                         <div className="radio-toolbar">
                            {labels.map((label) => (
                               <>
