@@ -136,6 +136,8 @@ function LabelJob(props) {
          document.getElementById('image-section').style.display = 'none'
          document.getElementById('job-submitted').style.display = 'block'
          document.getElementById('label-job-form').style.height = '90vh'
+         document.getElementById('accepted-jobs-btn').style.display = 'block'
+         document.getElementById('job-completed').style.display = 'block'
       } else {
          toast.success('Your labelling progress has been saved.')
       }
@@ -147,9 +149,18 @@ function LabelJob(props) {
 
          <div className="label-job-page">
             <div className="label-job-form" id="label-job-form">
-               <h2 id="job-submitted" className="job-submitted">
-                  You have successfully completed this job!
-               </h2>
+               <div className="job-completed" id="job-completed">
+                  <h2 id="job-submitted" className="job-submitted">
+                     You have successfully completed this job!
+                  </h2>
+                  <Link
+                     id="accepted-jobs-btn"
+                     to="/dashboard/accepted-jobs"
+                     className="accepted-jobs-link"
+                  >
+                     Return to Accepted Jobs
+                  </Link>
+               </div>
                <div className="image-section" id="image-section">
                   <h2>{title}</h2>
                   <div className="image-slider-container">

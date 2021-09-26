@@ -104,3 +104,17 @@ input[type='radio']:checked:after {
    text-shadow: 1px 1px 3px black;
    padding-top: 30vh;
 }
+.job-completed {
+   display: none;
+}
+.accepted-jobs-link {
+   color: white;
+   padding-left: 35%;
+   font-size: 30px;
+   padding-top: 5%;
+   text-shadow: 1px 1px 3px black;
+}
+
+.accepted-jobs-link:hover {
+   color: #81ffef;
+}
