@@ -11,15 +11,39 @@ const UserDetails = (props) => {
       toast.error('An error occured')
       toast.clearWaitingQueue()
    }
-   const editProfile = () => {
+
+   const editUsername = () => {
       let userNameChange
-      let passwordChange
+
       //check if username is empty
       if (document.getElementById('input-username').value === '') {
          userNameChange = props.username
       } else {
          userNameChange = document.getElementById('input-username').value
       }
+
+      if (
+         document.getElementById('input-passwordNew').value !==
+         document.getElementById('input-passwordConfirm').value
+      ) {
+         toast.error("Passwords Don't Match")
+      } else {
+         EditProfile({
+            variables: {
+               username: userNameChange
+            },
+            refetchQueries: [{ query: GET_ME }]
+         })
+            .then(() => {
+               toast.success('Your Details Have Been Changed')
+            })
+            .catch((error) => showError())
+         toast.clearWaitingQueue()
+      }
+   }
+
+   const editPassword = () => {
+      let passwordChange
 
       // check if password is empty
       if (document.getElementById('input-passwordNew').value === '') {
@@ -39,10 +63,14 @@ const UserDetails = (props) => {
          document.getElementById('input-passwordConfirm').value
       ) {
          toast.error("Passwords Don't Match")
+      } else if (
+         document.getElementById('input-passwordNew').value === '' ||
+         document.getElementById('input-passwordConfirm').value === ''
+      ) {
+         toast.error('Passwords Are Empty')
       } else {
          EditProfile({
             variables: {
-               username: userNameChange,
                password: passwordChange
             },
             refetchQueries: [{ query: GET_ME }]
@@ -65,11 +93,18 @@ const UserDetails = (props) => {
                   </div>
                   <div className="col-4 text-right">
                      <a
-                        onClick={editProfile}
+                        onClick={editUsername}
                         href="#/dashboard/profile"
                         className="user-btn user-btn-sm user-btn-primary"
                      >
-                        Update Profile
+                        Update Username
+                     </a>
+                     <a
+                        onClick={editPassword}
+                        href="#/dashboard/profile"
+                        className="user-btn user-btn-sm user-btn-primary"
+                     >
+                        Update Password
                      </a>
                   </div>
                </div>
