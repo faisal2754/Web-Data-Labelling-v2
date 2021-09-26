@@ -40,9 +40,10 @@ const ModalWrapper = styled.div`
 
 const ModalImg = styled.img`
    margin-top: 5%;
+   margin-top: 8.5%;
    object-fit: cover;
-   width: 100%;
-   height: 80%;
+   width: 400px;
+   height: 330px;
    padding-top: 2rem;
    padding-bottom: 2rem;
    padding-left: 2rem;
