@@ -37,7 +37,6 @@ const Bruh = () => {
       })
 
       let res= axios.post('https://data-labelling-server.herokuapp.com/graphql', form)
-      console.log(res)
    }
 
    return (

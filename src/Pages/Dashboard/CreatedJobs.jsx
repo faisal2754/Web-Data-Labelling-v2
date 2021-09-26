@@ -14,7 +14,6 @@ function CreatedJobs() {
    let jobs = []
    if (data) {
       jobs = data.ownedJobs
-      console.log(data)
    }
    if (error) {
       console.log(error)
@@ -23,7 +22,6 @@ function CreatedJobs() {
    const openModal = (currentId) => {
       setShowModal((prev) => !prev)
       for (let i = 0; i < jobs.length; i++) {
-         console.log(jobs)
          if (jobs[i].job_id !== currentId) {
             document.getElementById(jobs[i].job_id).style.display = 'none'
          } else {

@@ -346,7 +346,6 @@ const CreateJob = () => {
                               style={isDragging ? { color: 'red' } : null}
                               onClick={(e) => {
                                  e.preventDefault()
-                                 console.log(e.target.files)
                                  onImageUpload()
                               }}
                               {...dragProps}
