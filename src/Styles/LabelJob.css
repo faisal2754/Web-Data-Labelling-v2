@@ -96,3 +96,11 @@ input[type='radio']:checked:after {
    align-items: center;
    margin-top: 4rem;
 }
+
+.job-submitted {
+   display: none;
+   font-size: 50px;
+   color: white;
+   text-shadow: 1px 1px 3px black;
+   padding-top: 30vh;
+}

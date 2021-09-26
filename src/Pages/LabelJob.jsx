@@ -132,7 +132,10 @@ function LabelJob(props) {
       })
 
       if (buttonID == 'submitButton') {
-         return <Redirect to="/dashboard/accepted-jobs" />
+         document.getElementById('label-save').style.display = 'none'
+         document.getElementById('image-section').style.display = 'none'
+         document.getElementById('job-submitted').style.display = 'block'
+         document.getElementById('label-job-form').style.height = '90vh'
       } else {
          toast.success('Your labelling progress has been saved.')
       }
@@ -143,8 +146,11 @@ function LabelJob(props) {
          <NavbarOther />
 
          <div className="label-job-page">
-            <div className="label-job-form">
-               <div className="image-section">
+            <div className="label-job-form" id="label-job-form">
+               <h2 id="job-submitted" className="job-submitted">
+                  You have successfully completed this job!
+               </h2>
+               <div className="image-section" id="image-section">
                   <h2>{title}</h2>
                   <div className="image-slider-container">
                      <ImageSlider
@@ -153,7 +159,7 @@ function LabelJob(props) {
                      />
                   </div>
                </div>
-               <div className="label-save">
+               <div className="label-save" id="label-save">
                   <div className="label-section">
                      <h2>Labels</h2>
                      <div className="labels-container">
