@@ -5,7 +5,7 @@ import { MdClose } from 'react-icons/md'
 import '../Styles/Modal.css'
 // import { Link, Redirect, useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { Link,  useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { useMutation } from '@apollo/client'
 import { ACCEPT_JOB, DELETE_JOB } from '../graphql/mutations'
 import { GET_ACCEPTED_JOBS } from '../graphql/queries'
@@ -46,7 +46,6 @@ const ModalImg = styled.img`
    padding-right: 2rem;
    border-radius: 45px;
    background: #fff;
-   
 `
 
 const ModalContent = styled.div`
@@ -162,9 +161,8 @@ export const Modal = ({
             <Background ref={modalRef}>
                <animated.div style={animation}>
                   <ModalWrapper showModal={showModal}>
-                  
                      <ModalImg alt="Travel" src={src} />
-                     
+
                      <ModalContent>
                         <div className="modal__jobName">
                            <h1>{title}</h1>
@@ -175,49 +173,49 @@ export const Modal = ({
                               Job Owner: {uploader}
                            </div>
                            <div className="modal__creditLine">
-                              Credits:
-                              {credits}
+                              Credits:‎ ‎{credits}
                            </div>
 
                            <div className="modal__descriptionLine">
-                              Description:
-                              {text}
+                              Description:‎ ‎{text}
                            </div>
-                           {deletable ? <button
+                           {deletable ? (
+                              <button
                                  className="modal__ownedJobs"
-                                 onClick={
-                                    () => {swal({
-                                       title: "Are you sure?",
-                                       text: "You will not be able to recover this job!",
-                                       icon: "warning",
-                                       buttons: [true, "Yes, delete"],
+                                 onClick={() => {
+                                    swal({
+                                       title: 'Are you sure?',
+                                       text: 'You will not be able to recover this job!',
+                                       icon: 'warning',
+                                       buttons: [true, 'Yes, delete'],
                                        dangerMode: true
                                     }).then((confirm) => {
-                                       if(confirm){
+                                       if (confirm) {
                                           deletejobMutation({
                                              variables: {
                                                 job_id: id
                                              }
                                           })
                                        }
-                                       if(delData){
-                                          toast.success("Job Deleted")
-                                          window.location.reload(false);
+                                       if (delData) {
+                                          toast.success('Job Deleted')
+                                          window.location.reload(false)
                                        }
-                                    })}
-                                 } 
-                              >
-                                 {buttonLabel}
-                              </button> : 
-                           <Link to={destination}>
-                              <button
-                                 className="modal__acceptJob"
-                                 onClick={acceptJob}
+                                    })
+                                 }}
                               >
                                  {buttonLabel}
                               </button>
-                           </Link>
-                           }
+                           ) : (
+                              <Link to={destination}>
+                                 <button
+                                    className="modal__acceptJob"
+                                    onClick={acceptJob}
+                                 >
+                                    {buttonLabel}
+                                 </button>
+                              </Link>
+                           )}
                         </div>
                      </ModalContent>
                      <CloseModalButton
