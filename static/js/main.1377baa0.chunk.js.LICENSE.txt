@@ -1,3 +1,0 @@
-//! Begin Error checking
-
-//! End Error Checking
