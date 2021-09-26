@@ -12,8 +12,11 @@
 
 .radio-toolbar {
    margin: 10px;
-   display: flex;
-   flex-direction: column;
+   display: grid;
+   grid-template-columns: [col] 25px [col] 100px;
+   grid-gap: 10px;
+   align-items: center;
+   font-size: 20px;
 }
 
 .label-save {
@@ -52,15 +55,66 @@
    padding: 2rem;
    display: flex;
    flex-direction: column;
-   justify-content: space-evenly;
-   width: 15rem;
-   height: 20rem;
    align-self: center;
    margin-top: 10rem;
+}
+
+.labels-container {
+   align-self: center;
+}
+
+input[type='radio']:after {
+   width: 20px;
+   height: 20px;
+   border-radius: 15px;
+   top: -6px;
+   left: -2px;
+   position: relative;
+   background-color: #d1d3d1;
+   content: '';
+   display: inline-block;
+   visibility: visible;
+   border: 2px solid white;
+}
+
+input[type='radio']:checked:after {
+   width: 20px;
+   height: 20px;
+   border-radius: 15px;
+   top: -6px;
+   left: -2px;
+   position: relative;
+   background-color: #37ecff;
+   content: '';
+   display: inline-block;
+   visibility: visible;
+   border: 2px solid white;
 }
 
 .submitSection {
    display: flex;
    align-items: center;
    margin-top: 4rem;
+}
+
+.job-submitted {
+   display: none;
+   font-size: 50px;
+   color: white;
+   text-shadow: 1px 1px 3px black;
+   padding-top: 30vh;
+}
+.job-completed {
+   display: none;
+}
+.accepted-jobs-link {
+   color: white;
+   padding-left: 35%;
+   font-size: 30px;
+   padding-top: 5%;
+   text-shadow: 1px 1px 3px black;
+}
+
+.accepted-jobs-link:hover {
+   color: #81ffef;
 }

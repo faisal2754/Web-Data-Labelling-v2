@@ -1,52 +1,48 @@
-.modal__jobName{
+.modal__jobName {
    padding-top: 10%;
-   font-family: 'Courier New', Courier, monospace;
 }
 
-.modal__uploaderLine{
-   padding-top: 0.5rem ;
-   padding-bottom: 0.5rem ;
+.modal__uploaderLine {
+   padding-top: 0.5rem;
+   padding-bottom: 0.5rem;
 }
 
-.modal__creditLine{
-
-   padding-top: 0.5rem ;
-   padding-bottom: 0.5rem ;
+.modal__creditLine {
+   padding-top: 0.5rem;
+   padding-bottom: 0.5rem;
 }
 
-.modal__descriptionLine{
-   padding-top: 0.5rem ;
-   padding-bottom: 0.5rem ;
+.modal__descriptionLine {
+   padding-top: 0.5rem;
+   padding-bottom: 0.5rem;
    display: flex;
    overflow: auto;
    max-height: 13rem;
 }
 
-.modal__acceptJob{
-
+.modal__acceptJob {
    cursor: pointer;
    border-radius: 15px;
    font-size: large;
-   position:absolute;
-   bottom: 5%;
+   position: absolute;
+   bottom: 15%;
    right: 16%;
 }
 
-.modal__ownedJobs{
+.modal__ownedJobs {
    cursor: pointer;
    border-radius: 15px;
    font-size: large;
-   position:absolute;
+   position: absolute;
    bottom: 5%;
    right: 16%;
-   background-color: crimson !important
+   background-color: crimson !important;
 }
 
-.modal__content{
+.modal__content {
    display: flex;
    justify-content: center;
    flex-direction: column;
-   
+
    max-width: 90%;
 }
-

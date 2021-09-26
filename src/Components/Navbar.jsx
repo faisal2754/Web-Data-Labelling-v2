@@ -4,12 +4,16 @@ import { Link } from 'react-router-dom'
 import '../Styles/Navbar.css'
 import { useSelector } from 'react-redux'
 import Cookies from 'js-cookie'
-import { ToastContainer, toast } from 'react-toastify'
 import NavItem from './NavItem'
 import DropdownMenu from './DropdownMenu'
 import { ReactComponent as MenuIcon } from './icons/menu_icon.svg'
+import { GET_ME } from '../graphql/queries'
+import { useQuery } from '@apollo/client'
+import ReactLoading from 'react-loading'
 
 function Navbar() {
+   const { loading, error, data } = useQuery(GET_ME)
+
    const [click, setClick] = useState(false)
    const [button, setButton] = useState(true)
    const [navbar, setNavbar] = useState(false)
@@ -116,19 +120,7 @@ function Navbar() {
                      Find A Job
                   </Link>
                </li>
-               {!isJwt ? (
-                  <li></li>
-               ) : (
-                  <li className="nav-item">
-                     <Link
-                        to="/label-job"
-                        className="nav-links"
-                        onClick={closeMobileMenu}
-                     >
-                        Label Job
-                     </Link>
-                  </li>
-               )}
+
                <li>
                   <Link
                      to="/login"
@@ -158,9 +150,25 @@ function Navbar() {
             )}
 
             {button && isJwt ? (
-               <NavItem icon={<MenuIcon />}>
-                  <DropdownMenu></DropdownMenu>
-               </NavItem>
+               <div className="navbar__username">
+                  <div className="username__label">
+                     {loading ? (
+                        <ReactLoading
+                           type={'spin'}
+                           // color={'black'}
+                           height={'1%'}
+                           color={'#000000'}
+                           width={'10%'}
+                           className="acceptedJob__loadingSpin"
+                        />
+                     ) : (
+                        <b>{data.me.username}</b>
+                     )}
+                  </div>
+                  <NavItem icon={<MenuIcon />}>
+                     <DropdownMenu></DropdownMenu>
+                  </NavItem>
+               </div>
             ) : (
                <div></div>
             )}

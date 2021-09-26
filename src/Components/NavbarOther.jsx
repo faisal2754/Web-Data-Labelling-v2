@@ -7,8 +7,13 @@ import Cookies from 'js-cookie'
 import NavItem from './NavItem'
 import DropdownMenu from './DropdownMenu'
 import { ReactComponent as MenuIcon } from './icons/menu_icon.svg'
+import { GET_ME } from '../graphql/queries'
+import { useQuery } from '@apollo/client'
+
+import ReactLoading from 'react-loading'
 
 function NavbarOther() {
+   const { loading, error, data } = useQuery(GET_ME)
    const [click, setClick] = useState(false)
    const [button, setButton] = useState(true)
 
@@ -129,10 +134,27 @@ function NavbarOther() {
             ) : (
                <div></div>
             )}
+
             {button && isJwt ? (
-               <NavItem icon={<MenuIcon />}>
-                  <DropdownMenu></DropdownMenu>
-               </NavItem>
+               <div className="navbar__username">
+                  <div className="username__label">
+                     {loading ? (
+                        <ReactLoading
+                           type={'spin'}
+                           // color={'black'}
+                           height={'1%'}
+                           color={'#000000'}
+                           width={'10%'}
+                           className="acceptedJob__loadingSpin"
+                        />
+                     ) : (
+                        <b>{data.me.username}</b>
+                     )}
+                  </div>
+                  <NavItem icon={<MenuIcon />}>
+                     <DropdownMenu></DropdownMenu>
+                  </NavItem>
+               </div>
             ) : (
                <div></div>
             )}

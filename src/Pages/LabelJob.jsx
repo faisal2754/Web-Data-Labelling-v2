@@ -9,6 +9,8 @@ import { useQuery, useMutation } from '@apollo/client'
 import { Button } from '../Components/Button'
 import { useEffect } from 'react'
 import { current } from '@reduxjs/toolkit'
+import { ToastContainer, toast } from 'react-toastify'
+import { Link, Redirect } from 'react-router-dom'
 
 function LabelJob(props) {
    const [index, setIndex] = useState()
@@ -119,7 +121,7 @@ function LabelJob(props) {
       checkCompletion()
    }
 
-   const saveState = () => {
+   const saveState = (buttonID) => {
       submitJob({
          variables: {
             image_ids: Object.keys(assignedLabels).map((id) => Number(id)),
@@ -128,6 +130,17 @@ function LabelJob(props) {
             is_complete: is_complete
          }
       })
+
+      if (buttonID == 'submitButton') {
+         document.getElementById('label-save').style.display = 'none'
+         document.getElementById('image-section').style.display = 'none'
+         document.getElementById('job-submitted').style.display = 'block'
+         document.getElementById('label-job-form').style.height = '90vh'
+         document.getElementById('accepted-jobs-btn').style.display = 'block'
+         document.getElementById('job-completed').style.display = 'block'
+      } else {
+         toast.success('Your labelling progress has been saved.')
+      }
    }
 
    return (
@@ -135,8 +148,20 @@ function LabelJob(props) {
          <NavbarOther />
 
          <div className="label-job-page">
-            <div className="label-job-form">
-               <div className="image-section">
+            <div className="label-job-form" id="label-job-form">
+               <div className="job-completed" id="job-completed">
+                  <h2 id="job-submitted" className="job-submitted">
+                     You have successfully completed this job!
+                  </h2>
+                  <Link
+                     id="accepted-jobs-btn"
+                     to="/dashboard/accepted-jobs"
+                     className="accepted-jobs-link"
+                  >
+                     Return to Accepted Jobs
+                  </Link>
+               </div>
+               <div className="image-section" id="image-section">
                   <h2>{title}</h2>
                   <div className="image-slider-container">
                      <ImageSlider
@@ -145,10 +170,10 @@ function LabelJob(props) {
                      />
                   </div>
                </div>
-               <div className="label-save">
+               <div className="label-save" id="label-save">
                   <div className="label-section">
+                     <h2>Labels</h2>
                      <div className="labels-container">
-                        <h2>Labels</h2>
                         <div className="radio-toolbar">
                            {labels.map((label) => (
                               <>
@@ -176,10 +201,11 @@ function LabelJob(props) {
                   </div>
                   <div className="submitSection">
                      <Button
+                        id="saveButton"
                         className="btns"
                         buttonStyle="btn--outline"
                         buttonSize="btn--large"
-                        onClick={saveState}
+                        onClick={(e) => saveState(e.target.id)}
                      >
                         Save
                      </Button>
@@ -188,7 +214,7 @@ function LabelJob(props) {
                         className="btns"
                         buttonStyle="btn--primary"
                         buttonSize="btn--large"
-                        onClick={saveState}
+                        onClick={(e) => saveState(e.target.id)}
                      >
                         Submit
                      </Button>

@@ -25,8 +25,9 @@ const Background = styled.div`
 `
 
 const ModalWrapper = styled.div`
+   margin-bottom: 15%;
    width: 800px;
-   height: 500px;
+   height: 400px;
    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
    background: #fff;
    color: #000;
@@ -38,8 +39,11 @@ const ModalWrapper = styled.div`
 `
 
 const ModalImg = styled.img`
-   width: 100%;
-   height: 95%;
+   margin-top: 5%;
+   margin-top: 8.5%;
+   object-fit: cover;
+   width: 400px;
+   height: 330px;
    padding-top: 2rem;
    padding-bottom: 2rem;
    padding-left: 2rem;
@@ -173,13 +177,11 @@ export const Modal = ({
                               Job Owner: {uploader}
                            </div>
                            <div className="modal__creditLine">
-                              Credits:
-                              {credits}
+                              Credits:‎ ‎{credits}
                            </div>
 
                            <div className="modal__descriptionLine">
-                              Description:
-                              {text}
+                              Description:‎ ‎{text}
                            </div>
                            {deletable ? (
                               <button

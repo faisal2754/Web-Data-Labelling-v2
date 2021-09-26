@@ -30,6 +30,7 @@ ul {
 a {
    color: var(--text-color);
    text-decoration: none;
+   cursor: pointer;
 }
 
 /* <li> */
@@ -87,11 +88,13 @@ a {
    padding: 0.5rem;
    overflow: hidden;
    transition: height var(--speed) ease;
+   z-index: 10000;
 }
 
 .menu {
    width: 100%;
    margin-bottom: 5rem;
+   z-index: 10000;
 }
 
 .menu-item {

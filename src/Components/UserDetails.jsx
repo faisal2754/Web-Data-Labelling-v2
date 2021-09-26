@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { EDIT_PROFILE } from '../graphql/mutations'
 import { useMutation } from '@apollo/client'
 // import { useQuery } from '@apollo/client'
@@ -11,15 +11,64 @@ const UserDetails = (props) => {
       toast.error('An error occured')
       toast.clearWaitingQueue()
    }
-   const editProfile = () => {
+
+   const editUsername = () => {
       let userNameChange
-      let passwordChange
+
       //check if username is empty
       if (document.getElementById('input-username').value === '') {
          userNameChange = props.username
       } else {
          userNameChange = document.getElementById('input-username').value
       }
+
+      if (
+         document.getElementById('input-passwordNew').value !==
+         document.getElementById('input-passwordConfirm').value
+      ) {
+         toast.error("Passwords Don't Match")
+      } else {
+         EditProfile({
+            variables: {
+               username: userNameChange
+            },
+            refetchQueries: [{ query: GET_ME }]
+         })
+            .then(() => {
+               toast.success('Your Details Have Been Changed')
+            })
+            .catch((error) => showError())
+         toast.clearWaitingQueue()
+      }
+   }
+
+   const editPassword = () => {
+      let passwordChange
+      // const [password, setPassword] = useState('')
+      // const [confirmPass, setConfirmPass] = useState('')
+
+      // const checkForm = async (e) => {
+      //    let isValid = true
+      //    e.preventDefault()
+      //    if (!'input-passwordNew'){
+      //       isValid = false
+      //       toast.error('Please enter a password')
+      //    }
+      //    else if (password.length < 5) {
+      //       isValid = false
+      //       toast.error('Password must be at least 5 characters')
+      //    } else if (password != confirmPass) {
+      //       isValid = false
+      //       toast.error('Passwords do not match')
+      //    }
+      //    if (isValid){
+      //       await useMutation({
+      //          variables: {
+      //             password
+      //          }
+      //       })
+      //    }
+      // }
 
       // check if password is empty
       if (document.getElementById('input-passwordNew').value === '') {
@@ -39,10 +88,16 @@ const UserDetails = (props) => {
          document.getElementById('input-passwordConfirm').value
       ) {
          toast.error("Passwords Don't Match")
+      } else if (
+         document.getElementById('input-passwordNew').value === '' ||
+         document.getElementById('input-passwordConfirm').value === ''
+      ) {
+         toast.error('Passwords Are Empty')
+      } else if (passwordChange.length < 5) {
+         toast.error('Password must be at least 5 characters')
       } else {
          EditProfile({
             variables: {
-               username: userNameChange,
                password: passwordChange
             },
             refetchQueries: [{ query: GET_ME }]
@@ -65,11 +120,18 @@ const UserDetails = (props) => {
                   </div>
                   <div className="col-4 text-right">
                      <a
-                        onClick={editProfile}
+                        onClick={editUsername}
                         href="#/dashboard/profile"
                         className="user-btn user-btn-sm user-btn-primary"
                      >
-                        Update Profile
+                        Update Username
+                     </a>
+                     <a
+                        onClick={editPassword}
+                        href="#/dashboard/profile"
+                        className="user-btn user-btn-sm user-btn-primary"
+                     >
+                        Update Password
                      </a>
                   </div>
                </div>

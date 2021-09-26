@@ -163,3 +163,17 @@
       transition: 250ms;
    }
 }
+
+.navbar__username{
+   display: inline-flex;
+   background-color: white;
+   border-radius: 50px;
+   padding: 4px 20px;
+   box-shadow: 0 3px 10px 0 #21003d;
+}
+
+.username__label{
+   align-self: center;
+   padding-right: 10%;
+   
+}

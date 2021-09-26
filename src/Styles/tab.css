@@ -12,7 +12,7 @@
    font-size: 1.2rem;
    position: sticky;
    top: 0;
-   z-index: 999;
+   z-index: 50;
    font-family: 'Montserrat', sans-serif;
 }
 
@@ -58,7 +58,7 @@
    color: #fff;
    display: flex;
    align-items: center;
-   margin-left: -130%;
+   margin-left: -140%;
    margin-right: 100%;
    text-decoration: none;
    padding: 0.5rem 1rem;
