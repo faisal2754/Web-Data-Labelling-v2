@@ -200,6 +200,7 @@ export const Modal = ({
                                           }
                                        }).then(()=>{
                                           console.log("Thenception")
+                                          toast.warning('Job Deleted')
                                           console.log(id)
                                           console.log(delData)
                                           console.log(delError)
@@ -207,7 +208,6 @@ export const Modal = ({
                                        })
 
                                        // if (delData) {
-                                       //    toast.success('Job Deleted')
                                        //    window.location.reload(false)
                                        // } else {
                                        //    console.log('wrong')
