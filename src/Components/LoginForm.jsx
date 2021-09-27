@@ -29,6 +29,7 @@ const Login = () => {
       dispatch(updateEmail(data.login.email))
       dispatch(updateUsername(data.login.username))
       dispatch(updateJWT(data.login.jwt))
+      console.log(data)
       return <Redirect to="/dashboard/profile" />
    }
 
@@ -58,7 +59,7 @@ const Login = () => {
                      toast.error(error.message, {
                         position: toast.POSITION.BOTTOM_CENTER
                      })
-                  )
+                  })
                }}
             >
                <Link to="/">
