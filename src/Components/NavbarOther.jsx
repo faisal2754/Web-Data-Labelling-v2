@@ -17,6 +17,8 @@ function NavbarOther() {
    const [click, setClick] = useState(false)
    const [button, setButton] = useState(true)
 
+   const username = useSelector((state) => state.user.username)
+
    const handleClick = () => setClick(!click)
    const closeMobileMenu = () => setClick(false)
 
@@ -148,7 +150,7 @@ function NavbarOther() {
                            className="acceptedJob__loadingSpin"
                         />
                      ) : (
-                        <b>{data.me.username}</b>
+                        <b>{username}</b>
                      )}
                   </div>
                   <NavItem icon={<MenuIcon />}>

@@ -13,7 +13,9 @@ import { GET_ME } from '../graphql/queries'
 const Login = () => {
    const [userEmail, setUserEmail] = useState('')
    const [password, setPassword] = useState('')
-   const [login, { data, loading, error }] = useMutation(LOGIN_USER)
+   const [login, { data, loading, error }] = useMutation(LOGIN_USER, {
+      refetchQueries: [GET_ME, 'me']
+   })
 
    //Example code on how to call the variables in store
    // const email = useSelector((state) => state.user.email)
@@ -21,13 +23,13 @@ const Login = () => {
 
    const history = useHistory()
    if (data && !error) {
-      Cookies.set('jwt', data.login.jwt, { expires: 1 })
+      Cookies.set('jwt', data.login.jwt)
       //Set our redux variables
       dispatch(updateEmail(data.login.email))
       dispatch(updateUsername(data.login.username))
       dispatch(updateJWT(data.login.jwt))
-      console.log(data)
-      return <Redirect to="/dashboard/profile" />
+      console.log(data.login.username)
+      return <Redirect to="/" />
    }
 
    // if (error) {
@@ -50,8 +52,7 @@ const Login = () => {
                      variables: {
                         email: userEmail,
                         password: password
-                     },
-                     refetchQueries: [{ query: GET_ME }]
+                     }
                   }).catch((error) => {
                      toast.error(error.message, {
                         position: toast.POSITION.BOTTOM_CENTER

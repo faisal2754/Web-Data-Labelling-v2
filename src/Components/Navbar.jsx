@@ -18,6 +18,8 @@ function Navbar() {
    const [button, setButton] = useState(true)
    const [navbar, setNavbar] = useState(false)
 
+   const username = useSelector((state) => state.user.username)
+
    const handleClick = () => setClick(!click)
    const closeMobileMenu = () => setClick(false)
    const jwt = useSelector((state) => state.user.jwt)
@@ -162,7 +164,7 @@ function Navbar() {
                            className="acceptedJob__loadingSpin"
                         />
                      ) : (
-                        <b>{data.me.username}</b>
+                        <b>{username}</b>
                      )}
                   </div>
                   <NavItem icon={<MenuIcon />}>

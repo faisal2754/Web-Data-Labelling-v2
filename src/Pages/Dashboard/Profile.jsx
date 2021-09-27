@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../../Styles/UserProfile.css'
 import UserDetails from '../../Components/UserDetails'
 import UserProfile from '../../Components/UserProfileCard'
@@ -9,15 +9,22 @@ import Cookies from 'js-cookie'
 import { Redirect } from 'react-router'
 import ReactLoading from 'react-loading'
 import NavbarOther from '../../Components/NavbarOther'
+import { useSelector } from 'react-redux'
 
 export const Dashboard = (props) => {
    const { loading, error, data } = useQuery(GET_ME)
 
-   if (Cookies.get('jwt') == null) {
-      return <Redirect to="/login" />
-   }
+   const username = useSelector((state) => state.user.username)
+   const email = useSelector((state) => state.user.email)
+   // useEffect(() => {
+   //    console.log(data)
+   // }, [data])
 
-   if (data) console.log(data)
+   // if (Cookies.get('jwt') == null) {
+   //    return <Redirect to="/login" />
+   // }
+
+   console.log(data)
    if (error) console.log(error)
 
    return (
@@ -48,10 +55,7 @@ export const Dashboard = (props) => {
                               avatarImage={data.me.avatar}
                            /> */}
 
-                  <UserDetails
-                     username={data.me.username}
-                     email={data.me.email}
-                  />
+                  {data && <UserDetails username={username} email={email} />}
                </span>
             )}
 
