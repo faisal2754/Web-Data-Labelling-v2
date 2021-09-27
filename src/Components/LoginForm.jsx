@@ -8,7 +8,8 @@ import Cookies from 'js-cookie'
 import { useDispatch } from 'react-redux'
 import { updateEmail, updateJWT, updateUsername } from '../redux/user'
 import { toast } from 'react-toastify'
-import { GET_ME } from '../graphql/queries'
+import { GET_DELETED_JOBS } from '../graphql/queries'
+import { GET_ME_AND_DELETED_JOBS } from '../graphql/queries'
 
 const Login = () => {
    const [userEmail, setUserEmail] = useState('')
@@ -46,9 +47,9 @@ const Login = () => {
             <form
                className="sign-in-form"
                // onSubmit={submitForm}
-               onSubmit={async (e) => {
+               onSubmit={(e) => {
                   e.preventDefault()
-                  await login({
+                  login({
                      variables: {
                         email: userEmail,
                         password: password

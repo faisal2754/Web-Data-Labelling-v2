@@ -51,7 +51,7 @@ const client = new ApolloClient({
    // uri: 'https://data-labelling-server.herokuapp.com/graphql',
    link: concat(authMiddleware, link),
    cache: new InMemoryCache(),
-   credentials: 'same-origin'
+   credentials: 'include'
 })
 
 ReactDOM.render(

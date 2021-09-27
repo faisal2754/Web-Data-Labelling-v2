@@ -4,7 +4,11 @@ import UserDetails from '../../Components/UserDetails'
 import UserProfile from '../../Components/UserProfileCard'
 import DashboardSidebar from '../../Components/DashboardSidebar'
 import { useQuery } from '@apollo/client'
-import { GET_ME } from '../../graphql/queries'
+import {
+   GET_DELETED_JOBS,
+   GET_ME,
+   GET_ME_AND_DELETED_JOBS
+} from '../../graphql/queries'
 import Cookies from 'js-cookie'
 import { Redirect } from 'react-router'
 import ReactLoading from 'react-loading'
