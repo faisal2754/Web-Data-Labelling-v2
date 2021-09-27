@@ -8,6 +8,7 @@ import Cookies from 'js-cookie'
 import { useDispatch } from 'react-redux'
 import { updateEmail, updateJWT, updateUsername } from '../redux/user'
 import { toast } from 'react-toastify'
+import { GET_ME } from '../graphql/queries'
 
 const Login = () => {
    const [userEmail, setUserEmail] = useState('')
@@ -25,6 +26,7 @@ const Login = () => {
       dispatch(updateEmail(data.login.email))
       dispatch(updateUsername(data.login.username))
       dispatch(updateJWT(data.login.jwt))
+      console.log(data)
       return <Redirect to="/dashboard/profile" />
    }
 
@@ -48,12 +50,13 @@ const Login = () => {
                      variables: {
                         email: userEmail,
                         password: password
-                     }
-                  }).catch((error) =>
+                     },
+                     refetchQueries: [{ query: GET_ME }]
+                  }).catch((error) => {
                      toast.error(error.message, {
                         position: toast.POSITION.BOTTOM_CENTER
                      })
-                  )
+                  })
                }}
             >
                <Link to="/">
