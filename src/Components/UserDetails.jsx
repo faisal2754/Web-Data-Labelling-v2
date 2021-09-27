@@ -118,7 +118,7 @@ const UserDetails = (props) => {
                   <div className="col-8">
                      <h3 className="mb-0">My Account</h3>
                   </div>
-                  <div className="col-4 text-right">
+                  <div className="col-6 text-right">
                      <a
                         onClick={editUsername}
                         href="#/dashboard/profile"
@@ -126,6 +126,7 @@ const UserDetails = (props) => {
                      >
                         Update Username
                      </a>
+                     &nbsp;
                      <a
                         onClick={editPassword}
                         href="#/dashboard/profile"
