@@ -4,19 +4,43 @@ import UserDetails from '../../Components/UserDetails'
 import UserProfile from '../../Components/UserProfileCard'
 import DashboardSidebar from '../../Components/DashboardSidebar'
 import { useQuery } from '@apollo/client'
-import { GET_ME } from '../../graphql/queries'
+import {
+   GET_DELETED_JOBS,
+   GET_ME,
+   GET_ME_AND_DELETED_JOBS
+} from '../../graphql/queries'
 import Cookies from 'js-cookie'
 import { Redirect } from 'react-router'
 import ReactLoading from 'react-loading'
 import NavbarOther from '../../Components/NavbarOther'
+import swal from 'sweetalert'
 
 export const Dashboard = (props) => {
-   const { loading, error, data } = useQuery(GET_ME)
-
+   const { loading, error, data } = useQuery(GET_ME_AND_DELETED_JOBS)
+   // const {load,errordel, dataDel } = useQuery(GET_DELETED_JOBS)
    if (Cookies.get('jwt') == null) {
       return <Redirect to="/login" />
    }
+   if (data) {
+      console.log(data)
 
+      if (data.deletedJobs) {
+         if (data.deletedJobs.length !== 0) {
+            let jobarray=data.deletedJobs.map(function(job){return JSON.stringify(job.title)})
+            let jobstring=jobarray.join(",")
+            swal({
+               title: 'These Jobs deleted while you were away...',
+               text: jobstring,
+               icon: 'warning',
+               buttons: [true, 'OK'],
+               dangerMode: true
+            })
+         }
+      }
+   }
+   // if(errordel){
+   //    console.log(errordel)
+   // }
    if (data) console.log(data)
    if (error) console.log(error)
 

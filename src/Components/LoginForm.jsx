@@ -8,12 +8,16 @@ import Cookies from 'js-cookie'
 import { useDispatch } from 'react-redux'
 import { updateEmail, updateJWT, updateUsername } from '../redux/user'
 import { toast } from 'react-toastify'
+import { GET_DELETED_JOBS } from '../graphql/queries'
+import { GET_ME_AND_DELETED_JOBS } from '../graphql/queries'
 
 const Login = () => {
    const [userEmail, setUserEmail] = useState('')
    const [password, setPassword] = useState('')
    const [login, { data, loading, error }] = useMutation(LOGIN_USER)
-
+   // const [login_deleted, { data, loading, error }] = useMutation(GET_ME_AND_DELETED_JOBS)
+   // const [deletedjobs, { datadeleted, loadingdeleted, errordeleted }] = useMutation(GET_DELETED_JOBS)
+   console.log(data)
    //Example code on how to call the variables in store
    // const email = useSelector((state) => state.user.email)
    const dispatch = useDispatch()
@@ -42,14 +46,15 @@ const Login = () => {
             <form
                className="sign-in-form"
                // onSubmit={submitForm}
-               onSubmit={async (e) => {
+               onSubmit={ (e) => {
                   e.preventDefault()
-                  await login({
+                   login({
                      variables: {
                         email: userEmail,
                         password: password
                      }
-                  }).catch((error) =>
+                  })
+                  .catch((error) =>
                      toast.error(error.message, {
                         position: toast.POSITION.BOTTOM_CENTER
                      })
