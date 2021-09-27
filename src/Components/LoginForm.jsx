@@ -59,7 +59,7 @@ const Login = () => {
                      toast.error(error.message, {
                         position: toast.POSITION.BOTTOM_CENTER
                      })
-                  })
+                  )
                }}
             >
                <Link to="/">
