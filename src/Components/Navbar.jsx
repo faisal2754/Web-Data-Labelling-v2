@@ -19,7 +19,9 @@ function Navbar() {
    const [navbar, setNavbar] = useState(false)
 
    const username = useSelector((state) => state.user.username)
-
+   if(username==""){
+      console.log("hrllo")
+   }
    const handleClick = () => setClick(!click)
    const closeMobileMenu = () => setClick(false)
    const jwt = useSelector((state) => state.user.jwt)

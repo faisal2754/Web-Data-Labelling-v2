@@ -134,7 +134,7 @@ const UserDetails = (props) => {
                                  type="text"
                                  id="input-username"
                                  className="form-control form-control-alternative"
-                                 placeholder={props.username}
+                                 placeholder="Username"
                               />
                            </div>
                         </div>
