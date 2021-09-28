@@ -40,7 +40,7 @@ Sipho Sikakane (Scrum master/Frontend):
 - Tasks for the day: Make sure users can’t access unauthorized areas
 - Impediments: Time
 
-## Daily Scrum Meeting 7th September 2021 11:00am (Monday)
+## Daily Scrum Meeting 7th September 2021 11:00am (Tuesday)
 
 Aharon Cohen (Frontend):
 - Tasks completed yesterday: Created jobs
@@ -82,7 +82,7 @@ Sipho Sikakane (Scrum master/Frontend):
 - Tasks for the day: Make sure users can’t access unauthorized areas
 - Impediments: Time
 
-## Daily Scrum Meeting 8th September 2021 11:00am (Monday)
+## Daily Scrum Meeting 8th September 2021 11:00am (Wednesday)
 
 Aharon Cohen (Frontend):
 - Tasks completed yesterday: Dashboard
