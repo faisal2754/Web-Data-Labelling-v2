@@ -17,7 +17,7 @@ function NavbarOther() {
    const [click, setClick] = useState(false)
    const [button, setButton] = useState(true)
    let username = useSelector((state) => state.user.username)
-   if (!username) {
+   if (!data) {
       if (!loading) {
          username = data.me.username
       }
@@ -153,7 +153,7 @@ function NavbarOther() {
                            // className="acceptedJob__loadingSpin"
                         />
                      ) : (
-                        <b>{username }</b>
+                        <b>{username}</b>
                      )}
                   </div>
                   <NavItem icon={<MenuIcon />}>

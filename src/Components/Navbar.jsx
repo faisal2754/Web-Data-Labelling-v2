@@ -19,7 +19,7 @@ function Navbar() {
    const [navbar, setNavbar] = useState(false)
 
    let username = useSelector((state) => state.user.username)
-   if (!username) {
+   if (!data) {
       if (!loading) {
          username = data.me.username
       }
