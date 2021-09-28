@@ -26,8 +26,8 @@ Faisal Saleem (Backend):
 - Impediments: None
 
 Ghulame Mujtaba Arbi (Frontend):
-- Tasks completed yesterday: Completed post job side of how-to page
-- Tasks for the day: Work on tabs to switch between how-to pages
+- Tasks completed yesterday: Work on tabs to switch between how-to pages
+- Tasks for the day: General clean up
 - Impediments: Time, work on other projects outside of uni work
 
 Tristan Bester (Backend):
@@ -68,8 +68,8 @@ Faisal Saleem (Backend):
 - Impediments: None
 
 Ghulame Mujtaba Arbi (Frontend):
-- Tasks completed yesterday: Completed post job side of how-to page
-- Tasks for the day: Work on tabs to switch between how-to pages
+- Tasks completed yesterday: General clean up
+- Tasks for the day: Research different modal deisgns and fonts
 - Impediments: Time, work on other projects outside of uni work
 
 Tristan Bester (Backend):
@@ -110,8 +110,8 @@ Faisal Saleem (Backend):
 - Impediments: None
 
 Ghulame Mujtaba Arbi (Frontend):
-- Tasks completed yesterday: Completed post job side of how-to page
-- Tasks for the day: Work on tabs to switch between how-to pages
+- Tasks completed yesterday: Research different modal deisgns and fonts
+- Tasks for the day: Carry on research
 - Impediments: Time, work on other projects outside of uni work
 
 Tristan Bester (Backend):
@@ -152,8 +152,8 @@ Faisal Saleem (Backend):
 - Impediments: None
 
 Ghulame Mujtaba Arbi (Frontend):
-- Tasks completed yesterday: Completed post job side of how-to page
-- Tasks for the day: Work on tabs to switch between how-to pages
+- Tasks completed yesterday: Carry on research
+- Tasks for the day: Fix up alignment issue of tab switching for how-to page
 - Impediments: Time, work on other projects outside of uni work
 
 Tristan Bester (Backend):
