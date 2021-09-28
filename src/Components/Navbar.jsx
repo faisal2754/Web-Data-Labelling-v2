@@ -18,9 +18,11 @@ function Navbar() {
    const [button, setButton] = useState(true)
    const [navbar, setNavbar] = useState(false)
 
-   const username = useSelector((state) => state.user.username)
-   if(username==""){
-      console.log("hrllo")
+   let username = useSelector((state) => state.user.username)
+   if (!username) {
+      if (!loading) {
+         username = data.me.username
+      }
    }
    const handleClick = () => setClick(!click)
    const closeMobileMenu = () => setClick(false)
@@ -160,10 +162,10 @@ function Navbar() {
                         <ReactLoading
                            type={'spin'}
                            // color={'black'}
-                           height={'1%'}
+                           height={'20px'}
                            color={'#000000'}
-                           width={'10%'}
-                           className="acceptedJob__loadingSpin"
+                           width={'20px'}
+                           // className="acceptedJob__loadingSpin"
                         />
                      ) : (
                         <b>{username}</b>
