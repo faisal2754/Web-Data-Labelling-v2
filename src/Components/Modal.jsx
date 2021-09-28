@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux'
 import { Link, useHistory } from 'react-router-dom'
 import { useMutation } from '@apollo/client'
 import { ACCEPT_JOB, DELETE_JOB } from '../graphql/mutations'
-import { GET_ACCEPTED_JOBS } from '../graphql/queries'
+import { GET_ACCEPTED_JOBS,GET_CREATED_JOBS } from '../graphql/queries'
 import Cookies from 'js-cookie'
 import { toast } from 'react-toastify'
 import swal from 'sweetalert'
@@ -107,8 +107,12 @@ export const Modal = ({
       transform: showModal ? `translateY(0%)` : `translateY(-100%)`
    })
    const [AcceptJob, { loading, error, data }] = useMutation(ACCEPT_JOB)
-   const [deleteJob, { delLoading, delError, delData }] =
-      useMutation(DELETE_JOB)
+   const [deleteJob, { delLoading, delError, delData }] = useMutation(
+      DELETE_JOB,
+      {
+         refetchQueries: [GET_CREATED_JOBS, 'acceptedJobs']
+      }
+   )
    // const closeModal = (e) => {
    //    if (modalRef.current === e.target) {
    //       setShowModal(false)
@@ -193,27 +197,20 @@ export const Modal = ({
                                        icon: 'warning',
                                        buttons: [true, 'Yes, delete'],
                                        dangerMode: true
-                                    }).then(async () => {
-                                       await deleteJob({
-                                          variables: {
-                                             job_id: id
-                                          }
-                                       }).then(()=>{
-                                          console.log("Thenception")
-                                          toast.warning('Job Deleted')
-                                          console.log(id)
-                                          console.log(delData)
-                                          console.log(delError)
-                                          console.log(delLoading)
-                                       })
-
-                                       // if (delData) {
-                                       //    window.location.reload(false)
-                                       // } else {
-                                       //    console.log('wrong')
-                                       // }
-                                       // console.log(delData)
                                     })
+                                       .then(async () => {
+                                          await deleteJob({
+                                             variables: {
+                                                job_id: id
+                                             }
+                                          })
+                                             .catch
+                                             // toast.warning('Job deleted! 1')
+                                             ()
+                                       })
+                                       .then(() => {
+                                          toast.warning('Job Deleted!')
+                                       })
                                  }}
                               >
                                  {buttonLabel}

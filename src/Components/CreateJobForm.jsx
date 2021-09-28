@@ -122,7 +122,6 @@ const CreateJob = () => {
                      }
                   )
                   .then(() => {
-                     
                      toast.success('Your Job was successfully created')
                      toast.clearWaitingQueue()
                   })
