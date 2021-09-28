@@ -40,6 +40,91 @@ Sipho Sikakane (Scrum master/Frontend):
 - Tasks for the day: Make sure users can’t access unauthorized areas
 - Impediments: Time
 
+## Daily Scrum Meeting 7th September 2021 11:00am (Tuesday)
+
+Aharon Cohen (Frontend):
+- Tasks completed yesterday: Created jobs
+- Tasks for the day: Add created jobs to ‘CreatedJobs’ in dashboard
+- Impediments: AAA lab
+
+Langiwe Mwale (Frontend):
+- Tasks completed Yesterday: attempted fixing create job
+- Task for the Day: create job page 
+- Impediments: images wont upload 
+
+Ioanni Balassis: (Frontend):
+- Tasks completed yesterday: view jobs accept functionality done
+- Tasks for the day: help with other stuff
+- Impediments: very behind on uni work
+
+Jonathan Nunes (Frontend):
+- Tasks completed yesterday: Finished labelling process
+- Tasks for the day: General cleanup
+- Impediments: Other university work
+
+Faisal Saleem (Backend):
+- Tasks completed yesterday: increased coverage
+- Tasks for the day: increase coverage
+- Impediments: None
+
+Ghulame Mujtaba Arbi (Frontend):
+- Tasks completed yesterday: Completed how-to page theme design
+- Tasks for the day: Help out with uploading files
+- Impediments: Time, work on other projects outside of uni work
+
+Tristan Bester (Backend):
+- Tasks completed yesterday: worked on test
+- Tasks for the day: testing
+- Impediments: None
+
+Sipho Sikakane (Scrum master/Frontend):
+- Tasks completed yesterday: Complete Authentication across the site
+- Tasks for the day: Make sure users can’t access unauthorized areas
+- Impediments: Time
+
+## Daily Scrum Meeting 8th September 2021 11:00am (Wednesday)
+
+Aharon Cohen (Frontend):
+- Tasks completed yesterday: Dashboard
+- Tasks for the day: Dashboard
+- Impediments: AAA lab, lectures, OS lab
+
+Langiwe Mwale (Frontend):
+- Tasks completed Yesterday: create job
+- Task for the Day: finish create job
+- Impediments: images wont upload 
+
+Ioanni Balassis: (Frontend):
+- Tasks completed yesterday: view jobs accept functionality done
+- Tasks for the day: help with other stuff
+- Impediments: very behind on uni work
+
+Jonathan Nunes (Frontend):
+- Tasks completed yesterday: cleaned up
+- Tasks for the day: Add polish
+- Impediments: Other university work
+
+Faisal Saleem (Backend):
+- Tasks completed yesterday: increased coverage
+- Tasks for the day: configure docker
+- Impediments: None
+
+Ghulame Mujtaba Arbi (Frontend):
+- Tasks completed yesterday: Completed how-to page theme design
+- Tasks for the day: Help out with uploading files
+- Impediments: Time, work on other projects outside of uni work
+
+Tristan Bester (Backend):
+- Tasks completed yesterday: increased coverage
+- Tasks for the day: configure docker
+- Impediments: None
+
+Sipho Sikakane (Scrum master/Frontend):
+- Tasks completed yesterday: Added authenication
+- Tasks for the day: Test authenication 
+- Impediments: Time
+
+
 ## Daily Scrum Meeting 9th September 2021 11:00am (Thursday)
 
 Aharon Cohen (Frontend):
