@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux'
 import { updateEmail, updateJWT, updateUsername } from '../redux/user'
 import { toast } from 'react-toastify'
 import { GET_DELETED_JOBS } from '../graphql/queries'
-import { GET_ME_AND_DELETED_JOBS } from '../graphql/queries'
+import { GET_ME} from '../graphql/queries'
 
 const Login = () => {
    const [userEmail, setUserEmail] = useState('')
@@ -30,16 +30,8 @@ const Login = () => {
       dispatch(updateUsername(data.login.username))
       dispatch(updateJWT(data.login.jwt))
       console.log(data.login.username)
-      return <Redirect to="/" />
+      return <Redirect to="/dashboard/Profile" />
    }
-
-   // if (error) {
-   //    console.log(error)
-   //    toast.error('An error occured', {
-   //       position: toast.POSITION.BOTTOM_CENTER
-   //    })
-   //    toast.clearWaitingQueue() //Prevents duplicates of the toast from coming up
-   // }
 
    return (
       <div className="login_container">
@@ -96,17 +88,6 @@ const Login = () => {
                   {loading ? 'Loading...' : 'LOGIN'}
                </button>
                <p className="social-text">Or login with</p>
-               {/* <div className="social-media">
-                  <a href="#" className="social-icon">
-                     <i className="fab fa-facebook-f"></i>
-                  </a>
-                  <a href="#" className="social-icon">
-                     <i className="fab fa-twitter"></i>
-                  </a>
-                  <a href="#" className="social-icon">
-                     <i className="fab fa-google"></i>
-                  </a>
-               </div> */}
 
                <p className="other-text">
                   Not a member?{' '}

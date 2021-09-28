@@ -14,10 +14,11 @@ import { Redirect } from 'react-router'
 import ReactLoading from 'react-loading'
 import NavbarOther from '../../Components/NavbarOther'
 import { useSelector } from 'react-redux'
+import swal from 'sweetalert'
 
 export const Dashboard = (props) => {
-   const { loading, error, data } = useQuery(GET_ME)
-
+   const { loading, error, data } = useQuery(GET_ME_AND_DELETED_JOBS)
+   // const {load,errordel, dataDel } = useQuery(GET_DELETED_JOBS)
    const username = useSelector((state) => state.user.username)
    const email = useSelector((state) => state.user.email)
    // useEffect(() => {
@@ -27,6 +28,23 @@ export const Dashboard = (props) => {
    // if (Cookies.get('jwt') == null) {
    //    return <Redirect to="/login" />
    // }
+   if (data) {
+      console.log(data)
+
+      if (data.deletedJobs) {
+         if (data.deletedJobs.length !== 0) {
+            let jobarray=data.deletedJobs.map(function(job){return JSON.stringify(job.title)})
+            let jobstring=jobarray.join(",")
+            swal({
+               title: 'These Jobs deleted while you were away...',
+               text: jobstring,
+               icon: 'warning',
+               buttons: [true, 'OK'],
+               dangerMode: true
+            })
+         }
+      }
+   }
 
    console.log(data)
    if (error) console.log(error)

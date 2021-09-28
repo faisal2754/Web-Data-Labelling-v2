@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { EDIT_PROFILE } from '../graphql/mutations'
 import { useMutation } from '@apollo/client'
-// import { useQuery } from '@apollo/client'
+import { useDispatch } from 'react-redux'
 import { GET_ME } from '../graphql/queries'
 import { toast } from 'react-toastify'
+import { updateUsername } from '../redux/user'
 
 const UserDetails = (props) => {
    const [EditProfile] = useMutation(EDIT_PROFILE)
@@ -11,7 +12,7 @@ const UserDetails = (props) => {
       toast.error('An error occured')
       toast.clearWaitingQueue()
    }
-
+   const dispatch = useDispatch()
    const editUsername = () => {
       let userNameChange
 
@@ -37,6 +38,9 @@ const UserDetails = (props) => {
             .then(() => {
                toast.success('Your Details Have Been Changed')
             })
+            .then(() => {
+               dispatch(updateUsername(userNameChange))
+            })
             .catch((error) => showError())
          toast.clearWaitingQueue()
       }
@@ -44,32 +48,6 @@ const UserDetails = (props) => {
 
    const editPassword = () => {
       let passwordChange
-      // const [password, setPassword] = useState('')
-      // const [confirmPass, setConfirmPass] = useState('')
-
-      // const checkForm = async (e) => {
-      //    let isValid = true
-      //    e.preventDefault()
-      //    if (!'input-passwordNew'){
-      //       isValid = false
-      //       toast.error('Please enter a password')
-      //    }
-      //    else if (password.length < 5) {
-      //       isValid = false
-      //       toast.error('Password must be at least 5 characters')
-      //    } else if (password != confirmPass) {
-      //       isValid = false
-      //       toast.error('Passwords do not match')
-      //    }
-      //    if (isValid){
-      //       await useMutation({
-      //          variables: {
-      //             password
-      //          }
-      //       })
-      //    }
-      // }
-
       // check if password is empty
       if (document.getElementById('input-passwordNew').value === '') {
          passwordChange = props.password
