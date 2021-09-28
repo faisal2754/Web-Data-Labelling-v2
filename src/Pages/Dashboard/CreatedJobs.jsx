@@ -6,6 +6,7 @@ import Modal from '../../Components/Modal'
 import CardItem from '../../Components/CardItem'
 import '../../Styles/CreatedJobs.css'
 import NavbarOther from '../../Components/NavbarOther'
+import ReactLoading from 'react-loading'
 
 function CreatedJobs() {
    const { loading, error, data } = useQuery(GET_CREATED_JOBS)
@@ -61,17 +62,20 @@ function CreatedJobs() {
          <div className="createdJobs__Loading">
             <h1>
                <b>
-                  {loading ? (
-                     <h1>Loading</h1>
-                  ) : (
-                     'These Are The Jobs You Currently Own'
-                  )}
+                     These Are The Jobs You Currently Own
                </b>
             </h1>
          </div>
          <div>
             {loading ? (
-               <h1>Loading</h1>
+               <ReactLoading
+               type={'spin'}
+               color={'black'}
+               height={'10%'}
+               color={'#ffffff'}
+               width={'10%'}
+               className="acceptedJob__loadingSpin"
+            />
             ) : (
                <div className="createdJobs__row">
                   {jobs.map((job) => {
