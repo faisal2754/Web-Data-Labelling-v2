@@ -22,7 +22,6 @@ const CreateJob = () => {
       document.querySelector('#totalCredits').value = 0
    }, [])
 
-   
    const Calculate = (e) => {
       e.preventDefault()
       let currentCredits = document.querySelector('#credits').value
@@ -111,7 +110,9 @@ const CreateJob = () => {
                for (let i = 0; i < images.length; i++) {
                   form.append(i.toString(), images[i].file)
                }
-               let res = axios
+               const id = toast.loading('Please wait...')
+
+               axios
                   .post(
                      'https://data-labelling-server.herokuapp.com/graphql',
                      form,
@@ -122,7 +123,13 @@ const CreateJob = () => {
                      }
                   )
                   .then(() => {
-                     toast.success('Your Job was successfully created')
+                     toast.update(id, {
+                        render: 'Your Job was successfully created',
+                        type: 'success',
+                        autoClose: 3000,
+                        isLoading: false
+                     })
+                     // toast.success('Your Job was successfully created')
                      toast.clearWaitingQueue()
                   })
                   .catch(() => {
@@ -246,7 +253,7 @@ const CreateJob = () => {
                </div>
                <div className="createJob_imageSection">
                   <h3>Please upload your images here:</h3>
-                  
+
                   <ImageUploading
                      multiple
                      value={images}
@@ -288,7 +295,9 @@ const CreateJob = () => {
                               </button>
                            </div>
 
-                           <h3 style={{textAlign:"center"}}>Total Images : {imageList.length}</h3>
+                           <h3 style={{ textAlign: 'center' }}>
+                              Total Images : {imageList.length}
+                           </h3>
                            <div className="createJob_imagePrev">
                               {imageList.map((image, index) => (
                                  <div key={index} className="image-item">
