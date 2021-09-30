@@ -4,9 +4,12 @@ import { useMutation } from '@apollo/client'
 import { useDispatch } from 'react-redux'
 import { GET_ME } from '../graphql/queries'
 import { toast } from 'react-toastify'
+import { useQuery } from '@apollo/client'
 import { updateUsername } from '../redux/user'
+import Loading from 'react-loading'
 
 const UserDetails = (props) => {
+   const { loading, error, data } = useQuery(GET_ME)
    const [EditProfile] = useMutation(EDIT_PROFILE)
    const showError = () => {
       toast.error('An error occured')
@@ -134,7 +137,7 @@ const UserDetails = (props) => {
                                  type="text"
                                  id="input-username"
                                  className="form-control form-control-alternative"
-                                 placeholder="Username"
+                                 placeholder={loading? 'Loading...':data.me.username }
                               />
                            </div>
                         </div>

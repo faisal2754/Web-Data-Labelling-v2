@@ -17,9 +17,11 @@ function NavbarOther() {
    const [click, setClick] = useState(false)
    const [button, setButton] = useState(true)
    let username = useSelector((state) => state.user.username)
-   if (!data) {
-      if (!loading) {
-         username = data.me.username
+   if (data) {
+      if (data.me) {
+         if (!loading) {
+            username = data.me.username
+         }
       }
    }
    const handleClick = () => setClick(!click)
