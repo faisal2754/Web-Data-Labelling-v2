@@ -6,7 +6,6 @@ import { GET_ME } from '../graphql/queries'
 import { toast } from 'react-toastify'
 import { useQuery } from '@apollo/client'
 import { updateUsername } from '../redux/user'
-import Loading from 'react-loading'
 
 const UserDetails = (props) => {
    const { loading, error, data } = useQuery(GET_ME)

@@ -1,22 +1,18 @@
 import React, { useState } from 'react'
 import '../Styles/ViewJob.css'
-import { Button } from '../Components/Button'
 import CardItem from '../Components/CardItem'
 import '../Styles/Cards.css'
 import NavbarOther from '../Components/NavbarOther'
-import { Menu, MenuItem } from '@material-ui/core'
 import '../App.css'
 import Footer from '../Components/Footer'
 import Modal from '../Components/Modal'
 import '../Styles/ViewJob.css'
 import { GET_JOBS } from '../graphql/queries'
 import { useQuery } from '@apollo/client'
-// import { useSelector } from 'react-redux'
 import ReactLoading from 'react-loading'
 import { toast } from 'react-toastify'
 
 function ViewJob() {
-   // const jwt = useSelector((state) => state.user.jwt)
 
    let jobs = []
    const { loading, error, data } = useQuery(GET_JOBS)
@@ -41,14 +37,6 @@ function ViewJob() {
       }
    }
 
-   const [anchorElement, setAnchorElement] = useState(null)
-   const handleOpenMenu = (e) => {
-      setAnchorElement(e.currentTarget)
-   }
-   const handleCloseMenu = (e) => {
-      setAnchorElement(null)
-   }
-
    return (
       <div className="viewJob">
          <NavbarOther />
@@ -60,7 +48,6 @@ function ViewJob() {
                      id={job.job_id}
                      src={job.preview_images[0]}
                      text={job.description}
-                     // buttonLabel="Accept Job"
                      credits={job.credits}
                      uploader={job.job_owner.username}
                      title={job.title}
@@ -68,8 +55,7 @@ function ViewJob() {
                      setShowModal={setShowModal}
                      buttonLabel={'Accept Job'}
                      destination="/dashboard/accepted-jobs"
-                     // uploader={job.jobOwner}
-                     // src={job.preview_images}
+
                   />
                </div>
             )
@@ -125,8 +111,7 @@ function ViewJob() {
                               src={job.preview_images[0]}
                               text={job.title}
                               credits={job.credits}
-                              // src={job.preview_images}
-                              // id={job.job_id.concat('card')}
+
                            />
                         </div>
                      )

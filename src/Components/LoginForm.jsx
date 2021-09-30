@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
 import '../Styles/Login.css'
-import { Link, Redirect, useHistory } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { LOGIN_USER } from '../graphql/mutations'
 import { useMutation } from '@apollo/client'
-import { EmailOutlined } from '@material-ui/icons'
 import Cookies from 'js-cookie'
 import { useDispatch } from 'react-redux'
 import { updateEmail, updateJWT, updateUsername } from '../redux/user'
 import { toast } from 'react-toastify'
-import { GET_DELETED_JOBS } from '../graphql/queries'
 import { GET_ME} from '../graphql/queries'
 
 const Login = () => {
@@ -22,7 +20,6 @@ const Login = () => {
    // const email = useSelector((state) => state.user.email)
    const dispatch = useDispatch()
 
-   const history = useHistory()
    if (data && !error) {
       Cookies.set('jwt', data.login.jwt)
       //Set our redux variables

@@ -3,13 +3,12 @@ import { Button } from './Button'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import '../Styles/Navbar_other.css'
-import Cookies from 'js-cookie'
 import NavItem from './NavItem'
 import DropdownMenu from './DropdownMenu'
 import { ReactComponent as MenuIcon } from './icons/menu_icon.svg'
 import { GET_ME } from '../graphql/queries'
 import { useQuery } from '@apollo/client'
-
+import { toast } from 'react-toastify'
 import ReactLoading from 'react-loading'
 
 function NavbarOther() {
@@ -24,21 +23,23 @@ function NavbarOther() {
          }
       }
    }
+   if(error){
+      toast.error("some error occured")
+   }
    const handleClick = () => setClick(!click)
    const closeMobileMenu = () => setClick(false)
 
    const jwt = useSelector((state) => state.user.jwt)
    let isJwt = false
-   // eslint-disable-next-line eqeqeq
-   if (jwt != '') {
+   if (jwt !== '') {
       isJwt = true
    }
 
-   const deleteJWT = () => {
-      Cookies.remove('jwt') //deletes the jwt token on signout
-      window.location.reload()
-      // toast.warning("You have logged out")
-   }
+   // const deleteJWT = () => {
+   //    Cookies.remove('jwt') //deletes the jwt token on signout
+   //    window.location.reload()
+   //    // toast.warning("You have logged out")
+   // }
 
    const showButton = () => {
       if (window.innerWidth <= 960) {
