@@ -4,7 +4,10 @@ import '../Styles/CreateJob.css'
 import TextField from '@material-ui/core/TextField'
 import { nanoid } from 'nanoid'
 import ImageUploading from 'react-images-uploading'
-import { Redirect } from 'react-router-dom'
+// import { Redirect } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
+import { GET_CREATED_JOBS } from '../graphql/queries'
+import { useQuery, useLazyQuery } from '@apollo/client'
 import Cookies from 'js-cookie'
 import { toast } from 'react-toastify'
 import FormData from 'form-data'
@@ -21,6 +24,7 @@ const CreateJob = () => {
    useEffect(() => {
       document.querySelector('#totalCredits').value = 0
    }, [])
+   const history = useHistory()
 
    const Calculate = (e) => {
       e.preventDefault()
@@ -45,9 +49,10 @@ const CreateJob = () => {
                Calculate(e)
                const form = new FormData()
                //TODO Dont allow more partitions than images
+
                if (
-                  images.length <=
-                  document.querySelector('#imgPerSection').value
+                  images.length <
+                  parseInt(document.querySelector('#imgPerSection').value)
                ) {
                   toast.error(
                      'Invalid number of Partitions, make sure partitions does not exceed images'
@@ -58,17 +63,17 @@ const CreateJob = () => {
 
                if (document.querySelector('#title').value === '') {
                   toast.error('Please enter a valid job title')
-                  // toast.clearWaitingQueue()
+                  toast.clearWaitingQueue()
                   return
                }
                if (document.querySelector('#description').value === '') {
                   toast.error('Please enter a valid job description')
-                  // toast.clearWaitingQueue()
+                  toast.clearWaitingQueue()
                   return
                }
                if (labels.map((label) => label.label).length === 0) {
                   toast.error('Please enter at least one label')
-                  // toast.clearWaitingQueue()
+                  toast.clearWaitingQueue()
                   return
                }
                if (
@@ -76,7 +81,7 @@ const CreateJob = () => {
                   document.querySelector('#imgPerSection').value === ''
                ) {
                   toast.error('Invalid number of partitions')
-                  // toast.clearWaitingQueue()
+                  toast.clearWaitingQueue()
                   return
                }
                //! End Error Checking
@@ -111,7 +116,6 @@ const CreateJob = () => {
                   form.append(i.toString(), images[i].file)
                }
                const id = toast.loading('Please wait...')
-
                axios
                   .post(
                      'https://data-labelling-server.herokuapp.com/graphql',
@@ -129,11 +133,18 @@ const CreateJob = () => {
                         autoClose: 3000,
                         isLoading: false
                      })
-                     // toast.success('Your Job was successfully created')
                      toast.clearWaitingQueue()
+                     history.push('/dashboard/created-jobs')
+
+                     // window.location.reload();
                   })
                   .catch(() => {
-                     toast.error('Failed to Create Your job')
+                     toast.update(id, {
+                        render: 'Your Job was not Created',
+                        type: 'error',
+                        autoClose: 3000,
+                        isLoading: false
+                     })
                      toast.clearWaitingQueue()
                   })
             }}

@@ -98,7 +98,7 @@ const Login = () => {
 
       //         {/* <button
       //            onClick={() => {
-      //               history.push('/register')
+                  //   history.push('/register')
       //            }}
       //            className="login_registerButton"
       //         >
