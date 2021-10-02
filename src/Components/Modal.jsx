@@ -106,7 +106,9 @@ export const Modal = ({
       opacity: showModal ? 1 : 0,
       transform: showModal ? `translateY(0%)` : `translateY(-100%)`
    })
-   const [AcceptJob, { loading, error, data }] = useMutation(ACCEPT_JOB)
+   const [AcceptJob, { loading, error, data }] = useMutation(ACCEPT_JOB, {
+      fetchPolicy: "no-cache"
+   })
    const [deleteJob, { delLoading, delError, delData }] = useMutation(
       DELETE_JOB,
       {

@@ -9,7 +9,9 @@ import NavbarOther from '../../Components/NavbarOther'
 import ReactLoading from 'react-loading'
 
 function CreatedJobs() {
-   const { loading, error, data } = useQuery(GET_CREATED_JOBS)
+   const { loading, error, data } = useQuery(GET_CREATED_JOBS, {
+      fetchPolicy: "no-cache"
+   })
    const [showModal, setShowModal] = useState(false)
 
    let jobs = []
