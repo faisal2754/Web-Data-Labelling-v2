@@ -21,6 +21,7 @@ import { HashRouter as Router, Switch, Route } from 'react-router-dom'
 import HowToFind from './Pages/HowToFind'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import CompletedJobs from './Pages/Dashboard/CompletedJobs'
 
 const App = () => {
    const dispatch = useDispatch()
@@ -56,6 +57,11 @@ const App = () => {
                path="/dashboard/accepted-jobs"
                exact
                component={AcceptedJobs}
+            />
+            <Route
+               path="/dashboard/completed-jobs"
+               exact
+               component={CompletedJobs}
             />
             <Route path="/label-job" exact component={LabelJob} />
          </Switch>
