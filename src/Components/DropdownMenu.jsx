@@ -5,6 +5,7 @@ import { ReactComponent as ProfileIcon } from './icons/profile_icon2.svg'
 import { ReactComponent as AcceptedIcon } from './icons/accepted_icon.svg'
 import { ReactComponent as OwnedIcon } from './icons/owned_icon.svg'
 import { ReactComponent as LogOutIcon } from './icons/logout_icon.svg'
+import { ReactComponent as CompletedIcon } from './icons/completed_icon.svg'
 import Cookies from 'js-cookie'
 
 import React, { useState, useEffect, useRef } from 'react'
@@ -65,6 +66,9 @@ function DropdownMenu() {
                </DropdownItem>
                <DropdownItem leftIcon={<OwnedIcon />}>
                   <a href="#/dashboard/created-jobs">Created Jobs</a>
+               </DropdownItem>
+               <DropdownItem leftIcon={<CompletedIcon />}>
+                  <a href="#/dashboard/created-jobs">Job Results</a>
                </DropdownItem>
                <DropdownItem leftIcon={<LogOutIcon />}>
                   <a onClick={deleteJWT}>Sign Out</a>

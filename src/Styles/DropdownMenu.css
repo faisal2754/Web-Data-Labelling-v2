@@ -80,7 +80,7 @@ a {
    top: 78px;
    right: -20px;
    width: 240px;
-   min-height: 240px;
+   min-height: 300px;
    transform: translateX(-45%);
    background-color: var(--bg);
    border: var(--border);
