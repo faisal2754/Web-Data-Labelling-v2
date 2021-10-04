@@ -4,7 +4,7 @@ import { GET_ACCEPTED_JOBS } from '../../graphql/queries'
 import { useQuery } from '@apollo/client'
 import Modal from '../../Components/Modal'
 import CardItem from '../../Components/CardItem'
-import '../../Styles/AcceptedJobs.css'
+import '../../Styles/CompletedJobs.css'
 import ReactLoading from 'react-loading'
 import NavbarOther from '../../Components/NavbarOther'
 
@@ -34,10 +34,10 @@ function CompletedJobs() {
    return (
       <div>
          <NavbarOther />
-         <div className="acceptJobs__Modal">
+         <div className="completeJobs__Modal">
             {jobs.map((job) => {
                return (
-                  <div className="acceptJobs__modal">
+                  <div className="completeJobs__modal">
                      <Modal
                         id={job.job_id}
                         src={job.preview_images[0]}
@@ -47,10 +47,10 @@ function CompletedJobs() {
                         uploader={job.job_owner.username}
                         title={job.title}
                         showModal={showModal}
-                        buttonLabel="Label Job"
+                        buttonLabel="Get Results"
                         setShowModal={setShowModal}
                         destination={{
-                           pathname: '/label-job',
+                           pathname: '/',
                            currentID: job.job_id
                         }}
                      />
@@ -60,14 +60,14 @@ function CompletedJobs() {
          </div>
 
          {/* <DashboardSidebar /> */}
-         <div className="acceptedJobs__header">
+         <div className="completedJobs__header">
             <video src="../videos/header-hero.mp4" autoPlay loop muted />
             <h1>View your Completed Jobs</h1>
          </div>
-         <div className="acceptedJobs__Loading">
-            <h1>Pick A Job To Start Labeling</h1>
+         <div className="completedJobs__Loading">
+            <h1>Pick A Job To See Your Results</h1>
          </div>
-         <div className="acceptJob__Section">
+         <div className="completeJob__Section">
             {loading ? (
                <ReactLoading
                   type={'spin'}
@@ -75,14 +75,14 @@ function CompletedJobs() {
                   height={'10%'}
                   color={'#ffffff'}
                   width={'10%'}
-                  className="acceptedJob__loadingSpin"
+                  className="completedJob__loadingSpin"
                />
             ) : (
-               <div className="acceptJob__row">
+               <div className="completeJob__row">
                   {jobs.map((job) => {
                      return (
                         <div
-                           className="acceptJob__cardItem"
+                           className="completeJob__cardItem"
                            onClick={(e) => openModal(job.job_id)}
                         >
                            <CardItem

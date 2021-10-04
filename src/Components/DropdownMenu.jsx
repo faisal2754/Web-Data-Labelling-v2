@@ -68,7 +68,7 @@ function DropdownMenu() {
                   <a href="#/dashboard/created-jobs">Created Jobs</a>
                </DropdownItem>
                <DropdownItem leftIcon={<CompletedIcon />}>
-                  <a href="#/dashboard/created-jobs">Job Results</a>
+                  <a href="#/dashboard/completed-jobs">Job Results</a>
                </DropdownItem>
                <DropdownItem leftIcon={<LogOutIcon />}>
                   <a onClick={deleteJWT}>Sign Out</a>
