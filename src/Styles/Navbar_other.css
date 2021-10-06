@@ -50,6 +50,12 @@
    height: 50px;
 }
 
+.creditsDisplay {
+   color: white;
+   padding-left: 2%;
+   white-space: nowrap;
+}
+
 .nav-links {
    color: #fff;
    display: flex;

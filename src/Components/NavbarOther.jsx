@@ -23,8 +23,8 @@ function NavbarOther() {
          }
       }
    }
-   if(error){
-      toast.error("some error occured")
+   if (error) {
+      toast.error('some error occured')
    }
    const handleClick = () => setClick(!click)
    const closeMobileMenu = () => setClick(false)
@@ -165,6 +165,11 @@ function NavbarOther() {
                </div>
             ) : (
                <div></div>
+            )}
+            {!isJwt ? (
+               <div></div>
+            ) : (
+               <div className="creditsDisplay">Credits: 1000</div>
             )}
             {/* {button && isJwt ? (
                <Button buttonStyle="btn--outline" onClick={deleteJWT}>
