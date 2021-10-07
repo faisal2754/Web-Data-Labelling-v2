@@ -33,8 +33,10 @@ export const Dashboard = (props) => {
 
       if (data.deletedJobs) {
          if (data.deletedJobs.length !== 0) {
-            let jobarray=data.deletedJobs.map(function(job){return JSON.stringify(job.title)})
-            let jobstring=jobarray.join(",")
+            let jobarray = data.deletedJobs.map(function (job) {
+               return JSON.stringify(job.title)
+            })
+            let jobstring = jobarray.join(',')
             swal({
                title: 'These Jobs deleted while you were away...',
                text: jobstring,
@@ -72,10 +74,7 @@ export const Dashboard = (props) => {
                />
             ) : (
                <span>
-                  {/* <UserProfile
-                              firstName={data.me.username}
-                              avatarImage={data.me.avatar}
-                           /> */}
+                  <UserProfile firstName={data.me.username} />
 
                   {data && <UserDetails username={username} email={email} />}
                </span>

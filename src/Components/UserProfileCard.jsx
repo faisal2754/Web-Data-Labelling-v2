@@ -1,45 +1,36 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 const UserProfile = (props) => {
+   const username = useSelector((state) => state.user.username)
+
    return (
       <div className="col-xl-4 order-xl-2 mb-5 mb-xl-0">
          <div className="card card-profile shadow">
             <div className="row justify-content-center">
                <div className="col-lg-3 order-lg-2">
                   <div className="card-profile-image">
-                     <a href="/dashboard">
-                        <img
-                           src={props.avatarImage}
-                           className="rounded-circle"
-                           alt=""
-                        />
-                     </a>
+                     <img
+                        src={`https://avatars.dicebear.com/api/bottts/${props.firstName}.svg`}
+                        className="rounded-circle"
+                        alt=""
+                     />
                   </div>
                </div>
             </div>
             <div className="card-body pt-0 pt-md-4">
                <div className="text-center">
                   <h3>
-                     {props.firstName} {props.lastName}
-                     <span className="font-weight-light"> {props.age}</span>
+                     Username:
+                     <span className="font-weight-light">
+                        {' '}
+                        {props.firstName}
+                     </span>
                   </h3>
-                  <div className="h5 mt-4">
-                     <i className="ni business_briefcase-24 mr-2" />
-                     {props.title}
-                  </div>
-                  <div>
-                     <i className="ni education_hat mr-2" />
-                     {props.education}
-                  </div>
-                  <div className="userProfileCard__updateBtn">
-                     <a
-                        href="#!"
-                        className="user-btn user-btn-sm user-btn-primary"
-                     >
-                        Update Avatar
-                     </a>
-                  </div>
-                  {/* <a href="#">Show more</a> */}
+                  <h3>
+                     Credits:
+                     <span className="font-weight-light"> $1000</span>
+                  </h3>
                </div>
             </div>
          </div>
