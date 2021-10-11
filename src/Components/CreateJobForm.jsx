@@ -32,6 +32,7 @@ const CreateJob = () => {
    const Calculate = (e) => {
       e.preventDefault()
       let currentCredits = document.querySelector('#credits').value
+      let numLabels = labels.map((label) => label.label).length
       let currentLabellers = document.querySelector('#imgPerSection').value
       if (currentCredits === 0) return
       if (currentCredits <= 0 || currentCredits === '') {
@@ -39,7 +40,9 @@ const CreateJob = () => {
          toast.clearWaitingQueue()
          return
       }
-      let newTotal = currentCredits * currentLabellers
+
+      const maxNumLabellers = numLabels % 2 === 0 ? numLabels + 1 : numLabels + 2
+      let newTotal = currentCredits * maxNumLabellers
       if(data.me.balance<newTotal){
          toast.error('You do not have sufficent credits to create this job')
          toast.clearWaitingQueue()
