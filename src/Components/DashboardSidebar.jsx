@@ -1,21 +1,15 @@
 import React, { useState } from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import * as FaIcons from 'react-icons/fa'
 import * as AiIcons from 'react-icons/ai'
 import { SidebarData } from './SidebarData'
 import '../Styles/DashboardNav.css'
 import { IconContext } from 'react-icons'
-import { useSelector } from 'react-redux'
 
 const DashboardSidebar = () => {
-   const jwt = useSelector((state) => state.user.jwt)
    const [sidebar, setSidebar] = useState(false)
 
    const showSidebar = () => setSidebar(!sidebar)
-
-   // if (jwt == ""){
-   //     return <Redirect to="/login"/>
-   // }
 
    return (
       <div>

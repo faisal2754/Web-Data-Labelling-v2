@@ -1,6 +1,5 @@
 import React from 'react'
 import DashboardSidebar from '../../Components/DashboardSidebar'
-import Footer from '../../Components/Footer'
 import '../../Styles/AboutUs.css'
 
 function AboutUs() {

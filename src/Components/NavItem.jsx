@@ -1,6 +1,7 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import '../Styles/DropdownMenu.css'
 
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState } from 'react'
 
 function NavItem(props) {
    const [open, setOpen] = useState(false)

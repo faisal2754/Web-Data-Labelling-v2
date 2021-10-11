@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
 import Footer from '../Components/Footer'
 import ImageSlider from '../Components/ImageSlider'
@@ -33,7 +35,7 @@ function LabelJob(props) {
    const checkCompletion = () => {
       if (
          Object.keys(assignedLabels).length + 1 >= slides.length &&
-         Object.keys(assignedLabels).length != 0
+         Object.keys(assignedLabels).length !== 0
       ) {
          document.getElementById('submitButton').style.display = 'inline-block'
          is_complete = true
@@ -131,7 +133,7 @@ function LabelJob(props) {
          }
       })
 
-      if (buttonID == 'submitButton') {
+      if (buttonID === 'submitButton') {
          document.getElementById('label-save').style.display = 'none'
          document.getElementById('image-section').style.display = 'none'
          document.getElementById('job-submitted').style.display = 'block'

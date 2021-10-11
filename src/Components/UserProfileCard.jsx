@@ -1,8 +1,6 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 
 const UserProfile = (props) => {
-   const username = useSelector((state) => state.user.username)
 
    return (
       <div className="col-xl-4 order-xl-2 mb-5 mb-xl-0">

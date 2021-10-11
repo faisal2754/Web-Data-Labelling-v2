@@ -9,7 +9,7 @@ function CardItem(props) {
                className="cards__item__pic-wrap"
                data-category={props.credits}
             >
-               <img className="cards__item__img" src={props.src} alt="Image" />
+               <img className="cards__item__img" src={props.src} alt="Card item" />
             </figure>
             <div className="cards__item__info">
                <h5 className="cards__item__text">{props.text}</h5>

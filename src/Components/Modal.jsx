@@ -106,9 +106,11 @@ export const Modal = ({
       opacity: showModal ? 1 : 0,
       transform: showModal ? `translateY(0%)` : `translateY(-100%)`
    })
+   // eslint-disable-next-line no-unused-vars
    const [AcceptJob, { loading, error, data }] = useMutation(ACCEPT_JOB, {
       fetchPolicy: 'no-cache'
    })
+   // eslint-disable-next-line no-unused-vars
    const [deleteJob, { delLoading, delError, delData }] = useMutation(
       DELETE_JOB,
       {
@@ -139,9 +141,6 @@ export const Modal = ({
    if (!jwt1) {
       destination = '/login'
    }
-
-   const completedJobs = () => {}
-
    const acceptJob = () => {
       if (!jwt) {
       } else {

@@ -1,7 +1,6 @@
 import React from 'react'
 import DashboardSidebar from '../../Components/DashboardSidebar'
 import '../../Styles/Support.css'
-import Footer from '../../Components/Footer'
 
 function Support() {
    return (

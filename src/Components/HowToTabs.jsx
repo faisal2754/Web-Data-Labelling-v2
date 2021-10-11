@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { Button } from './Button'
 import { Link } from 'react-router-dom'
 import '../Styles/tab.css'
 
 function HowToTabs() {
    const [click, setClick] = useState(false)
+   // eslint-disable-next-line no-unused-vars
    const [button, setButton] = useState(true)
 
    const handleClick = () => setClick(!click)

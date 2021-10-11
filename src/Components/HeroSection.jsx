@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 function HeroSection() {
    const jwt = useSelector((state) => state.user.jwt)
    let isJwt = false
-   if (jwt != '') {
+   if (jwt !== '') {
       isJwt = true
    }
 

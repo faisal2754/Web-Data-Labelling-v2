@@ -1,16 +1,12 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import '../../Styles/UserProfile.css'
 import UserDetails from '../../Components/UserDetails'
 import UserProfile from '../../Components/UserProfileCard'
-import DashboardSidebar from '../../Components/DashboardSidebar'
 import { useQuery } from '@apollo/client'
 import {
-   GET_DELETED_JOBS,
-   GET_ME,
+
    GET_ME_AND_DELETED_JOBS
 } from '../../graphql/queries'
-import Cookies from 'js-cookie'
-import { Redirect } from 'react-router'
 import ReactLoading from 'react-loading'
 import NavbarOther from '../../Components/NavbarOther'
 import { useSelector } from 'react-redux'
@@ -18,16 +14,9 @@ import swal from 'sweetalert'
 
 export const Dashboard = (props) => {
    const { loading, error, data } = useQuery(GET_ME_AND_DELETED_JOBS)
-   // const {load,errordel, dataDel } = useQuery(GET_DELETED_JOBS)
    const username = useSelector((state) => state.user.username)
    const email = useSelector((state) => state.user.email)
-   // useEffect(() => {
-   //    console.log(data)
-   // }, [data])
 
-   // if (Cookies.get('jwt') == null) {
-   //    return <Redirect to="/login" />
-   // }
    if (data) {
       console.log(data)
 

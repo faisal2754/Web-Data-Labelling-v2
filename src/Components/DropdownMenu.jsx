@@ -1,6 +1,4 @@
 import '../Styles/DropdownMenu.css'
-import { ReactComponent as ArrowIcon } from './icons/arrow.svg'
-import { ReactComponent as BoltIcon } from './icons/bolt.svg'
 import { ReactComponent as ProfileIcon } from './icons/profile_icon2.svg'
 import { ReactComponent as AcceptedIcon } from './icons/accepted_icon.svg'
 import { ReactComponent as OwnedIcon } from './icons/owned_icon.svg'

@@ -9,6 +9,7 @@ const ImageSlider = ({ slides, indexCallback }) => {
 
    useEffect(() => {
       indexCallback(current)
+   // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [current])
 
    const nextSlide = () => {
@@ -42,7 +43,7 @@ const ImageSlider = ({ slides, indexCallback }) => {
                         src={slide.images}
                         key={slide.image_ids}
                         id={slide.image_ids}
-                        alt="travel image"
+                        alt="alt tag"
                         className="image"
                      />
                   )}

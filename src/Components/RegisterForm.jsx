@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import '../Styles/Register.css'
 import { Link, Redirect } from 'react-router-dom'
-import { useHistory } from 'react-router-dom'
 import { useMutation } from '@apollo/client'
-import { ToastContainer, toast } from 'react-toastify'
+import { toast } from 'react-toastify'
 import { REGISTER_USER } from '../graphql/mutations'
 
 const Register = () => {
@@ -11,8 +10,10 @@ const Register = () => {
    const [email, setEmail] = useState('')
    const [password, setPassword] = useState('')
    const [confirmPass, setConfirmPass] = useState('')
+   // eslint-disable-next-line no-unused-vars
    const [errorMsg, setErrorMsg] = useState('')
 
+   // eslint-disable-next-line no-unused-vars
    const [registerMutation, { data, loading, error }] =
       useMutation(REGISTER_USER)
 
@@ -34,7 +35,7 @@ const Register = () => {
       } else if (password.length < 5) {
          isValid = false
          toast.error('Password must be at least 5 characters')
-      } else if (password != confirmPass) {
+      } else if (password !== confirmPass) {
          isValid = false
          toast.error('Passwords do not match')
       }
@@ -60,8 +61,6 @@ const Register = () => {
          toast.success('You Have Been Succesfully Registered')
       }
    }
-
-   const history = useHistory()
 
    if (data) {
       return <Redirect to="/login" />

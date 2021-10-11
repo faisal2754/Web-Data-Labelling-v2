@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import DashboardSidebar from '../../Components/DashboardSidebar'
 import { GET_CREATED_JOBS } from '../../graphql/queries'
 import { useQuery } from '@apollo/client'
 import Modal from '../../Components/Modal'
@@ -72,7 +71,6 @@ function CreatedJobs() {
             {loading ? (
                <ReactLoading
                type={'spin'}
-               color={'black'}
                height={'10%'}
                color={'#ffffff'}
                width={'10%'}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { EDIT_PROFILE } from '../graphql/mutations'
 import { useMutation } from '@apollo/client'
 import { useDispatch } from 'react-redux'
@@ -17,7 +17,9 @@ const UserDetails = (props) => {
    const dispatch = useDispatch()
    const editUsername = () => {
       let userNameChange
-
+      if(error){
+         toast(error.message);
+      }
       //check if username is empty
       if (document.getElementById('input-username').value === '') {
          userNameChange = props.username

@@ -1,13 +1,12 @@
 import { useState, useEffect } from 'react'
 import React from 'react'
+import { GET_ME } from '../graphql/queries'
 import '../Styles/CreateJob.css'
 import TextField from '@material-ui/core/TextField'
 import { nanoid } from 'nanoid'
 import ImageUploading from 'react-images-uploading'
-// import { Redirect } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'
-import { GET_CREATED_JOBS } from '../graphql/queries'
-import { useQuery, useLazyQuery } from '@apollo/client'
+import { useQuery} from '@apollo/client'
 import Cookies from 'js-cookie'
 import { toast } from 'react-toastify'
 import FormData from 'form-data'
@@ -15,12 +14,16 @@ import axios from 'axios'
 
 const CreateJob = () => {
    const [labels, setLabels] = useState([])
+   // eslint-disable-next-line no-unused-vars
+   const { loading, error, data } = useQuery(GET_ME)
    const [currentTotal, setCurrentTotal] = useState(0)
    const [images, setImages] = useState([])
    const onChange = (imageList, addUpdateIndex) => {
       setImages(imageList)
    }
-
+   if(data){
+      console.log(data)
+   }
    useEffect(() => {
       document.querySelector('#totalCredits').value = 0
    }, [])
@@ -37,7 +40,14 @@ const CreateJob = () => {
          return
       }
       let newTotal = currentCredits * currentLabellers
+      if(data.me.balance<newTotal){
+         toast.error('You do not have sufficent credits to create this job')
+         toast.clearWaitingQueue()
+         return
+      }
       setCurrentTotal(newTotal)
+      console.log("no errors in calculate")
+
    }
    return (
       <div className="createJob_page">
@@ -48,8 +58,6 @@ const CreateJob = () => {
                e.preventDefault()
                Calculate(e)
                const form = new FormData()
-               //TODO Dont allow more partitions than images
-
                if (
                   images.length <
                   parseInt(document.querySelector('#imgPerSection').value)
@@ -71,6 +79,11 @@ const CreateJob = () => {
                   toast.clearWaitingQueue()
                   return
                }
+               if(data.me.balance<currentTotal){
+                  toast.error('You do not have sufficent credits to create this job')
+                  toast.clearWaitingQueue()
+                  return
+               }
                if (labels.map((label) => label.label).length === 0) {
                   toast.error('Please enter at least one label')
                   toast.clearWaitingQueue()
@@ -85,7 +98,7 @@ const CreateJob = () => {
                   return
                }
                //! End Error Checking
-
+               console.log("no errors")
                form.append(
                   'operations',
                   JSON.stringify({
@@ -126,6 +139,15 @@ const CreateJob = () => {
                         }
                      }
                   )
+                  .catch(() => {
+                     toast.update(id, {
+                        render: 'Your Job was not Created, Please try again',
+                        type: 'error',
+                        autoClose: 3000,
+                        isLoading: false
+                     })
+                     toast.clearWaitingQueue()
+                  })
                   .then(() => {
                      toast.update(id, {
                         render: 'Your Job was successfully created',
@@ -137,15 +159,6 @@ const CreateJob = () => {
                      history.push('/dashboard/created-jobs')
 
                      // window.location.reload();
-                  })
-                  .catch(() => {
-                     toast.update(id, {
-                        render: 'Your Job was not Created',
-                        type: 'error',
-                        autoClose: 3000,
-                        isLoading: false
-                     })
-                     toast.clearWaitingQueue()
                   })
             }}
          >

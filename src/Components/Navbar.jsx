@@ -3,7 +3,6 @@ import { Button } from './Button'
 import { Link } from 'react-router-dom'
 import '../Styles/Navbar.css'
 import { useSelector } from 'react-redux'
-import Cookies from 'js-cookie'
 import NavItem from './NavItem'
 import DropdownMenu from './DropdownMenu'
 import { ReactComponent as MenuIcon } from './icons/menu_icon.svg'
@@ -12,6 +11,7 @@ import { useQuery } from '@apollo/client'
 import ReactLoading from 'react-loading'
 
 function Navbar() {
+   // eslint-disable-next-line no-unused-vars
    const { loading, error, data } = useQuery(GET_ME)
 
    const [click, setClick] = useState(false)
@@ -57,11 +57,7 @@ function Navbar() {
          setNavbar(false)
       }
    }
-   const deleteJWT = () => {
-      Cookies.remove('jwt') //deletes the jwt token on signout
-      window.location.reload()
-      // toast.warning("You have logged out")
-   }
+   
 
    const changeNav = () => {}
 

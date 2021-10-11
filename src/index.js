@@ -6,8 +6,6 @@ import {
    ApolloClient,
    InMemoryCache,
    ApolloProvider,
-   useQuery,
-   gql,
    HttpLink,
    ApolloLink,
    concat

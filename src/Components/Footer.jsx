@@ -1,13 +1,12 @@
 import React from 'react'
 import '../Styles/Footer.css'
 import { Link } from 'react-router-dom'
-import Cookies from 'js-cookie'
 import { useSelector } from 'react-redux'
 
 function Footer() {
    const jwt = useSelector((state) => state.user.jwt)
    let isJwt = false
-   if (jwt != '') {
+   if (jwt !== '') {
       isJwt = true
    }
 
