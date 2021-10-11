@@ -16,6 +16,7 @@ import { Link, Redirect } from 'react-router-dom'
 
 function LabelJob(props) {
    const [index, setIndex] = useState()
+   const [isComplete, setIsComplete] = useState(false)
    const [assignedLabels, setAssignedLabels] = useState({})
    const [slides, setSlides] = useState([])
    const { currentID } = props.location
@@ -23,7 +24,7 @@ function LabelJob(props) {
    const checkRadioButton = () => {
       if (slides[index]) {
          if (slides[index].image_id in assignedLabels) {
-            console.log(assignedLabels[slides[index].image_id])
+            // console.log(assignedLabels[slides[index].image_id])
             document.getElementById(
                assignedLabels[slides[index].image_id]
             ).checked = true
@@ -31,14 +32,13 @@ function LabelJob(props) {
       }
    }
 
-   let is_complete = false
    const checkCompletion = () => {
       if (
          Object.keys(assignedLabels).length + 1 >= slides.length &&
          Object.keys(assignedLabels).length !== 0
       ) {
          document.getElementById('submitButton').style.display = 'inline-block'
-         is_complete = true
+         setIsComplete(true)
       } else {
          document.getElementById('submitButton').style.display = 'none'
       }
@@ -124,12 +124,13 @@ function LabelJob(props) {
    }
 
    const saveState = (buttonID) => {
+      console.log(isComplete)
       submitJob({
          variables: {
             image_ids: Object.keys(assignedLabels).map((id) => Number(id)),
             labels: Object.values(assignedLabels),
             partition_id: partition_id,
-            is_complete: is_complete
+            is_complete: isComplete
          }
       })
 
