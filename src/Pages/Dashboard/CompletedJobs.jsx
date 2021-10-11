@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import DashboardSidebar from '../../Components/DashboardSidebar'
-import { GET_ACCEPTED_JOBS } from '../../graphql/queries'
+import { GET_COMPLETED_JOBS } from '../../graphql/queries'
 import { useQuery } from '@apollo/client'
 import Modal from '../../Components/Modal'
 import CardItem from '../../Components/CardItem'
@@ -10,12 +10,12 @@ import NavbarOther from '../../Components/NavbarOther'
 
 function CompletedJobs() {
    // const { loading, error, data } = useQuery(GET_ME)
-   const { loading, error, data } = useQuery(GET_ACCEPTED_JOBS)
+   const { loading, error, data } = useQuery(GET_COMPLETED_JOBS)
    const [showModal, setShowModal] = useState(false)
 
    let jobs = []
    if (data) {
-      jobs = data.acceptedJobs
+      jobs = data.completedJobs
    }
    if (error) {
       console.log(error)

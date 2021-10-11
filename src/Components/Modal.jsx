@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux'
 import { Link, useHistory } from 'react-router-dom'
 import { useMutation } from '@apollo/client'
 import { ACCEPT_JOB, DELETE_JOB } from '../graphql/mutations'
-import { GET_ACCEPTED_JOBS,GET_CREATED_JOBS } from '../graphql/queries'
+import { GET_ACCEPTED_JOBS, GET_CREATED_JOBS } from '../graphql/queries'
 import Cookies from 'js-cookie'
 import { toast } from 'react-toastify'
 import swal from 'sweetalert'
@@ -107,7 +107,7 @@ export const Modal = ({
       transform: showModal ? `translateY(0%)` : `translateY(-100%)`
    })
    const [AcceptJob, { loading, error, data }] = useMutation(ACCEPT_JOB, {
-      fetchPolicy: "no-cache"
+      fetchPolicy: 'no-cache'
    })
    const [deleteJob, { delLoading, delError, delData }] = useMutation(
       DELETE_JOB,
@@ -139,6 +139,8 @@ export const Modal = ({
    if (!jwt1) {
       destination = '/login'
    }
+
+   const completedJobs = () => {}
 
    const acceptJob = () => {
       if (!jwt) {
