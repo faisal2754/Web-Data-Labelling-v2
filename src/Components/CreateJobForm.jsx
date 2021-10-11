@@ -29,14 +29,14 @@ const CreateJob = () => {
    const Calculate = (e) => {
       e.preventDefault()
       let currentCredits = document.querySelector('#credits').value
-      // let currentLabellers = document.querySelector('#numLabellers').value
+      let currentLabellers = document.querySelector('#imgPerSection').value
       if (currentCredits === 0) return
       if (currentCredits <= 0 || currentCredits === '') {
          toast.error('invalid number of credits')
          toast.clearWaitingQueue()
          return
       }
-      let newTotal = currentCredits
+      let newTotal = currentCredits * currentLabellers
       setCurrentTotal(newTotal)
    }
    return (
