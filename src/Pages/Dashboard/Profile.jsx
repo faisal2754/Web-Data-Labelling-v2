@@ -74,7 +74,10 @@ export const Dashboard = (props) => {
                />
             ) : (
                <span>
-                  <UserProfile firstName={data.me.username} />
+                  <UserProfile
+                     firstName={data.me.username}
+                     balance={data.me.balance}
+                  />
 
                   {data && <UserDetails username={username} email={email} />}
                </span>

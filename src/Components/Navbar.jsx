@@ -180,11 +180,6 @@ function Navbar() {
             ) : (
                <div></div>
             )}
-            {!isJwt ? (
-               <div></div>
-            ) : (
-               <div className="creditsDisplay">Credits: 1000</div>
-            )}
             {/* {button && isJwt ? (
                <Button buttonStyle="btn--outline" onClick={deleteJWT}>
                   Sign Out

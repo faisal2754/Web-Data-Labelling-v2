@@ -29,7 +29,10 @@ const UserProfile = (props) => {
                   </h3>
                   <h3>
                      Credits:
-                     <span className="font-weight-light"> $1000</span>
+                     <span className="font-weight-light">
+                        {' '}
+                        ${props.balance}
+                     </span>
                   </h3>
                </div>
             </div>

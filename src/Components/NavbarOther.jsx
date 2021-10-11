@@ -16,10 +16,12 @@ function NavbarOther() {
    const [click, setClick] = useState(false)
    const [button, setButton] = useState(true)
    let username = useSelector((state) => state.user.username)
+   let balance = useSelector((state) => state.user.username)
    if (data) {
       if (data.me) {
          if (!loading) {
             username = data.me.username
+            balance = data.me.balance
          }
       }
    }
@@ -169,7 +171,7 @@ function NavbarOther() {
             {!isJwt ? (
                <div></div>
             ) : (
-               <div className="creditsDisplay">Credits: 1000</div>
+               <div className="creditsDisplay">${balance}</div>
             )}
             {/* {button && isJwt ? (
                <Button buttonStyle="btn--outline" onClick={deleteJWT}>
