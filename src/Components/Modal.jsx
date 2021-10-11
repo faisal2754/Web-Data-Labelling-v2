@@ -185,7 +185,7 @@ export const Modal = ({
                               Job Owner: {uploader}
                            </div>
                            <div className="modal__creditLine">
-                              Credits:‎ ‎{credits}
+                              Credits:‎ ‎${credits}
                            </div>
 
                            <div className="modal__descriptionLine">
