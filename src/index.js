@@ -23,10 +23,10 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
       console.log('networkError', networkError)
    }
 })
-// import swal from 'sweetalert';
 
 const httpLink = new HttpLink({
    uri: 'https://data-labelling-server.herokuapp.com/graphql'
+   // uri: 'http://localhost:4000/graphql'
 })
 
 const link = ApolloLink.from([errorLink, httpLink])
