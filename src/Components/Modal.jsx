@@ -108,20 +108,17 @@ export const Modal = ({
    })
    // eslint-disable-next-line no-unused-vars
    const [AcceptJob, { loading, error, data }] = useMutation(ACCEPT_JOB, {
-      fetchPolicy: 'no-cache'
+      fetchPolicy: 'network-only',
+      refetchQueries: [ GET_ACCEPTED_JOBS, 'acceptedJobs' ]
    })
    // eslint-disable-next-line no-unused-vars
    const [deleteJob, { delLoading, delError, delData }] = useMutation(
       DELETE_JOB,
       {
-         refetchQueries: [GET_CREATED_JOBS, 'acceptedJobs']
+         refetchQueries: [GET_CREATED_JOBS, 'createdJobs']
       }
    )
-   // const closeModal = (e) => {
-   //    if (modalRef.current === e.target) {
-   //       setShowModal(false)
-   //    }
-   // }
+
 
    const keyPress = useCallback(
       (e) => {
@@ -149,8 +146,7 @@ export const Modal = ({
             AcceptJob({
                variables: {
                   job_id: id
-               },
-               refetchQueries: [{ query: GET_ACCEPTED_JOBS }]
+               }
             })
                .then(() => {
                   history.push('/dashboard/accepted-jobs')

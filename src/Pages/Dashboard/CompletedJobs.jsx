@@ -87,8 +87,8 @@ function CompletedJobs() {
                               // id={job.job_id.concat('card')}
                               // src={job.preview_images[0]}
                               src="../images/completed_job.png"
-                              text={job.description}
-                              credits={job.credits}
+                              text={job.title}
+                              credits="Done"
                            />
                         </div>
                      )

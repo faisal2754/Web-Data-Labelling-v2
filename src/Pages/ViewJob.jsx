@@ -15,7 +15,9 @@ import { toast } from 'react-toastify'
 function ViewJob() {
 
    let jobs = []
-   const { loading, error, data } = useQuery(GET_JOBS)
+   const { loading, error, data } = useQuery(GET_JOBS,{
+      fetchPolicy: 'no-cache'
+   })
 
    if (data) {
       jobs = data.viewJobs

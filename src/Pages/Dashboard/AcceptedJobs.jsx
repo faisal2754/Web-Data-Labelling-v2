@@ -9,7 +9,10 @@ import NavbarOther from '../../Components/NavbarOther'
 
 function AcceptedJobs() {
    // const { loading, error, data } = useQuery(GET_ME)
-   const { loading, error, data } = useQuery(GET_ACCEPTED_JOBS)
+   const { loading, error, data } = useQuery(GET_ACCEPTED_JOBS, {
+      fetchPolicy: "no-cache",
+      refetchQueries: [ GET_ACCEPTED_JOBS,'acceptedJobs' ]
+   })
    const [showModal, setShowModal] = useState(false)
 
    let jobs = []
@@ -87,7 +90,7 @@ function AcceptedJobs() {
                               // id={job.job_id.concat('card')}
                               src={job.preview_images[0]}
                               // src="../images/purple_gradient.jpg"
-                              text={job.description}
+                              text={job.title}
                               credits={job.credits}
                            />
                         </div>
