@@ -6,7 +6,7 @@ import TextField from '@material-ui/core/TextField'
 import { nanoid } from 'nanoid'
 import ImageUploading from 'react-images-uploading'
 import { useHistory } from 'react-router-dom'
-import { useQuery} from '@apollo/client'
+import { useQuery } from '@apollo/client'
 import Cookies from 'js-cookie'
 import { toast } from 'react-toastify'
 import FormData from 'form-data'
@@ -21,7 +21,7 @@ const CreateJob = () => {
    const onChange = (imageList, addUpdateIndex) => {
       setImages(imageList)
    }
-   if(data){
+   if (data) {
       console.log(data)
    }
    useEffect(() => {
@@ -33,7 +33,7 @@ const CreateJob = () => {
       e.preventDefault()
       let currentCredits = document.querySelector('#credits').value
       let numLabels = labels.map((label) => label.label).length
-      let currentLabellers = document.querySelector('#imgPerSection').value
+      let currentPartitions = document.querySelector('#partitions').value
       if (currentCredits === 0) return
       if (currentCredits <= 0 || currentCredits === '') {
          toast.error('invalid number of credits')
@@ -41,16 +41,15 @@ const CreateJob = () => {
          return
       }
 
-      const maxNumLabellers = numLabels % 2 === 0 ? numLabels + 1 : numLabels + 2
-      let newTotal = currentCredits * maxNumLabellers
-      if(data.me.balance<newTotal){
+      // const maxNumLabellers = numLabels % 2 === 0 ? numLabels + 1 : numLabels + 2
+      let newTotal = currentCredits * currentPartitions
+      if (data.me.balance < newTotal) {
          toast.error('You do not have sufficent credits to create this job')
          toast.clearWaitingQueue()
          return
       }
       setCurrentTotal(newTotal)
-      console.log("no errors in calculate")
-
+      console.log('no errors in calculate')
    }
    return (
       <div className="createJob_page">
@@ -63,7 +62,7 @@ const CreateJob = () => {
                const form = new FormData()
                if (
                   images.length <
-                  parseInt(document.querySelector('#imgPerSection').value)
+                  parseInt(document.querySelector('#partitions').value)
                ) {
                   toast.error(
                      'Invalid number of Partitions, make sure partitions does not exceed images'
@@ -82,8 +81,10 @@ const CreateJob = () => {
                   toast.clearWaitingQueue()
                   return
                }
-               if(data.me.balance<currentTotal){
-                  toast.error('You do not have sufficent credits to create this job')
+               if (data.me.balance < currentTotal) {
+                  toast.error(
+                     'You do not have sufficent credits to create this job'
+                  )
                   toast.clearWaitingQueue()
                   return
                }
@@ -93,15 +94,14 @@ const CreateJob = () => {
                   return
                }
                if (
-                  document.querySelector('#imgPerSection').value === 0 ||
-                  document.querySelector('#imgPerSection').value === ''
+                  document.querySelector('#partitions').value === 0 ||
+                  document.querySelector('#partitions').value === ''
                ) {
                   toast.error('Invalid number of partitions')
                   toast.clearWaitingQueue()
                   return
                }
                //! End Error Checking
-               console.log("no errors")
                form.append(
                   'operations',
                   JSON.stringify({
@@ -112,15 +112,15 @@ const CreateJob = () => {
                         description:
                            document.querySelector('#description').value,
 
-                        credits: parseInt(currentTotal),
+                        credits: parseInt(document.querySelector('#credits').value),
                         num_partitions: parseInt(
-                           document.querySelector('#imgPerSection').value
+                           document.querySelector('#partitions').value
                         ),
                         labels: labels.map((label) => label.label)
                      }
                   })
                )
-
+              
                let variables = {}
                for (let i = 0; i < images.length; i++) {
                   variables[i] = []
@@ -151,7 +151,8 @@ const CreateJob = () => {
                      })
                      toast.clearWaitingQueue()
                   })
-                  .then(() => {
+                  .then((res) => {
+                     console.log(res);
                      toast.update(id, {
                         render: 'Your Job was successfully created',
                         type: 'success',
@@ -372,7 +373,7 @@ const CreateJob = () => {
                   />
 
                   <TextField
-                     id="imgPerSection"
+                     id="partitions"
                      label="Number of Partitions"
                      type="number"
                      variant="outlined"
