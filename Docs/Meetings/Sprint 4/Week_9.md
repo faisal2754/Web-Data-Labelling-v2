@@ -1,4 +1,4 @@
-## Daily Scrum Meeting 12th October 2021 11:00am (Monday)
+## Daily Scrum Meeting 11th October 2021 11:00am (Monday)
 
 Aharon Cohen (Frontend):
 - Tasks completed yesterday: Avatar for user profile
