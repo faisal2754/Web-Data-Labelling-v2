@@ -16,8 +16,8 @@ Ioanni Balassis: (Frontend):
 - Impediments: Other projects, quizzes and tests
 
 Jonathan Nunes (Frontend):
-- Tasks completed yesterday: Created visual response for save and submit + css changes
-- Tasks for the day: Credits display
+- Tasks completed yesterday: Sprint retrospective
+- Tasks for the day: Start assigned tasks in sprint
 - Impediments: PC Test
 
 Faisal Saleem (Backend):
@@ -100,7 +100,7 @@ Ioanni Balassis: (Frontend):
 - Impediments: Other projects, quizzes and tests
 
 Jonathan Nunes (Frontend):
-- Tasks completed yesterday: Created visual response for save and submit + css changes
+- Tasks completed yesterday: Credits display
 - Tasks for the day: Credits display
 - Impediments: PC Test
 
@@ -142,7 +142,7 @@ Ioanni Balassis: (Frontend):
 - Impediments: Other projects, quizzes and tests
 
 Jonathan Nunes (Frontend):
-- Tasks completed yesterday: Created visual response for save and submit + css changes
+- Tasks completed yesterday: Credits display
 - Tasks for the day: Credits display
 - Impediments: PC Test
 
