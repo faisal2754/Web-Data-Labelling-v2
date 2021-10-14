@@ -84,7 +84,7 @@ const Login = () => {
                <button type="submit" className="login_signInButton">
                   {loading ? 'Loading...' : 'LOGIN'}
                </button>
-               <p className="social-text">Or login with</p>
+               {/* <p className="social-text">Or login with</p> */}
 
                <p className="other-text">
                   Not a member?{' '}

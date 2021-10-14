@@ -93,7 +93,7 @@ function AcceptedJobs() {
                               // id={job.job_id.concat('card')}
                               src={job.preview_images[0]}
                               // src="../images/purple_gradient.jpg"
-                              text={job.description}
+                              text={job.title}
                               credits={job.credits}
                            />
                         </div>
