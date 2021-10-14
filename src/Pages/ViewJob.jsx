@@ -57,7 +57,7 @@ function ViewJob() {
                      setShowModal={setShowModal}
                      buttonLabel={'Accept Job'}
                      destination="/dashboard/accepted-jobs"
-
+                     acceptable = {true}
                   />
                </div>
             )

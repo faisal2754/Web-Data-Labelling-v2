@@ -92,7 +92,8 @@ export const Modal = ({
    credits,
    title,
    buttonLabel,
-   deletable
+   deletable,
+   acceptable
 }) => {
    const history = useHistory()
    const jwt = useSelector((state) => state.user.jwt)
@@ -224,16 +225,23 @@ export const Modal = ({
                               >
                                  {buttonLabel}
                               </button>
-                           ) : (
-                              <Link>
+                           ) : (acceptable ? (
+                              <Link >
                                  <button
                                     className="modal__acceptJob"
                                     onClick={acceptJob}
                                  >
-                                    {buttonLabel}
+                                    {loading ? "Loading...": buttonLabel}
                                  </button>
                               </Link>
-                           )}
+                           ): <Link to ={destination}>
+                           <button
+                              className="modal__acceptJob"
+                              onClick={acceptJob}
+                           >
+                              {buttonLabel}
+                           </button>
+                        </Link>)}
                         </div>
                      </ModalContent>
                      <CloseModalButton
