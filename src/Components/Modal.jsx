@@ -131,7 +131,9 @@ export const Modal = ({
    // const [AcceptedJobs, {loading, error }] = useQuery(GET_ACCEPTED_JOBS, {
    //    fetchPolicy: 'no-cache'
    // })
-
+      const getResults = () => {
+         toast.error("This feature is coming soon...")
+      }
 
    const keyPress = useCallback(
       (e) => {
@@ -237,7 +239,7 @@ export const Modal = ({
                            ): <Link to ={destination}>
                            <button
                               className="modal__acceptJob"
-                              onClick={acceptJob}
+                              onClick={acceptJob} // in this scenario , the function wont run
                            >
                               {buttonLabel}
                            </button>

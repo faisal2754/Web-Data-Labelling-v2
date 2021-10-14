@@ -5,11 +5,12 @@ import Footer from '../Components/Footer'
 import ImageSlider from '../Components/ImageSlider'
 import NavbarOther from '../Components/NavbarOther'
 import '../Styles/LabelJob.css'
-import { GET_LABEL_JOB_INFO, GET_SAVED_STATE } from '../graphql/queries.js'
+import { GET_LABEL_JOB_INFO, GET_ACCEPTED_JOBS, GET_SAVED_STATE } from '../graphql/queries.js'
 import { SAVE_STATE } from '../graphql/mutations'
 import { useQuery, useMutation } from '@apollo/client'
 import { Button } from '../Components/Button'
 import { useEffect } from 'react'
+// import { GET_CREATED_JOBS } from '../graphql/queries'
 import { current } from '@reduxjs/toolkit'
 import { ToastContainer, toast } from 'react-toastify'
 import { Link, Redirect } from 'react-router-dom'
@@ -131,7 +132,9 @@ function LabelJob(props) {
             labels: Object.values(assignedLabels),
             partition_id: partition_id,
             is_complete: isComplete
-         }
+         },
+         refetchQueries: [{ query: GET_ACCEPTED_JOBS }],
+         
       })
 
       if (buttonID === 'submitButton') {
