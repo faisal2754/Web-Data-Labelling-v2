@@ -5,8 +5,9 @@ import { MdClose } from 'react-icons/md'
 import '../Styles/Modal.css'
 // import { Link, Redirect, useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { Link, useHistory } from 'react-router-dom'
-import { useMutation } from '@apollo/client'
+import { Link, Redirect } from 'react-router-dom'
+import { useHistory } from 'react-router'
+import { useMutation, useQuery } from '@apollo/client'
 import { ACCEPT_JOB, DELETE_JOB } from '../graphql/mutations'
 import { GET_ACCEPTED_JOBS, GET_CREATED_JOBS } from '../graphql/queries'
 import Cookies from 'js-cookie'
@@ -98,7 +99,6 @@ export const Modal = ({
    const jwt1 = Cookies.get('jwt')
    // var buttonPressed=false
    const modalRef = useRef()
-
    const animation = useSpring({
       config: {
          duration: 250
@@ -108,13 +108,18 @@ export const Modal = ({
    })
    // eslint-disable-next-line no-unused-vars
    const [AcceptJob, { loading, error, data }] = useMutation(ACCEPT_JOB, {
-      fetchPolicy: 'no-cache'
+      fetchPolicy: 'no-cache',
+      onCompleted: (data) =>{
+         console.log(data)
+         setTimeout(history.push("/dashboard/accepted-jobs"), 1000)
+      }
    })
+
    // eslint-disable-next-line no-unused-vars
    const [deleteJob, { delLoading, delError, delData }] = useMutation(
       DELETE_JOB,
       {
-         refetchQueries: [GET_CREATED_JOBS, 'acceptedJobs']
+         refetchQueries: [GET_CREATED_JOBS, 'createdJobs']
       }
    )
    // const closeModal = (e) => {
@@ -122,6 +127,9 @@ export const Modal = ({
    //       setShowModal(false)
    //    }
    // }
+   // const [AcceptedJobs, {loading, error }] = useQuery(GET_ACCEPTED_JOBS, {
+   //    fetchPolicy: 'no-cache'
+   // })
 
    const keyPress = useCallback(
       (e) => {
@@ -150,12 +158,9 @@ export const Modal = ({
                variables: {
                   job_id: id
                },
-               refetchQueries: [{ query: GET_ACCEPTED_JOBS }]
-            })
-               .then(() => {
-                  history.push('/dashboard/accepted-jobs')
-               })
-               .catch((error) => {
+               refetchQueries: [{ query: GET_ACCEPTED_JOBS }],
+               
+            }).catch((error) => {
                   toast.error('You have already accepted this job', {
                      position: toast.POSITION.BOTTOM_CENTER
                   })
@@ -219,7 +224,7 @@ export const Modal = ({
                                  {buttonLabel}
                               </button>
                            ) : (
-                              <Link to={destination}>
+                              <Link>
                                  <button
                                     className="modal__acceptJob"
                                     onClick={acceptJob}

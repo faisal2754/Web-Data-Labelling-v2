@@ -6,14 +6,20 @@ import CardItem from '../../Components/CardItem'
 import '../../Styles/AcceptedJobs.css'
 import ReactLoading from 'react-loading'
 import NavbarOther from '../../Components/NavbarOther'
+import { useHistory } from 'react-router'
+
+let time = 0;
 
 function AcceptedJobs() {
    // const { loading, error, data } = useQuery(GET_ME)
-   const { loading, error, data } = useQuery(GET_ACCEPTED_JOBS)
+   const { loading, error, data } = useQuery(GET_ACCEPTED_JOBS,{
+      fetchPolicy: 'cache-and-network'
+   })
+
    const [showModal, setShowModal] = useState(false)
 
    let jobs = []
-   if (data) {
+   if (!loading) {
       jobs = data.acceptedJobs
    }
    if (error) {
