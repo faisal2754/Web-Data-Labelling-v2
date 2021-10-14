@@ -40,7 +40,7 @@ Sipho Sikakane (Scrum master/Frontend):
 - Tasks for the day: Work on username
 - Impediments: Time, Quizzes
 
-## Daily Scrum Meeting 4th October 2021 11:00am (Tuesday)
+## Daily Scrum Meeting 5th October 2021 11:00am (Tuesday)
 
 Aharon Cohen (Frontend):
 - Tasks completed yesterday: Other work
@@ -82,7 +82,7 @@ Sipho Sikakane (Scrum master/Frontend):
 - Tasks for the day: Work on username
 - Impediments: Time, Quizzes
 
-## Daily Scrum Meeting 4th October 2021 11:00am (Wednesday)
+## Daily Scrum Meeting 6th October 2021 11:00am (Wednesday)
 
 Aharon Cohen (Frontend):
 - Tasks completed yesterday: Other work
@@ -124,7 +124,7 @@ Sipho Sikakane (Scrum master/Frontend):
 - Tasks for the day: Work on username
 - Impediments: Time, Quizzes
 
-## Daily Scrum Meeting 4th October 2021 11:00am (Thursday)
+## Daily Scrum Meeting 7th October 2021 11:00am (Thursday)
 
 Aharon Cohen (Frontend):
 - Tasks completed yesterday: Other work
