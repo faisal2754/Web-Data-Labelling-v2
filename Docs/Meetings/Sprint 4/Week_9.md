@@ -40,3 +40,7 @@ Sipho Sikakane (Scrum master/Frontend):
 - Tasks for the day: Work on username
 - Impediments: Time, Quizzes
 
+## Sprint Retrospective Meeting 14th October 2021 (Thursday)
+
+## Meeting with Mr Jiahao 15th October 2021 (Friday)
+
