@@ -23,6 +23,9 @@ const Register = () => {
       if (!username) {
          isValid = false
          toast.error('Please enter a username')
+      } else if (username.length > 10) {
+         isValid = false
+         toast.error('Username must not be more than 10 characters')
       } else if (!email) {
          isValid = false
          toast.error('Please enter an email address')
