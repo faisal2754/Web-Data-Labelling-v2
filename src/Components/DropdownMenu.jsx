@@ -69,7 +69,7 @@ function DropdownMenu() {
                   <a href="#/dashboard/completed-jobs">Job Results</a>
                </DropdownItem>
                <DropdownItem leftIcon={<LogOutIcon />}>
-                  <a href="/" onClick={deleteJWT}>
+                  <a href="#/" onClick={deleteJWT}>
                      Sign Out
                   </a>
                </DropdownItem>
