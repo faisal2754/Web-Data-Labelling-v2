@@ -112,7 +112,9 @@ const CreateJob = () => {
                         description:
                            document.querySelector('#description').value,
 
-                        credits: parseInt(document.querySelector('#credits').value),
+                        credits: parseInt(
+                           document.querySelector('#credits').value
+                        ),
                         num_partitions: parseInt(
                            document.querySelector('#partitions').value
                         ),
@@ -120,7 +122,7 @@ const CreateJob = () => {
                      }
                   })
                )
-              
+
                let variables = {}
                for (let i = 0; i < images.length; i++) {
                   variables[i] = []
@@ -142,6 +144,27 @@ const CreateJob = () => {
                         }
                      }
                   )
+                  .then((res) => {
+                     console.log(res.data)
+                     if (!res.data.errors) {
+                        toast.update(id, {
+                           render: 'Your Job was successfully created',
+                           type: 'success',
+                           autoClose: 3000,
+                           isLoading: false
+                        })
+                        toast.clearWaitingQueue()
+                        history.push('/dashboard/created-jobs')
+                     } else {
+                        toast.update(id, {
+                           render: 'Your Job was not Created, Please try again',
+                           type: 'error',
+                           autoClose: 3000,
+                           isLoading: false
+                        })
+                        toast.clearWaitingQueue()
+                     }
+                  })
                   .catch(() => {
                      toast.update(id, {
                         render: 'Your Job was not Created, Please try again',
@@ -149,20 +172,7 @@ const CreateJob = () => {
                         autoClose: 3000,
                         isLoading: false
                      })
-                     toast.clearWaitingQueue()
-                  })
-                  .then((res) => {
-                     console.log(res);
-                     toast.update(id, {
-                        render: 'Your Job was successfully created',
-                        type: 'success',
-                        autoClose: 3000,
-                        isLoading: false
-                     })
-                     toast.clearWaitingQueue()
-                     history.push('/dashboard/created-jobs')
-
-                     // window.location.reload();
+                     
                   })
             }}
          >
