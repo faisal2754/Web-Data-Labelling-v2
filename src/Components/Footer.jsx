@@ -44,8 +44,7 @@ function Footer() {
                )}
                <div className="footer-link-items">
                   <h2>About Us</h2>
-                  <Link to="/">Our Company</Link>
-                  <Link to="/">Terms and Conditions</Link>
+                  <Link to="/faqs">FAQs</Link>
                </div>
             </div>
          </div>

@@ -49,6 +49,15 @@ function HowToTabs() {
                      How to Find Jobs
                   </Link>
                </li>
+               <li className="tabs-item">
+                  <Link
+                     to="/faqs"
+                     className="tabs-links"
+                     onClick={closeMobileMenu}
+                  >
+                     FAQs
+                  </Link>
+               </li>
             </ul>
          </div>
       </tabs>

@@ -17,6 +17,7 @@ import { useDispatch } from 'react-redux'
 import { updateJWT } from './redux/user'
 import { HashRouter as Router, Switch, Route } from 'react-router-dom'
 import HowToFind from './Pages/HowToFind'
+import Faqs from './Pages/Faqs'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import CompletedJobs from './Pages/Dashboard/CompletedJobs'
@@ -45,6 +46,7 @@ const App = () => {
             <Route path="/register" exact component={Register} />
             <Route path="/how-to" exact component={HowTo} />
             <Route path="/how-to-find" exact component={HowToFind} />
+            <Route path="/faqs" exact component={Faqs} />
             <Route
                path="/dashboard/created-jobs"
                exact
