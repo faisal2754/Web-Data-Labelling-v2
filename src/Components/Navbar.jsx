@@ -12,7 +12,9 @@ import ReactLoading from 'react-loading'
 
 function Navbar() {
    // eslint-disable-next-line no-unused-vars
-   const { loading, error, data } = useQuery(GET_ME)
+   const { loading, error, data } = useQuery(GET_ME,{
+      fetchPolicy: 'cache-and-network'
+   })
 
    const [click, setClick] = useState(false)
    const [button, setButton] = useState(true)

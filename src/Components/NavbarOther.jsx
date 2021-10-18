@@ -12,7 +12,9 @@ import { toast } from 'react-toastify'
 import ReactLoading from 'react-loading'
 
 function NavbarOther() {
-   const { loading, error, data } = useQuery(GET_ME)
+   const { loading, error, data } = useQuery(GET_ME,{
+      fetchPolicy: 'cache-and-network'
+   })
    const [click, setClick] = useState(false)
    const [button, setButton] = useState(true)
    let username = useSelector((state) => state.user.username)
