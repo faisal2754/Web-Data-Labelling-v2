@@ -112,7 +112,9 @@ const CreateJob = () => {
                         description:
                            document.querySelector('#description').value,
 
-                        credits: parseInt(document.querySelector('#credits').value),
+                        credits: parseInt(
+                           document.querySelector('#credits').value
+                        ),
                         num_partitions: parseInt(
                            document.querySelector('#partitions').value
                         ),
@@ -120,7 +122,7 @@ const CreateJob = () => {
                      }
                   })
                )
-              
+
                let variables = {}
                for (let i = 0; i < images.length; i++) {
                   variables[i] = []
@@ -152,7 +154,7 @@ const CreateJob = () => {
                      toast.clearWaitingQueue()
                   })
                   .then((res) => {
-                     console.log(res);
+                     console.log(res)
                      toast.update(id, {
                         render: 'Your Job was successfully created',
                         type: 'success',
@@ -323,9 +325,7 @@ const CreateJob = () => {
                               </button>
                            </div>
 
-                           <h3 style={{ textAlign: 'center' }}>
-                              Total Images : {imageList.length}
-                           </h3>
+                           <h2>Total Images : {imageList.length}</h2>
                            <div className="createJob_imagePrev">
                               {imageList.map((image, index) => (
                                  <div key={index} className="image-item">
