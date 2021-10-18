@@ -333,9 +333,7 @@ const CreateJob = () => {
                               </button>
                            </div>
 
-                           <h3 style={{ textAlign: 'center' }}>
-                              Total Images : {imageList.length}
-                           </h3>
+                           <h2>Total Images : {imageList.length}</h2>
                            <div className="createJob_imagePrev">
                               {imageList.map((image, index) => (
                                  <div key={index} className="image-item">
