@@ -5,6 +5,7 @@ import '../Styles/CreateJob.css'
 import TextField from '@material-ui/core/TextField'
 import { nanoid } from 'nanoid'
 import ImageUploading from 'react-images-uploading'
+import ReactTooltip from 'react-tooltip';
 import { useHistory } from 'react-router-dom'
 import { useQuery } from '@apollo/client'
 import Cookies from 'js-cookie'
@@ -49,7 +50,6 @@ const CreateJob = () => {
          return
       }
       setCurrentTotal(newTotal)
-      console.log('no errors in calculate')
    }
    return (
       <div className="createJob_page">
@@ -232,6 +232,8 @@ const CreateJob = () => {
                   }
                   <div className="labelSection">
                      <button
+                     // 
+                     data-tip="A default 'other' label will be added to your chosen labels"
                         className="btn-hover"
                         type="button"
                         onClick={() => {
@@ -342,26 +344,6 @@ const CreateJob = () => {
                                        alt=""
                                        width="100"
                                     />
-                                    {/* <div className="image-item__btn-wrapper">
-                                       <button
-                                          className="btn-hover"
-                                          onClick={(e) => {
-                                             onImageUpdate(index)
-                                             e.preventDefault()
-                                          }}
-                                       >
-                                          Update
-                                       </button>
-                                       <button
-                                          className="btn-hover"
-                                          onClick={(e) => {
-                                             onImageRemove(index)
-                                             e.preventDefault()
-                                          }}
-                                       >
-                                          Remove
-                                       </button>
-                                    </div>  */}
                                  </div>
                               ))}
                            </div>
@@ -387,9 +369,15 @@ const CreateJob = () => {
                      variant="outlined"
                   />
                   <h2 id="totalCredits">Total: {currentTotal}</h2>
-                  <button className="btn-hover" onClick={Calculate}>
+                  <button
+                  data-place="bottom" 
+                  data-multiline="true"
+                  data-tip="This will calculate the total credits spent for this job.<br/>Each partition will pay out Credits/Number of Partitions<br/>" 
+                  className="btn-hover"
+                   onClick={Calculate}>
                      Calculate
                   </button>
+                  <ReactTooltip effect="solid"/>
                </div>
             </div>
             <div className="createJob_submitSection">

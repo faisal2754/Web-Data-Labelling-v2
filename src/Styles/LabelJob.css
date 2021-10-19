@@ -1,6 +1,14 @@
 .label-job-page {
    background-image: linear-gradient(135deg, #81ffef 10%, #f067b4 100%);
 }
+/* 
+#hiddenBTN {
+   background-color: Transparent;
+   background-repeat: no-repeat;
+   border: 30px;
+   overflow: hidden;
+   outline: none;
+} */
 
 .label-job-form {
    display: flex;

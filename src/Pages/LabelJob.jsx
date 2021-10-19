@@ -3,9 +3,14 @@
 import React, { useState } from 'react'
 import Footer from '../Components/Footer'
 import ImageSlider from '../Components/ImageSlider'
+import ReactTooltip from 'react-tooltip'
 import NavbarOther from '../Components/NavbarOther'
 import '../Styles/LabelJob.css'
-import { GET_LABEL_JOB_INFO, GET_ACCEPTED_JOBS, GET_SAVED_STATE } from '../graphql/queries.js'
+import {
+   GET_LABEL_JOB_INFO,
+   GET_ACCEPTED_JOBS,
+   GET_SAVED_STATE
+} from '../graphql/queries.js'
 import { SAVE_STATE } from '../graphql/mutations'
 import { useQuery, useMutation } from '@apollo/client'
 import { Button } from '../Components/Button'
@@ -133,8 +138,7 @@ function LabelJob(props) {
             partition_id: partition_id,
             is_complete: isComplete
          },
-         refetchQueries: [{ query: GET_ACCEPTED_JOBS }],
-         
+         refetchQueries: [{ query: GET_ACCEPTED_JOBS }]
       })
 
       if (buttonID === 'submitButton') {
@@ -205,8 +209,11 @@ function LabelJob(props) {
                         </div>
                      </div>
                   </div>
+                  <ReactTooltip effect="solid" />
                   <div className="submitSection">
+                     {/* <button id="hiddenBTN" data-tip="fake"> */}
                      <Button
+                        data-tip="This will save your labels so you can come back later"
                         id="saveButton"
                         className="btns"
                         buttonStyle="btn--outline"
@@ -215,7 +222,9 @@ function LabelJob(props) {
                      >
                         Save
                      </Button>
+                        {/* </button> */}
                      <Button
+                        data-tip="This will submit the job with the current labels, this action is final"
                         id="submitButton"
                         className="btns"
                         buttonStyle="btn--primary"
