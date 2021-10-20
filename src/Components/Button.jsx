@@ -13,7 +13,8 @@ export const Button = ({
    onClick,
    buttonStyle,
    buttonSize,
-   to
+   to,
+   tooltipSentence
 }) => {
    const checkButtonStyle = STYLES.includes(buttonStyle)
       ? buttonStyle
@@ -24,6 +25,7 @@ export const Button = ({
    return (
       <Link to={to} className="btn-mobile">
          <button
+            data-tip={tooltipSentence}
             id={id}
             className={`btn ${checkButtonStyle} ${checkButtonSize}`}
             onClick={onClick}

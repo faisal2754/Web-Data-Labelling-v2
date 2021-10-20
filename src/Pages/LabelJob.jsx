@@ -213,7 +213,7 @@ function LabelJob(props) {
                   <div className="submitSection">
                      {/* <button id="hiddenBTN" data-tip="fake"> */}
                      <Button
-                        data-tip="This will save your labels so you can come back later"
+                        tooltipSentence="This will save your labels so you can come back later"
                         id="saveButton"
                         className="btns"
                         buttonStyle="btn--outline"
@@ -224,7 +224,7 @@ function LabelJob(props) {
                      </Button>
                         {/* </button> */}
                      <Button
-                        data-tip="This will submit the job with the current labels, this action is final"
+                        tooltipSentence="This will submit the job with the current labels, this action is final"
                         id="submitButton"
                         className="btns"
                         buttonStyle="btn--primary"

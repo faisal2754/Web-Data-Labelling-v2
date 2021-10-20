@@ -3,6 +3,7 @@ import { useSpring, animated } from 'react-spring'
 import styled from 'styled-components'
 import { MdClose } from 'react-icons/md'
 import '../Styles/Modal.css'
+import ReactTooltip from 'react-tooltip';
 // import { Link, Redirect, useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { Link, Redirect } from 'react-router-dom'
@@ -239,10 +240,12 @@ export const Modal = ({
                            ): <Link to ={destination}>
                            <button
                               className="modal__acceptJob"
+                              data-tip="Get your results via a Google Drive CSV file"
                               onClick={acceptJob} // in this scenario , the function wont run
                            >
                               {buttonLabel}
                            </button>
+                           <ReactTooltip effect="solid"/>
                         </Link>)}
                         </div>
                      </ModalContent>
