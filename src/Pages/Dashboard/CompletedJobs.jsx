@@ -3,6 +3,8 @@ import { GET_COMPLETED_JOBS } from '../../graphql/queries'
 import { useQuery } from '@apollo/client'
 import Modal from '../../Components/Modal'
 import CardItem from '../../Components/CardItem'
+import Footer from '../../Components/Footer'
+
 import '../../Styles/CompletedJobs.css'
 import ReactLoading from 'react-loading'
 import NavbarOther from '../../Components/NavbarOther'
@@ -95,6 +97,7 @@ function CompletedJobs() {
                </div>
             )}
          </div>
+         <Footer/>
       </div>
    )
 }

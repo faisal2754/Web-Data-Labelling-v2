@@ -3,6 +3,8 @@ import { GET_ACCEPTED_JOBS } from '../../graphql/queries'
 import { useQuery } from '@apollo/client'
 import Modal from '../../Components/Modal'
 import CardItem from '../../Components/CardItem'
+import Footer from '../../Components/Footer'
+
 import '../../Styles/AcceptedJobs.css'
 import ReactLoading from 'react-loading'
 import NavbarOther from '../../Components/NavbarOther'
@@ -101,6 +103,7 @@ function AcceptedJobs() {
                </div>
             )}
          </div>
+         <Footer/>
       </div>
    )
 }

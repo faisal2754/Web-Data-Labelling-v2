@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { GET_CREATED_JOBS } from '../../graphql/queries'
 import { useQuery } from '@apollo/client'
 import Modal from '../../Components/Modal'
+import Footer from '../../Components/Footer'
+
 import CardItem from '../../Components/CardItem'
 import '../../Styles/CreatedJobs.css'
 import NavbarOther from '../../Components/NavbarOther'
@@ -96,6 +98,7 @@ function CreatedJobs() {
                </div>
             )}
          </div>
+         <Footer/>
       </div>
    )
 }

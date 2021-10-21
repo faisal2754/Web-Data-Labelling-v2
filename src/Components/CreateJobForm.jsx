@@ -85,6 +85,11 @@ const CreateJob = () => {
                   toast.clearWaitingQueue()
                   return
                }
+               if (document.querySelector('#title').value.length>20) {
+                  toast.error('Job title is too long')
+                  toast.clearWaitingQueue()
+                  return
+               }
                if (document.querySelector('#description').value === '') {
                   toast.error('Please enter a valid job description')
                   toast.clearWaitingQueue()
