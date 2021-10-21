@@ -22,12 +22,12 @@ const CreateJob = () => {
    const onChange = (imageList, addUpdateIndex) => {
       setImages(imageList)
    }
-   const isBlank=(element)=>{
-      return element=="";
+   const isBlank = (element) => {
+      return element == ''
    }
-   function checkIfDuplicateExists(w){
-      return new Set(w).size !== w.length 
-  }
+   function checkIfDuplicateExists(w) {
+      return new Set(w).size !== w.length
+   }
 
    if (data) {
       console.log(data)
@@ -105,7 +105,7 @@ const CreateJob = () => {
                   toast.clearWaitingQueue()
                   return
                }
-               if(checkIfDuplicateExists(labels.map((label) => label.label))){
+               if (checkIfDuplicateExists(labels.map((label) => label.label))) {
                   toast.error('No Duplicate labels allowed')
                   toast.clearWaitingQueue()
                   return
@@ -194,7 +194,7 @@ const CreateJob = () => {
          >
             <div className="createJob_mainForm">
                <div className="createJob_jobInfo">
-                  <h3 >Job Info:</h3>
+                  <h3>Job Info:</h3>
                   <div className="textField">
                      <TextField
                         id="title"
@@ -253,8 +253,10 @@ const CreateJob = () => {
                         className="btn-hover"
                         type="button"
                         onClick={() => {
-                           if (labels.length > 4){
-                              toast.warning("You can not have more than 5 labels")
+                           if (labels.length > 4) {
+                              toast.warning(
+                                 'You can not have more than 5 labels'
+                              )
                               return
                            }
                            setLabels((currentLabels) => [
@@ -332,15 +334,21 @@ const CreateJob = () => {
                         <div className="upload__image-wrapper">
                            <h2>Total Images : {imageList.length}</h2>
                            <div className="createJob_imagePrev">
-                              {imageList.slice(0, 8).map((image, index) => ( //set the maximum images you want in the preview to the upper bounds of slice
-                                 <div key={index} className="image-item">
-                                    <img
-                                       src={image.data_url}
-                                       alt=""
-                                       width="100"
-                                    />
-                                 </div>
-                              ))}
+                              {imageList.slice(0, 8).map(
+                                 (
+                                    image,
+                                    index //set the maximum images you want in the preview to the upper bounds of slice
+                                 ) => (
+                                    <div key={index} className="image-item">
+                                       <img
+                                          src={image.data_url}
+                                          alt=""
+                                          width="100"
+                                          height="70"
+                                       />
+                                    </div>
+                                 )
+                              )}
                            </div>
                            <div className="upload__button-section">
                               <button

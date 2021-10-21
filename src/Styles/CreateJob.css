@@ -44,6 +44,16 @@ input[type='file'] {
    margin-left: 3.5rem;
 }
 
+.image-item {
+   object-fit: cover;
+   display: block;
+   margin-top: 5%;
+   padding-top: 0.1rem;
+   padding-bottom: 0.1rem;
+   padding-left: 0.1rem;
+   padding-right: 0.1rem;
+}
+
 .createJob_jobInfo h3 {
    margin-top: -3.5rem;
 }
@@ -58,7 +68,7 @@ input[type='file'] {
    margin-bottom: 16rem;
    margin-top: -5rem;
 }
-.createJob_jobInfo h3{
+.createJob_jobInfo h3 {
    padding-top: 2rem;
 }
 
