@@ -17,7 +17,6 @@ function CompletedJobs() {
       jobs = data.completedJobs
    }
    if (error) {
-      console.log(error)
    }
 
    const openModal = (currentId) => {

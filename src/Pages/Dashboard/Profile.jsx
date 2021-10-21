@@ -18,7 +18,6 @@ export const Dashboard = (props) => {
    const email = useSelector((state) => state.user.email)
 
    if (data) {
-      console.log(data)
 
       if (data.deletedJobs) {
          if (data.deletedJobs.length !== 0) {
@@ -37,8 +36,7 @@ export const Dashboard = (props) => {
       }
    }
 
-   console.log(data)
-   if (error) console.log(error)
+   if (error) 
 
    return (
       <div className="profile">

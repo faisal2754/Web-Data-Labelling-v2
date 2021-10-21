@@ -30,7 +30,6 @@ const CreateJob = () => {
    }
 
    if (data) {
-      console.log(data)
    }
    useEffect(() => {
       document.querySelector('#totalCredits').value = 0
@@ -162,7 +161,6 @@ const CreateJob = () => {
                      }
                   )
                   .then((res) => {
-                     console.log(res.data)
                      if (!res.data.errors) {
                         toast.update(id, {
                            render: 'Your Job was successfully created',

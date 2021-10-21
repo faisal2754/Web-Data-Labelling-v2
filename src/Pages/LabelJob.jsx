@@ -30,7 +30,6 @@ function LabelJob(props) {
    const checkRadioButton = () => {
       if (slides[index]) {
          if (slides[index].image_id in assignedLabels) {
-            // console.log(assignedLabels[slides[index].image_id])
             document.getElementById(
                assignedLabels[slides[index].image_id]
             ).checked = true
@@ -130,7 +129,6 @@ function LabelJob(props) {
    }
 
    const saveState = (buttonID) => {
-      console.log(isComplete)
       submitJob({
          variables: {
             image_ids: Object.keys(assignedLabels).map((id) => Number(id)),

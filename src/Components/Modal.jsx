@@ -112,7 +112,6 @@ export const Modal = ({
    const [AcceptJob, { loading, error, data }] = useMutation(ACCEPT_JOB, {
       fetchPolicy: 'no-cache',
       onCompleted: (data) =>{
-         console.log(data)
          setTimeout(history.push("/dashboard/accepted-jobs"), 1000)
       }
    })

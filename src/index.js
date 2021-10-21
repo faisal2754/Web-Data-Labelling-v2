@@ -16,7 +16,7 @@ import { Provider } from 'react-redux'
 import { onError } from 'apollo-link-error'
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
-   if (graphQLErrors) {
+   if (graphQLErrors) { // these console logs are necesarry dont be a baby faisal
       console.log('graphQLErrors', graphQLErrors)
    }
    if (networkError) {
