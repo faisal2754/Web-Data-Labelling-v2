@@ -25,6 +25,9 @@ const CreateJob = () => {
    const isBlank = (element) => {
       return element == ''
    }
+   const checkLength = (element) => {
+      return element.length>=20
+   }
    function checkIfDuplicateExists(w) {
       return new Set(w).size !== w.length
    }
@@ -101,6 +104,11 @@ const CreateJob = () => {
                }
                if (labels.map((label) => label.label).some(isBlank)) {
                   toast.error('Please make sure none of your labels are blank')
+                  toast.clearWaitingQueue()
+                  return
+               }
+               if (labels.map((label) => label.label).some(checkLength)) {
+                  toast.error('Maximum length of labels is 20 Characters')
                   toast.clearWaitingQueue()
                   return
                }

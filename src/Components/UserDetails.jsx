@@ -22,9 +22,14 @@ const UserDetails = (props) => {
       }
       //check if username is empty
       if (document.getElementById('input-username').value === '') {
-         userNameChange = props.username
+         return //we dont want to do anything if they dont enter a username
+         // userNameChange = props.username
       } else {
          userNameChange = document.getElementById('input-username').value
+      }
+      if(document.getElementById('input-username').value.length>=12){ // cap the username length
+         toast.error("Maximum username length is 12 characters")
+         return
       }
 
       if (
@@ -41,6 +46,7 @@ const UserDetails = (props) => {
          })
             .then(() => {
                toast.success('Your Details Have Been Changed')
+               document.getElementById('input-username').value="" //reset field to be empty
             })
             .then(() => {
                dispatch(updateUsername(userNameChange))
@@ -86,6 +92,8 @@ const UserDetails = (props) => {
          })
             .then(() => {
                toast.success('Your Details Have Been Changed')
+               document.getElementById('input-passwordNew').value=""
+               document.getElementById('input-passwordConfirm').value=""
             })
             .catch((error) => showError())
          toast.clearWaitingQueue()

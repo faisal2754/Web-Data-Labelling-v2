@@ -3,10 +3,7 @@ import '../../Styles/UserProfile.css'
 import UserDetails from '../../Components/UserDetails'
 import UserProfile from '../../Components/UserProfileCard'
 import { useQuery } from '@apollo/client'
-import {
-
-   GET_ME_AND_DELETED_JOBS
-} from '../../graphql/queries'
+import { GET_ME_AND_DELETED_JOBS } from '../../graphql/queries'
 import ReactLoading from 'react-loading'
 import NavbarOther from '../../Components/NavbarOther'
 import { useSelector } from 'react-redux'
@@ -18,7 +15,6 @@ export const Dashboard = (props) => {
    const email = useSelector((state) => state.user.email)
 
    if (data) {
-
       if (data.deletedJobs) {
          if (data.deletedJobs.length !== 0) {
             let jobarray = data.deletedJobs.map(function (job) {
@@ -36,44 +32,45 @@ export const Dashboard = (props) => {
       }
    }
 
-   if (error) 
-
-   return (
-      <div className="profile">
-         {/* <DashboardSidebar /> */}
-         <NavbarOther />
-         <div className="profile__body">
-            {/* <link
+   if (error){
+      //do nothing
+   }
+      return (
+         <div className="profile">
+            {/* <DashboardSidebar /> */}
+            <NavbarOther />
+            <div className="profile__body">
+               {/* <link
                href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
                rel="stylesheet"
             /> */}
 
-            {/* Page content */}
+               {/* Page content */}
 
-            {loading ? (
-               <ReactLoading
-                  type={'spin'}
-                  // color={'black'}
-                  height={'10%'}
-                  color={'#000000'}
-                  width={'10%'}
-                  className="acceptedJob__loadingSpin"
-               />
-            ) : (
-               <span>
-                  <UserProfile
-                     firstName={data.me.username}
-                     balance={data.me.balance}
+               {loading ? (
+                  <ReactLoading
+                     type={'spin'}
+                     // color={'black'}
+                     height={'10%'}
+                     color={'#000000'}
+                     width={'10%'}
+                     className="acceptedJob__loadingSpin"
                   />
+               ) : (
+                  <span>
+                     <UserProfile
+                        firstName={data.me.username}
+                        balance={data.me.balance}
+                     />
 
-                  {data && <UserDetails username={username} email={email} />}
-               </span>
-            )}
+                     {data && <UserDetails username={username} email={email} />}
+                  </span>
+               )}
 
-            {/* <Footer /> */}
+               {/* <Footer /> */}
+            </div>
          </div>
-      </div>
-   )
+      )
 }
 
 export default Dashboard
