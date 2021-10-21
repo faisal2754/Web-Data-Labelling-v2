@@ -37,7 +37,7 @@ input[type='file'] {
    border-radius: 30px;
    flex-direction: column;
    /* box-shadow: 20px 20px 50px 10px rgb(234, 0, 255); */
-   padding: 2rem;
+   padding: 2.5rem;
    background: rgb(255, 255, 255);
 }
 #labelImageUp {
@@ -57,6 +57,9 @@ input[type='file'] {
    align-content: flex-start;
    margin-bottom: 16rem;
    margin-top: -5rem;
+}
+.createJob_jobInfo h3{
+   padding-top: 2rem;
 }
 
 .createJob_credit-section {
@@ -112,7 +115,8 @@ input[type='file'] {
 
    flex-direction: row;
    flex-wrap: wrap;
-   max-width: 300px;
+   max-width: 400px;
+   min-height: 300px;
 }
 
 .btn {

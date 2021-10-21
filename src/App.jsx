@@ -31,7 +31,7 @@ const App = () => {
 
    return (
       <Router>
-         <ToastContainer limit={3} />
+         <ToastContainer limit={3} position="top-left" />
          <Switch>
             <Route path="/" exact component={Home} />
             <Route

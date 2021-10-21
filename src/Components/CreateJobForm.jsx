@@ -5,7 +5,7 @@ import '../Styles/CreateJob.css'
 import TextField from '@material-ui/core/TextField'
 import { nanoid } from 'nanoid'
 import ImageUploading from 'react-images-uploading'
-import ReactTooltip from 'react-tooltip';
+import ReactTooltip from 'react-tooltip'
 import { useHistory } from 'react-router-dom'
 import { useQuery } from '@apollo/client'
 import Cookies from 'js-cookie'
@@ -22,6 +22,13 @@ const CreateJob = () => {
    const onChange = (imageList, addUpdateIndex) => {
       setImages(imageList)
    }
+   const isBlank=(element)=>{
+      return element=="";
+   }
+   function checkIfDuplicateExists(w){
+      return new Set(w).size !== w.length 
+  }
+
    if (data) {
       console.log(data)
    }
@@ -90,6 +97,16 @@ const CreateJob = () => {
                }
                if (labels.map((label) => label.label).length === 0) {
                   toast.error('Please enter at least one label')
+                  toast.clearWaitingQueue()
+                  return
+               }
+               if (labels.map((label) => label.label).some(isBlank)) {
+                  toast.error('Please make sure none of your labels are blank')
+                  toast.clearWaitingQueue()
+                  return
+               }
+               if(checkIfDuplicateExists(labels.map((label) => label.label))){
+                  toast.error('No Duplicate labels allowed')
                   toast.clearWaitingQueue()
                   return
                }
@@ -172,13 +189,12 @@ const CreateJob = () => {
                         autoClose: 3000,
                         isLoading: false
                      })
-                     
                   })
             }}
          >
             <div className="createJob_mainForm">
                <div className="createJob_jobInfo">
-                  <h3 style={{ padding: '1rem' }}>Job Info:</h3>
+                  <h3 >Job Info:</h3>
                   <div className="textField">
                      <TextField
                         id="title"
@@ -232,12 +248,15 @@ const CreateJob = () => {
                   }
                   <div className="labelSection">
                      <button
-                     // 
-                     data-tip="A default 'other' label will be added to your chosen labels"
+                        //
+                        data-tip="A default 'other' label will be added to your chosen labels"
                         className="btn-hover"
                         type="button"
                         onClick={() => {
-                           if (labels.length > 4) return
+                           if (labels.length > 4){
+                              toast.warning("You can not have more than 5 labels")
+                              return
+                           }
                            setLabels((currentLabels) => [
                               ...currentLabels,
                               {
@@ -311,6 +330,18 @@ const CreateJob = () => {
                      }) => (
                         // write your building UI
                         <div className="upload__image-wrapper">
+                           <h2>Total Images : {imageList.length}</h2>
+                           <div className="createJob_imagePrev">
+                              {imageList.slice(0, 8).map((image, index) => ( //set the maximum images you want in the preview to the upper bounds of slice
+                                 <div key={index} className="image-item">
+                                    <img
+                                       src={image.data_url}
+                                       alt=""
+                                       width="100"
+                                    />
+                                 </div>
+                              ))}
+                           </div>
                            <div className="upload__button-section">
                               <button
                                  className="btn-hover"
@@ -333,19 +364,6 @@ const CreateJob = () => {
                               >
                                  Remove all images
                               </button>
-                           </div>
-
-                           <h2>Total Images : {imageList.length}</h2>
-                           <div className="createJob_imagePrev">
-                              {imageList.map((image, index) => (
-                                 <div key={index} className="image-item">
-                                    <img
-                                       src={image.data_url}
-                                       alt=""
-                                       width="100"
-                                    />
-                                 </div>
-                              ))}
                            </div>
                         </div>
                      )}
@@ -370,14 +388,15 @@ const CreateJob = () => {
                   />
                   <h2 id="totalCredits">Total: {currentTotal}</h2>
                   <button
-                  data-place="bottom" 
-                  data-multiline="true"
-                  data-tip="This will calculate the total credits spent for this job.<br/>Each partition will pay out Credits/Number of Partitions<br/>" 
-                  className="btn-hover"
-                   onClick={Calculate}>
+                     data-place="bottom"
+                     data-multiline="true"
+                     data-tip="This will calculate the total credits spent for this job.<br/>Each partition will pay out Credits/Number of Partitions<br/>"
+                     className="btn-hover"
+                     onClick={Calculate}
+                  >
                      Calculate
                   </button>
-                  <ReactTooltip effect="solid"/>
+                  <ReactTooltip effect="solid" />
                </div>
             </div>
             <div className="createJob_submitSection">
