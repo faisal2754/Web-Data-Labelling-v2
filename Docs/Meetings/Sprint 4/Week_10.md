@@ -40,6 +40,48 @@ Sipho Sikakane (Scrum master/Frontend):
 - Tasks for the day: Fix more bugs
 - Impediments: Tests and assignments
 
+## Daily Scrum Meeting 19th October 2021 11:00am (Tuesday)
+
+Aharon Cohen (Frontend):
+- Tasks completed yesterday: Worked on various bugs
+- Tasks for the day: Continue work on bugs
+- Impediments: Other lectures and labs and quizzes
+
+Langiwe Mwale (Frontend):
+- Tasks completed Yesterday: research into tooltip
+- Task for the Day: implement tooltip
+- Impediments: Back End
+
+Ioanni Balassis: (Frontend):
+- Tasks completed yesterday: Worked on bugs
+- Tasks for the day: Work on bug fixes
+- Impediments: Other projects, quizzes and tests 
+
+Jonathan Nunes (Frontend):
+- Tasks completed yesterday: Various polishing
+- Tasks for the day: Continue polish
+- Impediments: PC quiz
+
+Faisal Saleem (Backend):
+- Tasks completed yesterday: Fixed create job implementation
+- Tasks for the day: Work on job completion tab
+- Impediments: Front End
+
+Ghulame Mujtaba Arbi (Frontend):
+- Tasks completed yesterday: Completed post job side of how-to page
+- Tasks for the day: Work on tabs to switch between how-to pages
+- Impediments: Time, work on other projects outside of uni work
+
+Tristan Bester (Backend):
+- Tasks completed yesterday: Setup CSV system
+- Tasks for the day: Continue work on CSV system
+- Impediments: None
+
+Sipho Sikakane (Scrum master/Frontend):
+- Tasks completed yesterday: Fix Bugs
+- Tasks for the day: Fix more bugs
+- Impediments: Tests and assignments
+
 ## Daily Scrum Meeting 20th October 2021 11:00am (Wednesday)
 
 Aharon Cohen (Frontend):
@@ -82,7 +124,7 @@ Sipho Sikakane (Scrum master/Frontend):
 - Tasks for the day: Fix more bugs
 - Impediments: Tests and assignments
 
-## Daily Scrum Meeting 19th October 2021 11:00am (Tuesday)
+## Daily Scrum Meeting 21st October 2021 11:00am (Thursday)
 
 Aharon Cohen (Frontend):
 - Tasks completed yesterday: Worked on various bugs
