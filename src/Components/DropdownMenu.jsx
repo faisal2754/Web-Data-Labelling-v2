@@ -76,41 +76,6 @@ function DropdownMenu() {
             </div>
          </CSSTransition>
 
-         {/* <CSSTransition
-            in={activeMenu === 'settings'}
-            timeout={500}
-            classNames="menu-secondary"
-            unmountOnExit
-            onEnter={calcHeight}
-         >
-            <div className="menu">
-               <DropdownItem goToMenu="main" leftIcon={<ArrowIcon />}>
-                  <h2>My Tutorial</h2>
-               </DropdownItem>
-               <DropdownItem leftIcon={<BoltIcon />}>HTML</DropdownItem>
-               <DropdownItem leftIcon={<BoltIcon />}>CSS</DropdownItem>
-               <DropdownItem leftIcon={<BoltIcon />}>JavaScript</DropdownItem>
-               <DropdownItem leftIcon={<BoltIcon />}>Awesome!</DropdownItem>
-            </div>
-         </CSSTransition>
-
-         <CSSTransition
-            in={activeMenu === 'animals'}
-            timeout={500}
-            classNames="menu-secondary"
-            unmountOnExit
-            onEnter={calcHeight}
-         >
-            <div className="menu">
-               <DropdownItem goToMenu="main" leftIcon={<ArrowIcon />}>
-                  <h2>Animals</h2>
-               </DropdownItem>
-               <DropdownItem leftIcon="🦘">Kangaroo</DropdownItem>
-               <DropdownItem leftIcon="🐸">Frog</DropdownItem>
-               <DropdownItem leftIcon="🦋">Horse?</DropdownItem>
-               <DropdownItem leftIcon="🦔">Hedgehog</DropdownItem>
-            </div>
-         </CSSTransition> */}
       </div>
    )
 }

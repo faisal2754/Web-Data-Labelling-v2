@@ -23,7 +23,7 @@ const CreateJob = () => {
       setImages(imageList)
    }
    const isBlank = (element) => {
-      return element == ''
+      return element === ''
    }
    const checkLength = (element) => {
       return element.length>=20
@@ -42,7 +42,7 @@ const CreateJob = () => {
    const Calculate = (e) => {
       e.preventDefault()
       let currentCredits = document.querySelector('#credits').value
-      let numLabels = labels.map((label) => label.label).length
+      // let numLabels = labels.map((label) => label.label).length
       let currentPartitions = document.querySelector('#partitions').value
       if (currentCredits === 0) return
       if (currentCredits <= 0 || currentCredits === '') {

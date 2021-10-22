@@ -8,9 +8,6 @@ import Footer from '../../Components/Footer'
 import '../../Styles/AcceptedJobs.css'
 import ReactLoading from 'react-loading'
 import NavbarOther from '../../Components/NavbarOther'
-import { useHistory } from 'react-router'
-
-let time = 0;
 
 function AcceptedJobs() {
    // const { loading, error, data } = useQuery(GET_ME)
