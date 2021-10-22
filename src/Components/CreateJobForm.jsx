@@ -345,7 +345,7 @@ const CreateJob = () => {
                         <div className="upload__image-wrapper">
                            <h2>Total Images : {imageList.length}</h2>
                            <div className="createJob_imagePrev">
-                              {imageList.slice(0, 8).map(
+                              {imageList.slice(0, 9).map(
                                  (
                                     image,
                                     index //set the maximum images you want in the preview to the upper bounds of slice
