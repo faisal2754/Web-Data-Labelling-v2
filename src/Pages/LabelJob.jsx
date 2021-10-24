@@ -220,14 +220,22 @@ function LabelJob(props) {
                      >
                         Save
                      </Button>
-                        {/* </button> */}
+                     {/* </button> */}
                      <Button
                         tooltipSentence="This will submit the job with the current labels, this action is final"
                         id="submitButton"
                         className="btns"
                         buttonStyle="btn--primary"
                         buttonSize="btn--large"
-                        onClick={(e) => saveState(e.target.id)}
+                        onClick={(e) => {
+                           if (
+                              window.confirm(
+                                 'Are you sure you wish to submit this job?'
+                              )
+                           )
+                              saveState(e.target.id)
+                        }}
+                        //onClick={(e) => saveState(e.target.id)}
                      >
                         Submit
                      </Button>
