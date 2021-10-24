@@ -32,46 +32,45 @@ export const Dashboard = (props) => {
       }
    }
 
-   if (error) {
+   if (error){
       //do nothing
    }
-   return (
-      <div className="profile">
-         {/* <DashboardSidebar /> */}
-         <NavbarOther />
-         <div className="profile__body">
-            {/* <link
+      return (
+         <div className="profile">
+            {/* <DashboardSidebar /> */}
+            <NavbarOther />
+            <div className="profile__body">
+               {/* <link
                href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
                rel="stylesheet"
             /> */}
 
-            {/* Page content */}
+               {/* Page content */}
 
-            {loading ? (
-               <ReactLoading
-                  type={'spin'}
-                  // color={'black'}
-                  height={'10%'}
-                  color={'#000000'}
-                  width={'10%'}
-                  className="acceptedJob__loadingSpin"
-               />
-            ) : (
-               <span>
-                  <UserProfile
-                     firstName={data.me.username}
-                     balance={data.me.balance}
-                     email={data.me.email}
+               {loading ? (
+                  <ReactLoading
+                     type={'spin'}
+                     // color={'black'}
+                     height={'10%'}
+                     color={'#000000'}
+                     width={'10%'}
+                     className="acceptedJob__loadingSpin"
                   />
+               ) : (
+                  <span>
+                     <UserProfile
+                        firstName={data.me.username}
+                        balance={data.me.balance}
+                     />
 
-                  {data && <UserDetails username={username} email={email} />}
-               </span>
-            )}
+                     {data && <UserDetails username={username} email={email} />}
+                  </span>
+               )}
 
-            {/* <Footer /> */}
+               {/* <Footer /> */}
+            </div>
          </div>
-      </div>
-   )
+      )
 }
 
 export default Dashboard
