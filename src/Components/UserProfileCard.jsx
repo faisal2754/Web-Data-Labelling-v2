@@ -1,7 +1,6 @@
 import React from 'react'
 
 const UserProfile = (props) => {
-
    return (
       <div className="col-xl-4 order-xl-2 mb-5 mb-xl-0">
          <div className="card card-profile shadow">
@@ -9,7 +8,7 @@ const UserProfile = (props) => {
                <div className="col-lg-3 order-lg-2">
                   <div className="card-profile-image">
                      <img
-                        src={`https://avatars.dicebear.com/api/bottts/${props.firstName}.svg`}
+                        src={`https://avatars.dicebear.com/api/bottts/${props.email}.svg`}
                         className="rounded-circle"
                         alt=""
                      />
