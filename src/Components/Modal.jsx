@@ -155,6 +155,7 @@ export const Modal = ({
    }
    const acceptJob = () => {
       if (!jwt) {
+         history.push("/login")
       } else {
          // eslint-disable-next-line eqeqeq
          if (destination.pathname != '/label-job') {
