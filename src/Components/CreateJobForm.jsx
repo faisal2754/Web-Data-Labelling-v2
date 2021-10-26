@@ -85,7 +85,7 @@ const CreateJob = () => {
                   toast.clearWaitingQueue()
                   return
                }
-               if (document.querySelector('#title').value.length>20) {
+               if (document.querySelector('#title').value.length>25) {
                   toast.error('Job title is too long')
                   toast.clearWaitingQueue()
                   return
@@ -184,8 +184,9 @@ const CreateJob = () => {
                         toast.clearWaitingQueue()
                         history.push('/dashboard/created-jobs')
                      } else {
+                        console.log(res)
                         toast.update(id, {
-                           render: 'Your Job was not Created, Please try again',
+                           render: 'Your Job was not Created, Please try again ehehehe',
                            type: 'error',
                            autoClose: 3000,
                            isLoading: false
@@ -193,7 +194,8 @@ const CreateJob = () => {
                         toast.clearWaitingQueue()
                      }
                   })
-                  .catch(() => {
+                  .catch((e) => {
+                     console.log(e)
                      toast.update(id, {
                         render: 'Your Job was not Created, Please try again',
                         type: 'error',
@@ -209,6 +211,7 @@ const CreateJob = () => {
                   <div className="textField">
                      <TextField
                         id="title"
+                        inputProps={{ maxLength: 25 }}
                         fullWidth
                         label="Title"
                         variant="outlined"
@@ -219,6 +222,7 @@ const CreateJob = () => {
                         id="description"
                         label="Description"
                         fullWidth
+                        inputProps={{ maxLength: 250 }}
                         multiline
                         rows={4}
                         defaultValue=""
@@ -285,6 +289,7 @@ const CreateJob = () => {
                         return (
                            <div key={p.id}>
                               <TextField
+                              inputProps={{ maxLength: 15 }}
                                  onChange={(e) => {
                                     const label = e.target.value
                                     setLabels((currentLabels) =>
