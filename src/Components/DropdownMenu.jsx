@@ -56,26 +56,33 @@ function DropdownMenu() {
             onEnter={calcHeight}
          >
             <div className="menu">
-               <DropdownItem leftIcon={<ProfileIcon />}>
-                  <a href="#/dashboard/profile">My Profile</a>
-               </DropdownItem>
-               <DropdownItem leftIcon={<AcceptedIcon />}>
-                  <a href="#/dashboard/accepted-jobs">Accepted Jobs</a>
-               </DropdownItem>
-               <DropdownItem leftIcon={<OwnedIcon />}>
-                  <a href="#/dashboard/created-jobs">Created Jobs</a>
-               </DropdownItem>
-               <DropdownItem leftIcon={<CompletedIcon />}>
-                  <a href="#/dashboard/completed-jobs">Job Results</a>
-               </DropdownItem>
-               <DropdownItem leftIcon={<LogOutIcon />}>
-                  <a href="#/" onClick={deleteJWT}>
+               <a href="#/dashboard/profile">
+                  <DropdownItem leftIcon={<ProfileIcon />}>
+                     My Profile
+                  </DropdownItem>
+               </a>
+               <a href="#/dashboard/accepted-jobs">
+                  <DropdownItem leftIcon={<AcceptedIcon />}>
+                     Accepted Jobs
+                  </DropdownItem>
+               </a>
+               <a href="#/dashboard/created-jobs">
+                  <DropdownItem leftIcon={<OwnedIcon />}>
+                     Created Jobs
+                  </DropdownItem>
+               </a>
+               <a href="#/dashboard/completed-jobs">
+                  <DropdownItem leftIcon={<CompletedIcon />}>
+                     Job Results
+                  </DropdownItem>
+               </a>
+               <a href="#/" onClick={deleteJWT}>
+                  <DropdownItem leftIcon={<LogOutIcon />}>
                      Sign Out
-                  </a>
-               </DropdownItem>
+                  </DropdownItem>
+               </a>
             </div>
          </CSSTransition>
-
       </div>
    )
 }
