@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import CardItem from './CardItem'
 import '../Styles/Cards.css'
 import { useQuery } from '@apollo/client'
@@ -33,9 +33,9 @@ function Cards() {
 
    return (
       <div className="cards">
-         {jobs.map((job) => {
+         {/* {jobs.map((job) => {
             return (
-               <div className="viewJob__modal">
+               <div className="cards__modal">
                   <Modal
                      id={job.job_id}
                      src={job.preview_images[0]}
@@ -51,38 +51,33 @@ function Cards() {
                   />
                </div>
             )
-         })}
+         })} */}
          <h2>Check Out Some of our Labelling Jobs</h2>
-         <div className="cards__container">
-            <div className="cards__wrapper">
-               {loading ? (
-                  <ReactLoading
-                     type={'spin'}
-                     height={'10%'}
-                     color={'#000000'}
-                     width={'10%'}
-                     className="acceptedJob__loadingSpin"
-                  />
-               ) : (
-                  <ul className="cards__items">
-                     {jobs.map((job) => {
-                        return (
-                           <div
-                              className="cards__itemsDisplay"
-                              onClick={(e) => openModal(job.job_id)}
-                           >
-                              <CardItem
-                                 src={job.preview_images[0]}
-                                 text={job.title}
-                                 credits={job.credits}
-                              />
-                           </div>
-                        )
-                     })}
-                  </ul>
-               )}
+
+         {loading ? (
+            <ReactLoading
+               type={'spin'}
+               height={'10%'}
+               color={'#000000'}
+               width={'10%'}
+               className="acceptedJob__loadingSpin"
+            />
+         ) : (
+            <div className="cards__items">
+               {jobs.map((job) => {
+                  return (
+                     <div className="cards__cardItems">
+                        <CardItem
+                           src={job.preview_images[0]}
+                           text={job.title}
+                           credits={job.credits}
+                           path={'/view-job'}
+                        />
+                     </div>
+                  )
+               })}
             </div>
-         </div>
+         )}
       </div>
    )
 }
