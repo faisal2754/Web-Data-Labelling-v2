@@ -16,6 +16,7 @@ h2 {
    max-height: 3000px;
    width: 90%;
    margin: 0 auto;
+   cursor: pointer!important;
 }
 
 .cards__wrapper {
@@ -25,6 +26,7 @@ h2 {
 
 .cards__items {
    margin-bottom: 24px;
+   cursor: pointer!important;
 }
 
 .cards__item {
@@ -32,6 +34,7 @@ h2 {
    flex: 1;
    margin: 0 1rem;
    border-radius: 10px;
+   cursor: pointer!important;
 }
 
 .cards__item__link {
@@ -44,6 +47,7 @@ h2 {
    border-radius: 10px;
    overflow: hidden;
    text-decoration: none;
+   cursor: pointer!important;
 }
 
 .cards__item__pic-wrap {
@@ -51,6 +55,7 @@ h2 {
    width: 100%;
    padding-top: 75%;
    overflow: hidden;
+   cursor: pointer!important;
 }
 
 .fade-img {
@@ -70,6 +75,7 @@ h2 {
    color: #fff;
    background-color: #1f98f4;
    box-sizing: border-box;
+    cursor: pointer!important;
 }
 
 .cards__item__img {
@@ -85,15 +91,18 @@ h2 {
    max-height: 100%;
    object-fit: cover;
    transition: all 0.2s linear;
+   cursor: pointer!important;
 }
 
 .cards__item__img:hover {
    transform: scale(1.1);
+   cursor: pointer!important;
 }
 
 .cards__item__info {
    padding: 20px 30px 30px;
    font-family: 'Montserrat', sans-serif;
+   cursor: pointer!important;
 }
 
 .cards__item__text {
@@ -105,6 +114,7 @@ h2 {
    margin-right: 10%;
    line-height: 24px;
    font-family: 'Montserrat', sans-serif;
+   cursor: pointer!important;
 }
 
 @media only screen and (min-width: 1200px) {
@@ -116,11 +126,13 @@ h2 {
 @media only screen and (min-width: 1024px) {
    .cards__items {
       display: flex;
+      cursor: pointer!important;
    }
 }
 
 @media only screen and (max-width: 1024px) {
    .cards__item {
       margin-bottom: 2rem;
+      cursor: pointer!important;
    }
 }
