@@ -64,8 +64,16 @@ function CompletedJobs() {
             <video src="../videos/header-hero.mp4" autoPlay loop muted />
             <h1>View your Completed Jobs</h1>
          </div>
-         <div className="completedJobs__Loading">
+         <div className="completedJobs__Loading1">
             <h1>Pick A Job To See Your Results</h1>
+         </div>
+         <div className="completedJobs__Loading2">
+            <p>
+               Not Sure How To Proceed From Here?{' '}
+               <a id="hover" className="underlineHover" href="faqs#/faqs">
+                  Click here to go to FAQs
+               </a>
+            </p>
          </div>
          <div className="completeJob__Section">
             {loading ? (
@@ -97,7 +105,7 @@ function CompletedJobs() {
                </div>
             )}
          </div>
-         <Footer/>
+         <Footer />
       </div>
    )
 }

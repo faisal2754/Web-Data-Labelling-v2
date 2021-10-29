@@ -37,8 +37,8 @@
    padding-bottom: 5rem;
 }
 
-.completedJobs__Loading {
-   height: 100px;
+.completedJobs__Loading1 {
+   height: 50px;
    background-color: rgb(240, 240, 240);
    align-items: center;
    padding-left: auto;
@@ -46,4 +46,20 @@
    display: flex;
    justify-content: center;
    padding-right: 10px;
+   text-align: center; 
+   padding-bottom: 0%; 
+   padding-top: 1rem;
 }
+.completedJobs__Loading2 {
+   padding-top: 0%;
+   height: 50px;
+   background-color: rgb(240, 240, 240);
+   align-items: center;
+   padding-left: auto;
+   padding-right: auto;
+   display: flex;
+   justify-content: center;
+   padding-right: 10px;
+   text-align: center; 
+}
+
