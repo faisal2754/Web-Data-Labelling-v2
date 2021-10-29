@@ -8,11 +8,18 @@ import ReactLoading from 'react-loading'
 import NavbarOther from '../../Components/NavbarOther'
 import { useSelector } from 'react-redux'
 import swal from 'sweetalert'
-
+import Cookies from 'js-cookie'
+import {Redirect}  from 'react-router-dom'
 export const Dashboard = (props) => {
    const { loading, error, data } = useQuery(GET_ME_AND_DELETED_JOBS)
    const username = useSelector((state) => state.user.username)
    const email = useSelector((state) => state.user.email)
+
+   const cook=Cookies.get('jwt')
+   if (cook == null) {
+      console.log("boy")
+      return <Redirect to="/" />
+   }
 
    if (data) {
       if (data.deletedJobs) {
