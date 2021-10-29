@@ -3,6 +3,7 @@ import React from 'react'
 import { GET_ME } from '../graphql/queries'
 import '../Styles/CreateJob.css'
 import TextField from '@material-ui/core/TextField'
+import {Redirect}  from 'react-router-dom'
 import { nanoid } from 'nanoid'
 import ImageUploading from 'react-images-uploading'
 import ReactTooltip from 'react-tooltip'
@@ -12,6 +13,8 @@ import Cookies from 'js-cookie'
 import { toast } from 'react-toastify'
 import FormData from 'form-data'
 import axios from 'axios'
+
+
 
 const CreateJob = () => {
    const [labels, setLabels] = useState([])
@@ -26,19 +29,24 @@ const CreateJob = () => {
       return element === ''
    }
    const checkLength = (element) => {
-      return element.length>=20
+      return element.length >= 20
    }
    function checkIfDuplicateExists(w) {
       return new Set(w).size !== w.length
    }
-
-   if (data) {
-   }
-   useEffect(() => {
-      document.querySelector('#totalCredits').value = 0
-   }, [])
+   
+   
+   // useEffect(() => {
+   //    document.querySelector('#totalCredits').value = 0
+   // }, [])
    const history = useHistory()
-
+   
+   const cook=Cookies.get('jwt')
+   if (cook == null) {
+      console.log("boy")
+      return <Redirect to="/" />
+   }
+   
    const Calculate = (e) => {
       e.preventDefault()
       let currentCredits = document.querySelector('#credits').value
@@ -85,7 +93,7 @@ const CreateJob = () => {
                   toast.clearWaitingQueue()
                   return
                }
-               if (document.querySelector('#title').value.length>25) {
+               if (document.querySelector('#title').value.length > 25) {
                   toast.error('Job title is too long')
                   toast.clearWaitingQueue()
                   return
@@ -186,7 +194,8 @@ const CreateJob = () => {
                      } else {
                         console.log(res)
                         toast.update(id, {
-                           render: 'Your Job was not Created, Please try again ehehehe',
+                           render:
+                              'Your Job was not Created, Please try again ehehehe',
                            type: 'error',
                            autoClose: 3000,
                            isLoading: false
@@ -289,7 +298,7 @@ const CreateJob = () => {
                         return (
                            <div key={p.id}>
                               <TextField
-                              inputProps={{ maxLength: 15 }}
+                                 inputProps={{ maxLength: 15 }}
                                  onChange={(e) => {
                                     const label = e.target.value
                                     setLabels((currentLabels) =>
