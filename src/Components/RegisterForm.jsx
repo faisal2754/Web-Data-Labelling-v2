@@ -22,25 +22,39 @@ const Register = () => {
       e.preventDefault()
       if (!username) {
          isValid = false
-         toast.error('Please enter a username')
+         toast.error('Please enter a username', {
+            toastId: "invalusername"
+          })
       } else if (username.length > 12) {
          isValid = false
-         toast.error('Username must not be more than 12 characters')
+         toast.error('Username must not be more than 12 characters', {
+            toastId: "invaluserlength"
+          })
       } else if (!email) {
          isValid = false
-         toast.error('Please enter an email address')
+         toast.error('Please enter an email address', {
+            toastId: "invalemailaddy"
+          })
       } else if (!/\S+@\S+\.\S+/.test(email)) {
          isValid = false
-         toast.error('Please enter a valid email')
+         toast.error('Please enter a valid email', {
+            toastId: "invalemailaddy2"
+          })
       } else if (!password) {
          isValid = false
-         toast.error('Please enter a password')
+         toast.error('Please enter a password', {
+            toastId: "invalpass"
+          })
       } else if (password.length < 5) {
          isValid = false
-         toast.error('Password must be at least 5 characters')
+         toast.error('Password must be at least 5 characters', {
+            toastId: "invalpasslength"
+          })
       } else if (password !== confirmPass) {
          isValid = false
-         toast.error('Passwords do not match')
+         toast.error('Passwords do not match', {
+            toastId: "invalpasswordmatch"
+          })
       }
       if (isValid) {
          await registerMutation({
@@ -54,7 +68,9 @@ const Register = () => {
                error.message ===
                'Unique constraint failed on the fields: (`email`)'
             ) {
-               toast.error('This email address already exists')
+               toast.error('This email address already exists', {
+                  toastId: "invalemailexists"
+                })
                return
             }
             toast.error(error.message, {

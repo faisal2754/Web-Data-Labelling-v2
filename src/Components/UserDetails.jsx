@@ -11,15 +11,15 @@ const UserDetails = (props) => {
    const { loading, error, data } = useQuery(GET_ME)
    const [EditProfile] = useMutation(EDIT_PROFILE)
    const showError = () => {
-      toast.error('An error occured')
+      toast.error('An error occured', {
+         toastId: "invalerror"
+       })
       toast.clearWaitingQueue()
    }
    const dispatch = useDispatch()
    const editUsername = () => {
       let userNameChange
-      if(error){
-         toast(error.message);
-      }
+      
       //check if username is empty
       if (document.getElementById('input-username').value === '') {
          return //we dont want to do anything if they dont enter a username
@@ -36,7 +36,9 @@ const UserDetails = (props) => {
          document.getElementById('input-passwordNew').value !==
          document.getElementById('input-passwordConfirm').value
       ) {
-         toast.error("Passwords Don't Match")
+         toast.error("Passwords Don't Match", {
+            toastId: "invalpassword"
+          })
       } else {
          EditProfile({
             variables: {
@@ -45,7 +47,9 @@ const UserDetails = (props) => {
             refetchQueries: [{ query: GET_ME }]
          })
             .then(() => {
-               toast.success('Your Details Have Been Changed')
+               toast.success('Your Details Have Been Changed', {
+                  toastId: "succDetails"
+                })
                document.getElementById('input-username').value="" //reset field to be empty
             })
             .then(() => {
@@ -75,14 +79,20 @@ const UserDetails = (props) => {
          document.getElementById('input-passwordNew').value !==
          document.getElementById('input-passwordConfirm').value
       ) {
-         toast.error("Passwords Don't Match")
+         toast.error("Passwords Don't Match", {
+            toastId: "invalpass"
+          })
       } else if (
          document.getElementById('input-passwordNew').value === '' ||
          document.getElementById('input-passwordConfirm').value === ''
       ) {
-         toast.error('Passwords Are Empty')
+         toast.error('Passwords Are Empty', {
+            toastId: "invalpass"
+          })
       } else if (passwordChange.length < 5) {
-         toast.error('Password must be at least 5 characters')
+         toast.error('Password must be at least 5 characters', {
+            toastId: "invalpasslen"
+          })
       } else {
          EditProfile({
             variables: {
@@ -91,7 +101,9 @@ const UserDetails = (props) => {
             refetchQueries: [{ query: GET_ME }]
          })
             .then(() => {
-               toast.success('Your Details Have Been Changed')
+               toast.success('Your Details Have Been Changed', {
+                  toastId: "invaldetailsChange"
+                })
                document.getElementById('input-passwordNew').value=""
                document.getElementById('input-passwordConfirm').value=""
             })

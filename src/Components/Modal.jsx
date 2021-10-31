@@ -166,9 +166,9 @@ export const Modal = ({
                refetchQueries: [{ query: GET_ACCEPTED_JOBS }],
                
             }).catch((error) => {
-                  toast.error('You have already accepted this job', {
-                     position: toast.POSITION.BOTTOM_CENTER
-                  })
+                  // toast.error('You have already accepted this job', {
+                  //    position: toast.POSITION.BOTTOM_CENTER
+                  // })
                })
 
             toast.clearWaitingQueue() //Prevents duplicates of the toast from coming up

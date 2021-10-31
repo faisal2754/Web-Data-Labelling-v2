@@ -27,9 +27,7 @@ function NavbarOther() {
          }
       }
    }
-   if (error) {
-      toast.error('some error occured')
-   }
+   
    const handleClick = () => setClick(!click)
    const closeMobileMenu = () => setClick(false)
 

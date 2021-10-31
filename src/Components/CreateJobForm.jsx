@@ -3,7 +3,7 @@ import React from 'react'
 import { GET_ME } from '../graphql/queries'
 import '../Styles/CreateJob.css'
 import TextField from '@material-ui/core/TextField'
-import {Redirect}  from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import { nanoid } from 'nanoid'
 import ImageUploading from 'react-images-uploading'
 import ReactTooltip from 'react-tooltip'
@@ -13,8 +13,6 @@ import Cookies from 'js-cookie'
 import { toast } from 'react-toastify'
 import FormData from 'form-data'
 import axios from 'axios'
-
-
 
 const CreateJob = () => {
    const [labels, setLabels] = useState([])
@@ -34,19 +32,16 @@ const CreateJob = () => {
    function checkIfDuplicateExists(w) {
       return new Set(w).size !== w.length
    }
-   
-   
-   // useEffect(() => {
-   //    document.querySelector('#totalCredits').value = 0
-   // }, [])
+
+   // const customId = "custom-id-invalCredits";
    const history = useHistory()
-   
-   const cook=Cookies.get('jwt')
+
+   const cook = Cookies.get('jwt')
    if (cook == null) {
-      console.log("boy")
+      console.log('boy')
       return <Redirect to="/" />
    }
-   
+
    const Calculate = (e) => {
       e.preventDefault()
       let currentCredits = document.querySelector('#credits').value
@@ -54,15 +49,20 @@ const CreateJob = () => {
       let currentPartitions = document.querySelector('#partitions').value
       if (currentCredits === 0) return
       if (currentCredits <= 0 || currentCredits === '') {
-         toast.error('invalid number of credits')
-         toast.clearWaitingQueue()
+         toast.error('invalid number of credits', {
+            toastId: 'invalCredit1'
+         })
+         // toast.error('invalid number of credits')
+         // toast.clearWaitingQueue()
          return
       }
 
       // const maxNumLabellers = numLabels % 2 === 0 ? numLabels + 1 : numLabels + 2
       let newTotal = currentCredits * currentPartitions
       if (data.me.balance < newTotal) {
-         toast.error('You do not have sufficent credits to create this job')
+         toast.error('You do not have sufficent credits to create this job', {
+            toastId: 'invalCredit2'
+         })
          toast.clearWaitingQueue()
          return
       }
@@ -82,51 +82,71 @@ const CreateJob = () => {
                   parseInt(document.querySelector('#partitions').value)
                ) {
                   toast.error(
-                     'Invalid number of Partitions, make sure partitions does not exceed images'
+                     'Invalid number of Partitions, make sure partitions does not exceed images',
+                     {
+                        toastId: 'invalPartition'
+                     }
                   )
                   return
                }
                //! Begin Error checking
 
                if (document.querySelector('#title').value === '') {
-                  toast.error('Please enter a valid job title')
+                  toast.error('Please enter a valid job title', {
+                     toastId: 'invaltitle'
+                  })
                   toast.clearWaitingQueue()
                   return
                }
                if (document.querySelector('#title').value.length > 25) {
-                  toast.error('Job title is too long')
+                  toast.error('Job title is too long', {
+                     toastId: 'invaltitleLength'
+                  })
                   toast.clearWaitingQueue()
                   return
                }
                if (document.querySelector('#description').value === '') {
-                  toast.error('Please enter a valid job description')
+                  toast.error('Please enter a valid job description', {
+                     toastId: 'invalDesc'
+                  })
                   toast.clearWaitingQueue()
                   return
                }
                if (data.me.balance < currentTotal) {
                   toast.error(
-                     'You do not have sufficent credits to create this job'
+                     'You do not have sufficent credits to create this job',
+                     {
+                        toastId: 'invalCredit3'
+                     }
                   )
                   toast.clearWaitingQueue()
                   return
                }
                if (labels.map((label) => label.label).length === 0) {
-                  toast.error('Please enter at least one label')
+                  toast.error('Please enter at least one label', {
+                     toastId: "invalLabels"
+                   })
                   toast.clearWaitingQueue()
                   return
                }
                if (labels.map((label) => label.label).some(isBlank)) {
-                  toast.error('Please make sure none of your labels are blank')
+                  toast.error('Please make sure none of your labels are blank', {
+                     toastId: "invallabels2"
+                   })
                   toast.clearWaitingQueue()
                   return
                }
                if (labels.map((label) => label.label).some(checkLength)) {
-                  toast.error('Maximum length of labels is 20 Characters')
+                  toast.error('Maximum length of labels is 20 Characters', {
+                     toastId: "invallabelLength"
+                   })
                   toast.clearWaitingQueue()
                   return
                }
                if (checkIfDuplicateExists(labels.map((label) => label.label))) {
-                  toast.error('No Duplicate labels allowed')
+                  toast.error('No Duplicate labels allowed', {
+                     toastId: "invaldupLabel"
+                   })
                   toast.clearWaitingQueue()
                   return
                }
@@ -134,7 +154,9 @@ const CreateJob = () => {
                   document.querySelector('#partitions').value === 0 ||
                   document.querySelector('#partitions').value === ''
                ) {
-                  toast.error('Invalid number of partitions')
+                  toast.error('Invalid number of partitions', {
+                     toastId: "invalnumpartition"
+                   })
                   toast.clearWaitingQueue()
                   return
                }
@@ -170,7 +192,9 @@ const CreateJob = () => {
                for (let i = 0; i < images.length; i++) {
                   form.append(i.toString(), images[i].file)
                }
-               const id = toast.loading('Please wait...')
+               const id = toast.loading('Please wait...', {
+                  toastId: "loading"
+                })
                axios
                   .post(
                      'https://data-labelling-server.herokuapp.com/graphql',
@@ -279,7 +303,9 @@ const CreateJob = () => {
                         onClick={() => {
                            if (labels.length > 4) {
                               toast.warning(
-                                 'You can not have more than 5 labels'
+                                 'You can not have more than 5 labels', {
+                                    toastId: "toomanyLabels"
+                                  }
                               )
                               return
                            }

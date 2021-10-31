@@ -147,7 +147,9 @@ function LabelJob(props) {
          document.getElementById('accepted-jobs-btn').style.display = 'block'
          document.getElementById('job-completed').style.display = 'block'
       } else {
-         toast.success('Your labelling progress has been saved.')
+         toast.success('Your labelling progress has been saved.', {
+            toastId: "save"
+          })
       }
    }
 

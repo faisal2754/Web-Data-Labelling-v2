@@ -23,7 +23,9 @@ function ViewJob() {
       jobs = data.viewJobs
    }
    if (error) {
-      toast.error('There was an error fetching the jobs')
+      toast.error('There was an error fetching the available jobs, please reload the page', {
+         toastId: "error"
+       })
    }
 
    const [showModal, setShowModal] = useState(false)
