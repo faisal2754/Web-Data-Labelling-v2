@@ -26,6 +26,11 @@ const CreateJob = () => {
    const isBlank = (element) => {
       return element === ''
    }
+   const isother = (element) => {
+      element=element.toLowerCase();
+      // console.log(element)
+      return element === 'other'
+   }
    const checkLength = (element) => {
       return element.length >= 20
    }
@@ -132,6 +137,13 @@ const CreateJob = () => {
                if (labels.map((label) => label.label).some(isBlank)) {
                   toast.error('Please make sure none of your labels are blank', {
                      toastId: "invallabels2"
+                   })
+                  toast.clearWaitingQueue()
+                  return
+               }
+               if (labels.map((label) => label.label).some(isother)) {
+                  toast.error('Other Label will be automatically added,please select another label', {
+                     toastId: "invalother"
                    })
                   toast.clearWaitingQueue()
                   return
