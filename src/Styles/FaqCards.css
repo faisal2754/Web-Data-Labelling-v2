@@ -1,52 +1,32 @@
 .cards {
-   padding-top: 4rem;
-   padding-bottom: 4rem;
+   padding: 4rem;
    background: #fff;
-   min-height: 700px;
-   padding-right: 0px;
-   padding-left: 0px;
-   flex-direction: center;
 }
 
 h2 {
    text-align: center;
    font-family: 'Montserrat', sans-serif;
 }
-.cards__modal {
-   z-index: 100;
+
+.cards__container {
+   display: flex;
+   flex-flow: column;
+   align-items: center;
+   max-width: 1500px;
+   max-height: 1000px;
+   width: 90%;
+   margin: 0 auto;
+   cursor: pointer !important;
+}
+
+.cards__wrapper {
+   position: relative;
+   margin: 50px 0 45px;
 }
 
 .cards__items {
-   display: flex;
-   flex-direction: center;
-   padding-left: 6%;
-   padding-right: 6;
-   padding-top: 5%;
+   margin-bottom: 24px;
    cursor: pointer !important;
-}
-
-.cards__cardItems {
-   flex-direction: center;
-   display: grid;
-   grid-template-columns: repeat(1, minmax(400px, 1fr));
-   cursor: pointer !important;
-   /* padding-left: 2%;
-      padding-right: 2%; */
-}
-
-.cards__itemsDisplay {
-   flex-direction: center;
-   margin-left: auto;
-   margin-right: auto;
-   margin-top: 1%;
-   padding-top: 2%;
-   padding-bottom: 1%;
-   padding-left: auto;
-   padding-right: auto;
-   min-width: 50%;
-   display: grid;
-   cursor: pointer !important;
-   /* grid-template-columns: repeat(3, minmax(300px, 1fr)); */
 }
 
 .cards__item {
@@ -55,7 +35,6 @@ h2 {
    margin: 0 1rem;
    border-radius: 10px;
    cursor: pointer !important;
-   /* min-width: 400px; */
 }
 
 .cards__item__link {
@@ -74,8 +53,9 @@ h2 {
 .cards__item__pic-wrap {
    position: relative;
    width: 100%;
-   padding-top: 67%;
+   padding-top: 75%;
    overflow: hidden;
+   cursor: pointer !important;
 }
 
 .fade-img {
@@ -90,11 +70,12 @@ h2 {
    margin-left: 10px;
    padding: 6px 8px;
    max-width: calc((100%) - 60px);
-   font-size: 12px;
+   font-size: 25px;
    font-weight: 700;
    color: #fff;
    background-color: #1f98f4;
    box-sizing: border-box;
+   cursor: pointer !important;
 }
 
 .cards__item__img {
@@ -115,18 +96,25 @@ h2 {
 
 .cards__item__img:hover {
    transform: scale(1.1);
+   cursor: pointer !important;
 }
 
 .cards__item__info {
    padding: 20px 30px 30px;
    font-family: 'Montserrat', sans-serif;
+   cursor: pointer !important;
 }
 
 .cards__item__text {
    color: #252e48;
-   font-size: 18px;
+   font-size: 20px;
+   text-align: center;
+   padding-top: 70px;
+   margin-left: 10%;
+   margin-right: 10%;
    line-height: 24px;
    font-family: 'Montserrat', sans-serif;
+   cursor: pointer !important;
 }
 
 @media only screen and (min-width: 1200px) {
@@ -138,11 +126,13 @@ h2 {
 @media only screen and (min-width: 1024px) {
    .cards__items {
       display: flex;
+      cursor: pointer !important;
    }
 }
 
 @media only screen and (max-width: 1024px) {
    .cards__item {
       margin-bottom: 2rem;
+      cursor: pointer !important;
    }
 }
