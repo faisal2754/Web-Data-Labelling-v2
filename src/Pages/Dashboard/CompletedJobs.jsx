@@ -40,8 +40,8 @@ function CompletedJobs() {
                   <div className="completeJobs__modal">
                      <Modal
                         id={job.job_id}
-                        // src={job.preview_images[0]}
-                        src="../images/completed_job.png"
+                        src={job.preview_images[0]}
+                        // src="../images/completed_job.png"
                         text={job.description}
                         credits={job.credits}
                         uploader={job.job_owner.username}
@@ -94,8 +94,8 @@ function CompletedJobs() {
                         >
                            <CardItem
                               // id={job.job_id.concat('card')}
-                              // src={job.preview_images[0]}
-                              src="../images/completed_job.png"
+                              src={job.preview_images[0]}
+                              // src="../images/completed_job.png"
                               text={job.title}
                               credits="Done"
                            />
