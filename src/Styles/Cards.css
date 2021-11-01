@@ -6,13 +6,14 @@
    padding-right: 0px;
    padding-left: 0px;
    flex-direction: center;
+  
 }
 
 h2 {
    text-align: center;
    font-family: 'Montserrat', sans-serif;
 }
-.cards__modal {
+.cards__modal{
    z-index: 100;
 }
 
@@ -21,20 +22,21 @@ h2 {
    flex-direction: center;
    padding-left: 6%;
    padding-right: 6;
-   padding-top: 5%;
-   cursor: pointer !important;
+   padding-top:5%;
+   cursor: pointer!important;
 }
 
 .cards__cardItems {
+   
    flex-direction: center;
    display: grid;
    grid-template-columns: repeat(1, minmax(400px, 1fr));
-   cursor: pointer !important;
-   /* padding-left: 2%;
+   cursor: pointer!important;
+      /* padding-left: 2%;
       padding-right: 2%; */
 }
 
-.cards__itemsDisplay {
+.cards__itemsDisplay{
    flex-direction: center;
    margin-left: auto;
    margin-right: auto;
@@ -45,7 +47,7 @@ h2 {
    padding-right: auto;
    min-width: 50%;
    display: grid;
-   cursor: pointer !important;
+   cursor: pointer!important;
    /* grid-template-columns: repeat(3, minmax(300px, 1fr)); */
 }
 
@@ -54,7 +56,7 @@ h2 {
    flex: 1;
    margin: 0 1rem;
    border-radius: 10px;
-   cursor: pointer !important;
+   cursor: pointer!important;
    /* min-width: 400px; */
 }
 
@@ -68,7 +70,7 @@ h2 {
    border-radius: 10px;
    overflow: hidden;
    text-decoration: none;
-   cursor: pointer !important;
+   cursor: pointer!important;
 }
 
 .cards__item__pic-wrap {
@@ -110,7 +112,8 @@ h2 {
    max-height: 100%;
    object-fit: cover;
    transition: all 0.2s linear;
-   cursor: pointer !important;
+   cursor: pointer!important;
+   
 }
 
 .cards__item__img:hover {
