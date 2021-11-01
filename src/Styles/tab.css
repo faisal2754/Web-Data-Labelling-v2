@@ -1,10 +1,6 @@
 .tabs-other {
-   background: linear-gradient(
-      90deg,
-      rgb(28, 27, 27) 0%,
-      rgb(100, 100, 100) 100%
-   );
-   /* background: transparent; */
+   background: rgb(92, 92, 92) 100%;
+   /* rgb(253, 253, 253)nsparent; */
    height: 80px;
    display: flex;
    justify-content: center;
