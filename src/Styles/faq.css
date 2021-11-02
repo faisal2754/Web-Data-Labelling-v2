@@ -1,0 +1,94 @@
+*,
+*:after,
+*:before {
+   box-sizing: border-box;
+}
+
+.faqSection {
+   margin-left: 20%;
+   margin-right: 20%;
+   margin-top: 5%;
+
+   /* color: white; */
+   font-style: bold;
+}
+
+:root {
+   font-size: 16px;
+}
+
+.expandPage {
+   padding-bottom: 200px;
+}
+
+*:focus {
+   outline: none;
+}
+
+details div {
+   border-left: 2px solid #000;
+   border-right: 2px solid #000;
+   border-bottom: 2px solid #000;
+   padding: 1.5em;
+}
+
+details div > * + * {
+   margin-top: 1.5em;
+}
+
+details + details {
+   margin-top: 0.5rem;
+}
+
+summary {
+   list-style: none;
+}
+
+summary::-webkit-details-marker {
+   display: none;
+}
+
+summary {
+   border: 2px solid #000;
+   padding: 0.75em 1em;
+   cursor: pointer;
+   position: relative;
+   padding-left: calc(1.75rem + 0.75rem + 0.75rem);
+}
+
+summary:before {
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   left: 0.75rem;
+   content: '↓';
+   width: 1.75rem;
+   height: 1.75rem;
+   background-color: #000;
+   color: #fff;
+   display: inline-flex;
+   justify-content: center;
+   align-items: center;
+   flex-shrink: 0;
+}
+
+details[open] summary {
+   background-color: #eee;
+}
+
+details[open] summary:before {
+   content: '↑';
+}
+
+summary:hover {
+   background-color: #eee;
+}
+
+a:hover {
+   box-shadow: 0 3px 0 0;
+}
+
+code {
+   font-family: monospace;
+   font-weight: 600;
+}
