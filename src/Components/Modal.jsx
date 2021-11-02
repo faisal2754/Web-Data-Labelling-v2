@@ -3,13 +3,13 @@ import { useSpring, animated } from 'react-spring'
 import styled from 'styled-components'
 import { MdClose } from 'react-icons/md'
 import '../Styles/Modal.css'
-import ReactTooltip from 'react-tooltip';
+import ReactTooltip from 'react-tooltip'
 // import { Link, Redirect, useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { Link, Redirect } from 'react-router-dom'
 import { useHistory } from 'react-router'
 import { useMutation, useQuery } from '@apollo/client'
-import { ACCEPT_JOB, DELETE_JOB } from '../graphql/mutations'
+import { ACCEPT_JOB, DELETE_JOB, JOB_RESULTS } from '../graphql/mutations'
 import { GET_ACCEPTED_JOBS, GET_CREATED_JOBS } from '../graphql/queries'
 import Cookies from 'js-cookie'
 import { toast } from 'react-toastify'
@@ -94,7 +94,8 @@ export const Modal = ({
    title,
    buttonLabel,
    deletable,
-   acceptable
+   acceptable,
+   completeable
 }) => {
    const history = useHistory()
    const jwt = useSelector((state) => state.user.jwt)
@@ -111,8 +112,8 @@ export const Modal = ({
    // eslint-disable-next-line no-unused-vars
    const [AcceptJob, { loading, error, data }] = useMutation(ACCEPT_JOB, {
       fetchPolicy: 'no-cache',
-      onCompleted: (data) =>{
-         setTimeout(history.push("/dashboard/accepted-jobs"), 1000)
+      onCompleted: (data) => {
+         setTimeout(history.push('/dashboard/accepted-jobs'), 1000)
       }
    })
 
@@ -123,6 +124,14 @@ export const Modal = ({
          refetchQueries: [GET_CREATED_JOBS, 'createdJobs']
       }
    )
+   //Get Job Results Mutation
+   const [JobResults, { resultsLoading, resultsError, resultsData }] =
+      useMutation(JOB_RESULTS, {
+         onCompleted: (resultsData) => {
+            const win = window.open(resultsData.jobResults, '_blank')
+            win.focus()
+         }
+      })
    // const closeModal = (e) => {
    //    if (modalRef.current === e.target) {
    //       setShowModal(false)
@@ -131,9 +140,9 @@ export const Modal = ({
    // const [AcceptedJobs, {loading, error }] = useQuery(GET_ACCEPTED_JOBS, {
    //    fetchPolicy: 'no-cache'
    // })
-      const getResults = () => {
-         toast.error("This feature is coming soon...")
-      }
+   const getResults = () => {
+      toast.error('This feature is coming soon...')
+   }
 
    const keyPress = useCallback(
       (e) => {
@@ -153,9 +162,10 @@ export const Modal = ({
    if (!jwt1) {
       destination = '/login'
    }
+
    const acceptJob = () => {
       if (!jwt) {
-         history.push("/login")
+         history.push('/login')
       } else {
          // eslint-disable-next-line eqeqeq
          if (destination.pathname != '/label-job') {
@@ -163,17 +173,24 @@ export const Modal = ({
                variables: {
                   job_id: id
                },
-               refetchQueries: [{ query: GET_ACCEPTED_JOBS }],
-               
+               refetchQueries: [{ query: GET_ACCEPTED_JOBS }]
             }).catch((error) => {
-                  // toast.error('You have already accepted this job', {
-                  //    position: toast.POSITION.BOTTOM_CENTER
-                  // })
-               })
+               // toast.error('You have already accepted this job', {
+               //    position: toast.POSITION.BOTTOM_CENTER
+               // })
+            })
 
             toast.clearWaitingQueue() //Prevents duplicates of the toast from coming up
          }
       }
+   }
+
+   const jobResults = () => {
+      JobResults({
+         variables: {
+            job_id: id
+         }
+      }).catch((error) => {})
    }
 
    return (
@@ -228,25 +245,40 @@ export const Modal = ({
                               >
                                  {buttonLabel}
                               </button>
-                           ) : (acceptable ? (
-                              <Link >
+                           ) : acceptable ? (
+                              <Link>
                                  <button
                                     className="modal__acceptJob"
                                     onClick={acceptJob}
                                  >
-                                    {loading ? "Loading...": buttonLabel}
+                                    {loading ? 'Loading...' : buttonLabel}
                                  </button>
                               </Link>
-                           ): <Link to ={destination}>
-                           <button
-                              className="modal__acceptJob"
-                              data-tip="Get your results via a Google Drive CSV file"
-                              onClick={acceptJob} // in this scenario , the function wont run
-                           >
-                              {buttonLabel}
-                           </button>
-                           <ReactTooltip effect="solid"/>
-                        </Link>)}
+                           ) : completeable ? (
+                              <Link>
+                                 <button
+                                    className="modal__acceptJob"
+                                    data-tip="Get your results via a Google Drive CSV file"
+                                    onClick={jobResults} // in this scenario , the function wont run
+                                 >
+                                    {resultsLoading
+                                       ? 'Loading...'
+                                       : buttonLabel}
+                                 </button>
+                                 <ReactTooltip effect="solid" />
+                              </Link>
+                           ) : (
+                              <Link to={destination}>
+                                 <button
+                                    className="modal__acceptJob"
+                                    data-tip="Do Job"
+                                    onClick={acceptJob} // in this scenario , the function wont run
+                                 >
+                                    {buttonLabel}
+                                 </button>
+                                 <ReactTooltip effect="solid" />
+                              </Link>
+                           )}
                         </div>
                      </ModalContent>
                      <CloseModalButton

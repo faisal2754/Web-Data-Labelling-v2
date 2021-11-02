@@ -49,10 +49,11 @@ function CompletedJobs() {
                         showModal={showModal}
                         buttonLabel="Get Results"
                         setShowModal={setShowModal}
-                        destination={{
-                           pathname: '/',
-                           currentID: job.job_id
-                        }}
+                        // destination={{
+                        //    pathname: '/',
+                        //    currentID: job.job_id
+                        // }}
+                        completeable={true}
                      />
                   </div>
                )
