@@ -38,6 +38,8 @@ function LabelJob(props) {
    }
 
    const checkCompletion = () => {
+      console.log(assignedLabels)
+      console.log(slides.length)
       if (
          Object.keys(assignedLabels).length + 1 >= slides.length &&
          Object.keys(assignedLabels).length !== 0
@@ -51,7 +53,8 @@ function LabelJob(props) {
 
    useEffect(() => {
       checkRadioButton()
-   }, [index])
+      checkCompletion()
+   }, [index, assignedLabels])
 
    const { loading, error, data } = useQuery(GET_LABEL_JOB_INFO, {
       variables: {
@@ -112,11 +115,10 @@ function LabelJob(props) {
 
    const onChangeSlide = (index) => {
       setIndex(index)
-
+      // console.log(labels)
       for (let i = 0; i < labels.length; i++) {
          document.getElementById(labels[i]).checked = false
       }
-      document.getElementById('other').checked = false
    }
 
    const assignLabel = (value) => {
@@ -125,7 +127,6 @@ function LabelJob(props) {
       const imageId = slides[index].image_id
       temp[imageId] = value
       setAssignedLabels(temp)
-      checkCompletion()
    }
 
    const saveState = (buttonID) => {
@@ -148,8 +149,8 @@ function LabelJob(props) {
          document.getElementById('job-completed').style.display = 'block'
       } else {
          toast.success('Your labelling progress has been saved.', {
-            toastId: "save"
-          })
+            toastId: 'save'
+         })
       }
    }
 
@@ -198,14 +199,6 @@ function LabelJob(props) {
                                  <label>{label}</label>
                               </>
                            ))}
-                           <input
-                              id="other"
-                              type="radio"
-                              value="other"
-                              name="label"
-                              onClick={(e) => assignLabel(e.target.value)}
-                           />{' '}
-                           Other
                         </div>
                      </div>
                   </div>
