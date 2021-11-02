@@ -1,12 +1,12 @@
 import React from 'react'
 import { Button } from './Button'
-import '../Styles/HowToSection.css'
+import '../Styles/faqSectionStyling.css'
 import '../Styles/faq.css'
 import '../App.css'
 
 function FaqSection() {
    return (
-      <div className="hero-container">
+      <div className="faq2-container">
          <div className="viewJob__header">
             <video src="./videos/gradient.mp4" autoPlay loop muted />
 
