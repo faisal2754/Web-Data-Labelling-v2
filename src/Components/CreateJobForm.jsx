@@ -173,6 +173,7 @@ const CreateJob = () => {
                   return
                }
                //! End Error Checking
+               labels.push({id: "otherLabel",label:"Other"})//add other label
                form.append(
                   'operations',
                   JSON.stringify({
@@ -193,6 +194,8 @@ const CreateJob = () => {
                      }
                   })
                )
+               // console.log(variables)
+               // return
 
                let variables = {}
                for (let i = 0; i < images.length; i++) {
