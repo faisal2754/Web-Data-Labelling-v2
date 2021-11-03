@@ -38,16 +38,16 @@ function LabelJob(props) {
    }
 
    const checkCompletion = () => {
-      console.log(assignedLabels)
-      console.log(slides.length)
+      // console.log(assignedLabels)
+      // console.log(slides.length)
       if (
-         Object.keys(assignedLabels).length + 1 >= slides.length &&
+         Object.keys(assignedLabels).length >= slides.length &&
          Object.keys(assignedLabels).length !== 0
       ) {
          document.getElementById('submitButton').style.display = 'inline-block'
          setIsComplete(true)
       } else {
-         document.getElementById('submitButton').style.display = 'none'
+         // document.getElementById('submitButton').style.display = 'none'
       }
    }
 
@@ -117,6 +117,7 @@ function LabelJob(props) {
       setIndex(index)
       // console.log(labels)
       for (let i = 0; i < labels.length; i++) {
+         console.log(labels[i])
          document.getElementById(labels[i]).checked = false
       }
    }

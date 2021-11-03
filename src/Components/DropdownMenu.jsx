@@ -5,6 +5,7 @@ import { ReactComponent as OwnedIcon } from './icons/owned_icon.svg'
 import { ReactComponent as LogOutIcon } from './icons/logout_icon.svg'
 import { ReactComponent as CompletedIcon } from './icons/completed_icon.svg'
 import Cookies from 'js-cookie'
+import { toast } from 'react-toastify'
 
 import React, { useState, useEffect, useRef } from 'react'
 import { CSSTransition } from 'react-transition-group'
@@ -16,10 +17,13 @@ function DropdownMenu() {
 
    const deleteJWT = () => {
       Cookies.remove('jwt') //deletes the jwt token on signout
-      if(window.location.pathname=="/"){
-         window.location.reload()
-      }
-      // toast.warning("You have logged out")
+      window.location.replace(window.location.pathname + "#/")
+      window.location.reload();
+      // if(window.location.pathname=="/"){
+      //    toast.warning("You have logged out")
+      //    // setTimeout(window.location.reload(),5000)
+      // }
+      
    }
 
    useEffect(() => {
@@ -78,7 +82,7 @@ function DropdownMenu() {
                      Job Results
                   </DropdownItem>
                </a>
-               <a href="#/" onClick={deleteJWT}>
+               <a onClick={deleteJWT}>
                   <DropdownItem leftIcon={<LogOutIcon />}>
                      Sign Out
                   </DropdownItem>

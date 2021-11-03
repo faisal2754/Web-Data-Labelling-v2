@@ -1,47 +1,48 @@
-.createdJobs__header{
-    height: 40vh;
-    width: 100%;
-    justify-content: center;
-    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0);
-    flex-direction: column;
-    flex-direction: center;
-
+.createdJobs__header {
+   height: 40vh;
+   width: 100%;
+   justify-content: center;
+   box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0);
+   flex-direction: column;
+   flex-direction: center;
 }
 
-.createdJobs__header> h1{
-    color: white;
-    font-size: 70px;
-    margin-top: -100px;
-    font-family: 'Montserrat', sans-serif;
-    padding-top: 10%;
-    text-align: center;
-    vertical-align: middle;
+.createdJobs__header > h1 {
+   color: white;
+   font-size: 70px;
+   margin-top: -100px;
+   font-family: 'Montserrat', sans-serif;
+   padding-top: 10%;
+   text-align: center;
+   vertical-align: middle;
 }
 
-.createdJobs__row{
-    background-color: white;
-    flex-direction: center;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 2%;
-    padding-bottom: 30px;
-    padding-left: auto;
-    padding-right: auto;  
-    display: grid;
-    grid-template-columns: repeat(4, minmax(250px, 1fr));
-    min-height: 400px;
-
+.createdJobs__row {
+   background-color: white;
+   flex-direction: center;
+   margin-left: auto;
+   margin-right: auto;
+   padding-top: 2%;
+   padding-bottom: 30px;
+   padding-left: auto;
+   padding-right: auto;
+   display: grid;
+   grid-template-columns: repeat(4, minmax(250px, 1fr));
+   min-height: 400px;
 }
 
-.createdJobs__Loading{
-    
-    height: 100px;
-    background-color:rgb(240, 240, 240);
-    align-items: center;
-    padding-left: auto;
-    padding-right: auto;
-    display: flex;
-    justify-content: center;
-    padding-right: 10px;
+.createdJobs__cardItem {
+   padding-bottom: 15px;
+   padding-top: 15px;
+}
 
+.createdJobs__Loading {
+   height: 100px;
+   background-color: rgb(240, 240, 240);
+   align-items: center;
+   padding-left: auto;
+   padding-right: auto;
+   display: flex;
+   justify-content: center;
+   padding-right: 10px;
 }

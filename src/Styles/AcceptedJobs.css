@@ -17,13 +17,18 @@
    vertical-align: middle;
 }
 
+.acceptJob__cardItem {
+   padding-bottom: 15px;
+   padding-top: 15px;
+}
+
 .acceptJob__row {
    background-color: white;
    flex-direction: center;
    margin-left: auto;
    margin-right: auto;
-   padding-top: 2%;
-   padding-bottom: 30px;
+   padding-top: 3%;
+   padding-bottom: 3%;
    padding-left: auto;
    padding-right: auto;
    display: grid;
