@@ -25,7 +25,14 @@ function LabelJob(props) {
    const [isComplete, setIsComplete] = useState(false)
    const [assignedLabels, setAssignedLabels] = useState({})
    const [slides, setSlides] = useState([])
-   const { currentID } = props.location
+   const storedID = String(localStorage.getItem('jobID'))
+   console.log(storedID)
+   // const [currentID, setCurrentID] = useState(
+   //    props.location ? props.location : Number.isInteger(storedID)
+   // )
+   const currentID = storedID
+
+   console.log(currentID)
 
    const checkRadioButton = () => {
       if (slides[index]) {
@@ -117,7 +124,6 @@ function LabelJob(props) {
       setIndex(index)
       // console.log(labels)
       for (let i = 0; i < labels.length; i++) {
-         console.log(labels[i])
          document.getElementById(labels[i]).checked = false
       }
    }

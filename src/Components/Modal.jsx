@@ -181,6 +181,8 @@ export const Modal = ({
             })
 
             toast.clearWaitingQueue() //Prevents duplicates of the toast from coming up
+         } else {
+            localStorage.setItem('jobID', String(id))
          }
       }
    }
@@ -229,7 +231,7 @@ export const Modal = ({
                                        dangerMode: true
                                     })
                                        .then(() => {
-                                           deleteJob({
+                                          deleteJob({
                                              variables: {
                                                 job_id: id
                                              }
