@@ -31,6 +31,10 @@
    min-height: 400px;
 }
 
+.completedJob__cardItem {
+   padding-bottom: 30px;
+}
+
 .completedJob__loadingSpin {
    margin: auto;
    padding-top: 5rem;

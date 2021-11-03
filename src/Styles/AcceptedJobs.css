@@ -17,6 +17,10 @@
    vertical-align: middle;
 }
 
+.acceptJob__cardItem {
+   padding-bottom: 30px;
+}
+
 .acceptJob__row {
    background-color: white;
    flex-direction: center;
