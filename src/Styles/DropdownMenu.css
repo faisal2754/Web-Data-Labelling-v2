@@ -78,7 +78,7 @@ a {
 .dropdown {
    position: absolute;
    top: 78px;
-   right: 15%;
+   right: -20px;
    width: 240px;
    /* cursor: pointer; */
    min-height: 300px;
