@@ -96,57 +96,58 @@ function FaqSection() {
             <details>
                <summary>How does the job labelling process work?</summary>
                <div className="answer">
-                  <div>
-                     Step 1: Create a job and upload your images and labels.
-                     Select the number of partitions you would like to split the
-                     job into.
+                  <div className="faq__steps">
+                     <b>Step 1:</b> Create a job and upload your images and
+                     labels. Select the number of partitions you would like to
+                     split the job into.
                   </div>
-                  <div>
+                  <div className="faq__image">
                      <img src="./images/Infographics/step1.jpg" alt="" />
                   </div>
                </div>
                <div className="answer">
-                  <div>
-                     Step 2: The job's images will be split into the desired
-                     number of partitions.
+                  <div className="faq__steps">
+                     <b>Step 2:</b> The job's images will be split into the
+                     desired number of partitions.
                   </div>
-                  <div>
+                  <div className="faq__image">
                      <img src="./images/Infographics/step2.png" alt="" />
                   </div>
                </div>
                <div className="answer">
-                  <div>
-                     Step 3: The number of labellers required to label each
-                     image in a partition is calculated.
+                  <div className="faq__steps">
+                     <b>Step 3:</b> The number of labellers required to label
+                     each image in a partition is calculated.
                   </div>
-                  <div>
+                  <div className="faq__image">
                      <img src="./images/Infographics/step3.jpg" alt="" />
                   </div>
                </div>
                <div className="answer">
-                  <div>
-                     Step 4: The final label for each image in the dataset is
-                     calculated.
+                  <div className="faq__steps">
+                     <b>Step 4:</b> The final label for each image in the
+                     dataset is calculated.
                   </div>
-                  <div>
+                  <div className="faq__image">
                      <img src="./images/Infographics/step4.jpg" alt="" />
                   </div>
                </div>
                <div className="answer">
-                  <div>
-                     Step 5: After the labelling process has been completed, you
-                     are able to find the results on the 'Job Results' page.
+                  <div className="faq__steps">
+                     <b>Step 5:</b> After the labelling process has been
+                     completed, you are able to find the results on the 'Job
+                     Results' page.
                   </div>
-                  <div>
+                  <div className="faq__image">
                      <img src="./images/Infographics/step5.png" alt="" />
                   </div>
                </div>
                <div className="answer">
-                  <div>
-                     Step 6: The results of the labelling process are available
-                     for download on the 'Job Results' page.
+                  <div className="faq__steps">
+                     <b>Step 6:</b> The results of the labelling process are
+                     available for download on the 'Job Results' page.
                   </div>
-                  <div>
+                  <div className="faq__image">
                      <img src="./images/Infographics/step6.jpg" alt="" />
                   </div>
                </div>
