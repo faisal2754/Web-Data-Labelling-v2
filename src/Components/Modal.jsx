@@ -228,15 +228,12 @@ export const Modal = ({
                                        buttons: [true, 'Yes, delete'],
                                        dangerMode: true
                                     })
-                                       .then(async () => {
-                                          await deleteJob({
+                                       .then(() => {
+                                           deleteJob({
                                              variables: {
                                                 job_id: id
                                              }
                                           })
-                                             .catch
-                                             // toast.warning('Job deleted! 1')
-                                             ()
                                        })
                                        .then(() => {
                                           toast.warning('Job Deleted!')
