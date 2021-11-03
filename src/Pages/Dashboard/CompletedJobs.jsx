@@ -71,7 +71,7 @@ function CompletedJobs() {
          <div className="completedJobs__Loading2">
             <p>
                Not Sure How To Proceed From Here?{' '}
-               <a id="hover" className="underlineHover" href="faqs#/faqs">
+               <a id="hover" className="underlineHover" href="/faqs">
                   Click here to go to FAQs
                </a>
             </p>
