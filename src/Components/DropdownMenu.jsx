@@ -17,7 +17,8 @@ function DropdownMenu() {
 
    const deleteJWT = () => {
       Cookies.remove('jwt') //deletes the jwt token on signout
-      window.location.replace("/")
+      window.location.replace(window.location.pathname + "#/")
+      window.location.reload();
       // if(window.location.pathname=="/"){
       //    toast.warning("You have logged out")
       //    // setTimeout(window.location.reload(),5000)
