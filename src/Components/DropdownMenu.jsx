@@ -18,10 +18,10 @@ function DropdownMenu() {
    const deleteJWT = () => {
       Cookies.remove('jwt') //deletes the jwt token on signout
       window.location.replace("/")
-      if(window.location.pathname=="/"){
-         toast.warning("You have logged out")
-         // setTimeout(window.location.reload(),5000)
-      }
+      // if(window.location.pathname=="/"){
+      //    toast.warning("You have logged out")
+      //    // setTimeout(window.location.reload(),5000)
+      // }
       
    }
 
@@ -81,7 +81,7 @@ function DropdownMenu() {
                      Job Results
                   </DropdownItem>
                </a>
-               <a href="/" onClick={deleteJWT}>
+               <a onClick={deleteJWT}>
                   <DropdownItem leftIcon={<LogOutIcon />}>
                      Sign Out
                   </DropdownItem>
