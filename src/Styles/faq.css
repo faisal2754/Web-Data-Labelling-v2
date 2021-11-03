@@ -98,7 +98,8 @@ summary:before {
 }
 
 details[open] summary {
-   background-color: rgb(212, 212, 212);
+   background-color: rgb(0, 0, 0);
+   color: white;
 }
 
 details[open] summary:before {
