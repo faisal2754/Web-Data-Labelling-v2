@@ -22,8 +22,8 @@
    flex-direction: center;
    margin-left: auto;
    margin-right: auto;
-   padding-top: 2%;
-   padding-bottom: 30px;
+   padding-top: 3%;
+   padding-bottom: 3%;
    padding-left: auto;
    padding-right: auto;
    display: grid;
@@ -46,8 +46,8 @@
    display: flex;
    justify-content: center;
    padding-right: 10px;
-   text-align: center; 
-   padding-bottom: 0%; 
+   text-align: center;
+   padding-bottom: 0%;
    padding-top: 1rem;
 }
 .completedJobs__Loading2 {
@@ -60,6 +60,5 @@
    display: flex;
    justify-content: center;
    padding-right: 10px;
-   text-align: center; 
+   text-align: center;
 }
-
