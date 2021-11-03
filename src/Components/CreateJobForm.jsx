@@ -336,6 +336,9 @@ const CreateJob = () => {
                         Add Label
                      </button>
                      {labels.map((p) => {
+                        if(p.label=='Other'){
+                           return(<div></div>)
+                        }
                         return (
                            <div key={p.id}>
                               <TextField
