@@ -22,13 +22,17 @@
    flex-direction: center;
    margin-left: auto;
    margin-right: auto;
-   padding-top: 2%;
-   padding-bottom: 30px;
+   padding-top: 3%;
+   padding-bottom: 3%;
    padding-left: auto;
    padding-right: auto;
    display: grid;
    grid-template-columns: repeat(4, minmax(250px, 1fr));
    min-height: 400px;
+}
+
+.completedJob__cardItem {
+   padding-bottom: 30px;
 }
 
 .completedJob__loadingSpin {
@@ -46,8 +50,8 @@
    display: flex;
    justify-content: center;
    padding-right: 10px;
-   text-align: center; 
-   padding-bottom: 0%; 
+   text-align: center;
+   padding-bottom: 0%;
    padding-top: 1rem;
 }
 .completedJobs__Loading2 {
@@ -60,6 +64,5 @@
    display: flex;
    justify-content: center;
    padding-right: 10px;
-   text-align: center; 
+   text-align: center;
 }
-
