@@ -27,7 +27,7 @@ const CreateJob = () => {
       return element === ''
    }
    const isother = (element) => {
-      element=element.toLowerCase();
+      element = element.toLowerCase()
       // console.log(element)
       return element === 'other'
    }
@@ -44,7 +44,7 @@ const CreateJob = () => {
    const cook = Cookies.get('jwt')
    if (cook == null) {
       console.log('boy')
-      return <Redirect to="/" />
+      return <Redirect to="/login" />
    }
 
    const Calculate = (e) => {
@@ -129,36 +129,42 @@ const CreateJob = () => {
                }
                if (labels.map((label) => label.label).length === 0) {
                   toast.error('Please enter at least one label', {
-                     toastId: "invalLabels"
-                   })
+                     toastId: 'invalLabels'
+                  })
                   toast.clearWaitingQueue()
                   return
                }
                if (labels.map((label) => label.label).some(isBlank)) {
-                  toast.error('Please make sure none of your labels are blank', {
-                     toastId: "invallabels2"
-                   })
+                  toast.error(
+                     'Please make sure none of your labels are blank',
+                     {
+                        toastId: 'invallabels2'
+                     }
+                  )
                   toast.clearWaitingQueue()
                   return
                }
                if (labels.map((label) => label.label).some(isother)) {
-                  toast.error('Other Label will be automatically added,please select another label', {
-                     toastId: "invalother"
-                   })
+                  toast.error(
+                     'Other Label will be automatically added,please select another label',
+                     {
+                        toastId: 'invalother'
+                     }
+                  )
                   toast.clearWaitingQueue()
                   return
                }
                if (labels.map((label) => label.label).some(checkLength)) {
                   toast.error('Maximum length of labels is 20 Characters', {
-                     toastId: "invallabelLength"
-                   })
+                     toastId: 'invallabelLength'
+                  })
                   toast.clearWaitingQueue()
                   return
                }
                if (checkIfDuplicateExists(labels.map((label) => label.label))) {
                   toast.error('No Duplicate labels allowed', {
-                     toastId: "invaldupLabel"
-                   })
+                     toastId: 'invaldupLabel'
+                  })
                   toast.clearWaitingQueue()
                   return
                }
@@ -167,8 +173,8 @@ const CreateJob = () => {
                   document.querySelector('#partitions').value === ''
                ) {
                   toast.error('Invalid number of partitions', {
-                     toastId: "invalnumpartition"
-                   })
+                     toastId: 'invalnumpartition'
+                  })
                   toast.clearWaitingQueue()
                   return
                }
@@ -214,8 +220,8 @@ const CreateJob = () => {
                   form.append(i.toString(), images[i].file)
                }
                const id = toast.loading('Please wait...', {
-                  toastId: "loading"
-                })
+                  toastId: 'loading'
+               })
                axios
                   .post(
                      'https://data-labelling-server.herokuapp.com/graphql',
@@ -238,8 +244,7 @@ const CreateJob = () => {
                         history.push('/dashboard/created-jobs')
                      } else {
                         toast.update(id, {
-                           render:
-                              "Not enough Credits per labeller",
+                           render: 'Not enough Credits per labeller',
                            type: 'error',
                            autoClose: 3000,
                            isLoading: false
@@ -247,7 +252,6 @@ const CreateJob = () => {
                         toast.clearWaitingQueue()
                      }
                   })
-               
             }}
          >
             <div className="createJob_mainForm">
@@ -315,9 +319,10 @@ const CreateJob = () => {
                         onClick={() => {
                            if (labels.length > 4) {
                               toast.warning(
-                                 'You can not have more than 5 labels', {
-                                    toastId: "toomanyLabels"
-                                  }
+                                 'You can not have more than 5 labels',
+                                 {
+                                    toastId: 'toomanyLabels'
+                                 }
                               )
                               return
                            }
