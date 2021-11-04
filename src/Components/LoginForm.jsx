@@ -34,7 +34,6 @@ const Login = () => {
          <div className="forms-container">
             <form
                className="sign-in-form"
-               // onSubmit={submitForm}
                onSubmit={(e) => {
                   e.preventDefault()
                   login({
@@ -78,16 +77,14 @@ const Login = () => {
                   />
                </div>
 
-               {/* <p className="forgot-pass">Forgot Password?</p> */}
 
                <button type="submit" className="login_signInButton">
                   {loading ? 'Loading...' : 'LOGIN'}
                </button>
-               {/* <p className="social-text">Or login with</p> */}
 
                <p className="other-text">
                   Not a member?{' '}
-                  <a id="hover" className="underlineHover" href="/register">
+                  <a id="hover" className="underlineHover" href="#/register">
                      Sign up now
                   </a>
                </p>
@@ -95,14 +92,7 @@ const Login = () => {
          </div>
       </div>
 
-      //         {/* <button
-      //            onClick={() => {
-                  //   history.push('/register')
-      //            }}
-      //            className="login_registerButton"
-      //         >
-      //            Register
-      //         </button> */}
+
    )
 }
 

@@ -173,7 +173,9 @@ const CreateJob = () => {
                   return
                }
                //! End Error Checking
-               labels.push({id: "otherLabel",label:"Other"})//add other label
+               let finalLabels=labels.map((label) => label.label)
+               finalLabels.push("Other");
+               // labels.push({id: "otherLabel",label:"Other"})//add other label
                form.append(
                   'operations',
                   JSON.stringify({
@@ -190,7 +192,7 @@ const CreateJob = () => {
                         num_partitions: parseInt(
                            document.querySelector('#partitions').value
                         ),
-                        labels: labels.map((label) => label.label)
+                        labels: finalLabels
                      }
                   })
                )
@@ -231,10 +233,9 @@ const CreateJob = () => {
                         toast.clearWaitingQueue()
                         history.push('/dashboard/created-jobs')
                      } else {
-                        console.log(res)
                         toast.update(id, {
                            render:
-                              'Your Job was not Created, Please try again',
+                              "Not enough Credits per labeller",
                            type: 'error',
                            autoClose: 3000,
                            isLoading: false
@@ -242,15 +243,7 @@ const CreateJob = () => {
                         toast.clearWaitingQueue()
                      }
                   })
-                  .catch((e) => {
-                     console.log(e)
-                     toast.update(id, {
-                        render: 'Your Job was not Created, Please try again',
-                        type: 'error',
-                        autoClose: 3000,
-                        isLoading: false
-                     })
-                  })
+               
             }}
          >
             <div className="createJob_mainForm">

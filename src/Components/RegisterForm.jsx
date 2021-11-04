@@ -148,26 +148,13 @@ const Register = () => {
                   {loading ? 'registering...' : 'Sign Up'}
                </button>
 
-               {/* <p className="social-text">Or sign up with</p> */}
-               {/* <div className="social-media">
-                  <a href="#" className="social-icon">
-                     <i className="fab fa-facebook-f"></i>
-                  </a>
-                  <a href="#" className="social-icon">
-                     <i className="fab fa-twitter"></i>
-                  </a>
-                  <a href="#" className="social-icon">
-                     <i className="fab fa-google"></i>
-                  </a>
-               </div> */}
                <p className="other-text">
                   Already a member?{' '}
-                  <a id="hover" className="underlineHover" href="/login">
+                  <a id="hover" className="underlineHover" href="#/login">
                      Login now
                   </a>
                </p>
 
-               <p>By registering, you accept our Terms & Conditions</p>
             </form>
          </div>
       </div>
