@@ -26,8 +26,8 @@ Faisal Saleem (Backend):
 - Impediments: Front End
 
 Ghulame Mujtaba Arbi (Frontend):
-- Tasks completed yesterday: Completed post job side of how-to page
-- Tasks for the day: Work on tabs to switch between how-to pages
+- Tasks completed yesterday: Sprint retrospective
+- Tasks for the day: Start assigned tasks in sprint
 - Impediments: Time, work on other projects outside of uni work
 
 Tristan Bester (Backend):
@@ -110,8 +110,8 @@ Faisal Saleem (Backend):
 - Impediments: Front End
 
 Ghulame Mujtaba Arbi (Frontend):
-- Tasks completed yesterday: Completed post job side of how-to page
-- Tasks for the day: Work on tabs to switch between how-to pages
+- Tasks completed yesterday: Sprint retrospective
+- Tasks for the day: Start assigned tasks in sprint
 - Impediments: Time, work on other projects outside of uni work
 
 Tristan Bester (Backend):
@@ -152,8 +152,8 @@ Faisal Saleem (Backend):
 - Impediments: Front End
 
 Ghulame Mujtaba Arbi (Frontend):
-- Tasks completed yesterday: Completed post job side of how-to page
-- Tasks for the day: Work on tabs to switch between how-to pages
+- Tasks completed yesterday: Sprint retrospective
+- Tasks for the day: Start assigned tasks in sprint
 - Impediments: Time, work on other projects outside of uni work
 
 Tristan Bester (Backend):
@@ -194,8 +194,8 @@ Faisal Saleem (Backend):
 - Impediments: Front End
 
 Ghulame Mujtaba Arbi (Frontend):
-- Tasks completed yesterday: Completed post job side of how-to page
-- Tasks for the day: Work on tabs to switch between how-to pages
+- Tasks completed yesterday: Started with FAQ page design
+- Tasks for the day: Continued working on FAQ page design mockup
 - Impediments: Time, work on other projects outside of uni work
 
 Tristan Bester (Backend):
