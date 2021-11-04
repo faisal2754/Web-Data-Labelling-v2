@@ -184,6 +184,7 @@ const CreateJob = () => {
                   return value.toLowerCase()!='other';
               });
             
+              
                finalLabels2.push("Other");
                // labels.push({id: "otherLabel",label:"Other"})//add other label
                form.append(
