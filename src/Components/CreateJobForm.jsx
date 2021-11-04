@@ -174,7 +174,11 @@ const CreateJob = () => {
                }
                //! End Error Checking
                let finalLabels=labels.map((label) => label.label)
-               finalLabels.push("Other");
+               var finalLabels2 = finalLabels.filter(function(value, index, finalLabels){ 
+                  return value.toLowerCase()!='other';
+              });
+            
+               finalLabels2.push("Other");
                // labels.push({id: "otherLabel",label:"Other"})//add other label
                form.append(
                   'operations',
@@ -192,7 +196,7 @@ const CreateJob = () => {
                         num_partitions: parseInt(
                            document.querySelector('#partitions').value
                         ),
-                        labels: finalLabels
+                        labels: finalLabels2
                      }
                   })
                )
@@ -329,8 +333,50 @@ const CreateJob = () => {
                         Add Label
                      </button>
                      {labels.map((p) => {
-                        if(p.label=='Other'){
-                           return(<div></div>)
+                        if(p.label.toLowerCase()=='other'){
+                           p.label=""
+                           toast.warning("A default 'other' label will be added to your chosen labels",{
+                           // toast.error('Please enter a username', {
+                              toastId: "invalusername"
+                            })
+                           return(<div key={p.id}>
+                              
+                              <TextField
+                                 inputProps={{ maxLength: 15 }}
+                                 onChange={(e) => {
+                                    const label = e.target.value
+                                    setLabels((currentLabels) =>
+                                       currentLabels.map((x) =>
+                                          x.id === p.id
+                                             ? {
+                                                  ...x,
+                                                  label
+                                               }
+                                             : x
+                                       )
+                                    )
+                                 }}
+                                 placeholder="Please enter a Label"
+                                 value={p.label}
+                              />
+                              <button
+                                 className="btn-hover"
+                                 style={{
+                                    width: '10%',
+                                    height: '100%',
+                                    margin: '10px '
+                                 }}
+                                 onClick={() => {
+                                    setLabels((currentLabels) =>
+                                       currentLabels.filter(
+                                          (x) => x.id !== p.id
+                                       )
+                                    )
+                                 }}
+                              >
+                                 x
+                              </button>
+                           </div>)
                         }
                         return (
                            <div key={p.id}>
