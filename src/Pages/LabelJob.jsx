@@ -25,7 +25,14 @@ function LabelJob(props) {
    const [isComplete, setIsComplete] = useState(false)
    const [assignedLabels, setAssignedLabels] = useState({})
    const [slides, setSlides] = useState([])
-   const { currentID } = props.location
+   const storedID = String(localStorage.getItem('jobID'))
+   console.log(storedID)
+   // const [currentID, setCurrentID] = useState(
+   //    props.location ? props.location : Number.isInteger(storedID)
+   // )
+   const currentID = storedID
+
+   console.log(currentID)
 
    const checkRadioButton = () => {
       if (slides[index]) {
@@ -117,7 +124,6 @@ function LabelJob(props) {
       setIndex(index)
       // console.log(labels)
       for (let i = 0; i < labels.length; i++) {
-         console.log(labels[i])
          document.getElementById(labels[i]).checked = false
       }
    }
@@ -131,17 +137,17 @@ function LabelJob(props) {
    }
 
    const saveState = (buttonID) => {
-      submitJob({
-         variables: {
-            image_ids: Object.keys(assignedLabels).map((id) => Number(id)),
-            labels: Object.values(assignedLabels),
-            partition_id: partition_id,
-            is_complete: isComplete
-         },
-         refetchQueries: [{ query: GET_ACCEPTED_JOBS }]
-      })
-
       if (buttonID === 'submitButton') {
+         submitJob({
+            variables: {
+               image_ids: Object.keys(assignedLabels).map((id) => Number(id)),
+               labels: Object.values(assignedLabels),
+               partition_id: partition_id,
+               is_complete: true
+            },
+            refetchQueries: [{ query: GET_ACCEPTED_JOBS }]
+         })
+
          document.getElementById('label-save').style.display = 'none'
          document.getElementById('image-section').style.display = 'none'
          document.getElementById('job-submitted').style.display = 'block'
@@ -149,6 +155,15 @@ function LabelJob(props) {
          document.getElementById('accepted-jobs-btn').style.display = 'block'
          document.getElementById('job-completed').style.display = 'block'
       } else {
+         submitJob({
+            variables: {
+               image_ids: Object.keys(assignedLabels).map((id) => Number(id)),
+               labels: Object.values(assignedLabels),
+               partition_id: partition_id,
+               is_complete: false
+            },
+            refetchQueries: [{ query: GET_ACCEPTED_JOBS }]
+         })
          toast.success('Your labelling progress has been saved.', {
             toastId: 'save'
          })
