@@ -234,7 +234,7 @@ const CreateJob = () => {
                         console.log(res)
                         toast.update(id, {
                            render:
-                              'Your Job was not Created, Please try again ehehehe',
+                              'Your Job was not Created, Please try again',
                            type: 'error',
                            autoClose: 3000,
                            isLoading: false

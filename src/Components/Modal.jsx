@@ -236,6 +236,7 @@ export const Modal = ({
                                           })
                                        })
                                        .then(() => {
+                                          setShowModal(false)
                                           toast.warning('Job Deleted!')
                                        })
                                  }}
