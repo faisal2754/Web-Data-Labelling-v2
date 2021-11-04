@@ -78,6 +78,9 @@ const GET_CREATED_JOBS = gql`
       ownedJobs {
          title
          credits
+         job_owner{
+            username
+         }
          job_id
          description
          preview_images

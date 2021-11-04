@@ -18,6 +18,7 @@ function CreatedJobs() {
    let jobs = []
    if (data) {
       jobs = data.ownedJobs
+      console.log(jobs)
    }
    if (error) {
    }
@@ -42,6 +43,7 @@ function CreatedJobs() {
                      <Modal
                         id={job.job_id}
                         src={job.preview_images[0]}
+                        uploader={job.job_owner.username}
                         // src="../images/purple_gradient.jpg"
                         text={job.description}
                         credits={job.credits}

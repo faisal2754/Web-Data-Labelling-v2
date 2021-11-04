@@ -121,7 +121,11 @@ export const Modal = ({
    const [deleteJob, { delLoading, delError, delData }] = useMutation(
       DELETE_JOB,
       {
-         refetchQueries: [GET_CREATED_JOBS, 'createdJobs']
+         refetchQueries: [GET_CREATED_JOBS, 'createdJobs'],
+         onCompleted:(data)=>{
+            setShowModal(false)
+            toast.warning("Your Job has been Deleted")
+         }
       }
    )
    //Get Job Results Mutation
@@ -228,17 +232,22 @@ export const Modal = ({
                                        buttons: [true, 'Yes, delete'],
                                        dangerMode: true
                                     })
-                                       .then(() => {
-                                           deleteJob({
-                                             variables: {
-                                                job_id: id
-                                             }
-                                          })
+                                       .then((value) => {
+                                          if(value){
+
+                                             deleteJob({
+                                                variables: {
+                                                   job_id: id
+                                                }
+                                             })
+                                          }else{
+                                             //do nothing
+                                          }
                                        })
-                                       .then(() => {
-                                          setShowModal(false)
-                                          toast.warning('Job Deleted!')
-                                       })
+                                       // .then(() => {
+                                          
+                                       //    toast.warning('Job Deleted!')
+                                       // })
                                  }}
                               >
                                  {buttonLabel}

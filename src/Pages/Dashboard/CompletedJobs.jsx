@@ -17,6 +17,7 @@ function CompletedJobs() {
    let jobs = []
    if (data) {
       jobs = data.completedJobs
+      console.log(jobs)
    }
    if (error) {
    }
