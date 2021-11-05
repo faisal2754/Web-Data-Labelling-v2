@@ -16,7 +16,7 @@ function PostJobCards() {
                   />
                   <CardItem
                      src="./images/HowTo/login5.gif"
-                     text="Navigating to the page will allow you to see all available data labelling jobs. You can also sort the jobs based on different filters. Select a data labelling job which you would like to work on. You can either accept the job or change your mind and hit cancel and unselect the job."
+                     text="Navigating to the page will allow you to see all available data labelling jobs. Select a data labelling job which you would like to work on. You can either accept the job or change your mind and hit cancel and unselect the job."
                      credits="Step 2"
                      path="/how-to-find"
                   />
